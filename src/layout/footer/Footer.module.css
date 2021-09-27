@@ -1,0 +1,36 @@
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    color: #208775;
+}
+
+.informations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.icone {
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    -webkit-transition: 300ms;
+    transition: 300ms;
+    color: #208775;
+}
+
+.icone:hover {
+    color: #124e44;
+}
+
+.link {
+    color: #208775;
+}
+
+.link:hover {
+    color: #13554a;
+    text-decoration: none;
+}
