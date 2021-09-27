@@ -1,0 +1,45 @@
+.teamCardContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.pictureContainer {
+    width: 100%;
+    border: black 1px solid;
+    text-align: center;
+}
+
+table{
+    border: 1px solid #333;
+}
+
+.teamCardPicture {
+    border-radius: 50px;
+    width: 150px;
+}
+
+.informations {
+    width: 100%;
+    border: black 1px solid;
+}
+
+.personal {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    border: black 1px solid;
+}
+
+.fonction {
+    text-align: center;
+    color: rgb(0, 81, 202);
+    font-size: 18px;
+    border: black 1px solid;
+}
+
+.class {
+    text-align: center;
+    border: black 1px solid;
+}
