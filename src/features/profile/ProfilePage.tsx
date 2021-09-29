@@ -22,24 +22,29 @@ export function ProfilePage(): JSX.Element {
         <title>{'AWI | Profil'}</title>
       </Helmet>
       <div className={styles.profileContainer}>
-        <table>
-          <thead>
-          <tr>
-              <td>ID</td>
-              <td>Email</td>
-              <td>Prenom</td>
-              <td>Nom</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{users[0].user_id}</td>
-              <td>{users[0].user_email}</td>
-              <td>{users[0].prenom}</td>
-              <td>{users[0].nom}</td>
-            </tr>
-          </tbody>
-        </table>
+        {users.length > 0 ? 
+          (<table>
+            <thead>
+              <tr>
+                <td>ID</td>
+                <td>Email</td>
+                <td>Prenom</td>
+                <td>Nom</td>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user: User_Interface) => (
+                <tr>
+                  <td>{user.user_id}</td>
+                  <td>{user.user_email}</td>
+                  <td>{user.prenom}</td>
+                  <td>{user.nom}</td>
+                </tr>
+              ))
+              }
+            </tbody>
+          </table>) : null
+        }
       </div>
     </>
   );
