@@ -19,8 +19,8 @@ export const TeamCard: React.FunctionComponent<TeamCardProps> = (props: TeamCard
             <img
               className={styles.teamCardPicture}
               src={props.picture}
-              alt="team-member-picture"
-            ></img>
+              alt="team-member"
+            />
           </tr>
         </thead>
         <tbody className={styles.informations}>

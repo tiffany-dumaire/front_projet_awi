@@ -6,6 +6,9 @@ import { ProfilePage } from './features/profile/ProfilePage';
 import { Footer } from './layout/footer/Footer';
 import { LoginPage } from './features/login/LoginPage';
 import { About } from './features/about/About';
+import { ListeFichesTechniquesPage } from './features/fichestechniques/ListeFichesTechniquesPage';
+import { MercurialPage } from './features/mercurial/MercurialPage';
+import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -28,8 +31,9 @@ function App(): JSX.Element {
           path={[
             '/',
             '/accueil',
-            '/profil',
-            '/activites',
+            '/fiches techniques',
+            '/mercurial',
+            '/liste des allergenes',
             '/policies',
             '/about'
           ]}
@@ -40,8 +44,9 @@ function App(): JSX.Element {
           path={[
             '/',
             '/accueil',
-            '/profil',
-            '/activites',
+            '/fiches techniques',
+            '/mercurial',
+            '/liste des allergenes',
             '/policies',
             '/about',
             '/login'
@@ -68,15 +73,18 @@ function App(): JSX.Element {
                 )
               }
             />
-            <Route exact path="/profil" component={ProfilePage} />
+            <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
+            <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
+            <Route exact path="/mercurial" component={MercurialPage} />
           </div>
           <Route 
             exact 
             path={[
               '/',
               '/accueil',
-              '/profil',
-              '/activites',
+              '/fiches techniques',
+              '/mercurial',
+              '/liste des allergenes',
               '/policies',
               '/about'
             ]}
