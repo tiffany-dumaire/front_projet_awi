@@ -17,9 +17,9 @@ export function NavigationBar(): JSX.Element {
           ></img>
         </NavLink>
         <NavigationButton to="accueil" />
-        <NavigationButton to="profil" />
-        <NavigationButton to="activites" />
-        <NavigationButton to="login" />
+        <NavigationButton to="fiches techniques" />
+        <NavigationButton to="mercurial" />
+        <NavigationButton to="liste des allergenes" />
       </div>
     </>
   );
