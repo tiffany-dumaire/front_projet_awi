@@ -24,7 +24,7 @@ export function ProfilePage(): JSX.Element {
       <div className={styles.profileContainer}>
         {users.length > 0 ? 
           (<table>
-            <thead>
+            <thead className={styles.thead}>
               <tr>
                 <td>ID</td>
                 <td>Email</td>

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavigationBar.module.css';
 import { NavigationButton } from './NavigationButton';
-import logo from '../../assets/img/logo.png';
+import logo from '../../assets/img/logo2.png';
 
 export function NavigationBar(): JSX.Element {
   return (
@@ -12,7 +12,7 @@ export function NavigationBar(): JSX.Element {
           <img
             className={`${styles.logo} hvr-grow`}
             src={logo}
-            width="60"
+            width="50"
             alt="logo"
           ></img>
         </NavLink>

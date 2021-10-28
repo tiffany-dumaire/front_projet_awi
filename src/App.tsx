@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { NavigationBar } from './layout/navigation-menu/NavigationBar';
 import './App.css';
-import { ProfilePage } from './features/profile/ProfilePage';
 import { Footer } from './layout/footer/Footer';
 import { LoginPage } from './features/login/LoginPage';
 import { About } from './features/about/About';

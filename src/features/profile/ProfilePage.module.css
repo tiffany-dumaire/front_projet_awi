@@ -5,3 +5,7 @@
     margin:auto;
     width: 90%;
 }
+
+.thead {
+    font-weight: bold;
+}
