@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './LoginPage.module.css';
 import { Helmet } from 'react-helmet';
 import logo from '../../assets/img/login.jpg';
 import accueil from '../../assets/img/logo.png';
-import { NavLink } from 'react-router-dom';
+import { Login } from '../../components/login/Login';
+import { Register } from '../../components/register/Register';
 
 export function LoginPage(): JSX.Element {
+  const [change, setChange] = useState<boolean>(false);
+  
   return(
     <>
       <Helmet>
@@ -21,29 +24,37 @@ export function LoginPage(): JSX.Element {
         <div>
           <img className={styles.accueilLogo} alt="accueil" src={accueil} />
         </div>
-        <div className={styles.loginForm}>
-          <div className={styles.row}>
-            <label className={styles.label}>Identifiant</label>
-            <input type="text"></input>  
-          </div>
-          <div className={styles.row}>
-            <label className={styles.label}>Mot de passe</label>
-            <input type="text"></input> 
-          </div>
-          <div className={styles.row}>
-            <div className={styles.loginButton}>
-              {/* <button
-                className={styles.button}
-                
-              >
+        {change ? (
+            <div className={styles.buttonDiv}>
+              <button className={styles.setLoginButton2} onClick={() => setChange(false)}>
+                Register
+              </button>
+              <button className={styles.setLoginButton} onClick={() => setChange(true)}>
                 Login
-              </button> */}
-              <NavLink to="/accueil" className={styles.button}>
-                Login
-              </NavLink>
+              </button>
             </div>
+          ) : (
+            <div className={styles.buttonDiv}>
+              <button className={styles.setLoginButton} onClick={() => setChange(false)}>
+                Register
+              </button>
+              <button className={styles.setLoginButton2} onClick={() => setChange(true)}>
+                Login
+              </button>
+            </div>
+          )
+        }
+        <div className={styles.formulaire}>
+            {change ? (
+              <div className={styles.signUpsignIn}>
+                <Login />
+              </div>
+            ) : (
+              <div className={styles.signUpsignIn}>
+                <Register setChange={(change: boolean) => setChange(change)} />
+              </div>
+            )}
           </div>
-        </div>
       </div>
     </>
   );

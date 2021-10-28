@@ -16,8 +16,8 @@ export function Footer(): JSX.Element {
           À propos
         </a>
         <div>|</div>
-        <a className={styles.link} href="/policies" target="_blank">
-          Conditions d'utilisation
+        <a className={styles.link} href="https://www.lyceehoteliergeorgesfreche.fr/" target="_blank" rel="noreferrer">
+          Site du lycée
         </a>
       </div>
     </div>
