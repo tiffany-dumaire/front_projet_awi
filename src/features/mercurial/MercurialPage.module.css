@@ -1,11 +1,20 @@
 .mercurialContainer {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80%;
     margin:auto;
-    width: 90%;
 }
 
 .mercurial {
     margin-bottom: 40px;
+}
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
 }
