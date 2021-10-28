@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { getCategories } from '../../api/categorie.api';
 import { getIngredients } from '../../api/ingredient.api';
+import { CategorieCard } from '../../components/mercurial/CategorieCard';
+import { Categorie_Interface } from '../../interfaces/Categorie.interface';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
+import { Categorie } from '../../models/Categorie.model';
 import styles from './MercurialPage.module.css';
 
 export function MercurialPage(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
+    const [categories, setCategories] = useState<Categorie_Interface[]>([]);
 
     useEffect(() => {
         getIngredients().then((list) => {
@@ -14,6 +19,16 @@ export function MercurialPage(): JSX.Element {
                 setIngredients(ingredients.slice(0));
             }); 
         });
+
+        getCategories().then((list) => {
+            list.forEach((categorie) => {
+                categories.push(categorie);
+                setCategories(categories.slice(0));
+            });
+        });
+
+        categories.push(new Categorie(0, 'TOUS','#660066'));
+        setCategories(categories.slice(0));
     },[]);
     
     return(
@@ -21,9 +36,16 @@ export function MercurialPage(): JSX.Element {
             <Helmet>
                 <title>{'Mercurial'}</title>
             </Helmet>
-            <div className={styles.mercurialContainer}>
+            <div className={styles.container}>
                 <input placeholder="rechercher un catégorie ou un ingrédient"></input>
-                {ingredients.length > 0 ? 
+                <div className={styles.mercurialContainer}>
+                    {
+                        categories.map((categorie: Categorie_Interface) => (
+                            <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
+                        ))        
+                    }
+                </div>
+                {/* {ingredients.length > 0 ? 
                     (<table className={styles.mercurial}>
                         <thead>
                             <th>Code</th>
@@ -48,7 +70,7 @@ export function MercurialPage(): JSX.Element {
                             }
                         </tbody>
                     </table>) : null
-                }
+                } */}
             </div>
         </>
     );

@@ -3,6 +3,7 @@ import styles from './IngredientByCategorie.module.css';
 
 export type IngredientByCategorieProps = {
     id_categorie: number;
+    categorie: string;
 };
 
 export const IngredientByCategorie: React.FunctionComponent<IngredientByCategorieProps> = (props: IngredientByCategorieProps) => {
