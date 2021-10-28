@@ -9,3 +9,11 @@
 .mercurial {
     margin-bottom: 40px;
 }
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
+}

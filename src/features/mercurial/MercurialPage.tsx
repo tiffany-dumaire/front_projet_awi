@@ -38,11 +38,11 @@ export function MercurialPage(): JSX.Element {
                                 ingredients.map((ingredient: Ingredient_Interface) => (
                                     <tr>
                                         <td>{ingredient.code}</td>
-                                        <td>{ingredient.libelle}</td>
+                                        <td className={styles.alignLeft}>{ingredient.libelle}</td>
                                         <td>{ingredient.unite}</td>
-                                        <td>{ingredient.prix_unitaire}</td>
-                                        <td>{ingredient.stock}</td>
-                                        <td>{ingredient.prix_unitaire * ingredient.stock}</td>
+                                        <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
+                                        <td className={styles.alignRight}>{ingredient.stock}</td>
+                                        <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
                                     </tr>
                                 ))
                             }
