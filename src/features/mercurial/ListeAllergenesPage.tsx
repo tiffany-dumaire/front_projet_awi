@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getCategoriesAllergenes } from '../../api/categorie.api';
-import { getAllergenes } from '../../api/ingredient.api';
 import { Loading } from '../../components/loading/Loading';
 import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
 import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
-import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
 import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
 
