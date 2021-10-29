@@ -24,10 +24,10 @@ export function DetailIngredient(): JSX.Element {
             {
                 loader ? (
                     <PDFDownloadLink document={<IngredientDocument date={date} />} fileName="somename.pdf">
-                    {({ blob, url, loading, error }) =>
-                        loading ? 'Loading document...' : 'Download now!'
-                    }
-                </PDFDownloadLink>  
+                        {({ blob, url, loading, error }) =>
+                            loading ? 'Loading document...' : 'Download now!'
+                        }
+                    </PDFDownloadLink>  
                 ) : (
                     <Loading />
                 )
