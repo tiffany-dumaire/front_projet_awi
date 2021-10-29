@@ -1,4 +1,4 @@
-import { PDFDownloadLink } from '@react-pdf/renderer';
+//import { PDFDownloadLink } from '@react-pdf/renderer';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Loading } from '../../components/loading/Loading';
@@ -23,11 +23,12 @@ export function DetailIngredient(): JSX.Element {
             </Helmet>
             {
                 loader ? (
-                    <PDFDownloadLink document={<IngredientDocument date={date} />} fileName="somename.pdf">
+                    null
+                   /*  <PDFDownloadLink document={<IngredientDocument date={date} />} fileName="somename.pdf">
                         {({ blob, url, loading, error }) =>
                             loading ? 'Loading document...' : 'Download now!'
                         }
-                    </PDFDownloadLink>  
+                    </PDFDownloadLink>   */
                 ) : (
                     <Loading />
                 )
