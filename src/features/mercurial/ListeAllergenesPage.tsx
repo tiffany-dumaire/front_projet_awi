@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getCategoriesAllergenes } from '../../api/categorie.api';
 import { getAllergenes } from '../../api/ingredient.api';
+import { Loading } from '../../components/loading/Loading';
 import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
 import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
@@ -10,21 +11,15 @@ import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
 
 export function ListeAllergenesPage(): JSX.Element {
-    const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
     const [categories, setCategories] = useState<Categorie_Allergenes_Interface[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        getAllergenes().then((list) => {
-            list.forEach((ingredient) => {
-                allergenes.push(ingredient);
-                setAllergenes(allergenes.slice(0));
-            }); 
-        });
-
         getCategoriesAllergenes().then((list) => {
             list.forEach((categorie) => {
                 categories.push(categorie);
                 setCategories(categories.slice(0));
+                setLoading(true);
             });
         });
 
@@ -37,18 +32,27 @@ export function ListeAllergenesPage(): JSX.Element {
             <Helmet>
                 <title>{'Liste des allergènes'}</title>
             </Helmet>
-            <div className={styles.mercurialContainer}>
-                <input placeholder="rechercher un catégorie ou un ingrédient"></input>
-                <div className={styles.mercurialContainer}>
-                    {
-                        categories.map((categorie: Categorie_Allergenes_Interface) => (
-                            <Link className={styles.link} to={`/liste des allergenes/byCategorie/${categorie.id_categorie_allergene}`}>
-                                <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
-                            </Link>
-                        ))        
-                    }
-                </div>
-            </div>
+            {
+                loading ? (
+                    <div className={styles.mercurialContainer}>
+                        <input placeholder="rechercher un catégorie ou un ingrédient"></input>
+                        <div className={styles.mercurialContainer}>
+                            {
+                                categories.map((categorie: Categorie_Allergenes_Interface) => (
+                                    <Link className={styles.link} to={`/liste des allergenes/byCategorie/${categorie.id_categorie_allergene}`}>
+                                        <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
+                                    </Link>
+                                ))        
+                            }
+                        </div>
+                    </div>
+                ) : 
+                (
+                    <div className={styles.mercurialContainer}>
+                        <Loading />
+                    </div>
+                )
+            }
         </>
     );
 }

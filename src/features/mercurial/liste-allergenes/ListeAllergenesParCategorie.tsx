@@ -6,11 +6,13 @@ import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 import { IoIosArrowBack } from 'react-icons/io';
 import { SketchPicker, PhotoshopPicker, SwatchesPicker } from 'react-color';
 import styles from './ListeAllergenesParCategorie.module.css';
+import { Loading } from '../../../components/loading/Loading';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
     const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         //récupérer le nom de la catégorie
@@ -20,13 +22,15 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                 list.forEach((ingredient) => {
                     allergenes.push(ingredient);
                     setAllergenes(allergenes.slice(0));
+                    setLoading(true);
                 }); 
             });
         }else {
             getAllergenesByCategorie(Number(id_categorie_allergene)).then((list) => {
                 list.forEach((ingredient) => {
                     allergenes.push(ingredient);
-                    setAllergenes(allergenes.slice(0));
+                    setAllergenes(allergenes.slice(0));                    
+                    setLoading(true);
                 }); 
             });
         }  
@@ -37,41 +41,50 @@ export function ListeAllergenesParCategorie(): JSX.Element {
             <Helmet>
                 <title>{'Allergènes | '}</title>
             </Helmet>
-            <div className={styles.mercurialContainer}>
-                <Link className={styles.link} to={`/liste des allergenes`}>
-                    <IoIosArrowBack /> Retour à la liste des allergènes
-                </Link>
-                {/* <SwatchesPicker /> */}
-                <input placeholder="rechercher un allergène"></input>
-                {allergenes.length > 0 ? 
-                    (<table className={styles.mercurial}>
-                        <thead>
-                            <th className={styles.th}>Code</th>
-                            <th className={styles.th}>Libellé</th>
-                            <th className={styles.th}>Unité</th>
-                            <th className={styles.th}>Prix unitaire</th>
-                            <th className={styles.th}>Quantité en stock</th>
-                            <th className={styles.th}>Valeur du stock</th>
-                        </thead>
-                        <tbody>
-                            { 
-                                allergenes.map((allergene: Ingredient_Interface) => (
-                                    <tr>
-                                        <td className={styles.td}>{allergene.code}</td>
-                                        <td className={styles.alignLeft}>{allergene.libelle}</td>
-                                        <td className={styles.td}>{allergene.unite}</td>
-                                        <td className={styles.alignRight}>{allergene.prix_unitaire} €</td>
-                                        <td className={styles.alignRight}>{allergene.stock}</td>
-                                        <td className={styles.alignRight}>{allergene.prix_unitaire * allergene.stock} €</td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>) : (
-                        <p>Il n'existe pas encore d'allergène répertorié appartenant à cette catégorie dans notre base de données.</p>
-                    )
-                }
-            </div>
+            {
+                loading ? (
+                    <div className={styles.mercurialContainer}>
+                        <Link className={styles.link} to={`/liste des allergenes`}>
+                            <IoIosArrowBack /> Retour à la liste des allergènes
+                        </Link>
+                        {/* <SwatchesPicker /> */}
+                        <input placeholder="rechercher un allergène"></input>
+                        {allergenes.length > 0 ? 
+                            (<table className={styles.mercurial}>
+                                <thead>
+                                    <th className={styles.th}>Code</th>
+                                    <th className={styles.th}>Libellé</th>
+                                    <th className={styles.th}>Unité</th>
+                                    <th className={styles.th}>Prix unitaire</th>
+                                    <th className={styles.th}>Quantité en stock</th>
+                                    <th className={styles.th}>Valeur du stock</th>
+                                </thead>
+                                <tbody>
+                                    { 
+                                        allergenes.map((allergene: Ingredient_Interface) => (
+                                            <tr>
+                                                <td className={styles.td}>{allergene.code}</td>
+                                                <td className={styles.alignLeft}>{allergene.libelle}</td>
+                                                <td className={styles.td}>{allergene.unite}</td>
+                                                <td className={styles.alignRight}>{allergene.prix_unitaire} €</td>
+                                                <td className={styles.alignRight}>{allergene.stock}</td>
+                                                <td className={styles.alignRight}>{allergene.prix_unitaire * allergene.stock} €</td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>) : (
+                                <p>Il n'existe pas encore d'allergène répertorié appartenant à cette catégorie dans notre base de données.</p>
+                            )
+                        }
+                    </div>
+                ) : 
+                (
+                    <div className={styles.mercurialContainer}>
+                        <Loading />
+                    </div>
+                )
+            }
         </>
     );
 }
