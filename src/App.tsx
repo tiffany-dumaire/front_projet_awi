@@ -11,6 +11,7 @@ import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
 import { ListeIngredientsParCategorie } from './features/mercurial/liste-ingredients/ListeIngredientsParCategorie';
 import { ListeAllergenesParCategorie } from './features/mercurial/liste-allergenes/ListeAllergenesParCategorie';
 import { Dashbord } from './components/dashbord/Dashbord';
+import { DetailIngredient } from './features/detail/DetailIngredient';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -37,6 +38,7 @@ function App(): JSX.Element {
             '/mercurial',
             '/liste des allergenes',
             '/mercurial/byCategorie/:id_categorie',
+            '/mercurial/ingredient/:id_ingredient',
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
             '/policies',
             '/about'
@@ -52,6 +54,7 @@ function App(): JSX.Element {
             '/mercurial',
             '/liste des allergenes',
             '/mercurial/byCategorie/:id_categorie',
+            '/mercurial/ingredient/:id_ingredient',
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
             '/policies',
             '/about',
@@ -83,6 +86,7 @@ function App(): JSX.Element {
             <Route exact path="/mercurial" component={MercurialPage} />
             <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
+            <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
           </div>
           <Route 
             exact 
@@ -93,6 +97,7 @@ function App(): JSX.Element {
               '/mercurial',
               '/liste des allergenes',
               '/mercurial/byCategorie/:id_categorie',
+              '/mercurial/ingredient/:id_ingredient',
               '/liste des allergenes/byCategorie/:id_categorie_allergene',
               '/policies',
               '/about'

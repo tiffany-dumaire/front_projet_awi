@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../../api/categorie.api';
-import { getIngredients } from '../../api/ingredient.api';
 import { Loading } from '../../components/loading/Loading';
 import { CategorieCard } from '../../components/mercurial/CategorieCard';
+import { SearchIngredient } from '../../components/search-bar/ingredients/SearchIngredient';
 import { Categorie_Interface } from '../../interfaces/Categorie.interface';
-import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
 import { Categorie } from '../../models/Categorie.model';
 import styles from './MercurialPage.module.css';
 
@@ -35,7 +34,9 @@ export function MercurialPage(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
-                        <input placeholder="rechercher un catégorie ou un ingrédient"></input>
+                        <div className={styles.mercurialContainer2}>
+                            <SearchIngredient />
+                        </div>
                         <div className={styles.mercurialContainer}>
                             {
                                 categories.map((categorie: Categorie_Interface) => (
