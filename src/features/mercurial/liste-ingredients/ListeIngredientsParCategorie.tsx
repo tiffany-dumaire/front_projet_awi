@@ -41,7 +41,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                 <Link className={styles.link} to={`/mercurial`}>
                     <IoIosArrowBack /> Retour au mercuriale
                 </Link>
-                <SwatchesPicker />
+                {/* <SwatchesPicker /> */}
                 <input placeholder="rechercher un catégorie ou un ingrédient"></input>
                 {ingredients.length > 0 ? 
                     (<table className={styles.mercurial}>
