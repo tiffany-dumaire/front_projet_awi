@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+//import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 //import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 
 export type IngredientDocumentProps = {
@@ -8,7 +8,8 @@ export type IngredientDocumentProps = {
 }
 
 export const IngredientDocument: React.FunctionComponent<IngredientDocumentProps> = (props: IngredientDocumentProps) => {  
-    const styles = StyleSheet.create({
+    return ( <> </>);
+    /* const styles = StyleSheet.create({
         date: {
             fontSize: '10px',
             fontWeight: 'light',
@@ -48,5 +49,5 @@ export const IngredientDocument: React.FunctionComponent<IngredientDocumentProps
                 </View>
             </Page>
         </Document>
-    );
+    ); */
 };
