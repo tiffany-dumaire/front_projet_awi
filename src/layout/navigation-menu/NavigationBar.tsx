@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavigationBar.module.css';
 import { NavigationButton } from './NavigationButton';
-import logo from '../../assets/img/logo2.png';
+import logo from '../../assets/img/logo3.png';
 
 export function NavigationBar(): JSX.Element {
   return (

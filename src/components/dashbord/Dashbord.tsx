@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { DashboardCard } from "./card/DashboardCard";
 import styles from './Dashbord.module.css';
 
@@ -37,6 +38,10 @@ export const Dashbord: React.FunctionComponent = () => {
     ];
 
     return (
+        <>
+        <Helmet>
+            <title>Gestionnaire de fiches techniques de cuisine</title>
+        </Helmet>
         <div className={styles.container}>
             <h1>Gestionnaire de fiches techniques de cuisine</h1>
             <div className={styles.subContainer}>
@@ -47,5 +52,6 @@ export const Dashbord: React.FunctionComponent = () => {
                 }
             </div>
         </div>
+        </>
     );
 }
