@@ -14,26 +14,28 @@ export function ListeIngredientsParCategorie(): JSX.Element {
     const { id_categorie } = useParams<{ id_categorie: string }>();
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect(() => {
-        //récupérer le nom de la catégorie
-
+    async function getIngredientList() {
         if (Number(id_categorie) === 0) {
-            getIngredients().then((list) => {
+            await getIngredients().then((list) => {
                 list.forEach((ingredient) => {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
-                    setLoading(true);
-                }); 
+                });
+                setLoading(true);
             });
         }else {
-            getIngredientsByCategorie(Number(id_categorie)).then((list) => {
+            await getIngredientsByCategorie(Number(id_categorie)).then((list) => {
                 list.forEach((ingredient) => {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
-                    setLoading(true);
                 }); 
+                setLoading(true);
             });
         }  
+    };
+
+    useEffect(() => {
+        getIngredientList();        
     },[]);
 
     return(

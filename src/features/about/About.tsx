@@ -1,8 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { TeamCard } from '../../components/teamCard/TeamCard';
 import styles from './About.module.css';
-import picture from '../../assets/img/picture.jpg';
 
 export function About(): JSX.Element {
   return (

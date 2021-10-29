@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Loading } from '../../components/loading/Loading';
 import { IngredientDocument } from '../../components/pdf/ingredient/IngredientDocument';
-import { RecapitulatifIngredient } from '../../components/pdf/ingredient/RecapitulatifIngredient';
+//import { RecapitulatifIngredient } from '../../components/pdf/ingredient/RecapitulatifIngredient';
 import { generateDate } from '../../utils/date.util';
-import styles from './DetailIngredient.module.css';
+//import styles from './DetailIngredient.module.css';
 
 export function DetailIngredient(): JSX.Element {
     const [date, setDate] = useState<string>('');
