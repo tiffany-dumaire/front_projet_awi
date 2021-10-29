@@ -8,6 +8,7 @@ import { About } from './features/about/About';
 import { ListeFichesTechniquesPage } from './features/fichestechniques/ListeFichesTechniquesPage';
 import { MercurialPage } from './features/mercurial/MercurialPage';
 import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
+import { ListeIngredientsParCategorie } from './features/mercurial/liste-ingredients/ListeIngredientsParCategorie';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -33,6 +34,7 @@ function App(): JSX.Element {
             '/fiches techniques',
             '/mercurial',
             '/liste des allergenes',
+            '/mercurial/byCategorie/:id_categorie',
             '/policies',
             '/about'
           ]}
@@ -46,6 +48,7 @@ function App(): JSX.Element {
             '/fiches techniques',
             '/mercurial',
             '/liste des allergenes',
+            '/mercurial/byCategorie/:id_categorie',
             '/policies',
             '/about',
             '/login'
@@ -75,6 +78,7 @@ function App(): JSX.Element {
             <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
             <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
             <Route exact path="/mercurial" component={MercurialPage} />
+            <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
           </div>
           <Route 
             exact 
@@ -84,6 +88,7 @@ function App(): JSX.Element {
               '/fiches techniques',
               '/mercurial',
               '/liste des allergenes',
+              '/mercurial/byCategorie/:id_categorie',
               '/policies',
               '/about'
             ]}

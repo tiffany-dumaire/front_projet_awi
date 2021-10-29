@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../../api/categorie.api';
 import { getIngredients } from '../../api/ingredient.api';
 import { CategorieCard } from '../../components/mercurial/CategorieCard';
@@ -41,7 +42,9 @@ export function MercurialPage(): JSX.Element {
                 <div className={styles.mercurialContainer}>
                     {
                         categories.map((categorie: Categorie_Interface) => (
-                            <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
+                            <Link className={styles.link} to={`/mercurial/byCategorie/${categorie.id_categorie}`}>
+                                <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
+                            </Link>
                         ))        
                     }
                 </div>
