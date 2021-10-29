@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-//import { PDFViewer } from '@react-pdf/renderer';
-//import { IngredientDocument } from "./IngredientDocument";
+import { PDFViewer } from '@react-pdf/renderer';
+import { IngredientDocument } from "./IngredientDocument";
 import { generateDate } from "../../../utils/date.util";
 
 export const RecapitulatifIngredient: React.FunctionComponent = () => {
@@ -12,11 +12,8 @@ export const RecapitulatifIngredient: React.FunctionComponent = () => {
     },[]);
 
     return (
-        <>
-        {/* <PDFViewer>
+        <PDFViewer>
             <IngredientDocument date={date} />
-        </PDFViewer> */}
-        </>
-        
+        </PDFViewer>        
     );
 };
