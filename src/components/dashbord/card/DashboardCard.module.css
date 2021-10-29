@@ -1,0 +1,23 @@
+.dashboardCardContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    margin: 20px;
+    justify-content: center;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.description {
+    font-size: 15px;
+    font-weight: 400;
+    color: aliceblue;
+    text-align: justify;
+}

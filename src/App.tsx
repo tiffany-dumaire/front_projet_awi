@@ -10,6 +10,7 @@ import { MercurialPage } from './features/mercurial/MercurialPage';
 import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
 import { ListeIngredientsParCategorie } from './features/mercurial/liste-ingredients/ListeIngredientsParCategorie';
 import { ListeAllergenesParCategorie } from './features/mercurial/liste-allergenes/ListeAllergenesParCategorie';
+import { Dashbord } from './components/dashbord/Dashbord';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -59,8 +60,7 @@ function App(): JSX.Element {
         >
           <div className="App-content">
             <Route exact path="/accueil">
-              <h1>AWI PROJECT</h1>
-              <h3>First test app.</h3>
+              <Dashbord />
             </Route>
             <Route exact path="/about" component={About} />
             <Route 

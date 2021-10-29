@@ -48,32 +48,6 @@ export function MercurialPage(): JSX.Element {
                         ))        
                     }
                 </div>
-                {/* {ingredients.length > 0 ? 
-                    (<table className={styles.mercurial}>
-                        <thead>
-                            <th>Code</th>
-                            <th>Libellé</th>
-                            <th>Unité</th>
-                            <th>Prix unitaire</th>
-                            <th>Quantité en stock</th>
-                            <th>Valeur du stock</th>
-                        </thead>
-                        <tbody>
-                            { 
-                                ingredients.map((ingredient: Ingredient_Interface) => (
-                                    <tr>
-                                        <td>{ingredient.code}</td>
-                                        <td className={styles.alignLeft}>{ingredient.libelle}</td>
-                                        <td>{ingredient.unite}</td>
-                                        <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
-                                        <td className={styles.alignRight}>{ingredient.stock}</td>
-                                        <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>) : null
-                } */}
             </div>
         </>
     );
