@@ -4,5 +4,6 @@ export interface Ingredient_Interface {
     unite: string;
     prix_unitaire: number;
     stock: number;
+    allergene: boolean;
     id_categorie: number;
 }

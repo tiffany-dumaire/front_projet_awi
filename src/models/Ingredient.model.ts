@@ -6,6 +6,7 @@ export class Ingredient implements Ingredient_Interface {
     unite: string;
     prix_unitaire: number;
     stock: number;
+    allergene: boolean;
     id_categorie: number;
 
     constructor(
@@ -14,6 +15,7 @@ export class Ingredient implements Ingredient_Interface {
         unite: string,
         prix_unitaire: number,
         stock: number,
+        allergene: boolean,
         id_categorie: number,
     ) {
         this.code = code;
@@ -21,6 +23,7 @@ export class Ingredient implements Ingredient_Interface {
         this.unite = unite;
         this.prix_unitaire = prix_unitaire;
         this.stock = stock;
+        this.allergene = allergene;
         this.id_categorie = id_categorie;
     }
 }

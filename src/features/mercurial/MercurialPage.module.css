@@ -4,7 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 80%;
-    margin:auto;
+    margin: auto;
 }
 
 .mercurial {
@@ -17,4 +17,8 @@
 
 .alignRight {
     text-align: right;
+}
+
+.link {
+    text-decoration: none;
 }
