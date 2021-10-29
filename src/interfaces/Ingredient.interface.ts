@@ -6,4 +6,5 @@ export interface Ingredient_Interface {
     stock: number;
     allergene: boolean;
     id_categorie: number;
+    id_categorie_allergene: number;
 }

@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getIngredients, getIngredientsByCategorie } from '../../../api/ingredient.api';
 import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 import { IoIosArrowBack } from 'react-icons/io';
+import { SketchPicker, PhotoshopPicker, SwatchesPicker } from 'react-color';
 import styles from './ListeIngredientsParCategorie.module.css';
 
 
@@ -40,6 +41,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                 <Link className={styles.link} to={`/mercurial`}>
                     <IoIosArrowBack /> Retour au mercuriale
                 </Link>
+                {/* <SwatchesPicker /> */}
                 <input placeholder="rechercher un catégorie ou un ingrédient"></input>
                 {ingredients.length > 0 ? 
                     (<table className={styles.mercurial}>

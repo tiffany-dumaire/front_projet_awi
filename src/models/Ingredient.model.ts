@@ -8,6 +8,7 @@ export class Ingredient implements Ingredient_Interface {
     stock: number;
     allergene: boolean;
     id_categorie: number;
+    id_categorie_allergene: number;
 
     constructor(
         code: number,
@@ -17,6 +18,7 @@ export class Ingredient implements Ingredient_Interface {
         stock: number,
         allergene: boolean,
         id_categorie: number,
+        id_categorie_allergene: number
     ) {
         this.code = code;
         this.libelle = libelle;
@@ -25,5 +27,6 @@ export class Ingredient implements Ingredient_Interface {
         this.stock = stock;
         this.allergene = allergene;
         this.id_categorie = id_categorie;
+        this.id_categorie_allergene = id_categorie_allergene;
     }
 }

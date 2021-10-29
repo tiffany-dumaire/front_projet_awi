@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import { getCategoriesAllergenes } from '../../api/categorie.api';
 import { getAllergenes } from '../../api/ingredient.api';
+import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
+import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
+import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
 
 export function ListeAllergenesPage(): JSX.Element {
     const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
+    const [categories, setCategories] = useState<Categorie_Allergenes_Interface[]>([]);
 
     useEffect(() => {
         getAllergenes().then((list) => {
@@ -14,6 +20,16 @@ export function ListeAllergenesPage(): JSX.Element {
                 setAllergenes(allergenes.slice(0));
             }); 
         });
+
+        getCategoriesAllergenes().then((list) => {
+            list.forEach((categorie) => {
+                categories.push(categorie);
+                setCategories(categories.slice(0));
+            });
+        });
+
+        categories.push(new Categorie_Allergenes(0, 'TOUS','#660066'));
+        setCategories(categories.slice(0));
     },[]);
 
     return(
@@ -23,7 +39,16 @@ export function ListeAllergenesPage(): JSX.Element {
             </Helmet>
             <div className={styles.mercurialContainer}>
                 <input placeholder="rechercher un catégorie ou un ingrédient"></input>
-                {allergenes.length > 0 ? 
+                <div className={styles.mercurialContainer}>
+                    {
+                        categories.map((categorie: Categorie_Allergenes_Interface) => (
+                            <Link className={styles.link} to={`/liste des allergenes/byCategorie/${categorie.id_categorie_allergene}`}>
+                                <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
+                            </Link>
+                        ))        
+                    }
+                </div>
+                {/* {allergenes.length > 0 ? 
                     (<table className={styles.mercurial}>
                         <thead>
                             <th>Code</th>
@@ -48,7 +73,7 @@ export function ListeAllergenesPage(): JSX.Element {
                             }
                         </tbody>
                     </table>) : null
-                }
+                } */}
             </div>
         </>
     );
