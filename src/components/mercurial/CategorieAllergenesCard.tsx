@@ -18,4 +18,4 @@ export const CategorieAllergenesCard: React.FunctionComponent<CategorieAllergene
             <h3>{props.categorie_allergene}</h3>
         </div>
     );
-}
+};
