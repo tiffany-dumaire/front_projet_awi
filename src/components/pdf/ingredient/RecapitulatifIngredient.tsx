@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PDFViewer } from 'react-pdf';
+import { PDFViewer } from '@react-pdf/renderer';
 import { IngredientDocument } from "./IngredientDocument";
 import { generateDate } from "../../../utils/date.util";
 

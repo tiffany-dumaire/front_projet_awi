@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet } from 'react-pdf';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 //import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 
 export type IngredientDocumentProps = {
