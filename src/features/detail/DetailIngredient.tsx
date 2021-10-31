@@ -24,7 +24,7 @@ export function DetailIngredient(): JSX.Element {
             </Helmet>
             {
                 loader ? (
-                    <RecapitulatifIngredient />
+                    null
                     /* <PDFDownloadLink document={<IngredientDocument date={date} />} fileName="somename.pdf">
                         {({ blob, url, loading, error }) =>
                             loading ? 'Loading document...' : 'Download now!'
