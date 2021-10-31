@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 //import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
-import styles from './SearchIngredient.module.css';
+import styles from './SearchAllergene.module.css';
 //import { FcSearch } from "react-icons/fc";
 
-export const SearchIngredient: React.FunctionComponent = () => {
+export const SearchAllergene: React.FunctionComponent = () => {
     const [search, setSearch] = useState<string>('');
     //const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
     
@@ -11,7 +11,7 @@ export const SearchIngredient: React.FunctionComponent = () => {
         <div className={styles.searchContainer}>
             <div className={styles.searchBar}>
                 <input
-                    placeholder="Rechercher un ingrédient..."
+                    placeholder="Rechercher un allergène..."
                     className={styles.search}
                     type='text'
                     onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setSearch(ev.target.value)}

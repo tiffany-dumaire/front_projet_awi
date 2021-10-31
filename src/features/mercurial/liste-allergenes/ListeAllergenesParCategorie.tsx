@@ -7,6 +7,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 //import { SketchPicker, PhotoshopPicker, SwatchesPicker } from 'react-color';
 import styles from './ListeAllergenesParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
+import { FcSearch } from 'react-icons/fc';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
@@ -60,6 +61,7 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                                         <th className={styles.th}>Prix unitaire</th>
                                         <th className={styles.th}>Quantité en stock</th>
                                         <th className={styles.th}>Valeur du stock</th>
+                                        <th className={styles.th}>Voir la fiche produit</th>
                                     </thead>
                                     <tbody>
                                         { 
@@ -71,6 +73,11 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                                                     <td className={styles.alignRight}>{allergene.prix_unitaire} €</td>
                                                     <td className={styles.alignRight}>{allergene.stock}</td>
                                                     <td className={styles.alignRight}>{allergene.prix_unitaire * allergene.stock} €</td>
+                                                    <td className={styles.td}>
+                                                        <Link className={styles.button} to={`/mercurial/ingredient/${allergene.code}`}>
+                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        </Link>
+                                                    </td>
                                                 </tr>
                                             ))
                                         }
