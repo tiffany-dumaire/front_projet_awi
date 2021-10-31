@@ -7,7 +7,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 //import { SketchPicker, PhotoshopPicker, SwatchesPicker } from 'react-color';
 import styles from './ListeIngredientsParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
-
+import { FcSearch } from "react-icons/fc";
 
 export function ListeIngredientsParCategorie(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
@@ -60,6 +60,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                                     <th className={styles.th}>Prix unitaire</th>
                                     <th className={styles.th}>Quantité en stock</th>
                                     <th className={styles.th}>Valeur du stock</th>
+                                    <th className={styles.th}>Voir la fiche produit</th>
                                 </thead>
                                 <tbody>
                                     { 
@@ -71,6 +72,11 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                                                 <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
                                                 <td className={styles.alignRight}>{ingredient.stock}</td>
                                                 <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
+                                                <td className={styles.td}>
+                                                    <Link className={styles.button} to={`/mercurial/ingredient/${ingredient.code}`}>
+                                                        <FcSearch className={styles.iconeSearch}/>
+                                                    </Link>
+                                                </td>
                                             </tr>
                                         ))
                                     }

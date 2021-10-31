@@ -40,3 +40,14 @@
     color: rgb(0, 39, 75);
     font-weight: bold;
 }
+
+.button {
+    width: 50px;
+    border: none;
+    background-color: transparent;
+}
+
+.iconeSearch {
+    width: 30px;
+    height: 30px;
+}
