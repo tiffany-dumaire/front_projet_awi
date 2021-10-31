@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getCategoriesAllergenes } from '../../api/categorie.api';
 import { Loading } from '../../components/loading/Loading';
 import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
+import { SearchAllergene } from '../../components/search-bar/allergenes/SearchAllergene';
 import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
 import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
@@ -33,7 +34,9 @@ export function ListeAllergenesPage(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.mercurialContainer}>
-                        <input placeholder="rechercher un catégorie ou un ingrédient"></input>
+                        <div className={styles.mercurialContainer2}>
+                            <SearchAllergene />
+                        </div>
                         <div className={styles.mercurialContainer}>
                             {
                                 categories.map((categorie: Categorie_Allergenes_Interface) => (

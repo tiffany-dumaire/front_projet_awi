@@ -9,6 +9,16 @@
     margin-bottom: 40px;
 }
 
+.mercurialContainer2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin-bottom: 40px;
+}
+
 .mercurial {
     margin-bottom: 40px;
 }
