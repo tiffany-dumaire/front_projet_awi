@@ -1,10 +1,19 @@
-.mercurialContainer {
+.container {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 40px;
+} 
+
+.linkTo {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
+    padding-left: 80px;
+    justify-content: left;
     width: 80%;
-    margin: auto;
+    padding-top: 20px;
 }
 
 .searchContainer {
@@ -14,6 +23,17 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 98%;
+    margin-bottom: 40px;
+}
+
+.ingredientContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin: auto;
     margin-bottom: 40px;
 }
 

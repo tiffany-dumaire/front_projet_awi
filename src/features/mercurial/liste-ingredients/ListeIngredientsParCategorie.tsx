@@ -8,6 +8,7 @@ import styles from './ListeIngredientsParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from "react-icons/fc";
 import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
+import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 
 export function ListeIngredientsParCategorie(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
@@ -45,45 +46,62 @@ export function ListeIngredientsParCategorie(): JSX.Element {
             </Helmet>
             {
                 loading ? (
-                    <div className={styles.mercurialContainer}>
-                        <Link className={styles.link} to={`/mercurial`}>
-                            <IoIosArrowBack /> Retour au mercuriale
-                        </Link>
+                    <div className={styles.container}>
+                        <SidebarMenu 
+                            width={300} 
+                            height={'530px'} 
+                            to={
+                                [
+                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial', name: 'Rechercher un ingrédient'},
+                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
+                                    {to: '', name: 'Gérer les stocks'}
+                                ]
+                            }
+                        />
+                        <div className={styles.linkTo}>
+                            <Link className={styles.link} to={`/mercurial`}>
+                                <IoIosArrowBack /> Retour au mercuriale
+                            </Link>
+                        </div>
                         <div className={styles.searchContainer}>
                             <SearchIngredient />
                         </div>
-                        {ingredients.length > 0 ? 
-                            (<table className={styles.mercurial}>
-                                <thead>
-                                    <th className={styles.th}>Code</th>
-                                    <th className={styles.th}>Libellé</th>
-                                    <th className={styles.th}>Unité</th>
-                                    <th className={styles.th}>Prix unitaire</th>
-                                    <th className={styles.th}>Quantité en stock</th>
-                                    <th className={styles.th}>Valeur du stock</th>
-                                    <th className={styles.th}>Voir la fiche produit</th>
-                                </thead>
-                                <tbody>
-                                    { 
-                                        ingredients.map((ingredient: Ingredient_Interface) => (
-                                            <tr>
-                                                <td className={styles.td}>{ingredient.code}</td>
-                                                <td className={styles.alignLeft}>{ingredient.libelle}</td>
-                                                <td className={styles.td}>{ingredient.unite}</td>
-                                                <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
-                                                <td className={styles.alignRight}>{ingredient.stock}</td>
-                                                <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
-                                                <td className={styles.td}>
-                                                    <Link className={styles.button} to={`/mercurial/ingredient/${ingredient.code}`}>
-                                                        <FcSearch className={styles.iconeSearch}/>
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>) : null
-                        }
+                        <div className={styles.ingredientContainer}>
+                            {ingredients.length > 0 ? 
+                                (<table className={styles.mercurial}>
+                                    <thead>
+                                        <th className={styles.th}>Code</th>
+                                        <th className={styles.th}>Libellé</th>
+                                        <th className={styles.th}>Unité</th>
+                                        <th className={styles.th}>Prix unitaire</th>
+                                        <th className={styles.th}>Quantité en stock</th>
+                                        <th className={styles.th}>Valeur du stock</th>
+                                        <th className={styles.th}>Voir la fiche produit</th>
+                                    </thead>
+                                    <tbody>
+                                        { 
+                                            ingredients.map((ingredient: Ingredient_Interface) => (
+                                                <tr>
+                                                    <td className={styles.td}>{ingredient.code}</td>
+                                                    <td className={styles.alignLeft}>{ingredient.libelle}</td>
+                                                    <td className={styles.td}>{ingredient.unite}</td>
+                                                    <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
+                                                    <td className={styles.alignRight}>{ingredient.stock}</td>
+                                                    <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
+                                                    <td className={styles.td}>
+                                                        <Link className={styles.button} to={`/mercurial/ingredient/${ingredient.code}`}>
+                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>) : null
+                            }
+                        </div>
                     </div>
                 ) : 
                 (

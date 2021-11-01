@@ -6,6 +6,7 @@ import { Loading } from '../../components/loading/Loading';
 import { CategorieCard } from '../../components/mercurial/CategorieCard';
 import { SearchIngredient } from '../../components/search-bar/ingredients/SearchIngredient';
 import { Categorie_Interface } from '../../interfaces/Categorie.interface';
+import { SidebarMenu } from '../../layout/sidebar-menu/SidebarMenu';
 import { Categorie } from '../../models/Categorie.model';
 import styles from './MercurialPage.module.css';
 
@@ -34,6 +35,19 @@ export function MercurialPage(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
+                        <SidebarMenu 
+                            width={300} 
+                            height={'530px'} 
+                            to={
+                                [
+                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial', name: 'Rechercher un ingrédient'},
+                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
+                                    {to: '', name: 'Gérer les stocks'}
+                                ]
+                            }
+                        />
                         <div className={styles.mercurialContainer2}>
                             <SearchIngredient />
                         </div>
