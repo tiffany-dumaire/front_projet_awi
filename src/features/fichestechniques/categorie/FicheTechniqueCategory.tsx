@@ -5,6 +5,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { SearchFiche } from '../../../components/search-bar/fiches-techniques/SearchFiche';
+import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 
 export function FicheTechniqueCategory(): JSX.Element {
     //const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
@@ -44,12 +45,28 @@ export function FicheTechniqueCategory(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
-                        <Link className={styles.link} to={`/fiches techniques`}>
-                            <IoIosArrowBack /> Retour aux fiches techniques
-                        </Link>
+                        <SidebarMenu 
+                            width={300} 
+                            height={'530px'} 
+                            to={
+                                [
+                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial', name: 'Rechercher un ingrédient'},
+                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
+                                    {to: '', name: 'Gérer les stocks'}
+                                ]
+                            }
+                        />
+                        <div className={styles.linkTo}>
+                            <Link className={styles.link} to={`/fiches techniques`}>
+                                <IoIosArrowBack /> Retour aux fiches techniques
+                            </Link>
+                        </div>
                         <div className={styles.searchContainer}>
                             <SearchFiche />
                         </div>
+                        <div className={styles.ficheTechniqueContainer}></div>
                     </div>
                 ) : (
                     <div className={styles.mercurialContainer}>

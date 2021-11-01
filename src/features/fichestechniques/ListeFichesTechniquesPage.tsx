@@ -33,7 +33,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                     <div className={styles.listeFTContainer}>
                         <SidebarMenu 
                             width={300} 
-                            height={'550px'} 
+                            height={'530px'} 
                             to={
                                 [
                                     {to: '', name: 'Créer une fiche technique'},

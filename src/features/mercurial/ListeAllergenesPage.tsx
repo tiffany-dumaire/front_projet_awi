@@ -37,7 +37,7 @@ export function ListeAllergenesPage(): JSX.Element {
                     <div className={styles.container}>
                         <SidebarMenu 
                             width={300} 
-                            height={'550px'} 
+                            height={'530px'} 
                             to={
                                 [
                                     {to: '', name: 'Ajouter un ingrédient au mercurial'},
