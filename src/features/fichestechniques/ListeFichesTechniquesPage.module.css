@@ -2,6 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin:auto;
-    width: 90%;
+    margin: auto;
+    width: 100%;
 }
