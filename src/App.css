@@ -13,6 +13,7 @@
 
 .App-content {
   padding-bottom: 5rem;
+  min-height: 500px;
   background-color: white;
 }
 

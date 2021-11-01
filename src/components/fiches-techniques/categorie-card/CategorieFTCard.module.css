@@ -1,0 +1,13 @@
+.categorieCard {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 5px;
+    height: 150px;
+    margin: 20px;
+    color: aliceblue;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px rgb(160, 160, 160);
+}

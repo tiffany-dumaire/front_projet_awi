@@ -6,6 +6,7 @@ import { Loading } from '../../components/loading/Loading';
 import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
 import { SearchAllergene } from '../../components/search-bar/allergenes/SearchAllergene';
 import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
+import { SidebarMenu } from '../../layout/sidebar-menu/SidebarMenu';
 import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
 
@@ -33,8 +34,21 @@ export function ListeAllergenesPage(): JSX.Element {
             </Helmet>
             {
                 loading ? (
-                    <div className={styles.mercurialContainer}>
-                        <div className={styles.mercurialContainer2}>
+                    <div className={styles.container}>
+                        <SidebarMenu 
+                            width={300} 
+                            height={'550px'} 
+                            to={
+                                [
+                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial', name: 'Rechercher un ingrédient'},
+                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
+                                    {to: '', name: 'Gérer les stocks'}
+                                ]
+                            }
+                        />
+                        <div className={styles.searchContainer}>
                             <SearchAllergene />
                         </div>
                         <div className={styles.mercurialContainer}>

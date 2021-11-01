@@ -4,10 +4,10 @@ import { Link, useParams } from 'react-router-dom';
 import { getIngredients, getIngredientsByCategorie } from '../../../api/ingredient.api';
 import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 import { IoIosArrowBack } from 'react-icons/io';
-//import { SketchPicker, PhotoshopPicker, SwatchesPicker } from 'react-color';
 import styles from './ListeIngredientsParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from "react-icons/fc";
+import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
 
 export function ListeIngredientsParCategorie(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
@@ -49,8 +49,9 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                         <Link className={styles.link} to={`/mercurial`}>
                             <IoIosArrowBack /> Retour au mercuriale
                         </Link>
-                        {/* <SwatchesPicker /> */}
-                        <input placeholder="rechercher un catégorie ou un ingrédient"></input>
+                        <div className={styles.searchContainer}>
+                            <SearchIngredient />
+                        </div>
                         {ingredients.length > 0 ? 
                             (<table className={styles.mercurial}>
                                 <thead>
