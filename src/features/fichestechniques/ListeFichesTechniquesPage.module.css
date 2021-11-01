@@ -5,3 +5,35 @@
     margin: auto;
     width: 100%;
 }
+
+.container {
+    position: relative;
+    margin: auto;
+    width: 98%;
+    margin-bottom: 40px;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin-bottom: 40px;
+}
+
+.categoryContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.link {
+    text-decoration: none;
+}

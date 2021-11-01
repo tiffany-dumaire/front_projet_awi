@@ -8,6 +8,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import styles from './ListeAllergenesParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from 'react-icons/fc';
+import { SearchAllergene } from '../../../components/search-bar/allergenes/SearchAllergene';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
@@ -50,7 +51,9 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                         <Link className={styles.link} to={`/liste des allergenes`}>
                             <IoIosArrowBack /> Retour à la liste des allergènes
                         </Link>
-                        <input placeholder="rechercher un allergène"></input>
+                        <div className={styles.searchContainer}>
+                            <SearchAllergene />
+                        </div>
                         {allergenes.length > 0 ? 
                             (
                                 <table className={styles.mercurial}>

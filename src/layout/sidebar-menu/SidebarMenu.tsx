@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
 import styles from './SidebarMenu.module.css';
-import { NavigationButton } from '../navigation-menu/NavigationButton';
-import logo from '../../assets/img/logo3.png';
 import { SideBarButton } from './SideBarButton';
 
 export type SidebarMenuProps = {
@@ -27,10 +24,6 @@ export const SidebarMenu: React.FunctionComponent<SidebarMenuProps> = (props: Si
             setX(- props.width);
         }
     };
-
-  useEffect(() => {
-    setX(0);
-  }, []);
   
   return (
     <>

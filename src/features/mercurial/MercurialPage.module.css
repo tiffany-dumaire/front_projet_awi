@@ -22,11 +22,12 @@
 .container {
     position: relative;
     margin: auto;
-    width: 98%;
+    width: 100%;
     margin-bottom: 40px;
 }
 
 
 .link {
+    margin-top: 10px;
     text-decoration: none;
 }
