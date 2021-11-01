@@ -64,7 +64,7 @@ export function DetailIngredient(): JSX.Element {
                     
                     <div className={styles.container}>
                         <Link className={styles.link} to={`/liste des allergenes/byCategorie/${ingredient.id_categorie_allergene}`}>
-                            <IoIosArrowBack /> Retour à la catégorie
+                            <IoIosArrowBack className={styles.link} /> Retour à la catégorie
                         </Link>
                         <div className={styles.container2}>
                             {

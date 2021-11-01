@@ -4,6 +4,7 @@
   text-align: center;
   overflow-y: hidden;
   overflow-x: hidden;
+  background-color: black;
 }
 
 .App-header {
@@ -12,6 +13,7 @@
 
 .App-content {
   padding-bottom: 5rem;
+  background-color: white;
 }
 
 .App-footer {
