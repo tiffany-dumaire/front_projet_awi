@@ -1,0 +1,10 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    text-align: left;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
