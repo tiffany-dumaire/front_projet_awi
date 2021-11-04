@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getCategoriesAllergenes } from "../../../api/categorie.api";
+import React from "react";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
-import { EditIngredient } from "../../modals/edit-ingredient/EditIngredient";
 import styles from './IngredientDetail.module.css';
 
 export type IngredientDetailProps = {

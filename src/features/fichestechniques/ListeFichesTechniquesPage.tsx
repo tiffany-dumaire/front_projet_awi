@@ -21,6 +21,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                 setLoading(true);
             });
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return(

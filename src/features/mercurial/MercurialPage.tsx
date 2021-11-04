@@ -25,6 +25,7 @@ export function MercurialPage(): JSX.Element {
 
         categories.push(new Categorie(0, 'TOUS','#660066'));
         setCategories(categories.slice(0));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     
     return(

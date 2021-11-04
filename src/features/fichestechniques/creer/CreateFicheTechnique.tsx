@@ -7,7 +7,7 @@ import styles from './CreateFicheTechnique.module.css';
 export function CreateFicheTechnique(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
     const [numStep, setNumStep] = useState<number>(1);
-    const [newId, setNewId] = useState<number>();
+    //const [newId, setNewId] = useState<number>();
 
     useEffect(() => {
         setLoading(true);
@@ -27,11 +27,13 @@ export function CreateFicheTechnique(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
-                        {numStep === 1 ? (
-                            <DebutFicheTechnique nextStep={nextStep} />
-                        ) : (
-                            null
-                        )}
+                        {
+                            numStep === 1 ? (
+                                <DebutFicheTechnique nextStep={nextStep} />
+                            ) : (
+                                null
+                            )
+                        }
                     </div>
                 ) : 
                 (

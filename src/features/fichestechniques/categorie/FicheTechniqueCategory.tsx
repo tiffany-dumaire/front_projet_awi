@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';

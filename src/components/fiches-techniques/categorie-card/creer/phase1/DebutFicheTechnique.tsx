@@ -12,22 +12,32 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
         <div className={styles.debutContainer}>
             {/* Faire un affichage grid puis flex column pour mobile*/}
             <h3>Créer une nouvelle fiche technique</h3>
-            <div>
-                <label>Intitulé de la fiche technique</label>
-                <input type="text"></input>
+            <div className={styles.gridContainer}>
+                <div>
+                    <label className={styles.label}>Intitulé de la fiche technique</label>
+                </div>
+                <div>
+                    <label className={styles.label}>Quel sera le nombre de couverts ?</label>
+                </div>
+                
+                <div>
+                    <label className={styles.label}>Désigner le responsable de la fiche</label>
+                </div>
+                <div></div>
+                <div>
+                    <input className={styles.input} type="text" placeholder={'Saisir l\'intitulé de la nouvelle fiche technique...'}></input>
+                </div>
+                <div>
+                    <input className={styles.input} type="number" placeholder={'Saisir le nombre de couverts..'}></input>
+                </div>
+                <div>
+                    <select>
+                        <option>Pâtissier</option>
+                        <option>Rôtisseur</option>
+                    </select>
+                </div>
+                <div><button className={styles.buttonNext} onClick={() => props.nextStep()}>Passer à l'étape suivante</button></div>
             </div>
-            <div>
-                <label>Quel sera le nombre de couverts ?</label>
-                <input type="number"></input>
-            </div>
-            <div>
-                <label>Désigner le responsable de la fiche :</label>
-                <select>
-                    <option>Pâtissier</option>
-                    <option>Rôtisseur</option>
-                </select>
-            </div>
-            <div><button onClick={() => props.nextStep()}>Passer à l'étape suivante</button></div>
         </div>
     );
 };
