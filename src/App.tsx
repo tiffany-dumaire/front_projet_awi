@@ -14,6 +14,7 @@ import { Dashbord } from './components/dashbord/Dashbord';
 import { DetailIngredient } from './features/detail/DetailIngredient';
 import { FicheTechniqueCategory } from './features/fichestechniques/categorie/FicheTechniqueCategory';
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
+import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -38,6 +39,7 @@ function App(): JSX.Element {
             '/accueil',
             '/fiches techniques',
             '/fiches techniques/create',
+            '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/mercurial',
             '/mercurial/byCategorie/:id_categorie',
@@ -56,6 +58,7 @@ function App(): JSX.Element {
             '/accueil',
             '/fiches techniques',
             '/fiches techniques/create',
+            '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/mercurial',
             '/mercurial/byCategorie/:id_categorie',
@@ -90,6 +93,7 @@ function App(): JSX.Element {
             <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
             <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
             <Route exact path="/fiches techniques/create" component={CreateFicheTechnique} />
+            <Route exact path="/phases/create" component={CreatePhase} />
             <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
             <Route exact path="/mercurial" component={MercurialPage} />
             <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
@@ -103,6 +107,7 @@ function App(): JSX.Element {
               '/accueil',
               '/fiches techniques',
               '/fiches techniques/create',
+              '/phases/create',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
               '/mercurial',
               '/mercurial/byCategorie/:id_categorie',
