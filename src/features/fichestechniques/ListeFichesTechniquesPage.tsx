@@ -21,6 +21,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                 setLoading(true);
             });
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return(
@@ -36,7 +37,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                             height={'530px'} 
                             to={
                                 [
-                                    {to: '', name: 'Créer une fiche technique'},
+                                    {to: '/fiches techniques/create', name: 'Créer une fiche technique'},
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
                                     {to: '', name: 'Imprimer une fiche technique'},
                                     {to: '', name: 'Créer une étape'},

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';
@@ -50,11 +50,12 @@ export function FicheTechniqueCategory(): JSX.Element {
                             height={'530px'} 
                             to={
                                 [
-                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
-                                    {to: '/mercurial', name: 'Rechercher un ingrédient'},
-                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques/create', name: 'Créer une fiche technique'},
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
-                                    {to: '', name: 'Gérer les stocks'}
+                                    {to: '', name: 'Imprimer une fiche technique'},
+                                    {to: '', name: 'Créer une étape'},
+                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
                                 ]
                             }
                         />
