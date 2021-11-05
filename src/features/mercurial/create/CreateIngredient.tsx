@@ -28,8 +28,8 @@ export function CreateIngredient(): JSX.Element {
             {
                 loader ? (
                     <div className={styles.container}>
-                        <Link className={styles.link} to={`/mercurial/byCategorie/${ingredient.id_categorie}`}>
-                            <IoIosArrowBack /> Retour à la catégorie
+                        <Link className={styles.link} to={`/mercurial`}>
+                            <IoIosArrowBack /> Retour au mercurial
                         </Link>
                         <div className={styles.container2}>
                             <InitNewIngredient />
