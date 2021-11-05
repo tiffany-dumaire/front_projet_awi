@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+
+.container2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(0, 39, 75);
+    padding: 10px;
+    width: 170px;
+    align-content: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.link:visited {
+    color: rgb(0, 39, 75);
+    font-weight: bold;
+}
