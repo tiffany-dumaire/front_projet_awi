@@ -1,6 +1,5 @@
-import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import React, { useRef } from "react";
+import React from "react";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
 import styles from './IngredientDetail.module.css';
 
