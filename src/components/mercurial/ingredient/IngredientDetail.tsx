@@ -1,4 +1,4 @@
-import jsPDF from "jspdf";
+//import jsPDF from "jspdf";
 import React from "react";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
 import styles from './IngredientDetail.module.css';
@@ -12,7 +12,7 @@ export type IngredientDetailProps = {
 export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = (props: IngredientDetailProps) => {
 
     function getPDF() {
-        var doc = new jsPDF('portrait','px',[490,560]);
+        /* var doc = new jsPDF('portrait','px',[490,560]);
         var pdfjs = document.getElementById('divToPrint');
         doc.html(pdfjs!, {
             callback: function(doc) {
@@ -20,7 +20,7 @@ export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = 
             },
             x:1,
             y:1
-        });
+        }); */
     } 
 
     return(
