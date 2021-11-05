@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getCategoriesAllergenes } from '../../../../api/categorie.api';
 import { Categorie_Allergenes_Interface } from '../../../../interfaces/Categorie_Allergenes.interface';
-import { Ingredient_Interface } from '../../../../interfaces/Ingredient.interface';
 import styles from './InitNewIngredient.module.css';
 
 export const InitNewIngredient: React.FunctionComponent = function () {
@@ -22,7 +21,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    async function createIngredient(
+    /* async function createIngredient(
         id_ingredient: number,
         libelle: string,
         unite: string,
@@ -36,7 +35,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
         //    props.setOnEdit(false);
         //    props.setEdited(true);
         //});
-    };
+    }; */
 
     return (
         <div className={styles.detailContainer}>
