@@ -13,21 +13,10 @@ export function CreateIngredient(): JSX.Element {
     //const [date, setDate] = useState<string>('');
     const [loader, setLoader] = useState<boolean>(false);
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
-    const [categorie_allergene, setCategorieAllergene] = useState<string>('Aucune');
 
-    const getAllergeneCategorie = () => {
-        getCategoriesAllergenes().then((list) => {
-            list.forEach((categorie) => {
-                if (categorie.id_categorie_allergene === ingredient.id_categorie_allergene) {
-                    setCategorieAllergene(categorie.categorie_allergene);
-                    setLoader(true);
-                }
-            });
-        });
-    };
 
     useEffect(() => {
-        getAllergeneCategorie();
+        setLoader(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     
