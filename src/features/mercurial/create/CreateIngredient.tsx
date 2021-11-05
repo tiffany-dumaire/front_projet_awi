@@ -12,16 +12,15 @@ import styles from './CreateIngredient.module.css';
 export function CreateIngredient(): JSX.Element {
     //const [date, setDate] = useState<string>('');
     const [loader, setLoader] = useState<boolean>(false);
-    const [edited, setEdited] = useState<boolean>(false);
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
     const [categorie_allergene, setCategorieAllergene] = useState<string>('Aucune');
-    const [onEdit, setOnEdit] = useState<boolean>(false);
 
     const getAllergeneCategorie = () => {
         getCategoriesAllergenes().then((list) => {
             list.forEach((categorie) => {
                 if (categorie.id_categorie_allergene === ingredient.id_categorie_allergene) {
                     setCategorieAllergene(categorie.categorie_allergene);
+                    setLoader(true);
                 }
             });
         });
