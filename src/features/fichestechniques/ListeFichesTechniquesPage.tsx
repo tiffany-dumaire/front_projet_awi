@@ -41,7 +41,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
                                     {to: '', name: 'Imprimer une fiche technique'},
                                     {to: '/phases/create', name: 'Créer une étape'},
-                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial/create', name: 'Ajouter un ingrédient au mercurial'},
                                     {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
                                 ]
                             }
