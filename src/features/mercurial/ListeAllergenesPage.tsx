@@ -41,7 +41,7 @@ export function ListeAllergenesPage(): JSX.Element {
                             height={'530px'} 
                             to={
                                 [
-                                    {to: '', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial/create', name: 'Ajouter un ingrédient au mercurial'},
                                     {to: '/mercurial', name: 'Rechercher un ingrédient'},
                                     {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},

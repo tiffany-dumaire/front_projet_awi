@@ -15,6 +15,7 @@ import { DetailIngredient } from './features/detail/DetailIngredient';
 import { FicheTechniqueCategory } from './features/fichestechniques/categorie/FicheTechniqueCategory';
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
+import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -42,6 +43,7 @@ function App(): JSX.Element {
             '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/mercurial',
+            '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
             '/liste des allergenes',
@@ -61,6 +63,7 @@ function App(): JSX.Element {
             '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/mercurial',
+            '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
             '/liste des allergenes',
@@ -98,6 +101,7 @@ function App(): JSX.Element {
             <Route exact path="/mercurial" component={MercurialPage} />
             <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
+            <Route exact path="/mercurial/create" component={CreateIngredient} />
             <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
           </div>
           <Route 
@@ -110,6 +114,7 @@ function App(): JSX.Element {
               '/phases/create',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
               '/mercurial',
+              '/mercurial/create',
               '/mercurial/byCategorie/:id_categorie',
               '/mercurial/ingredient/:id_ingredient',
               '/liste des allergenes',
