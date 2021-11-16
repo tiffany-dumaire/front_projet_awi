@@ -1,7 +1,7 @@
 //import jsPDF from "jspdf";
 import React from "react";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
-import { RecapitulatifIngredient } from "../../pdf/ingredient/RecapitulatifIngredient";
+//import { RecapitulatifIngredient } from "../../pdf/ingredient/RecapitulatifIngredient";
 import styles from './IngredientDetail.module.css';
 
 export type IngredientDetailProps = {
@@ -70,7 +70,7 @@ export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = 
                     <button className={styles.buttonPrint} onClick={() => getPDF()}>Imprimer la fiche produit</button>
                 </div>
             </div>
-            <RecapitulatifIngredient ingredient={props.ingredient} />
+            {/* <RecapitulatifIngredient ingredient={props.ingredient} /> */}
         </div>
     );
 };
