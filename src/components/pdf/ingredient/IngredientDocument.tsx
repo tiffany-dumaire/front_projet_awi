@@ -1,15 +1,15 @@
 import React from 'react';
-//import { Page, Text, View, Document, StyleSheet } from 'react-pdf';
-//import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
 
 export type IngredientDocumentProps = {
     date: string;
-    //ingredient: Ingredient_Interface;
+    ingredient: Ingredient_Interface;
 }
 
 export const IngredientDocument: React.FunctionComponent<IngredientDocumentProps> = (props: IngredientDocumentProps) => {  
-    return ( <> </>);
-    /* const styles = StyleSheet.create({
+    //return ( <> </>);
+    const styles = StyleSheet.create({
         date: {
             fontSize: '10px',
             fontWeight: 'light',
@@ -41,13 +41,13 @@ export const IngredientDocument: React.FunctionComponent<IngredientDocumentProps
             <Page orientation='landscape' size="A7" style={styles.page}>
                 <View style={styles.section}>
                     <Text style={styles.date}>Date : {props.date}</Text>
-                    <Text style={styles.title}>Code : <Text style={styles.values}></Text></Text>
-                    <Text style={styles.title}>Libellé : <Text style={styles.values}></Text></Text>
-                    <Text style={styles.title}>Unité : <Text style={styles.values}></Text></Text>
-                    <Text style={styles.title}>Prix unitaire : <Text style={styles.values}></Text></Text>
-                    <Text style={styles.title}>Stock : <Text style={styles.values}></Text></Text>
+                    <Text style={styles.title}>Code : <Text style={styles.values}>{props.ingredient.code}</Text></Text>
+                    <Text style={styles.title}>Libellé : <Text style={styles.values}>{props.ingredient.libelle}</Text></Text>
+                    <Text style={styles.title}>Unité : <Text style={styles.values}>{props.ingredient.unite}</Text></Text>
+                    <Text style={styles.title}>Prix unitaire : <Text style={styles.values}>{props.ingredient.prix_unitaire}</Text></Text>
+                    <Text style={styles.title}>Stock : <Text style={styles.values}>{props.ingredient.stock}</Text></Text>
                 </View>
             </Page>
         </Document>
-    );  */
+    ); 
 };

@@ -9,12 +9,10 @@ import { IngredientDetail } from '../../components/mercurial/ingredient/Ingredie
 import { EditIngredient } from '../../components/modals/edit-ingredient/EditIngredient';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
 import { Ingredient } from '../../models/Ingredient.model';
-//import { generateDate } from '../../utils/date.util';
 import styles from './DetailIngredient.module.css';
 
 export function DetailIngredient(): JSX.Element {
-    //const [date, setDate] = useState<string>('');
-    const [loader, setLoader] = useState<boolean>(false);
+    const [loader, setLoader] = useState<boolean>(true);
     const [edited, setEdited] = useState<boolean>(false);
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
     const [categorie_allergene, setCategorieAllergene] = useState<string>('Aucune');
@@ -31,22 +29,19 @@ export function DetailIngredient(): JSX.Element {
         });
     };
 
-    const getIngredient = () => {
-        getIngredientByCategorie(Number(id_ingredient)).then((i) => {
+    async function getIngredient() {
+        await getIngredientByCategorie(Number(id_ingredient)).then((i) => {
             setIngredient(i);
-            setLoader(true);
         });
     };
 
     useEffect(() => {
-        //setDate(generateDate());
         getIngredient();
         getAllergeneCategorie();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     useEffect(() => {
-        ///setDate(generateDate());
         if (edited) {
             setLoader(false);
             getIngredient();

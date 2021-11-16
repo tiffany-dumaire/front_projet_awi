@@ -55,18 +55,18 @@ export async function getCategoriesAllergenes(): Promise<Categorie_Allergenes_In
 export async function getCategoriesFiches(): Promise<Categorie_Fiches_Interface[]> {
   return new Promise((resolve, reject) => {
     try {
-    const url = `${process.env.REACT_APP_SERV_HOST}/categories_fiches/all`;
-    const config: AxiosRequestConfig = {
-      method: 'get',
-      headers: { 
-        'Content-Type': 'application/json' 
-      },
-    };
-    axios.get(url, config).then((categories) => {
-      const categorieList: Categorie_Fiches_Interface[] = new Array<Categorie_Fiches_Interface>();
-      categories.data.forEach((categorie: Categorie_Fiches_Interface) => {
-        categorieList.push(categorie);
-      });
+      const url = `${process.env.REACT_APP_SERV_HOST}/categories_fiches/all`;
+      const config: AxiosRequestConfig = {
+        method: 'get',
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+      };
+      axios.get(url, config).then((categories) => {
+        const categorieList: Categorie_Fiches_Interface[] = new Array<Categorie_Fiches_Interface>();
+        categories.data.forEach((categorie: Categorie_Fiches_Interface) => {
+          categorieList.push(categorie);
+        });
         resolve(categorieList);
       });
     } catch (err) {
