@@ -11,7 +11,7 @@ export const SideBarButton: React.FunctionComponent<SideBarButtonProps> = (props
   return(
     <NavLink exact to={`${props.to}`} className={styles.navButton}>
       <div>
-        <p> ✨ {props.name[0].toUpperCase() + props.name.slice(1)}</p>
+        <p> ✨ <span className={styles.text}>{props.name[0].toUpperCase() + props.name.slice(1)}</span></p>
       </div>
     </NavLink>
   );

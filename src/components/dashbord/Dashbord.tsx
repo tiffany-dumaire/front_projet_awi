@@ -40,7 +40,7 @@ export const Dashbord: React.FunctionComponent = () => {
     return (
         <>
         <Helmet>
-            <title>Gestionnaire de fiches techniques de cuisine</title>
+            <title>✨ Gestionnaire de fiches techniques de cuisine ✨</title>
         </Helmet>
         <div className={styles.container}>
             <h1>Gestionnaire de fiches techniques de cuisine</h1>
