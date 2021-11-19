@@ -1,0 +1,26 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.fichePresentation {
+    background-color: black;
+}
+
+.th {
+    padding: 10px;
+    background-color: rgba(211, 211, 211, 0.76);
+    border: 0.1px solid rgba(0, 0, 0, 0.39);  
+}
+
+.alignLeft, .alignRight, .td {
+    padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.39);  
+}

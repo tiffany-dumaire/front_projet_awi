@@ -1,46 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { SearchFiche } from '../../../components/search-bar/fiches-techniques/SearchFiche';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
+import { getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
+import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
+import { FcSearch } from 'react-icons/fc';
 
 export function FicheTechniqueCategory(): JSX.Element {
-    //const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
-    //const { id_categorie } = useParams<{ id_categorie: string }>();
+    const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
+    const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
     const [loading, setLoading] = useState<boolean>(false);
 
-   /*  async function getIngredientList() {
-        if (Number(id_categorie) === 0) {
-            await getIngredients().then((list) => {
-                list.forEach((ingredient) => {
-                    ingredients.push(ingredient);
-                    setIngredients(ingredients.slice(0));
+    async function getFichesTechniquesList() {
+        if (Number(id_categorie_fiche) === 0) {
+            await getFichesTechniques().then((list) => {
+                list.forEach((ft) => {
+                    fichesTechniques.push(ft);
+                    setFichesTechniques(fichesTechniques.slice(0));
                 });
                 setLoading(true);
             });
-        }else {
-            await getIngredientsByCategorie(Number(id_categorie)).then((list) => {
-                list.forEach((ingredient) => {
-                    ingredients.push(ingredient);
-                    setIngredients(ingredients.slice(0));
+        } else {
+            await getFTByCategorie(Number(id_categorie_fiche)).then((list) => {
+                list.forEach((ft) => {
+                    fichesTechniques.push(ft);
+                    setFichesTechniques(fichesTechniques.slice(0));
                 }); 
                 setLoading(true);
-            });
-        }  
-    }; */
+            }); 
+        }
+    };
 
     useEffect(() => {
-        //getIngredientList(); 
-        setLoading(true);       
+        getFichesTechniquesList();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return(
         <>
             <Helmet>
-                <title>{}</title>
+                <title>{'Nom catégorie | Fiches Techniques'}</title>
             </Helmet>
             {
                 loading ? (
@@ -67,7 +70,36 @@ export function FicheTechniqueCategory(): JSX.Element {
                         <div className={styles.searchContainer}>
                             <SearchFiche />
                         </div>
-                        <div className={styles.ficheTechniqueContainer}></div>
+                        <div className={styles.ficheTechniqueContainer}>
+                            {fichesTechniques.length > 0 ? 
+                                (<table className={styles.fichePresentation}>
+                                    <thead>
+                                        <th className={styles.th}>Identifiant</th>
+                                        <th className={styles.th}>Libellé</th>
+                                        <th className={styles.th}>Nombre de couverts</th>
+                                        <th className={styles.th}>Responsable</th>
+                                        <th className={styles.th}>Aperçu de la fiche technique</th>
+                                    </thead>
+                                    <tbody>
+                                        { 
+                                            fichesTechniques.map((ft: Fiche_Technique_Interface) => (
+                                                <tr>
+                                                    <td className={styles.td}>{ft.id_fiche_technique}</td>
+                                                    <td className={styles.alignLeft}>{ft.libelle_fiche_technique}</td>
+                                                    <td className={styles.td}>{ft.nombre_couverts}</td>
+                                                    <td className={styles.alignRight}>{ft.id_responsable}</td>
+                                                    <td className={styles.td}>
+                                                        <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`}>
+                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>) : null
+                            }
+                        </div>
                     </div>
                 ) : (
                     <div className={styles.mercurialContainer}>
