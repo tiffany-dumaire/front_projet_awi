@@ -7,6 +7,7 @@ import { Loading } from '../../components/loading/Loading';
 import { SearchFiche } from '../../components/search-bar/fiches-techniques/SearchFiche';
 import { Categorie_Fiches_Interface } from '../../interfaces/Categorie_Fiches.interface';
 import { SidebarMenu } from '../../layout/sidebar-menu/SidebarMenu';
+import { Categorie_Fiches } from '../../models/Categorie_Fiches.model';
 import styles from './ListeFichesTechniquesPage.module.css';
 
 export function ListeFichesTechniquesPage(): JSX.Element {
@@ -14,6 +15,8 @@ export function ListeFichesTechniquesPage(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        categories.push(new Categorie_Fiches(0, 'TOUS','#660066'));
+        setCategories(categories.slice(0));
         getCategoriesFiches().then((list) => {
             list.forEach((categorie) => {
                 categories.push(categorie);
