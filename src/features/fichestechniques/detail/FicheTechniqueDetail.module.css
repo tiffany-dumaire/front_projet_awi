@@ -1,0 +1,197 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+}
+
+.detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
+    border: 1px black solid;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    border-bottom: 1px black solid;
+}
+
+.row2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+}
+
+.table1 {
+    position: relative;
+    width: 40%;
+    border-right: 2px black solid;
+}
+
+.table2 {
+    position: relative;
+    width: 60%;
+}
+
+thead {
+    background-color: rgba(190, 190, 190, 0.781);
+}
+
+.colSpan3 {
+    text-decoration: underline 1px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.colSpan3::after {
+    content: " :";
+}
+
+.duree::after {
+    content: "'";
+}
+
+.techniques {
+    text-align: left;
+    padding-left: 10px;
+}
+
+td, th {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.row3 {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.row4 {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    width: 60%;
+}
+
+.intitule {
+    position: relative;
+    width: calc(40% - 2px);
+    border-right: 2px black solid;
+}
+
+.complete {
+    position: relative;
+    width: 100%;
+    background-color: rgba(190, 190, 190, 0.781);
+    border-bottom: 1px black solid;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+    background-color: rgba(190, 190, 190, 0.781);
+    border-bottom: 1px black solid;
+}
+
+.complete2 {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.moitie {
+    position: relative;
+    width: 50%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.moitie1 {
+    position: relative;
+    width: calc(50% - 1px);
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+    border-right: 1px black solid;
+}
+
+.cote {
+    border-right: 1px black solid;
+}
+
+.linkTo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 80px;
+    justify-content: left;
+    width: 80%;
+    padding-top: 20px;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin-bottom: 40px;
+}
+
+.th {
+    padding: 5px;
+    background-color: rgb(0, 96, 121);
+    color: aliceblue;
+    border-radius: 2px; 
+}
+
+.alignLeft, .alignRight, .td {
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.39);  
+    padding: 5px;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(0, 39, 75);
+    padding: 10px;
+    width: 240px;
+    align-content: center;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.link:visited {
+    color: rgb(0, 39, 75);
+    font-weight: bold;
+}

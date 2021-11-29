@@ -97,7 +97,7 @@ export function FicheTechniqueCategory(): JSX.Element {
                                             ))
                                         }
                                     </tbody>
-                                </table>) : null
+                                </table>) : <p>Il n'existe actuellement aucune fiche technique faisant partie de cette catégorie.</p>
                             }
                         </div>
                     </div>

@@ -16,6 +16,7 @@ import { FicheTechniqueCategory } from './features/fichestechniques/categorie/Fi
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
 import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
+import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -42,6 +43,7 @@ function App(): JSX.Element {
             '/fiches techniques/create',
             '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
+            '/fiches techniques/details/:id_fiche_technique',
             '/mercurial',
             '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
@@ -62,6 +64,7 @@ function App(): JSX.Element {
             '/fiches techniques/create',
             '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
+            '/fiches techniques/details/:id_fiche_technique',
             '/mercurial',
             '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
@@ -98,6 +101,7 @@ function App(): JSX.Element {
             <Route exact path="/fiches techniques/create" component={CreateFicheTechnique} />
             <Route exact path="/phases/create" component={CreatePhase} />
             <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
+            <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail} />
             <Route exact path="/mercurial" component={MercurialPage} />
             <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
@@ -113,6 +117,7 @@ function App(): JSX.Element {
               '/fiches techniques/create',
               '/phases/create',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
+              '/fiches techniques/details/:id_fiche_technique',
               '/mercurial',
               '/mercurial/create',
               '/mercurial/byCategorie/:id_categorie',
