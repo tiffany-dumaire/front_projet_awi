@@ -7,6 +7,7 @@
     height: 150px;
     margin: 20px;
     color: aliceblue;
+    cursor: pointer;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 20px;
     box-shadow: 10px 5px 5px rgb(160, 160, 160);

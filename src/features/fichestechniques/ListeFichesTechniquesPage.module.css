@@ -35,5 +35,6 @@
 }
 
 .link {
+    cursor: auto;
     text-decoration: none;
 }
