@@ -31,7 +31,7 @@ export function ListeAllergenesPage(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Liste des allergènes'}</title>
+                <title>{'☠️ Liste des allergènes ☠️'}</title>
             </Helmet>
             {
                 loading ? (

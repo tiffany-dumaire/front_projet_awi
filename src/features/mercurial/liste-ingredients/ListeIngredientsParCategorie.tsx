@@ -43,7 +43,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Ingrédients | '}</title>
+                <title>{'🍳 <nom catégorie> | Ingrédients 🍳'}</title>
             </Helmet>
             {
                 loading ? (

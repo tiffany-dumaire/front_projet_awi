@@ -9,11 +9,11 @@ import { IngredientDetail } from '../../components/mercurial/ingredient/Ingredie
 import { EditIngredient } from '../../components/modals/edit-ingredient/EditIngredient';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
 import { Ingredient } from '../../models/Ingredient.model';
-import { generateDate } from '../../utils/date.util';
+//import { generateDate } from '../../utils/date.util';
 import styles from './DetailIngredient.module.css';
 
 export function DetailIngredient(): JSX.Element {
-    const [date, setDate] = useState<string>('');
+    //const [date, setDate] = useState<string>('');
     const [loader, setLoader] = useState<boolean>(false);
     const [edited, setEdited] = useState<boolean>(false);
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
@@ -39,9 +39,10 @@ export function DetailIngredient(): JSX.Element {
     };
 
     useEffect(() => {
-        setDate(generateDate());
+        //setDate(generateDate());
         getIngredient();
         getAllergeneCategorie();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     useEffect(() => {
@@ -52,12 +53,13 @@ export function DetailIngredient(): JSX.Element {
             getAllergeneCategorie();
         } 
         setEdited(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[edited]);
     
     return (
         <>
             <Helmet>
-                <title>{ingredient?.libelle}</title>
+                <title>{'🍽️ ' + ingredient?.libelle}</title>
             </Helmet>
             {
                 loader ? (

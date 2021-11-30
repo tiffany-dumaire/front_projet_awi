@@ -44,7 +44,7 @@ export function ListeAllergenesParCategorie(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Allergènes | '}</title>
+                <title>{'☠️ <nom catégorie> | Allergènes ☠️'}</title>
             </Helmet>
             {
                 loading ? (

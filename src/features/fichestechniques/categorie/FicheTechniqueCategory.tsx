@@ -43,7 +43,7 @@ export function FicheTechniqueCategory(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Nom catégorie | Fiches Techniques'}</title>
+                <title>{'📋 <nom catégorie> | Fiches Techniques 📋'}</title>
             </Helmet>
             {
                 loading ? (

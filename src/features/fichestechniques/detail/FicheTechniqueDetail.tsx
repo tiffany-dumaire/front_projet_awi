@@ -29,7 +29,7 @@ export function FicheTechniqueDetail(): JSX.Element {
     return (
         <>
         <Helmet>
-            <title>{ficheTechnique?.libelle_fiche_technique}</title>
+            <title>{'📋 ' + ficheTechnique?.libelle_fiche_technique}</title>
         </Helmet>
         {
             loading ? (

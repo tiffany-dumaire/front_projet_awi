@@ -22,7 +22,7 @@ export function CreateFicheTechnique(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Mercurial'}</title>
+                <title>{'➕ Créer une fiche technique'}</title>
             </Helmet>
             {
                 loading ? (

@@ -16,7 +16,7 @@ export function CreatePhase(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Mercurial'}</title>
+                <title>{'➕ Créer une phase'}</title>
             </Helmet>
             {
                 loading ? (

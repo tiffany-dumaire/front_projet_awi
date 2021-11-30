@@ -31,7 +31,7 @@ export function MercurialPage(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Mercurial'}</title>
+                <title>{'🍳 Mercurial 🍳'}</title>
             </Helmet>
             {
                 loading ? (
