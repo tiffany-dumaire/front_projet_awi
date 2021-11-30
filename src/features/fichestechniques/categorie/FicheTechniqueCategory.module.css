@@ -61,7 +61,7 @@
 .link {
     position: relative;
     text-decoration: none;
-    border: 1px solid rgb(0, 39, 75);
+    border: 1px solid rgb(37, 37, 37);
     padding: 10px;
     width: 240px;
     align-content: center;
@@ -71,6 +71,6 @@
 }
 
 .link:visited {
-    color: rgb(0, 39, 75);
+    color: rgb(37, 37, 37);
     font-weight: bold;
 }

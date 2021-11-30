@@ -59,9 +59,11 @@ export function DetailIngredient(): JSX.Element {
             {
                 loader ? (
                     <div className={styles.container}>
-                        <Link className={styles.link} to={`/mercurial/byCategorie/${ingredient.id_categorie}`}>
-                            <IoIosArrowBack /> Retour à la catégorie
-                        </Link>
+                        <div className={styles.linkTo}>
+                            <Link className={styles.link} to={`/mercurial/byCategorie/${ingredient.id_categorie}`}>
+                                <IoIosArrowBack /> Retour à la catégorie
+                            </Link>
+                        </div>
                         <div className={styles.container2}>
                             {
                                 onEdit ? (
