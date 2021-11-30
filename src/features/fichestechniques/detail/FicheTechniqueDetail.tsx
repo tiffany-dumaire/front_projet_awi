@@ -83,9 +83,11 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     <th>Quantités</th>
                                 </thead>
                                 <tbody>
-                                    <td className={styles.colSpan3} colSpan={3}>
-                                        Elément de base
-                                    </td>
+                                    <tr>
+                                        <td className={styles.colSpan3} colSpan={3}>
+                                            Elément de base
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td className={styles.techniques}>Eau</td>
                                         <td>L</td>

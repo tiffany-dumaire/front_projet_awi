@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import styles from './DashboardCard.module.css';
+import styles from './StockDashboard.module.css';
 
 export type DashboardCardProps = {
     title: string;
