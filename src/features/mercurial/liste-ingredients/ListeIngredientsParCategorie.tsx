@@ -73,18 +73,20 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                             {ingredients.length > 0 ? 
                                 (<table className={styles.mercurial}>
                                     <thead>
-                                        <th className={styles.th}>Code</th>
-                                        <th className={styles.th}>Libellé</th>
-                                        <th className={styles.th}>Unité</th>
-                                        <th className={styles.th}>Prix unitaire</th>
-                                        <th className={styles.th}>Quantité en stock</th>
-                                        <th className={styles.th}>Valeur du stock</th>
-                                        <th className={styles.th}>Voir la fiche produit</th>
+                                        <tr>
+                                            <th className={styles.th}>Code</th>
+                                            <th className={styles.th}>Libellé</th>
+                                            <th className={styles.th}>Unité</th>
+                                            <th className={styles.th}>Prix unitaire</th>
+                                            <th className={styles.th}>Quantité en stock</th>
+                                            <th className={styles.th}>Valeur du stock</th>
+                                            <th className={styles.th}>Voir la fiche produit</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         { 
                                             ingredients.map((ingredient: Ingredient_Interface) => (
-                                                <tr>
+                                                <tr key={ingredient.code}>
                                                     <td className={styles.td}>{ingredient.code}</td>
                                                     <td className={styles.alignLeft}>{ingredient.libelle}</td>
                                                     <td className={styles.td}>{ingredient.unite}</td>

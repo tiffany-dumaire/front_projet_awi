@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { NavigationBar } from './layout/navigation-menu/NavigationBar';
 import './App.css';
@@ -20,9 +20,13 @@ import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTe
 import { StockMenu } from './features/stocks/StockMenu';
 
 function App(): JSX.Element {
-  const [style, setStyle] = useState({
-    paddingTop: '70px',
-  });
+  const [style, setStyle] = useState({});
+  
+  useEffect(() => {
+    setStyle({
+      paddingTop: '70px',
+    });
+  },[]);
 
   return (
     <div className="App" style={style}>

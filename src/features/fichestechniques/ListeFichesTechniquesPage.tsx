@@ -56,7 +56,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                             <div className={styles.categoryContainer}>
                                 {
                                     categories.map((categorie: Categorie_Fiches_Interface) => (
-                                        <Link className={styles.link} to={`/fiches techniques/byCategorie/${categorie.id_categorie_fiche}`}>
+                                        <Link  key={categorie.id_categorie_fiche} className={styles.link} to={`/fiches techniques/byCategorie/${categorie.id_categorie_fiche}`}>
                                             <CategorieFTCard id_categorie_fiche={categorie.id_categorie_fiche} categorie_fiche={categorie.categorie_fiche} color_fiche={categorie.color_fiche} />
                                         </Link>
                                     ))        
