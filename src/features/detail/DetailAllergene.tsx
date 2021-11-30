@@ -62,12 +62,13 @@ export function DetailIngredient(): JSX.Element {
                 <title>{'🍽️ ' + ingredient?.libelle}</title>
             </Helmet>
             {
-                loader ? (
-                    
+                loader ? ( 
                     <div className={styles.container}>
-                        <Link className={styles.link} to={`/liste des allergenes/byCategorie/${ingredient.id_categorie_allergene}`}>
-                            <IoIosArrowBack className={styles.link} /> Retour à la catégorie
-                        </Link>
+                        <div className={styles.linkTo}>
+                            <Link className={styles.link} to={`/liste des allergenes/byCategorie/${ingredient.id_categorie_allergene}`}>
+                                <IoIosArrowBack /> Retour à la catégorie
+                            </Link>
+                        </div>
                         <div className={styles.container2}>
                             {
                                 onEdit ? (
