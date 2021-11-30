@@ -25,15 +25,9 @@ export const Dashbord: React.FunctionComponent = () => {
         },
         {   
             title: 'Gestion des stocks',
-            description: 'Ici vous pourrez gérer les stocks pour chaque ingrédient.',
-            path: '',
+            description: 'Ici vous pourrez gérer les stocks pour chaque ingrédient ainsi que réaliser et simuler des ventes.',
+            path: '/stocks',
             color: '#999966'
-        },
-        {   
-            title: 'Editer une étiquette',
-            description: 'Editer les étiquettes de vente et des étiquettes tests en choisissant soit des fiches techniques, soit les ingrédients.',
-            path: '',
-            color: '#00cc99'
         }
     ];
 

@@ -1,0 +1,40 @@
+import React from "react";
+import { Helmet } from "react-helmet";
+import { DashboardCard } from "./DashboardCard";
+import styles from './StockDashboard.module.css';
+
+export const StocksDashboard: React.FunctionComponent = () => {
+    const functionnalities = [
+        {   
+            title: 'Gestion des entrées de stock',
+            description: 'Ici vous pourrez gérer les entrées de stock pour tous les ingrédients, par catégorie d\'ingrédients ou en choisissant des ingrédients spécifiques.',
+            path: '',
+            color: '#999966'
+        },
+        {   
+            title: 'Editer une étiquette de vente',
+            description: 'Editer les étiquettes de vente en choisissant soit des fiches techniques, soit les ingrédients. Les stocks seront modifiés.',
+            path: '',
+            color: '#cc99ff'
+        },
+        {   
+            title: 'Editer une étiquette test',
+            description: 'Editer des étiquettes de vente tests en choisissant soit des fiches techniques ou des ingrédients. Les stocks ne seront pas modifiés.',
+            path: '',
+            color: '#00cc99'
+        }
+    ];
+
+    return (
+        <div className={styles.container}>
+            <h1>Gestionnaire de fiches techniques de cuisine</h1>
+            <div className={styles.subContainer}>
+                {
+                    functionnalities.map((functionnality) => (
+                        <DashboardCard title={functionnality.title} description={functionnality.description} path={functionnality.path} color={functionnality.color} />
+                    ))
+                }
+            </div>
+        </div>
+    );
+}

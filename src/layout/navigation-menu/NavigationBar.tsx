@@ -20,6 +20,7 @@ export function NavigationBar(): JSX.Element {
         <NavigationButton to="fiches techniques" />
         <NavigationButton to="mercurial" />
         <NavigationButton to="liste des allergenes" />
+        <NavigationButton to="stocks" />
       </div>
     </>
   );

@@ -17,6 +17,7 @@ import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFi
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
 import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
 import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
+import { StockMenu } from './features/stocks/StockMenu';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({
@@ -37,40 +38,56 @@ function App(): JSX.Element {
         <Route
           exact
           path={[
+            //accueil
             '/',
             '/accueil',
+            //fiches techniques
             '/fiches techniques',
             '/fiches techniques/create',
-            '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/fiches techniques/details/:id_fiche_technique',
+            //phases
+            '/phases/create',
+            //mercurial
             '/mercurial',
             '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
+            //liste des allergenes
             '/liste des allergenes',
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
+            //gestion des stocks
+            '/stocks',
+            //other
             '/policies',
-            '/about'
+            '/about',
           ]}
           component={NavigationBar}
         />
         <Route
           exact
           path={[
+            //accueil
             '/',
             '/accueil',
+            //fiches techniques
             '/fiches techniques',
             '/fiches techniques/create',
-            '/phases/create',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/fiches techniques/details/:id_fiche_technique',
+            //phases
+            '/phases/create',
+            //mercurial
             '/mercurial',
             '/mercurial/create',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
+            //liste des allergenes
             '/liste des allergenes',
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
+            //gestion des stocks
+            '/stocks',
+            //other
             '/policies',
             '/about',
             '/login'
@@ -107,23 +124,32 @@ function App(): JSX.Element {
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
             <Route exact path="/mercurial/create" component={CreateIngredient} />
             <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
+            <Route exact path='/stocks' component={StockMenu} />
           </div>
           <Route 
             exact 
             path={[
+              //accueil
               '/',
               '/accueil',
+              //fiches techniques
               '/fiches techniques',
               '/fiches techniques/create',
-              '/phases/create',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
               '/fiches techniques/details/:id_fiche_technique',
+              //phases
+              '/phases/create',
+              //mercurial
               '/mercurial',
               '/mercurial/create',
               '/mercurial/byCategorie/:id_categorie',
               '/mercurial/ingredient/:id_ingredient',
+              //liste des allergenes
               '/liste des allergenes',
               '/liste des allergenes/byCategorie/:id_categorie_allergene',
+              //gestion des stocks
+              '/stocks',
+              //other
               '/policies',
               '/about'
             ]}
