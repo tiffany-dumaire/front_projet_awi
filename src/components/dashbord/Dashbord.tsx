@@ -41,7 +41,7 @@ export const Dashbord: React.FunctionComponent = () => {
             <div className={styles.subContainer}>
                 {
                     functionnalities.map((functionnality) => (
-                        <DashboardCard title={functionnality.title} description={functionnality.description} path={functionnality.path} color={functionnality.color} />
+                        <DashboardCard key={functionnality.title} title={functionnality.title} description={functionnality.description} path={functionnality.path} color={functionnality.color} />
                     ))
                 }
             </div>

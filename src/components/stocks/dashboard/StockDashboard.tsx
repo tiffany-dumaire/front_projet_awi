@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { DashboardCard } from "./DashboardCard";
 import styles from './StockDashboard.module.css';
 
@@ -31,7 +30,7 @@ export const StocksDashboard: React.FunctionComponent = () => {
             <div className={styles.subContainer}>
                 {
                     functionnalities.map((functionnality) => (
-                        <DashboardCard title={functionnality.title} description={functionnality.description} path={functionnality.path} color={functionnality.color} />
+                        <DashboardCard key={functionnality.title} title={functionnality.title} description={functionnality.description} path={functionnality.path} color={functionnality.color} />
                     ))
                 }
             </div>

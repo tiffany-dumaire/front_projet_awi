@@ -78,9 +78,11 @@ export function FicheTechniqueDetail(): JSX.Element {
                         <div className={styles.row}>
                             <table className={styles.table1}>
                                 <thead>
-                                    <th>Denrées</th>
-                                    <th>Unités</th>
-                                    <th>Quantités</th>
+                                    <tr>
+                                        <th>Denrées</th>
+                                        <th>Unités</th>
+                                        <th>Quantités</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -107,9 +109,11 @@ export function FicheTechniqueDetail(): JSX.Element {
                             </table>
                             <table className={styles.table2}>
                                 <thead>
-                                    <th>N° phase</th>
-                                    <th>Techniques de réalisation</th>
-                                    <th>Durée</th>
+                                    <tr>
+                                        <th>N° phase</th>
+                                        <th>Techniques de réalisation</th>
+                                        <th>Durée</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>

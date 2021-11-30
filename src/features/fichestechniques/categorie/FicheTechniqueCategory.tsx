@@ -74,16 +74,18 @@ export function FicheTechniqueCategory(): JSX.Element {
                             {fichesTechniques.length > 0 ? 
                                 (<table className={styles.fichePresentation}>
                                     <thead>
-                                        <th className={styles.th}>Identifiant</th>
-                                        <th className={styles.th}>Libellé</th>
-                                        <th className={styles.th}>Nombre de couverts</th>
-                                        <th className={styles.th}>Responsable</th>
-                                        <th className={styles.th}>Aperçu de la fiche technique</th>
+                                        <tr>
+                                            <th className={styles.th}>Identifiant</th>
+                                            <th className={styles.th}>Libellé</th>
+                                            <th className={styles.th}>Nombre de couverts</th>
+                                            <th className={styles.th}>Responsable</th>
+                                            <th className={styles.th}>Aperçu de la fiche technique</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         { 
                                             fichesTechniques.map((ft: Fiche_Technique_Interface) => (
-                                                <tr>
+                                                <tr key={ft.id_fiche_technique}>
                                                     <td className={styles.td}>{ft.id_fiche_technique}</td>
                                                     <td className={styles.alignLeft}>{ft.libelle_fiche_technique}</td>
                                                     <td className={styles.td}>{ft.nombre_couverts}</td>

@@ -76,18 +76,20 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                                 (
                                     <table className={styles.mercurial}>
                                         <thead>
-                                            <th className={styles.th}>Code</th>
-                                            <th className={styles.th}>Libellé</th>
-                                            <th className={styles.th}>Unité</th>
-                                            <th className={styles.th}>Prix unitaire</th>
-                                            <th className={styles.th}>Quantité en stock</th>
-                                            <th className={styles.th}>Valeur du stock</th>
-                                            <th className={styles.th}>Voir la fiche produit</th>
+                                            <tr>
+                                                <th className={styles.th}>Code</th>
+                                                <th className={styles.th}>Libellé</th>
+                                                <th className={styles.th}>Unité</th>
+                                                <th className={styles.th}>Prix unitaire</th>
+                                                <th className={styles.th}>Quantité en stock</th>
+                                                <th className={styles.th}>Valeur du stock</th>
+                                                <th className={styles.th}>Voir la fiche produit</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             { 
                                                 allergenes.map((allergene: Ingredient_Interface) => (
-                                                    <tr>
+                                                    <tr key={allergene.code}>
                                                         <td className={styles.td}>{allergene.code}</td>
                                                         <td className={styles.alignLeft}>{allergene.libelle}</td>
                                                         <td className={styles.td}>{allergene.unite}</td>

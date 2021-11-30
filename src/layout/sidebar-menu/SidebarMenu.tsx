@@ -45,7 +45,7 @@ export const SidebarMenu: React.FunctionComponent<SidebarMenuProps> = (props: Si
         <div className={styles.content}>
             {
                 props.to.map((to) => 
-                    <SideBarButton to={to.to} name={to.name} />
+                    <SideBarButton key={to.name} to={to.to} name={to.name} />
                 )
             }
         </div>
