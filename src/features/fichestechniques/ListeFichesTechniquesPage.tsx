@@ -30,7 +30,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Liste des fiches techniques'}</title>
+                <title>{'📋 Liste des fiches techniques 📋'}</title>
             </Helmet>
             {
                 loading ? (

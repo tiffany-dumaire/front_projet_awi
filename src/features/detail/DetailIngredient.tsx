@@ -54,7 +54,7 @@ export function DetailIngredient(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{ingredient?.libelle}</title>
+                <title>{'🍽️ ' + ingredient?.libelle}</title>
             </Helmet>
             {
                 loader ? (

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { PDFViewer } from '@react-pdf/renderer';
-import { IngredientDocument } from "./IngredientDocument";
-import { generateDate } from "../../../utils/date.util";
+import React, { useEffect } from "react";
+//import { PDFViewer } from '@react-pdf/renderer';
+//import { IngredientDocument } from "./IngredientDocument";
+//import { generateDate } from "../../../utils/date.util";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
 
 export type RecapitulatifIngredientProps = {
@@ -10,16 +10,16 @@ export type RecapitulatifIngredientProps = {
 
 export const RecapitulatifIngredient: React.FunctionComponent<RecapitulatifIngredientProps> = (props: RecapitulatifIngredientProps) => {
 
-    const [date, setDate] = useState<string>('');
+    //const [date, setDate] = useState<string>('');
 
     useEffect(() => {
-        setDate(generateDate());
+        //setDate(generateDate());
     },[]);
 
     return (
-        //null
-        <PDFViewer>
+        null
+        /* <PDFViewer>
             <IngredientDocument date={date} ingredient={props.ingredient}/>
-        </PDFViewer> 
+        </PDFViewer>  */
     );
 };

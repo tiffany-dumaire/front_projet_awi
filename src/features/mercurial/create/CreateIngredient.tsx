@@ -7,7 +7,6 @@ import { InitNewIngredient } from '../../../components/mercurial/ingredient/crea
 import styles from './CreateIngredient.module.css';
 
 export function CreateIngredient(): JSX.Element {
-    //const [date, setDate] = useState<string>('');
     const [loader, setLoader] = useState<boolean>(false);
 
 
@@ -19,7 +18,7 @@ export function CreateIngredient(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{'Ajouter un ingrédient au mercurial'}</title>
+                <title>{'➕ Ajouter un ingrédient au mercurial'}</title>
             </Helmet>
             {
                 loader ? (
