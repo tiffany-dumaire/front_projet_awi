@@ -18,6 +18,7 @@ import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase
 import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
 import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
 import { StockMenu } from './features/stocks/StockMenu';
+import { IngredientResearch } from './features/mercurial/search/IngredientResearch';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -55,6 +56,9 @@ function App(): JSX.Element {
             //mercurial
             '/mercurial',
             '/mercurial/create',
+            '/mercurial/search/:word',
+            '/mercurial/search/:word/byCategorie/:id_categorie',
+            '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
             //liste des allergenes
@@ -84,6 +88,9 @@ function App(): JSX.Element {
             //mercurial
             '/mercurial',
             '/mercurial/create',
+            '/mercurial/search/:word',
+            '/mercurial/search/:word/byCategorie/:id_categorie',
+            '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
             //liste des allergenes
@@ -127,6 +134,9 @@ function App(): JSX.Element {
             <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
             <Route exact path="/mercurial/create" component={CreateIngredient} />
+            <Route exact path="/mercurial/search/:word" component={IngredientResearch} />
+            <Route exact path="/mercurial/search/:word/byCategorie/:id_categorie" component={IngredientResearch} />
+            <Route exact path="/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene" component={IngredientResearch} />
             <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
             <Route exact path='/stocks' component={StockMenu} />
           </div>
@@ -146,6 +156,9 @@ function App(): JSX.Element {
               //mercurial
               '/mercurial',
               '/mercurial/create',
+              '/mercurial/search/:word',
+              '/mercurial/search/:word/byCategorie/:id_categorie',
+              '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
               '/mercurial/byCategorie/:id_categorie',
               '/mercurial/ingredient/:id_ingredient',
               //liste des allergenes

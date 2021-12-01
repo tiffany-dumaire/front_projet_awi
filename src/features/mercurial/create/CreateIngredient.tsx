@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { IoIosArrowBack } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { Loading } from '../../../components/loading/Loading';
 import { InitNewIngredient } from '../../../components/mercurial/ingredient/create/InitNewIngredient';
@@ -24,7 +23,7 @@ export function CreateIngredient(): JSX.Element {
                 loader ? (
                     <div className={styles.container}>
                         <Link className={styles.link} to={`/mercurial`}>
-                            <IoIosArrowBack /> Retour au mercurial
+                            Retour au mercurial
                         </Link>
                         <div className={styles.container2}>
                             <InitNewIngredient />

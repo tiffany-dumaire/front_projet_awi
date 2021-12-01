@@ -3,12 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import { getAllergenes, getAllergenesByCategorie } from '../../../api/ingredient.api';
 import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
-import { IoIosArrowBack } from 'react-icons/io';
 import styles from './ListeAllergenesParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from 'react-icons/fc';
-import { SearchAllergene } from '../../../components/search-bar/allergenes/SearchAllergene';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
+import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
@@ -64,11 +63,11 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                         />
                         <div className={styles.linkTo}>
                             <Link className={styles.link} to={`/liste des allergenes`}>
-                                <IoIosArrowBack /> Retour à la liste des allergènes
+                                Retour à la liste des allergènes
                             </Link>
                         </div>
                         <div className={styles.searchContainer}>
-                            <SearchAllergene />
+                            <SearchIngredient />
                         </div>
                         <div className={styles.ingredientContainer}>
                             {allergenes.length > 0 ? 

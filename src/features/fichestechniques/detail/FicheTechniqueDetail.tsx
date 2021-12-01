@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { IoIosArrowBack } from 'react-icons/io';
 import { Link, useParams } from 'react-router-dom';
 import { getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
 import { Loading } from '../../../components/loading/Loading';
@@ -73,7 +72,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                     />
                     <div className={styles.linkTo}>
                         <Link className={styles.link} to={`/fiches techniques`}>
-                            <IoIosArrowBack /> Retour aux fiches techniques
+                            Retour aux fiches techniques
                         </Link>
                     </div>
                     <div className={styles.detail}>

@@ -1,37 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
-import { getIngredients, getIngredientsByCategorie } from '../../../api/ingredient.api';
+import { searchIngredients, searchIngredientsByCategorie, searchIngredientsByCategorieAllergene } from '../../../api/ingredient.api';
 import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
-import styles from './ListeIngredientsParCategorie.module.css';
+import styles from './IngredientResearch.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from "react-icons/fc";
-import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 
-export function ListeIngredientsParCategorie(): JSX.Element {
+export function IngredientResearch(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
+    const { word } = useParams<{ word: string }>();
     const { id_categorie } = useParams<{ id_categorie: string }>();
+    const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
     const [loading, setLoading] = useState<boolean>(false);
 
     async function getIngredientList() {
-        if (Number(id_categorie) === 0) {
-            await getIngredients().then((list) => {
+        if (id_categorie !== undefined) {
+            await searchIngredientsByCategorie(word, Number(id_categorie)).then((list) => {
                 list.forEach((ingredient) => {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
                 });
                 setLoading(true);
             });
-        }else {
-            await getIngredientsByCategorie(Number(id_categorie)).then((list) => {
-                list.forEach((ingredient) => {
-                    ingredients.push(ingredient);
-                    setIngredients(ingredients.slice(0));
-                }); 
-                setLoading(true);
-            });
-        }  
+        } else {
+            if (id_categorie_allergene !== undefined) {
+                await searchIngredientsByCategorieAllergene(word, Number(id_categorie_allergene)).then((list) => {
+                    list.forEach((ingredient) => {
+                        ingredients.push(ingredient);
+                        setIngredients(ingredients.slice(0));
+                    });
+                    setLoading(true);
+                });
+            } else {
+                await searchIngredients(word).then((list) => {
+                    list.forEach((ingredient) => {
+                        ingredients.push(ingredient);
+                        setIngredients(ingredients.slice(0));
+                    });
+                    setLoading(true);
+                });
+            }
+        }
     };
 
     useEffect(() => {
@@ -42,7 +53,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'🍳 <nom catégorie> | Ingrédients 🍳'}</title>
+                <title>{'🍳 "' + word + '"| Recherche 🍳'}</title>
             </Helmet>
             {
                 loading ? (
@@ -62,13 +73,14 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                         />
                         <div className={styles.linkTo}>
                             <Link className={styles.link} to={`/mercurial`}>
-                                Retour au mercuriale
+                                Retour au mercurial
+                            </Link>
+                            <Link className={styles.link2} to={`/liste des allergenes`}>
+                                Retour aux allergènes
                             </Link>
                         </div>
-                        <div className={styles.searchContainer}>
-                            <SearchIngredient />
-                        </div>
                         <div className={styles.ingredientContainer}>
+                            <p>Vous avez obtenu {ingredients.length} résultats.</p>
                             {ingredients.length > 0 ? 
                                 (<table className={styles.mercurial}>
                                     <thead>

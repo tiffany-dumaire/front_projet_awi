@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getCategoriesAllergenes } from '../../api/categorie.api';
 import { Loading } from '../../components/loading/Loading';
 import { CategorieAllergenesCard } from '../../components/mercurial/CategorieAllergenesCard';
-import { SearchAllergene } from '../../components/search-bar/allergenes/SearchAllergene';
+import { SearchIngredient } from '../../components/search-bar/ingredients/SearchIngredient';
 import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
 import { SidebarMenu } from '../../layout/sidebar-menu/SidebarMenu';
 import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
@@ -50,7 +50,7 @@ export function ListeAllergenesPage(): JSX.Element {
                             }
                         />
                         <div className={styles.searchContainer}>
-                            <SearchAllergene />
+                            <SearchIngredient />
                         </div>
                         <div className={styles.mercurialContainer}>
                             {
