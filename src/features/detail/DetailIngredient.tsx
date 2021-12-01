@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { IoIosArrowBack } from 'react-icons/io';
 import { Link, useParams } from 'react-router-dom';
 import { getCategorieAllergeneById, getCategorieById, getCategoriesAllergenes } from '../../api/categorie.api';
 import { getIngredientByCategorie } from '../../api/ingredient.api';
@@ -62,8 +61,6 @@ export function DetailIngredient(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[edited]);
     
-    console.log(ingredient);
-
     return (
         <>
             <Helmet>
@@ -74,7 +71,7 @@ export function DetailIngredient(): JSX.Element {
                     <div className={styles.container}>
                         <div className={styles.linkTo}>
                             <Link className={styles.link} to={`/mercurial/byCategorie/${ingredient.id_categorie}`}>
-                                <IoIosArrowBack /> Retour à la catégorie
+                                Retour à la catégorie
                             </Link>
                         </div>
                         <div className={styles.container2}>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { SearchFiche } from '../../../components/search-bar/fiches-techniques/SearchFiche';
@@ -64,7 +63,7 @@ export function FicheTechniqueCategory(): JSX.Element {
                         />
                         <div className={styles.linkTo}>
                             <Link className={styles.link} to={`/fiches techniques`}>
-                                <IoIosArrowBack /> Retour aux fiches techniques
+                                Retour aux fiches techniques
                             </Link>
                         </div>
                         <div className={styles.searchContainer}>
