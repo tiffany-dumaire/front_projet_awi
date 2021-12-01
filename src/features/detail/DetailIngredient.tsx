@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Link, useParams } from 'react-router-dom';
-import { getCategoriesAllergenes } from '../../api/categorie.api';
+import { getCategorieAllergeneById, getCategorieById, getCategoriesAllergenes } from '../../api/categorie.api';
 import { getIngredientByCategorie } from '../../api/ingredient.api';
 import { Loading } from '../../components/loading/Loading';
 import { IngredientDetail } from '../../components/mercurial/ingredient/IngredientDetail';
 import { EditIngredient } from '../../components/modals/edit-ingredient/EditIngredient';
+import { Categorie_Interface } from '../../interfaces/Categorie.interface';
+import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
 import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
 import { Ingredient } from '../../models/Ingredient.model';
 import styles from './DetailIngredient.module.css';
@@ -15,7 +17,8 @@ export function DetailIngredient(): JSX.Element {
     const [loader, setLoader] = useState<boolean>(true);
     const [edited, setEdited] = useState<boolean>(false);
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
-    const [categorie_allergene, setCategorieAllergene] = useState<string>('Aucune');
+    const [categorie, setCategorie] = useState<Categorie_Interface>();
+    const [categorie_allergene, setCategorieAllergene] = useState<Categorie_Allergenes_Interface>();
     const [onEdit, setOnEdit] = useState<boolean>(false);
     const { id_ingredient } = useParams<{ id_ingredient: string }>();
 
@@ -23,7 +26,7 @@ export function DetailIngredient(): JSX.Element {
         getCategoriesAllergenes().then((list) => {
             list.forEach((categorie) => {
                 if (categorie.id_categorie_allergene === ingredient.id_categorie_allergene) {
-                    setCategorieAllergene(categorie.categorie_allergene);
+                    setCategorieAllergene(categorie);
                 }
             });
         });
@@ -32,6 +35,15 @@ export function DetailIngredient(): JSX.Element {
     async function getIngredient() {
         await getIngredientByCategorie(Number(id_ingredient)).then((i) => {
             setIngredient(i);
+            getCategorieById(i.id_categorie).then((c) => {
+                setCategorie(c);
+            });
+            if (i.id_categorie_allergene != null) {
+                getCategorieAllergeneById(i.id_categorie_allergene).then((c2) => {
+                    setCategorieAllergene(c2);
+                });
+            }
+            setLoader(true);
         });
     };
 
@@ -43,7 +55,6 @@ export function DetailIngredient(): JSX.Element {
 
     useEffect(() => {
         if (edited) {
-            setLoader(false);
             getIngredient();
             getAllergeneCategorie();
         } 
@@ -51,6 +62,8 @@ export function DetailIngredient(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[edited]);
     
+    console.log(ingredient);
+
     return (
         <>
             <Helmet>
@@ -69,7 +82,7 @@ export function DetailIngredient(): JSX.Element {
                                 onEdit ? (
                                     <EditIngredient ingredient={ingredient} setEdited={(edit: boolean) => setEdited(edit)} setOnEdit={(edit: boolean) => setOnEdit(edit)}/>
                                 ) : (
-                                    <IngredientDetail ingredient={ingredient} categorie_allergene={categorie_allergene} setOnEdit={(edit: boolean) => setOnEdit(edit)}/>
+                                    <IngredientDetail ingredient={ingredient} categorie={categorie} categorie_allergene={categorie_allergene} setOnEdit={(edit: boolean) => setOnEdit(edit)}/>
                                 )
                             }  
                         </div>  
