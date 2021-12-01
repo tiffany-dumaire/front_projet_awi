@@ -1,12 +1,15 @@
 //import jsPDF from "jspdf";
 import React from "react";
+import { Categorie_Interface } from "../../../interfaces/Categorie.interface";
+import { Categorie_Allergenes_Interface } from "../../../interfaces/Categorie_Allergenes.interface";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
 //import { RecapitulatifIngredient } from "../../pdf/ingredient/RecapitulatifIngredient";
 import styles from './IngredientDetail.module.css';
 
 export type IngredientDetailProps = {
     ingredient: Ingredient_Interface;
-    categorie_allergene: string;
+    categorie: Categorie_Interface | undefined;
+    categorie_allergene: Categorie_Allergenes_Interface | undefined;
     setOnEdit: (value: boolean) => void;
 };
 
@@ -41,6 +44,9 @@ export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = 
                     <label className={styles.label}>Allergène</label>
                 </div>
                 <div>
+                    <label className={styles.label}>Catégorie</label>
+                </div>
+                <div>
                     <label className={styles.label}>Catégorie d'allergènes</label>
                 </div>
                 <div>
@@ -64,7 +70,10 @@ export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = 
                     </div>
                 </div>
                 <div>
-                    <input className={styles.input} type="text" disabled value={props.categorie_allergene}></input>
+                    <input className={styles.input} type="text" disabled value={props.categorie?.categorie}></input>
+                </div>
+                <div>
+                    <input className={styles.input} type="text" disabled value={props.categorie_allergene?.categorie_allergene}></input>
                 </div>
                 <div>
                     <button className={styles.buttonPrint} onClick={() => getPDF()}>Imprimer la fiche produit</button>

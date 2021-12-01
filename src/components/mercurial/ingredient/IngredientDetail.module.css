@@ -13,7 +13,7 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(6, 70px) / auto-flow 220px;
+    grid: repeat(7, 70px) / auto-flow 220px;
 }
 
 .gridContainer > div {

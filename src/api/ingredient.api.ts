@@ -116,20 +116,79 @@ export async function getAllergenesByCategorie(id_categorie_allergene: number): 
     });
 }
 
+/**
+ * Rechercher un ingredient avec une partie de son nom.
+ * @param search 
+ * @returns 
+ */
 export async function searchIngredients(search: string): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
-            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/search/${search}`;
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/search/byWord/${search}`;
             const config: AxiosRequestConfig = {
                 method: 'get',
                 headers: { 
                     'Content-Type': 'application/json' 
-                },
-                data: {
-                    search: search,
-                }    
+                }   
             };
-            
+            axios.get(url, config).then((ingredients) => {
+            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                ingredientList.push(ingredient);
+            });
+                resolve(ingredientList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/**
+ * Rechercher un ingredient avec une partie de son nom et dans une catégorie spécifique.
+ * @param search 
+ * @param id_categorie 
+ * @returns 
+ */
+export async function searchIngredientsByCategorie(search: string, id_categorie: number): Promise<Ingredient_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/search/byWord/${search}/byCategorie/${id_categorie}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }   
+            };
+            axios.get(url, config).then((ingredients) => {
+            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                ingredientList.push(ingredient);
+            });
+                resolve(ingredientList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/**
+ * Rechercher un ingredient avec une partie de son nom et dans une catégorie d'allergènes spécifique.
+ * @param search 
+ * @param id_categorie_allergene 
+ * @returns 
+ */
+export async function searchIngredientsByCategorieAllergene(search: string, id_categorie_allergene: number): Promise<Ingredient_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/search/byWord/${search}/byCategorieAllergene/${id_categorie_allergene}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }   
+            };
             axios.get(url, config).then((ingredients) => {
             const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
             ingredients.data.forEach((ingredient: Ingredient_Interface) => {

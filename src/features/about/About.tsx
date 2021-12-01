@@ -16,22 +16,23 @@ export function About(): JSX.Element {
             <li>
               Accéder au mercurial
               <ul>
-                <li>Voir le détail des ingrédients</li>
-                <li>Modifier les ingrédients</li>
-                <li>Rechercher un ingrédient</li>
+                <li><s>Voir le détail des ingrédients</s></li>
+                <li><i>Ajouter un ingrédient</i></li>
+                <li><i>Modifier les ingrédients</i></li>
+                <li><i>Rechercher un ingrédient</i></li>
               </ul>
             </li>
             <li>
               Gérer la liste des allergènes
               <ul>
-                <li>Voir les allergènes</li>
-                <li>Ajouter un allergène</li>
+                <li><s>Voir les allergènes</s></li>
               </ul>
             </li>
             <li>
               Accéder à la liste des fiches techniques
               <ul>
-                <li>Créer une fiche technique</li>
+                <li><s>Voir les fiches techniques</s></li>
+                <li><i>Créer une fiche technique</i></li>
                 <li>Modifier une fiche technique</li>
                 <li>Rechercher une fiche technique</li>
               </ul>
@@ -46,16 +47,18 @@ export function About(): JSX.Element {
               </ul>
             </li>
             <li>
-              Gestion des stocks
+              <i>Gestion des stocks</i>
               <ul>
                 <li>Réalisation ventes (plats vendus ou à emporter)</li>
+                <li>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</li>
+                <li>Réaliser une entrée de stock</li>
               </ul>
             </li>
             <li>
               Impression pdf d'une fiche technique
               <ul>
                 <li>Avec coûts</li>
-                <li>Sans coûts</li>
+                <li><i><s>Sans coûts</s>(manque juste la mise en pdf à faire en local à la fin)</i></li>
               </ul>
             </li>
             <li>
