@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { Denree_Interface } from '../interfaces/Denrees.interface';
 import { Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
+import { Phase_Interface } from '../interfaces/Phase.interface';
 
 /**
  * Récupère les informations générales de l'ensemble des fiches techniques contenues dans la base de données.
@@ -82,6 +84,57 @@ export async function getFTByCategorie(id_categorie_fiche: number): Promise<Fich
                     FTList.push(fiche_technique);
                 });
                 resolve(FTList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/**
+ * Récupère l'ensemble des étapes de la fiche technique dont l'id est donné en paramètre.
+ * @param id_fiche_technique 
+ * @returns 
+ */
+export async function getPhasesByFT(id_fiche_technique: number): Promise<Phase_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/phases/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((phases) => {
+                const phaseList: Phase_Interface[] = new Array<Phase_Interface>();
+                phases.data.forEach((phase: Phase_Interface) => {
+                    phaseList.push(phase);
+                });
+                resolve(phaseList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getDenreesByFTByPhase(id_fiche_technique: number, ordre: number): Promise<Denree_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/denrees/${id_fiche_technique}/${ordre}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((denrees) => {
+                const denreesList: Denree_Interface[] = new Array<Denree_Interface>();
+                denrees.data.forEach((denree: Denree_Interface) => {
+                    denreesList.push(denree);
+                });
+                resolve(denreesList);
             });
         } catch (err) {
             reject(err);

@@ -55,27 +55,40 @@ thead {
 }
 
 .colSpan3 {
-    text-decoration: underline 1px;
     padding-left: 10px;
     text-align: left;
-}
-
-.colSpan3::after {
-    content: " :";
 }
 
 .duree::after {
     content: "'";
 }
 
-.techniques {
-    text-align: left;
-    padding-left: 10px;
+.ordre {
+    min-width: 80px;
 }
 
-td, th {
+.techniques {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.techniques2 {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+    color: rgb(0, 67, 211);
+}
+
+th {
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+td {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .row3 {
