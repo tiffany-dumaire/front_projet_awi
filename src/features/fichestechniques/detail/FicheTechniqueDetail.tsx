@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Link, useParams } from 'react-router-dom';
-import { getFicheTechniqueByID } from '../../../api/fiche_technique.api';
+import { getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
 import { Loading } from '../../../components/loading/Loading';
+import { DenreesEtape_Interface, Denree_Interface } from '../../../interfaces/Denrees.interface';
 import { Fiche_Technique_Infos_Interface } from '../../../interfaces/Fiche_Technique.interface';
+import { Phase_Interface } from '../../../interfaces/Phase.interface';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
+import { DenreesEtape } from '../../../models/Denrees.model';
 import styles from './FicheTechniqueDetail.module.css';
 
 export function FicheTechniqueDetail(): JSX.Element {
@@ -13,16 +16,36 @@ export function FicheTechniqueDetail(): JSX.Element {
     const [ficheTechnique, setFicheTechnique] = useState<Fiche_Technique_Infos_Interface>();
     const [loading, setLoading] = useState<boolean>(false);
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
+    const [phases, setPhases] = useState<Phase_Interface[]>([]);
+    const [denreesEtape, setDenreesEtape] = useState<DenreesEtape_Interface[]>([]);
 
     async function getFT() {
         await getFicheTechniqueByID(Number(id_fiche_technique)).then((ft) => {
             setFicheTechnique(ft);
-            setLoading(true);
+        });
+    }
+
+    async function getPhases() {
+        await getPhasesByFT(Number(id_fiche_technique)).then((list) => {
+            list.forEach((phase) => {
+                getDenreesByFTByPhase(Number(id_fiche_technique), phase.ordre).then((list2) => {
+                    let dList: Denree_Interface[] = [];
+                    list2.forEach((denree) => {
+                        dList.push(denree);
+                    });
+                    denreesEtape.push(new DenreesEtape(phase.ordre, phase.libelle_denrees, list2));
+                    setDenreesEtape(denreesEtape.slice(0));
+                });
+                phases.push(phase);
+                setPhases(phases.slice(0));
+                setLoading(true);
+            });
         });
     }
 
     useEffect(() => {
         getFT();
+        getPhases();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -85,82 +108,52 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className={styles.colSpan3} colSpan={3}>
-                                            Elément de base
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.techniques}>Eau</td>
-                                        <td>L</td>
-                                        <td>0.25</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.techniques}>Sel fin</td>
-                                        <td>kg</td>
-                                        <td>0.005</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles.techniques}>Sucre semoule</td>
-                                        <td>kg</td>
-                                        <td>0.010</td>
-                                    </tr>
+                                    { 
+                                        denreesEtape.map((etape) => (
+                                            <>
+                                                <tr key={'step' + etape.ordre}>
+                                                    <td className={styles.colSpan3} colSpan={3}>
+                                                        <h4>{etape.libelle_denrees}</h4>
+                                                    </td>
+                                                </tr>
+                                                {etape.denrees.map((denree) => (
+                                                    <tr key={'denree' + denree.code + 'step' + etape.ordre}>
+                                                        {denree.allergene ? (
+                                                            <td className={styles.techniques2}>{denree.libelle}</td>
+                                                        ) : (
+                                                            <td className={styles.techniques}>{denree.libelle}</td>
+                                                        )}
+                                                        
+                                                        <td>{denree.unite}</td>
+                                                        <td>{denree.quantite}</td>
+                                                    </tr>
+                                                ))}
+                                            </>
+                                        ))
+                                    }
                                 </tbody>
                             </table>
                             <table className={styles.table2}>
                                 <thead>
                                     <tr>
-                                        <th>N° phase</th>
+                                        <th className={styles.ordre}>N° phase</th>
                                         <th>Techniques de réalisation</th>
                                         <th>Durée</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td className={styles.techniques}>Mise en place du poste de travail.</td>
-                                        <td className={styles.duree}>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td className={styles.techniques}>Réaliser les pesées.</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td className={styles.techniques}>Réaliser la base du Saint Honoré .....</td>
-                                        <td>30</td>
-                                    </tr>
+                                    {phases.map((phase) => (
+                                        <tr key={'phase' + phase.ordre}>
+                                            <td>{phase.ordre}</td>
+                                            <td className={styles.techniques}>
+                                                <h4>{phase.libelle_phase}</h4>
+                                                <p>{phase.description_phase}</p>
+                                            </td>
+                                            <td className={styles.duree}>{phase.duree_phase}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
-                            {/* <div>
-                                <div className={styles.cote}>
-                                    <h4>Denrée</h4>
-                                    <p></p>
-                                </div>
-                                <div className={styles.cote}>
-                                    <h4>Unité</h4>
-                                    <p></p>
-                                </div>
-                                <div>
-                                    <h4>Quantité</h4>
-                                    <p></p>
-                                </div>
-                            </div> 
-                            <div className={styles.row4}>
-                                <div className={styles.cote}>
-                                    <h4>N° phase</h4>
-                                    <p></p>
-                                </div>
-                                <div className={styles.cote}>
-                                    <h4>Techniques de réalisation</h4>
-                                    <p></p>
-                                </div>
-                                <div>
-                                    <h4>Durée</h4>
-                                    <p></p>
-                                </div>
-                            </div>*/}
                         </div> 
                     </div>  
                 </div>
