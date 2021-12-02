@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { Ingredient_Interface } from '../interfaces/Ingredient.interface';
+import { Code_Interface, Ingredient_Interface } from '../interfaces/Ingredient.interface';
 
 export async function getIngredients(): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
@@ -17,6 +17,29 @@ export async function getIngredients(): Promise<Ingredient_Interface[]> {
                     ingredientList.push(ingredient);
                 });
                 resolve(ingredientList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getAllIds(): Promise<Code_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/allIds`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((codes) => {
+                const codeList: Code_Interface[] = new Array<Code_Interface>();
+                codes.data.forEach((code: Code_Interface) => {
+                    codeList.push(code);
+                });
+                resolve(codeList);
             });
         } catch (err) {
             reject(err);
@@ -201,6 +224,45 @@ export async function searchIngredientsByCategorieAllergene(search: string, id_c
         }
     });
 }
+
+/** POST **/
+
+export async function createIngredient(
+    code: number,
+    libelle: string,
+    unite: string,
+    prix_unitaire: number,
+    stock: number,
+    allergene: boolean,
+    id_categorie: number,
+    id_categorie_allergene: number | null
+): Promise<Ingredient_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'post',
+                url: `${process.env.REACT_APP_SERV_HOST}/ingredients/create`,
+                data: { 
+                    "code": code,
+                    "libelle": libelle,
+                    "unite": unite,
+                    "prix_unitaire": prix_unitaire,
+                    "stock": stock,
+                    "allergene": allergene,
+                    "id_categorie": id_categorie,
+                    "id_categorie_allergene": id_categorie_allergene
+                },
+            };
+            axios(config).then((result) => {
+                //resolve(result);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/** PUT **/
 
 export async function putIngredient(
     id_ingredient: number,
