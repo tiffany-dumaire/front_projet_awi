@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import { NavigationBar } from './layout/navigation-menu/NavigationBar';
 import './App.css';
 import { Footer } from './layout/footer/Footer';
-import { LoginPage } from './features/login/LoginPage';
 import { About } from './features/about/About';
 import { ListeFichesTechniquesPage } from './features/fichestechniques/ListeFichesTechniquesPage';
 import { MercurialPage } from './features/mercurial/MercurialPage';
@@ -11,7 +10,7 @@ import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
 import { ListeIngredientsParCategorie } from './features/mercurial/liste-ingredients/ListeIngredientsParCategorie';
 import { ListeAllergenesParCategorie } from './features/mercurial/liste-allergenes/ListeAllergenesParCategorie';
 import { Dashbord } from './components/dashbord/Dashbord';
-import { DetailIngredient } from './features/detail/DetailIngredient';
+import { DetailIngredient } from './features/mercurial/detail/DetailIngredient';
 import { FicheTechniqueCategory } from './features/fichestechniques/categorie/FicheTechniqueCategory';
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
@@ -105,8 +104,7 @@ function App(): JSX.Element {
             '/stocks',
             //other
             '/policies',
-            '/about',
-            '/login'
+            '/about'
           ]}
         >
           <div className="App-content">
@@ -114,21 +112,6 @@ function App(): JSX.Element {
               <Dashbord />
             </Route>
             <Route exact path="/about" component={About} />
-            <Route 
-              exact 
-              path="/login" 
-              render={() =>
-                !!1 ? (
-                  <LoginPage />
-                ) : (
-                  <Redirect
-                    to={{
-                      pathname: '/accueil',
-                    }}
-                  />
-                )
-              }
-            />
             <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
             <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
             <Route exact path="/fiches techniques/create" component={CreateFicheTechnique} />

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
-import { getCategorieAllergeneById, getCategorieById, getCategoriesAllergenes } from '../../api/categorie.api';
-import { getIngredientByCategorie } from '../../api/ingredient.api';
-import { Loading } from '../../components/loading/Loading';
-import { IngredientDetail } from '../../components/mercurial/ingredient/IngredientDetail';
-import { EditIngredient } from '../../components/modals/edit-ingredient/EditIngredient';
-import { Categorie_Interface } from '../../interfaces/Categorie.interface';
-import { Categorie_Allergenes_Interface } from '../../interfaces/Categorie_Allergenes.interface';
-import { Ingredient_Interface } from '../../interfaces/Ingredient.interface';
-import { Ingredient } from '../../models/Ingredient.model';
+import { getCategorieAllergeneById, getCategorieById, getCategoriesAllergenes } from '../../../api/categorie.api';
+import { getIngredientByCategorie } from '../../../api/ingredient.api';
+import { Loading } from '../../../components/loading/Loading';
+import { EditIngredient } from '../../../components/mercurial/ingredient/edit/EditIngredient';
+import { IngredientDetail } from '../../../components/mercurial/ingredient/IngredientDetail';
+import { Categorie_Interface } from '../../../interfaces/Categorie.interface';
+import { Categorie_Allergenes_Interface } from '../../../interfaces/Categorie_Allergenes.interface';
+import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
+import { Ingredient } from '../../../models/Ingredient.model';
 import styles from './DetailIngredient.module.css';
 
 export function DetailIngredient(): JSX.Element {
