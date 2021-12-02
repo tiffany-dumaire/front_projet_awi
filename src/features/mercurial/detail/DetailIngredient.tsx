@@ -56,8 +56,8 @@ export function DetailIngredient(): JSX.Element {
         if (edited) {
             getIngredient();
             getAllergeneCategorie();
+            setEdited(false);
         } 
-        setEdited(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[edited]);
     

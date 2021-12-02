@@ -73,7 +73,7 @@ export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = 
                     <input className={styles.input} type="text" disabled value={props.categorie?.categorie}></input>
                 </div>
                 <div>
-                    <input className={styles.input} type="text" disabled value={props.categorie_allergene?.categorie_allergene}></input>
+                    <input className={styles.input} type="text" disabled value={props.ingredient.id_categorie_allergene === null ? 'Aucune' : props.categorie_allergene?.categorie_allergene}></input>
                 </div>
                 <div>
                     <button className={styles.buttonPrint} onClick={() => getPDF()}>Imprimer la fiche produit</button>

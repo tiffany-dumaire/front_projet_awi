@@ -265,33 +265,32 @@ export async function createIngredient(
 /** PUT **/
 
 export async function putIngredient(
-    id_ingredient: number,
+    code: number,
     libelle: string,
     unite: string,
     prix_unitaire: number,
     stock: number,
     allergene: boolean,
     id_categorie: number,
-    id_categorie_allergene: number | undefined
+    id_categorie_allergene: number | null
 ): Promise<Ingredient_Interface> {
     return new Promise((resolve, reject) => {
         try {
             const config: AxiosRequestConfig = {
                 method: 'put',
-                url: `${process.env.REACT_APP_SERV_HOST}/ingredients/modify/${id_ingredient}`,
+                url: `${process.env.REACT_APP_SERV_HOST}/ingredients/modify/${code}`,
                 data: { 
-                    libelle: libelle,
-                    unite: unite,
-                    prix_unitaire: prix_unitaire,
-                    stock: stock,
-                    allergene: allergene,
-                    id_categorie: id_categorie,
-                    id_categorie_allergene: id_categorie_allergene
+                    "libelle": libelle,
+                    "unite": unite,
+                    "prix_unitaire": prix_unitaire,
+                    "stock": stock,
+                    "allergene": allergene,
+                    "id_categorie": id_categorie,
+                    "id_categorie_allergene": id_categorie_allergene
                 },
             };
             axios(config).then((result) => {
-                const ingredient: Ingredient_Interface = result.data[0];
-                resolve(ingredient);
+                //resolve(ingredient);
             });
         } catch (err) {
             reject(err);
