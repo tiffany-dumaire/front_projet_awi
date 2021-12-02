@@ -8,3 +8,7 @@ export interface Ingredient_Interface {
     id_categorie: number;
     id_categorie_allergene: number;
 }
+
+export interface Code_Interface {
+    code: number;
+}

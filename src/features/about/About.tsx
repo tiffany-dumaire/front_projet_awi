@@ -17,9 +17,9 @@ export function About(): JSX.Element {
               Accéder au mercurial
               <ul>
                 <li><s>Voir le détail des ingrédients</s></li>
-                <li><i>Ajouter un ingrédient</i></li>
+                <li><s>Rechercher un ingrédient</s></li>
+                <li><s>Ajouter un ingrédient</s></li>
                 <li><i>Modifier les ingrédients</i></li>
-                <li><i>Rechercher un ingrédient</i></li>
               </ul>
             </li>
             <li>
@@ -32,9 +32,9 @@ export function About(): JSX.Element {
               Accéder à la liste des fiches techniques
               <ul>
                 <li><s>Voir les fiches techniques</s></li>
+                <li>Rechercher une fiche technique</li>
                 <li><i>Créer une fiche technique</i></li>
                 <li>Modifier une fiche technique</li>
-                <li>Rechercher une fiche technique</li>
               </ul>
             </li>
             <li>

@@ -13,7 +13,7 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(7, 70px) / auto-flow 220px;
+    grid: repeat(9, 70px) / auto-flow 220px;
 }
 
 .gridContainer > div {
@@ -33,7 +33,7 @@
     content: ' :';
 }
 
-.input[type="text"], .input2[type="number"]  {
+.input[type="text"], .input2[type="number"], .input  {
     position: relative;
     color: black;
     border-radius: 15px;

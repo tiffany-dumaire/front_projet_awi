@@ -1,4 +1,4 @@
-import { Ingredient_Interface } from '../interfaces/Ingredient.interface';
+import { Code_Interface, Ingredient_Interface } from '../interfaces/Ingredient.interface';
 
 export class Ingredient implements Ingredient_Interface {
     code: number;
@@ -28,5 +28,13 @@ export class Ingredient implements Ingredient_Interface {
         this.allergene = allergene;
         this.id_categorie = id_categorie;
         this.id_categorie_allergene = id_categorie_allergene;
+    }
+}
+
+export class Code implements Code_Interface {
+    code: number;
+
+    constructor(code: number){
+        this.code = code;
     }
 }
