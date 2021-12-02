@@ -86,6 +86,7 @@ export function FTResearch(): JSX.Element {
                             </Link>
                         </div>
                         <div className={styles.ficheTechniqueContainer}>
+                            <h3 className={styles.alignLeft}>Résultats obtenus par intitulé de recette</h3>
                             <p>Vous avez obtenu {fichesTechniquesLibelle.length} résultats.</p>
                             {fichesTechniquesLibelle.length > 0 ? 
                                 (<table className={styles.fichePresentation}>
@@ -119,6 +120,7 @@ export function FTResearch(): JSX.Element {
                             }
                         </div>
                         <div className={styles.ficheTechniqueContainer}>
+                            <h3 className={styles.alignLeft}>Résultats obtenus en fonction des noms d'ingrédients contenus dans la recette</h3>
                             <p>Vous avez obtenu {fichesTechniquesIngredient.length} résultats.</p>
                             {fichesTechniquesIngredient.length > 0 ? 
                                 (<table className={styles.fichePresentation}>
