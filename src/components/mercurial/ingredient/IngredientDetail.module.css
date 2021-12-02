@@ -13,11 +13,11 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(7, 70px) / auto-flow 220px;
+    grid: repeat(7, 70px) / auto-flow 270px;
 }
 
 .gridContainer > div {
-    width: 200px;
+    width: 250px;
     height: 50px;
 }
 
@@ -41,6 +41,7 @@
     margin-top: 5px;
     height: 40px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .buttonEdit, .buttonPrint {
@@ -56,10 +57,12 @@
 
 .buttonEdit {
     background-color: rgb(110, 85, 85);
+    width: 100%;
 }
 
 .buttonPrint {
     background-color: rgb(42, 99, 165);
+    width: 100%;
 }
 
 /* Toggle Switch Button */

@@ -13,11 +13,11 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(9, 70px) / auto-flow 220px;
+    grid: repeat(9, 70px) / auto-flow 270px;
 }
 
 .gridContainer > div {
-    width: 200px;
+    width: 250px;
     height: 50px;
 }
 
@@ -57,10 +57,12 @@
 
 .buttonSave {
     background-color: rgb(69, 129, 58);
+    width: 100%;
 }
 
 .buttonCancel {
     background-color: rgb(172, 63, 63);
+    width: 100%;
 }
 
 /* Toggle Switch Button */
