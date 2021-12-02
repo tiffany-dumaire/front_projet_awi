@@ -140,16 +140,16 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                     </button>
                 </div>
                 <div>
-                    <input className={styles.input2} type="number" step="any" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setCode(Number(ev.target.value))}></input>
+                    <input placeholder={'Saisissez un code produit..'} className={styles.input2} type="number" step="any" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setCode(Number(ev.target.value))}></input>
                 </div>
                 <div>
-                    <input className={styles.input} type="text" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setLibelle(ev.target.value)}></input>
+                    <input placeholder={'Saisissez un libellé..'} className={styles.input} type="text" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setLibelle(ev.target.value)}></input>
                 </div>
                 <div>
-                    <input className={styles.input2} type="number" step=".01" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setPrice(Number(ev.target.value))}></input>
+                    <input placeholder={'Saisissez son prix..'} className={styles.input2} type="number" step=".01" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setPrice(Number(ev.target.value))}></input>
                 </div>
                 <div>
-                    <input className={styles.input2} type="number" step=".001" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setStock(Number(ev.target.value))}></input>
+                    <input placeholder={'Saisissez le stock initial..'} className={styles.input2} type="number" step=".001" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setStock(Number(ev.target.value))}></input>
                 </div>
                 <div>
                 <select
@@ -214,6 +214,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                         }>Aucune</option>
                         {categories.map((categorie) =>
                                 <option 
+                                    key={categorie.categorie}
                                     className={styles.options} 
                                     value={categorie.id_categorie}
                                     onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorie(Number(ev.target.value))
@@ -244,6 +245,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                             }>Aucune</option>
                             {categoriesAllergene.map((categorie) =>
                                     <option 
+                                        key={categorie.categorie_allergene}
                                         className={styles.options} 
                                         value={categorie.id_categorie_allergene}
                                         onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorieAllergene(Number(ev.target.value))
@@ -267,6 +269,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                             }>Aucune</option>
                             {categoriesAllergene.map((categorie) =>
                                     <option 
+                                        key={categorie.categorie_allergene}
                                         className={styles.options} 
                                         value={categorie.id_categorie_allergene}
                                         onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorieAllergene(Number(ev.target.value))

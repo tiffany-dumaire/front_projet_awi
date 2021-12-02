@@ -123,7 +123,7 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = func
                     <input className={styles.input2} value={props.ingredient.code} type="number" disabled></input>
                 </div>
                 <div>
-                    <input className={styles.input} value={libelle} type="text" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setLibelle(ev.target.value)}></input>
+                    <input placeholder={'Saisissez un libellé..'} className={styles.input} value={libelle} type="text" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setLibelle(ev.target.value)}></input>
                 </div>
                 <div>
                     <input className={styles.input2} value={price} type="number" step=".01" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setPrice(Number(ev.target.value))}></input>
@@ -196,6 +196,7 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = func
                         }>Aucune</option>
                         {categories.map((categorie) =>
                                 <option 
+                                    key={categorie.categorie}
                                     className={styles.options} 
                                     value={categorie.id_categorie}
                                     onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorie(Number(ev.target.value))
@@ -227,6 +228,7 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = func
                             }>Aucune</option>
                             {categoriesAllergene.map((categorie) =>
                                     <option 
+                                        key={categorie.categorie_allergene}
                                         className={styles.options} 
                                         value={categorie.id_categorie_allergene}
                                         onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorieAllergene(Number(ev.target.value))
@@ -251,6 +253,7 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = func
                             }>Aucune</option>
                             {categoriesAllergene.map((categorie) =>
                                     <option 
+                                        key={categorie.categorie_allergene}
                                         className={styles.options} 
                                         value={categorie.id_categorie_allergene}
                                         onChange={(ev: React.ChangeEvent<HTMLOptionElement>) => setCategorieAllergene(Number(ev.target.value))

@@ -19,7 +19,7 @@ export function About(): JSX.Element {
                 <li><s>Voir le détail des ingrédients</s></li>
                 <li><s>Rechercher un ingrédient</s></li>
                 <li><s>Ajouter un ingrédient</s></li>
-                <li><i>Modifier les ingrédients</i></li>
+                <li><s>Modifier les ingrédients</s></li>
               </ul>
             </li>
             <li>
