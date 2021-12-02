@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './EditIngredient.module.css';
-import { Ingredient_Interface } from '../../../interfaces/Ingredient.interface';
-import { putIngredient } from '../../../api/ingredient.api';
-import { Categorie_Allergenes_Interface } from '../../../interfaces/Categorie_Allergenes.interface';
-import { getCategoriesAllergenes } from '../../../api/categorie.api';
+import { Ingredient_Interface } from '../../../../interfaces/Ingredient.interface';
+import { putIngredient } from '../../../../api/ingredient.api';
+import { Categorie_Allergenes_Interface } from '../../../../interfaces/Categorie_Allergenes.interface';
+import { getCategoriesAllergenes } from '../../../../api/categorie.api';
 
 export type EditIngredientProps = {
     ingredient: Ingredient_Interface;
