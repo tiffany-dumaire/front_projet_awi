@@ -12,3 +12,8 @@ export interface Ingredient_Interface {
 export interface Code_Interface {
     code: number;
 }
+
+export interface Stock_Interface {
+    code: number;
+    stock: number;
+}

@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { Code_Interface, Ingredient_Interface } from '../interfaces/Ingredient.interface';
+import { Code_Interface, Ingredient_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
 
 export async function getIngredients(): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
@@ -236,7 +236,7 @@ export async function createIngredient(
     allergene: boolean,
     id_categorie: number,
     id_categorie_allergene: number | null
-): Promise<Ingredient_Interface> {
+): Promise<number> {
     return new Promise((resolve, reject) => {
         try {
             const config: AxiosRequestConfig = {
@@ -254,7 +254,7 @@ export async function createIngredient(
                 },
             };
             axios(config).then((result) => {
-                //resolve(result);
+                resolve(result.data.insertId);
             });
         } catch (err) {
             reject(err);
@@ -287,6 +287,76 @@ export async function putIngredient(
                     "allergene": allergene,
                     "id_categorie": id_categorie,
                     "id_categorie_allergene": id_categorie_allergene
+                },
+            };
+            axios(config).then((result) => {
+                //resolve(ingredient);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/** STOCKS **/
+
+export async function getAllStocks(): Promise<Stock_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/stocks`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }   
+            };
+            axios.get(url, config).then((stocks) => {
+            const stockList: Stock_Interface[] = new Array<Stock_Interface>();
+            stocks.data.forEach((stock: Stock_Interface) => {
+                stockList.push(stock);
+            });
+                resolve(stockList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getStockByCategorie(id_categorie: number): Promise<Stock_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/stocks/byCategorie/${id_categorie}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }   
+            };
+            axios.get(url, config).then((stocks) => {
+            const stockList: Stock_Interface[] = new Array<Stock_Interface>();
+            stocks.data.forEach((stock: Stock_Interface) => {
+                stockList.push(stock);
+            });
+                resolve(stockList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function modifyStock(
+    code: number,
+    stock: number,
+): Promise<Stock_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'put',
+                url: `${process.env.REACT_APP_SERV_HOST}/ingredients/stocks/modify/${code}`,
+                data: { 
+                    "stock": stock
                 },
             };
             axios(config).then((result) => {

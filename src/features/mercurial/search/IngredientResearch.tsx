@@ -80,6 +80,7 @@ export function IngredientResearch(): JSX.Element {
                             </Link>
                         </div>
                         <div className={styles.ingredientContainer}>
+                            <h3 className={styles.alignLeft}>Résultats obtenus par nom d'ingrédient</h3>
                             <p>Vous avez obtenu {ingredients.length} résultats.</p>
                             {ingredients.length > 0 ? 
                                 (<table className={styles.mercurial}>

@@ -1,4 +1,4 @@
-import { Phase_Interface } from '../interfaces/Phase.interface';
+import { Phase_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
 
 export class Phase implements Phase_Interface {
     id_phase: number;
@@ -24,4 +24,26 @@ export class Phase implements Phase_Interface {
     this.ordre = ordre;
   }
     
+}
+
+export class Phase_Simple implements Phase_Simple_Interface {
+  id_phase: number;
+  libelle_phase: string;
+  libelle_denrees: string;
+  description_phase: string;
+  duree_phase: number;
+
+  constructor(
+    id_phase: number,
+    libelle_phase: string,
+    libelle_denrees: string,
+    description_phase: string,
+    duree_phase: number
+  ) {
+    this.id_phase = id_phase;
+    this.libelle_phase = libelle_phase;
+    this.libelle_denrees = libelle_denrees;
+    this.description_phase = description_phase;
+    this.duree_phase = duree_phase;
+  }
 }

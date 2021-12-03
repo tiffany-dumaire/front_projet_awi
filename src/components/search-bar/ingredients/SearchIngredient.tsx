@@ -52,7 +52,7 @@ export const SearchIngredient: React.FunctionComponent = () => {
                         }
                     }
                 >
-                    <FcSearch className={styles.buttonSearch} />
+                    <FcSearch className={styles.buttonSearch} /> Rechercher un ingrédient
                 </button>
             </div>
         </div>

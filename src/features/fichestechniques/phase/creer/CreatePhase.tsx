@@ -7,7 +7,7 @@ import styles from './CreatePhase.module.css';
 
 export function CreatePhase(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
-    //const [newId, setNewId] = useState<number>();
+    const [newId, setNewId] = useState<number>();
 
     useEffect(() => {
         setLoading(true);
@@ -21,7 +21,7 @@ export function CreatePhase(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
-                        <InitialiserEtape />
+                        <InitialiserEtape setId={(id: number) => setNewId(id)}/>
                         <IngredientChoice />
                     </div>
                 ) : 
