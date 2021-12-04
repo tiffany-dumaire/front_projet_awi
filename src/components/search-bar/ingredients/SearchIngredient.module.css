@@ -39,9 +39,9 @@
     margin-top: 40px;
     margin-left: 10px;
     width: 320px;
-    color: black;
+    color: aliceblue;
     font-weight: 600;
-    background-color: rgb(255, 249, 223);
+    background-color: rgba(70, 73, 255, 0.87);
     border-radius: 30px;
 }
 

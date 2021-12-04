@@ -3,45 +3,37 @@ import styles from './IngredientChoice.module.css';
 
 export type IngredientChoiceProps = {
     id_phase?: number;
-    //nextStep: () => void;
+    disabled: boolean;
 };
 
 export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = (props: IngredientChoiceProps) => {
-
     return (
-        <div className={styles.debutContainer}>
+        <div className={props.disabled ? styles.debutContainer2 : styles.debutContainer}>
             {/* Faire un affichage grid puis flex column pour mobile*/}
             <h3>Sélectionner des ingrédients</h3>
+            <p>Sélectionner les ingrédients permettant de réaliser cette étape.</p>
             <div className={styles.gridContainer}>
                 <div>
                     <label className={styles.label}>Intitulé de la phase</label>
-                </div>
-                <div>
-                    <label className={styles.label}>Nombre de couverts*</label>
-                </div>
-                
+                </div> 
                 <div>
                     <label className={styles.label}>Description de la phase</label>
                 </div>
+            </div>
+            <div className={styles.gridContainer2}>
+                <div>
+
+                </div>
+                <div></div>
+            </div>
+            <div className={styles.gridContainer}>
                 <div></div>
                 <div>
-                    <input className={styles.input} type="text" placeholder={'Saisir l\'intitulé de la phase...'}></input>
-                </div>
-                <div>
-                    <input className={styles.input} type="number" placeholder={'Saisir le nombre de couverts...'}></input>
-                </div>
-                <div>
-                <input className={styles.input} type="text" placeholder={'Saisir la description de la phase...'}></input>
-                </div>
-                <div>
-                    <button 
-                        className={styles.buttonNext} 
-                    >
-                        Passer à l'étape suivante
+                    <button className={styles.buttonNext}>
+                        Voir le récapitulatif de la phase
                     </button>
                 </div>
             </div>
-            <legend className={styles.legend}>* les quantités utilisées pour chaque ingrédient devront être définies en fonction du nombre de couverts définis dans l'initialisation de la phase.</legend>
         </div>
     );
 };
