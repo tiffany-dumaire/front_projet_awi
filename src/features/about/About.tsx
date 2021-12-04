@@ -34,7 +34,7 @@ export function About(): JSX.Element {
                 <li><s>Voir les fiches techniques</s></li>
                 <li><s>Rechercher une fiche technique</s></li>
                 <li><i>Créer une fiche technique</i></li>
-                <li>Modifier une fiche technique</li>
+                <li><i>Modifier une fiche technique</i></li>
               </ul>
             </li>
             <li>

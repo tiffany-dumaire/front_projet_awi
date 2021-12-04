@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postPhase } from '../../../api/phase.api';
+import { postPhase, putPhase } from '../../../api/phase.api';
 import styles from './InitialiserEtape.module.css';
 
 export type InitialiserEtapeProps = {
@@ -20,9 +20,19 @@ export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = 
         duree: number
     ) => {
         postPhase(libelle_phase,libelle_denrees,description,duree).then((result) => {
-            console.log(result);
             props.setId(result);
-        })
+        });
+    }
+
+    const modifyPhase = (
+        id_phase: number,
+        libelle_phase: string,
+        libelle_denrees: string,
+        description: string,
+        duree: number
+    ) => {
+        putPhase(id_phase, libelle_phase, libelle_denrees, description, duree);
+        alert('Les informations de la phase ont été modifiées en base.');
     }
 
     return (
@@ -65,16 +75,33 @@ export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = 
                     />
                 </div>
                 <div>
-                    <button 
-                        className={styles.buttonNext}
-                        onClick={
-                            () => {
-                                createPhase(libelle_phase,libelle_denrees,description,duree);
-                            }
-                        } 
-                    >
-                        Initialiser la phase
-                    </button>
+                    {props.id_phase ? (
+                        <button 
+                            className={styles.buttonNext2}
+                            onClick={
+                                () => {
+                                    if (props.id_phase) {
+                                        modifyPhase(props.id_phase, libelle_phase, libelle_denrees, description, duree);
+                                    } else {
+                                        createPhase(libelle_phase, libelle_denrees, description, duree);
+                                    }
+                                }
+                            } 
+                        >
+                            Modifier la phase
+                        </button>
+                    ) : (
+                        <button 
+                            className={styles.buttonNext}
+                            onClick={
+                                () => {
+                                    createPhase(libelle_phase, libelle_denrees, description, duree);
+                                }
+                            } 
+                        >
+                            Initialiser la phase
+                        </button>
+                    )}
                 </div>
             </div>
             <legend className={styles.legend}>* l'intitulé des denrées de la phase correspond au titre que vous retrouverez dans la colonne de gauche de votre fiche technique.</legend>
