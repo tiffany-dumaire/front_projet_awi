@@ -61,16 +61,23 @@
     box-sizing: border-box;
 }
 
-.buttonNext {
+.buttonNext, .buttonNext2 {
     position: relative;
     color: aliceblue;
     border-radius: 15px;
     text-align: center;
     margin-top: 5px;
     height: 40px;
-    width: 200px;
+    width: 100%;
     box-sizing: border-box;
+}
+
+.buttonNext {
     background-color: rgb(36, 126, 25);
+}
+
+.buttonNext2 {
+    background-color: rgb(126, 62, 25);
 }
 
 .legend {
