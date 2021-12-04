@@ -22,7 +22,7 @@ export function CreatePhase(): JSX.Element {
                 loading ? (
                     <div className={styles.container}>
                         <InitialiserEtape setId={(id: number) => setNewId(id)}/>
-                        <IngredientChoice />
+                        <IngredientChoice disabled={newId ? false : true} />
                     </div>
                 ) : 
                 (

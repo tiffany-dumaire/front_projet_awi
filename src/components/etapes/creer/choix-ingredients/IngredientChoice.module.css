@@ -12,14 +12,42 @@
     margin-top: 40px;
 }
 
+.debutContainer2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding: 0px 20px 20px 20px;
+    width: 600px;
+    margin:auto;
+    margin-top: 40px;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .gridContainer {
     display: grid;
-    grid: repeat(4, 70px) / auto-flow 270px;
+    grid: repeat(1, 70px) / auto-flow 290px;
 }
 
 .gridContainer > div {
-    width: 250px;
+    width: 270px;
     height: 50px;
+}
+
+.gridContainer2 {
+    display: grid;
+    grid: repeat(1, 320px) / auto-flow 290px;
+}
+
+.gridContainer2 > div {
+    width: 270px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .label {
@@ -52,11 +80,8 @@
     text-align: center;
     margin-top: 5px;
     height: 40px;
-    width: 200px;
+    width: 100%;
     box-sizing: border-box;
-}
-
-.buttonNext {
     background-color: rgb(110, 85, 85);
 }
 

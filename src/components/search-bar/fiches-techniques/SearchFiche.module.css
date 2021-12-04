@@ -1,6 +1,6 @@
 .searchContainer {
     position: relative;
-    width: 700px;
+    width: 900px;
     height: auto;
     margin: auto;
 }
@@ -38,8 +38,10 @@
     position: relative;
     margin-top: 40px;
     margin-left: 10px;
-    width: 50px;
-    background-color: rgb(255, 249, 223);
+    color: aliceblue;
+    width: 320px;
+    font-weight: 600;
+    background-color: rgba(70, 73, 255, 0.87);
     border-radius: 30px;
 }
 

@@ -4,7 +4,6 @@ import styles from './InitialiserEtape.module.css';
 
 export type InitialiserEtapeProps = {
     id_phase?: number;
-    //nextStep: () => void;
     setId: (id: number) => void;
 };
 

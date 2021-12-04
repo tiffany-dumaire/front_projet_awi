@@ -42,7 +42,7 @@ export const SearchFiche: React.FunctionComponent = () => {
                         }
                     }
                 >
-                    <FcSearch className={styles.buttonSearch} />
+                    <FcSearch className={styles.buttonSearch} /> Rechercher une fiche
                 </button>
             </div>      
         </div>
