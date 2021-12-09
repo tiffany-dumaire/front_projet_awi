@@ -47,7 +47,7 @@
     width: 270px;
     height: 300px;
     border: 1px solid black;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .label {
@@ -71,6 +71,25 @@
     height: 40px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.list {
+    position: relative;
+    padding: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: none;
+    outline-offset: 15px;
+}
+
+.add {
+    font-size: 14px;
+    color: green;
+}
+
+.click {
+    cursor: pointer;
 }
 
 .buttonNext {

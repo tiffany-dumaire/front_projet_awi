@@ -1,4 +1,4 @@
-import { Phase_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
+import { Phase_Ingredient_Interface, Phase_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
 
 export class Phase implements Phase_Interface {
     id_phase: number;
@@ -45,5 +45,24 @@ export class Phase_Simple implements Phase_Simple_Interface {
     this.libelle_denrees = libelle_denrees;
     this.description_phase = description_phase;
     this.duree_phase = duree_phase;
+  }
+}
+
+export class Phase_Ingredient implements Phase_Ingredient_Interface {
+  id_phase_ingredient: number;
+  code: number;
+  id_phase: number;
+  libelle: string;
+
+  constructor(
+    id_phase_ingredient: number,
+    code: number,
+    id_phase: number,
+    libelle: string
+  ) {
+    this.id_phase_ingredient = id_phase_ingredient;
+    this.code = code;
+    this.id_phase = id_phase;
+    this.libelle = libelle;
   }
 }
