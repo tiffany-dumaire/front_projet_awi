@@ -14,3 +14,10 @@ export interface Phase_Simple_Interface {
     description_phase: string;
     duree_phase: number;
 }
+
+export interface Phase_Ingredient_Interface {
+    id_phase_ingredient: number;
+    code: number;
+    id_phase: number;
+    libelle: string;
+}
