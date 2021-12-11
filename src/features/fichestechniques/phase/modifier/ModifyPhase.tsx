@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { useParams } from 'react-router-dom';
 import { getIngredients } from '../../../../api/ingredient.api';
-import { addIngredient, pullIngredient } from '../../../../api/phase.api';
-import { IngredientChoice } from '../../../../components/etapes/creer/choix-ingredients/IngredientChoice';
-import { InitialiserEtape } from '../../../../components/etapes/creer/InitialiserEtape';
+import { addIngredient, getDenreesByPhase, pullIngredient } from '../../../../api/phase.api';
+import { IngredientChoice } from '../../../../components/etapes/modifier/choix-ingredients/IngredientChoice';
+import { InitialiserEtape } from '../../../../components/etapes/modifier/InitialiserEtape';
 import { Loading } from '../../../../components/loading/Loading';
 import { Ingredient_Interface } from '../../../../interfaces/Ingredient.interface';
 import { Phase_Ingredient_Interface } from '../../../../interfaces/Phase.interface';
 import { Phase_Ingredient } from '../../../../models/Phase.model';
-import styles from './CreatePhase.module.css';
+import styles from './ModifyPhase.module.css';
 
-export function CreatePhase(): JSX.Element {
+export function ModifyPhase(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
-    const [newId, setNewId] = useState<number>();
     const [ingredients, setIngredients] = useState<Array<Ingredient_Interface>>([]);
     const [addedIngredients, setAddedIngredients] = useState<Array<Phase_Ingredient_Interface>>([]);
+    const { id_phase } = useParams<{ id_phase: string }>();
     
+    const getAddedIngredient = () => {
+        getDenreesByPhase(Number(id_phase)).then((list) => {
+            list.forEach((denree) => {
+                addedIngredients.push(denree);
+                setAddedIngredients(addedIngredients.slice(0));
+            });
+        });
+    }
+
     const getIngredientList = () => {
         getIngredients().then((list) => {
             list.forEach((ingredient) => {
@@ -47,6 +57,7 @@ export function CreatePhase(): JSX.Element {
 
 
     useEffect(() => {
+        getAddedIngredient();
         getIngredientList();        
         setLoading(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,22 +66,13 @@ export function CreatePhase(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'➕ Créer une phase'}</title>
+                <title>{'Modifier une phase'}</title>
             </Helmet>
             {
                 loading ? (
                     <div className={styles.container}>
-                        {newId ? (
-                            <>
-                                <InitialiserEtape id_phase={newId} setId={(id: number) => setNewId(id)}/>
-                                <IngredientChoice id_phase={newId} ingredients={ingredients} phaseIngredients={addedIngredients} addAnIngredient={(code: number, libelle: string) => addAnIngredient(code, newId, libelle)} pullAnIngredient={(phaseI: Phase_Ingredient_Interface) => pullAnIngredient(phaseI)} disabled={newId ? false : true} />
-                            </>
-                        ) :(
-                            <>
-                                <InitialiserEtape setId={(id: number) => setNewId(id)}/>
-                                <IngredientChoice ingredients={ingredients} phaseIngredients={addedIngredients} disabled={newId ? false : true} />
-                            </>
-                        )}
+                        <InitialiserEtape id_phase={Number(id_phase)} />
+                        <IngredientChoice id_phase={Number(id_phase)} ingredients={ingredients} phaseIngredients={addedIngredients} addAnIngredient={(code: number, libelle: string) => addAnIngredient(code, Number(id_phase), libelle)} pullAnIngredient={(phaseI: Phase_Ingredient_Interface) => pullAnIngredient(phaseI)} disabled={Number(id_phase) ? false : true} />
                     </div>
                 ) : 
                 (

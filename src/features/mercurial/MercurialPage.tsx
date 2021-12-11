@@ -44,7 +44,10 @@ export function MercurialPage(): JSX.Element {
                                     {to: '/mercurial/create', name: 'Ajouter un ingrédient au mercurial'},
                                     {to: '/mercurial', name: 'Rechercher un ingrédient'},
                                     {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/fiches techniques/create', name: 'Créer une fiche technique'},
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
+                                    {to: '/phases/create', name: 'Créer une étape'},
+                                    {to: '/phases', name: 'Liste des phases'},
                                     {to: '/stocks', name: 'Gérer les stocks'}
                                 ]
                             }

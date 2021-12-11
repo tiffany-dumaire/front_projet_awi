@@ -73,10 +73,12 @@ export function FTResearch(): JSX.Element {
                                 [
                                     {to: '/fiches techniques/create', name: 'Créer une fiche technique'},
                                     {to: '/fiches techniques', name: 'Rechercher une fiche technique'},
-                                    {to: '', name: 'Imprimer une fiche technique'},
                                     {to: '/phases/create', name: 'Créer une étape'},
+                                    {to: '/phases', name: 'Liste des phases'},
                                     {to: '/mercurial/create', name: 'Ajouter un ingrédient au mercurial'},
+                                    {to: '/mercurial', name: 'Voir le mercurial'},
                                     {to: '/liste des allergenes', name: 'Voir la liste des allergènes'},
+                                    {to: '/stocks', name: 'Gérer les stocks'}
                                 ]
                             }
                         />
