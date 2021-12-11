@@ -1,0 +1,110 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding: 0px 20px 20px 20px;
+    width: 600px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.debutContainer2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding: 0px 20px 20px 20px;
+    width: 600px;
+    margin:auto;
+    margin-top: 40px;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(1, 70px) / auto-flow 290px;
+}
+
+.gridContainer > div {
+    width: 270px;
+    height: 50px;
+}
+
+.gridContainer2 {
+    display: grid;
+    grid: repeat(1, 320px) / auto-flow 290px;
+}
+
+.gridContainer2 > div {
+    width: 270px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.input[type="text"], .input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.list {
+    position: relative;
+    padding: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: none;
+    outline-offset: 15px;
+}
+
+.add {
+    font-size: 14px;
+    color: green;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.buttonNext {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(110, 85, 85);
+}
+
+.legend {
+    color:rgb(116, 116, 116);
+    font-size: 10px;
+}

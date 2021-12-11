@@ -19,6 +19,8 @@ import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTe
 import { StockMenu } from './features/stocks/StockMenu';
 import { IngredientResearch } from './features/mercurial/search/IngredientResearch';
 import { FTResearch } from './features/fichestechniques/search/FTResearch';
+import { PhaseView } from './features/fichestechniques/phase/view/PhaseView';
+import { ModifyPhase } from './features/fichestechniques/phase/modifier/ModifyPhase';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -55,6 +57,8 @@ function App(): JSX.Element {
             '/fiches techniques/details/:id_fiche_technique',
             //phases
             '/phases/create',
+            '/phases/view/:id_phase',
+            '/phases/modify/:id_phase',
             //mercurial
             '/mercurial',
             '/mercurial/create',
@@ -89,6 +93,8 @@ function App(): JSX.Element {
             '/fiches techniques/details/:id_fiche_technique',
             //phases
             '/phases/create',
+            '/phases/view/:id_phase',
+            '/phases/modify/:id_phase',
             //mercurial
             '/mercurial',
             '/mercurial/create',
@@ -108,27 +114,36 @@ function App(): JSX.Element {
           ]}
         >
           <div className="App-content">
+            {/*accueil*/}
             <Route exact path="/accueil">
               <Dashbord />
             </Route>
-            <Route exact path="/about" component={About} />
-            <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
+            {/*fiches techniques*/}
             <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
             <Route exact path="/fiches techniques/create" component={CreateFicheTechnique} />
             <Route exact path="/fiches techniques/search/:word" component={FTResearch} />
             <Route exact path="/fiches techniques/search/:word/byCategorie/:id_categorie_fiche" component={FTResearch} />
-            <Route exact path="/phases/create" component={CreatePhase} />
             <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
             <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail} />
+            {/*phases*/}
+            <Route exact path="/phases/create" component={CreatePhase} />
+            <Route exact path="/phases/view/:id_phase" component={PhaseView} />
+            <Route exact path="/phases/modify/:id_phase" component={ModifyPhase} />
+            {/*mercurial*/}
             <Route exact path="/mercurial" component={MercurialPage} />
-            <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
-            <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
-            <Route exact path="/mercurial/create" component={CreateIngredient} />
+            <Route exact path="/mercurial/create" component={CreateIngredient} />          
             <Route exact path="/mercurial/search/:word" component={IngredientResearch} />
             <Route exact path="/mercurial/search/:word/byCategorie/:id_categorie" component={IngredientResearch} />
             <Route exact path="/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene" component={IngredientResearch} />
+            <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
             <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
+            {/*liste des allergenes*/}
+            <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
+            <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
+            {/*gestion des stocks*/}
             <Route exact path='/stocks' component={StockMenu} />
+            {/*other*/}
+            <Route exact path="/about" component={About} />
           </div>
           <Route 
             exact 
@@ -145,6 +160,8 @@ function App(): JSX.Element {
               '/fiches techniques/details/:id_fiche_technique',
               //phases
               '/phases/create',
+              '/phases/view/:id_phase',
+              '/phases/modify/:id_phase',
               //mercurial
               '/mercurial',
               '/mercurial/create',

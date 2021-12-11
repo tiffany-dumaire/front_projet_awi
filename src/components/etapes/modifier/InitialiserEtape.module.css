@@ -1,0 +1,86 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding: 0px 20px 20px 20px;
+    width: 600px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.gridContainer {
+    margin-top: 20px;
+    display: grid;
+    grid: repeat(5, 100px) / auto-flow 270px;
+}
+
+.gridContainer > div {
+    width: 250px;
+    height: 70px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.input[type="text"], .input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 5px;
+    text-align: left;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fieldDescription {
+    position:relative;
+    width:100%;
+    height:100%;
+    background-color: transparent;
+    color: black;
+    border: 1px #C4C4C4 solid;
+    border-radius: 15px;
+    padding:10px;
+    font: Source Sans Pro;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
+.buttonNext, .buttonNext2 {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buttonNext {
+    background-color: rgb(36, 126, 25);
+}
+
+.buttonNext2 {
+    background-color: rgb(126, 62, 25);
+}
+
+.legend {
+    color:rgb(116, 116, 116);
+    font-size: 10px;
+}
