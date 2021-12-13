@@ -51,7 +51,7 @@ export function About(): JSX.Element {
               <ul>
                 <li>Réalisation ventes (plats vendus ou à emporter)</li>
                 <li>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</li>
-                <li>Réaliser une entrée de stock</li>
+                <li><i>Réaliser une entrée de stock</i></li>
               </ul>
             </li>
             <li>

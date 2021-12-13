@@ -21,6 +21,7 @@ import { IngredientResearch } from './features/mercurial/search/IngredientResear
 import { FTResearch } from './features/fichestechniques/search/FTResearch';
 import { PhaseView } from './features/fichestechniques/phase/view/PhaseView';
 import { ModifyPhase } from './features/fichestechniques/phase/modifier/ModifyPhase';
+import { StockEntriesChoice } from './features/stocks/entrees/StockEntriesChoice';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -72,6 +73,10 @@ function App(): JSX.Element {
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
             //gestion des stocks
             '/stocks',
+            '/stocks/entrees',
+            '/stocks/entrees/all',
+            '/stocks/entrees/byCategorie',
+            '/stocks/entrees/byList',
             //other
             '/policies',
             '/about',
@@ -108,6 +113,10 @@ function App(): JSX.Element {
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
             //gestion des stocks
             '/stocks',
+            '/stocks/entrees',
+            '/stocks/entrees/all',
+            '/stocks/entrees/byCategorie',
+            '/stocks/entrees/byList',
             //other
             '/policies',
             '/about'
@@ -141,7 +150,11 @@ function App(): JSX.Element {
             <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
             <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
             {/*gestion des stocks*/}
-            <Route exact path='/stocks' component={StockMenu} />
+            <Route exact path="/stocks" component={StockMenu} />
+            <Route exact path="/stocks/entrees" component={StockEntriesChoice} />
+            <Route exact path="/stocks/entrees/all" component={StockMenu} />
+            <Route exact path="/stocks/entrees/byCategorie" component={StockMenu} />
+            <Route exact path="/stocks/entrees/byList" component={StockMenu} />
             {/*other*/}
             <Route exact path="/about" component={About} />
           </div>
@@ -175,6 +188,10 @@ function App(): JSX.Element {
               '/liste des allergenes/byCategorie/:id_categorie_allergene',
               //gestion des stocks
               '/stocks',
+              '/stocks/entrees',
+              '/stocks/entrees/all',
+              '/stocks/entrees/byCategorie',
+              '/stocks/entrees/byList',
               //other
               '/policies',
               '/about'

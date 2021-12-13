@@ -7,7 +7,7 @@ export const StocksDashboard: React.FunctionComponent = () => {
         {   
             title: 'Gestion des entrées de stock',
             description: 'Ici vous pourrez gérer les entrées de stock pour tous les ingrédients, par catégorie d\'ingrédients ou en choisissant des ingrédients spécifiques.',
-            path: '',
+            path: '/stocks/entrees',
             color: '#999966'
         },
         {   
@@ -26,7 +26,6 @@ export const StocksDashboard: React.FunctionComponent = () => {
 
     return (
         <div className={styles.container}>
-            <h1>Gestionnaire de fiches techniques de cuisine</h1>
             <div className={styles.subContainer}>
                 {
                     functionnalities.map((functionnality) => (
