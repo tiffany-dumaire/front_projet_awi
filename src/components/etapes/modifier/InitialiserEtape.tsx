@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { getPhaseByID, putPhase } from '../../../api/phase.api';
+import React, { useState } from 'react';
+import { putPhase } from '../../../api/phase.api';
+import { Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
 import styles from './InitialiserEtape.module.css';
 
 export type InitialiserEtapeProps = {
     id_phase: number;
+    phase: Phase_Simple_Interface;
 };
 
 export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = (props: InitialiserEtapeProps) => {
-    const [libelle_phase, setLibellePhase] = useState<string>('');
-    const [libelle_denrees, setLibelleDenrees] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
-    const [duree, setDuree] = useState<number>(0);
-
-    const getPhase = () => {
-        getPhaseByID(Number(props.id_phase)).then((phase) => {
-            setLibellePhase(phase.libelle_phase);
-            setLibelleDenrees(phase.libelle_denrees);
-            setDescription(phase.description_phase);
-            setDuree(phase.duree_phase);
-        });
-    }
+    const [libelle_phase, setLibellePhase] = useState<string>(props.phase.libelle_phase);
+    const [libelle_denrees, setLibelleDenrees] = useState<string>(props.phase.libelle_denrees);
+    const [description, setDescription] = useState<string>(props.phase.description_phase);
+    const [duree, setDuree] = useState<number>(props.phase.duree_phase);
 
     const modifyPhase = (
         id_phase: number,
@@ -31,11 +24,6 @@ export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = 
         putPhase(id_phase, libelle_phase, libelle_denrees, description, duree);
         alert('Les informations de la phase ont été modifiées en base.');
     }
-
-    useEffect(() => {
-        getPhase();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
 
     return (
         <div className={styles.debutContainer}>
