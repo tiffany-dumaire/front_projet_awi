@@ -152,7 +152,7 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                     <input placeholder={'Saisissez le stock initial..'} className={styles.input2} type="number" step=".001" onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setStock(Number(ev.target.value))}></input>
                 </div>
                 <div>
-                <select
+                    <select
                         className={styles.input}
                         onChange={(ev: React.ChangeEvent<HTMLSelectElement>) =>
                             setUnite(ev.target.value)
