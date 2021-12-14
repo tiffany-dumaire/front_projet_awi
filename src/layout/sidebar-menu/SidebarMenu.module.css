@@ -6,7 +6,7 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-color: rgba(0, 0, 0, 0.774);
-    background-color: rgba(71, 89, 255, 0.774);
+    background-color: #596aff;/*rgba(71, 89, 255, 0.774);*/
     transition: 0.8s ease;
     margin-top: 10px;
     z-index: 2;

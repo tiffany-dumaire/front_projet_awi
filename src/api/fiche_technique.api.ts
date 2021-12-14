@@ -233,3 +233,32 @@ export async function searchFTbyLibelleAndCategorie(search: string, id_categorie
         }
     });
 }
+
+/** POST **/
+
+export async function createFicheTechnique(
+    libelle_fiche_technique: string,
+    nombre_couverts: number,
+    id_responsable: number,
+    id_categorie_fiche: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'post',
+                url: `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/create`,
+                data: { 
+                    "libelle_fiche_technique": libelle_fiche_technique,
+                    "nombre_couverts": nombre_couverts,
+                    "id_responsable": id_responsable,
+                    "id_categorie_fiche": id_categorie_fiche,
+                },
+            };
+            axios(config).then((result) => {
+                resolve(result.data.insertId);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
