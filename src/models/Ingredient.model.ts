@@ -42,13 +42,13 @@ export class Code implements Code_Interface {
 export class Stock implements Stock_Interface {
     code: number;
     libelle: string;
+    unite: string;
     stock: number;
-    id_categorie: number;
 
-    constructor(code: number, libelle: string, stock: number, id_categorie: number) {
+    constructor(code: number, libelle: string, unite: string, stock: number) {
         this.code = code;
         this.libelle = libelle;
         this.stock = stock;
-        this.id_categorie = id_categorie;
+        this.unite = unite;
     }
 }

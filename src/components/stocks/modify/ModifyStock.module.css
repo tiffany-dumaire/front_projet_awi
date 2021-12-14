@@ -1,0 +1,103 @@
+.stockContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+    margin-bottom: 40px;
+}
+
+.stockContainer2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    padding-top: 40px;
+    vertical-align: auto;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding: 40px;
+    margin:auto;
+}
+
+.mercurial {
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+.th {
+    padding: 5px;
+    background-color: rgb(0, 96, 121);
+    color: aliceblue;
+    border-radius: 2px; 
+}
+
+.alignLeft, .alignRight, .td {
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.39);  
+}
+
+.input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    padding-left: 10px;
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modifyStock {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(126, 62, 25);
+    box-sizing: border-box;
+}
+
+.next {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(126, 62, 25);
+    box-sizing: border-box;
+}

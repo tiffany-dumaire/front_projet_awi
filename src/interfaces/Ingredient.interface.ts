@@ -15,5 +15,7 @@ export interface Code_Interface {
 
 export interface Stock_Interface {
     code: number;
+    libelle: string;
+    unite: string;
     stock: number;
 }
