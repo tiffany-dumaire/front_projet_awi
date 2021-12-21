@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import { getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
@@ -9,6 +9,7 @@ import { Phase_Interface } from '../../../interfaces/Phase.interface';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { DenreesEtape } from '../../../models/Denrees.model';
 import styles from './FicheTechniqueDetail.module.css';
+import { useReactToPrint } from 'react-to-print';
 
 export function FicheTechniqueDetail(): JSX.Element {
     //const [date, setDate] = useState<string>('');
@@ -17,6 +18,7 @@ export function FicheTechniqueDetail(): JSX.Element {
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     const [phases, setPhases] = useState<Phase_Interface[]>([]);
     const [denreesEtape, setDenreesEtape] = useState<DenreesEtape_Interface[]>([]);
+    const componentRef = useRef(null);
 
     async function getFT() {
         await getFicheTechniqueByID(Number(id_fiche_technique)).then((ft) => {
@@ -41,6 +43,10 @@ export function FicheTechniqueDetail(): JSX.Element {
             });
         });
     }
+
+    const printDiv = useReactToPrint({
+        content: () => componentRef.current,
+      });
 
     useEffect(() => {
         getFT();
@@ -76,8 +82,11 @@ export function FicheTechniqueDetail(): JSX.Element {
                         <Link className={styles.link} to={`/fiches techniques`}>
                             Retour aux fiches techniques
                         </Link>
+                        <button className={styles.link} onClick={() => printDiv()}>
+                            Imprimer la fiche technique
+                        </button>
                     </div>
-                    <div className={styles.detail}>
+                    <div className={styles.detail} ref={componentRef}>
                         <div className={styles.complete}>
                             <h3>Fiche Technique</h3>
                         </div>
@@ -85,17 +94,17 @@ export function FicheTechniqueDetail(): JSX.Element {
                             <div className={styles.intitule}>
                                 <div className={styles.complete2}>
                                     <div className={styles.title}><h4>Intitulé</h4></div>
-                                    <div><p>{ficheTechnique?.libelle_fiche_technique}</p></div>
+                                    <div><p className={styles.techniques4}>{ficheTechnique?.libelle_fiche_technique}</p></div>
                                 </div>
                             </div>
                             <div className={styles.row2}>
                                 <div className={styles.moitie1}>
                                     <div className={styles.title}><h4>Responsable</h4></div>
-                                    <div><p>{ficheTechnique?.intitule_responsable}</p></div>
+                                    <div><p className={styles.techniques4}>{ficheTechnique?.intitule_responsable}</p></div>
                                 </div>
                                 <div className={styles.moitie}>
                                     <div className={styles.title}><h4>Nombre de couverts</h4></div>
-                                    <div><p>{ficheTechnique?.nombre_couverts}</p></div>
+                                    <div><p className={styles.techniques4}>{ficheTechnique?.nombre_couverts}</p></div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +155,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     {phases.map((phase) => (
                                         <tr key={'phase' + phase.ordre}>
                                             <td>{phase.ordre}</td>
-                                            <td className={styles.techniques}>
+                                            <td className={styles.techniques3}>
                                                 <h4>{phase.libelle_phase}</h4>
                                                 <p>{phase.description_phase}</p>
                                             </td>
