@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Categorie_Fiches_Interface } from '../../../../../interfaces/Categorie_Fiches.interface';
-import { Responsable_Interface } from '../../../../../interfaces/Responsable.interface';
+import { Categorie_Fiches_Interface } from '../../../../interfaces/Categorie_Fiches.interface';
+import { Responsable_Interface } from '../../../../interfaces/Responsable.interface';
 import styles from './DebutFicheTechnique.module.css';
 
 export type DebutFicheTechniqueProps = {
