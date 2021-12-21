@@ -58,10 +58,10 @@ export async function getAllergenes(): Promise<Ingredient_Interface[]> {
                 },
             };
             axios.get(url, config).then((ingredients) => {
-            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
-            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
-                ingredientList.push(ingredient);
-            });
+                const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+                ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                    ingredientList.push(ingredient);
+                });
                 resolve(ingredientList);
             });
         } catch (err) {
@@ -155,10 +155,10 @@ export async function searchIngredients(search: string): Promise<Ingredient_Inte
                 }   
             };
             axios.get(url, config).then((ingredients) => {
-            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
-            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
-                ingredientList.push(ingredient);
-            });
+                const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+                ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                    ingredientList.push(ingredient);
+                });
                 resolve(ingredientList);
             });
         } catch (err) {
@@ -184,10 +184,10 @@ export async function searchIngredientsByCategorie(search: string, id_categorie:
                 }   
             };
             axios.get(url, config).then((ingredients) => {
-            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
-            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
-                ingredientList.push(ingredient);
-            });
+                const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+                ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                    ingredientList.push(ingredient);
+                });
                 resolve(ingredientList);
             });
         } catch (err) {
@@ -213,10 +213,10 @@ export async function searchIngredientsByCategorieAllergene(search: string, id_c
                 }   
             };
             axios.get(url, config).then((ingredients) => {
-            const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
-            ingredients.data.forEach((ingredient: Ingredient_Interface) => {
-                ingredientList.push(ingredient);
-            });
+                const ingredientList: Ingredient_Interface[] = new Array<Ingredient_Interface>();
+                ingredients.data.forEach((ingredient: Ingredient_Interface) => {
+                    ingredientList.push(ingredient);
+                });
                 resolve(ingredientList);
             });
         } catch (err) {
@@ -311,10 +311,10 @@ export async function getAllStocks(): Promise<Stock_Interface[]> {
                 }   
             };
             axios.get(url, config).then((stocks) => {
-            const stockList: Stock_Interface[] = new Array<Stock_Interface>();
-            stocks.data.forEach((stock: Stock_Interface) => {
-                stockList.push(stock);
-            });
+                const stockList: Stock_Interface[] = new Array<Stock_Interface>();
+                stocks.data.forEach((stock: Stock_Interface) => {
+                    stockList.push(stock);
+                });
                 resolve(stockList);
             });
         } catch (err) {
@@ -334,10 +334,10 @@ export async function getStockByCategorie(id_categorie: number): Promise<Stock_I
                 }   
             };
             axios.get(url, config).then((stocks) => {
-            const stockList: Stock_Interface[] = new Array<Stock_Interface>();
-            stocks.data.forEach((stock: Stock_Interface) => {
-                stockList.push(stock);
-            });
+                const stockList: Stock_Interface[] = new Array<Stock_Interface>();
+                stocks.data.forEach((stock: Stock_Interface) => {
+                    stockList.push(stock);
+                });
                 resolve(stockList);
             });
         } catch (err) {

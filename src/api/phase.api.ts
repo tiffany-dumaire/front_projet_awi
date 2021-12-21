@@ -26,6 +26,29 @@ export async function getPhaseByID(id_phase: number): Promise<Phase_Simple_Inter
     });
 }
 
+export async function getPhases(): Promise<Phase_Simple_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/phases/all`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((phases) => {
+                const phaseList: Phase_Simple_Interface[] = new Array<Phase_Simple_Interface>();
+                phases.data.forEach((phase: Phase_Simple_Interface) => {
+                    phaseList.push(phase);
+                });
+                resolve(phaseList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 export async function getDenreesByPhase(id_phase: number): Promise<Phase_Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
