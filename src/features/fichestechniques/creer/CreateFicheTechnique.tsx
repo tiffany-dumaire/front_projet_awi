@@ -84,6 +84,8 @@ export function CreateFicheTechnique(): JSX.Element {
         } else {
             if (numStep === 2) {
                 setNumStep(3)
+            } else {
+                setNumStep(4);
             }
         }
     };
@@ -102,8 +104,12 @@ export function CreateFicheTechnique(): JSX.Element {
                             ) : (
                                 numStep === 2 ? (
                                     <PhasesChoice phases={phases} addedPhases={addedPhases} addPhase={(phase: Phase_Simple_Interface) => addAPhase(phase)} removePhase={(phase: Phase_Simple_Interface) => removeAPhase(phase)} next={() => nextStep()} />
-                                ) : (
-                                    <TaskScheduling idFT={newId ? newId : 0} addedPhases={addedPhases} scheduling={() => nextStep()} />
+                                ) : ( 
+                                    numStep === 3 ? (
+                                        <TaskScheduling idFT={newId ? newId : 0} addedPhases={addedPhases} scheduling={() => nextStep()} />
+                                    ) : (
+                                        null
+                                    )
                                 )
                                 
                             )
