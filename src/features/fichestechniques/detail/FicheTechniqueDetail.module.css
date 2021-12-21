@@ -67,18 +67,28 @@ thead {
     min-width: 80px;
 }
 
-.techniques {
-    text-align: justify;
+.techniques, .techniques3 {
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .techniques2 {
-    text-align: justify;
     padding-left: 10px;
     padding-right: 10px;
     font-weight: 600;
     color: rgb(0, 67, 211);
+}
+
+.techniques3 {
+    text-align: justify;
+}
+
+.techniques4 {
+    text-align: center;
+}
+
+.techniques, .techniques2 {
+    text-align: left;
 }
 
 th {
@@ -118,6 +128,7 @@ td {
 .complete {
     position: relative;
     width: 100%;
+    text-align: center;
     background-color: rgba(190, 190, 190, 0.781);
     border-bottom: 1px black solid;
 }
@@ -125,6 +136,7 @@ td {
 .title {
     position: relative;
     width: 100%;
+    text-align: center;
     background-color: rgba(190, 190, 190, 0.781);
     border-bottom: 1px black solid;
 }
@@ -203,4 +215,16 @@ td {
     font-weight: 600;
     color:aliceblue;
     background-color: rgba(73, 98, 211, 0.795);
+}
+@media print {
+    .page-break {
+      margin-top: 1rem;
+      display: block;
+      page-break-before: auto;
+    }
+}
+  
+@page {
+    size: auto;
+    margin: auto;
 }

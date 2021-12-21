@@ -8,7 +8,8 @@ export function About(): JSX.Element {
     let divContents = document.getElementById("GFG")!.innerHTML;
     let a = window.open('', '', 'height=auto, width=auto')!;
     a.document.write('<html>');
-    a.document.write('<body > <h1>Div contents are <br>');
+    a.document.write(`<head><title>${'A Propos'}</title></head>`);
+    a.document.write('<body >');
     a.document.write(divContents);
     a.document.write('</body></html>');
     a.document.close();
