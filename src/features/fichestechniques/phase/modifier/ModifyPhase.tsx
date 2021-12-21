@@ -56,7 +56,6 @@ export function ModifyPhase(): JSX.Element {
     const pullAnIngredient = (phase_ingredient: Phase_Ingredient_Interface) => {
         pullIngredient(phase_ingredient.id_phase_ingredient).then((result) => {
             let index = addedIngredients.indexOf(phase_ingredient);
-            console.log(index);
             addedIngredients.splice(index, 1);
             setAddedIngredients(addedIngredients.slice(0));
         });

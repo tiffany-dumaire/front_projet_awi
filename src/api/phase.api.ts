@@ -104,6 +104,34 @@ export async function postPhase(
     });
 }
 
+export async function addPhaseFT(
+    id_phase: number,
+    id_fiche_technique: number,
+    ordre: number
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'post',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/phase_FT`,
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                data: {
+                    "id_phase": id_phase,
+                    "id_fiche_technique": id_fiche_technique,
+                    "ordre": ordre
+                }
+            };
+            axios(config).then((result) => {
+                resolve(result.data.insertId);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 export async function addIngredient(
     code: number,
     id_phase: number
