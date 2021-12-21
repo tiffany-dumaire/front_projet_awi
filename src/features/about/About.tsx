@@ -3,12 +3,24 @@ import { Helmet } from 'react-helmet';
 import styles from './About.module.css';
 
 export function About(): JSX.Element {
+
+  const printDiv = () => {
+    let divContents = document.getElementById("GFG")!.innerHTML;
+    let a = window.open('', '', 'height=auto, width=auto')!;
+    a.document.write('<html>');
+    a.document.write('<body > <h1>Div contents are <br>');
+    a.document.write(divContents);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+  }
+
   return (
     <>
       <Helmet>
           <title>{'AWI | A Propos'}</title>
       </Helmet>
-      <div className={styles.aboutContainer}>
+      <div id={'GFG'} className={styles.aboutContainer}>
           <h1>A propos - Projet AWI 2021</h1>
           <h2>Objectifs du projet</h2>
           <h3>Les grandes fonctionnalités :</h3>
@@ -71,7 +83,8 @@ export function About(): JSX.Element {
             </ul>
           </li>
         </ul>
-        <button onClick={() => window.print()}>Print</button>
+       {/*  <button onClick={() => window.print()}>Print</button> */}
+        <button onClick={() => printDiv()}>Print</button>
       </div>
     </>
   );
