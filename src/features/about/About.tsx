@@ -71,6 +71,7 @@ export function About(): JSX.Element {
             </ul>
           </li>
         </ul>
+        <button onClick={() => window.print()}>Print</button>
       </div>
     </>
   );
