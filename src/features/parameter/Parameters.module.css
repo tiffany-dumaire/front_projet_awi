@@ -20,19 +20,26 @@
     width: 100%;
     padding: 20px;
     justify-content: center;
-    border: 1px solid grey;
+    border: 2px solid grey;
     border-radius: 5px;
+    background-color: rgb(233, 233, 233);
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
 }
 
 .gridContainer {
     margin-top: 20px;
     display: grid;
-    grid: repeat(3, 240px) / auto-flow auto;
+    grid: repeat(3, 300px) / auto-flow auto;
 }
 
 .gridContainer > div {
     width: auto;
-    height: 220px;
+    height: 280px;
 }
 
 .divTop {
@@ -54,7 +61,7 @@
 .switchContainer {
     position: relative;
     display: inline-block;
-    width: 185px;
+    width: 200px;
     text-align: center;
 }
 
@@ -117,4 +124,68 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
+}
+
+.buttonSave {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 22px;
+    margin-left: 20px;
+    height: 25px;
+    background-color: rgb(110, 85, 85);
+    box-sizing: border-box;
+}
+
+.buttonSave:hover {
+    background-color: rgb(92, 65, 65);
+}
+
+.buttonCancel {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 22px;
+    margin-left: 20px;
+    height: 25px;
+    background-color: rgb(172, 63, 63);
+    box-sizing: border-box;
+}
+
+.buttonCancel:hover {
+    background-color: rgb(209, 40, 40);
+}
+
+.toast {
+    position: fixed;
+    margin-left: auto;
+    width: 300px;
+    height: 90px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    background-color: grey;
+    z-index: 3;
+}
+
+.toastHeader {
+    background-color: green;
+    color: aliceblue;
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    border-bottom: grey 2px solid;
+}
+
+.toastBody {
+    background-color: greenyellow;
+    color: black;
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: grey 2px solid;
 }

@@ -4,7 +4,7 @@ import styles from './About.module.css';
 
 export function About(): JSX.Element {
 
-  const printDiv = () => {
+  /* const printDiv = () => {
     let divContents = document.getElementById("GFG")!.innerHTML;
     let a = window.open('', '', 'height=auto, width=auto')!;
     a.document.write('<html>');
@@ -14,7 +14,7 @@ export function About(): JSX.Element {
     a.document.write('</body></html>');
     a.document.close();
     a.print();
-  }
+  } */
 
   return (
     <>
@@ -84,10 +84,10 @@ export function About(): JSX.Element {
               <li>Ne correspondant pas à une vente</li>
             </ul>
           </li>
-          <li><i>Paramètres de l'application</i></li>
+          <li><s>Paramètres de l'application</s></li>
         </ul>
-       {/*  <button onClick={() => window.print()}>Print</button> */}
-        <button onClick={() => printDiv()}>Print</button>
+       {/*  <button onClick={() => window.print()}>Print</button> 
+        <button onClick={() => printDiv()}>Print</button>*/}
       </div>
     </>
   );
