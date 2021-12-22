@@ -118,7 +118,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { 
+                                    {   
                                         denreesEtape.map((etape) => (
                                             <>
                                                 <tr key={'step' + etape.ordre}>

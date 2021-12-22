@@ -84,6 +84,7 @@ export function About(): JSX.Element {
               <li>Ne correspondant pas à une vente</li>
             </ul>
           </li>
+          <li><i>Paramètres de l'application</i></li>
         </ul>
        {/*  <button onClick={() => window.print()}>Print</button> */}
         <button onClick={() => printDiv()}>Print</button>

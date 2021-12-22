@@ -24,6 +24,7 @@ import { ModifyPhase } from './features/fichestechniques/phase/modifier/ModifyPh
 import { StockEntriesChoice } from './features/stocks/entrees/StockEntriesChoice';
 import { AllStockEntries } from './features/stocks/entrees/all/AllStockEntries';
 import { CategoryStockEntries } from './features/stocks/entrees/category/CategoryStockEntries';
+import { Parameters } from './features/parameter/Parameters';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -80,7 +81,7 @@ function App(): JSX.Element {
             '/stocks/entrees/byCategorie',
             '/stocks/entrees/byList',
             //other
-            '/policies',
+            '/parameters',
             '/about',
           ]}
           component={NavigationBar}
@@ -120,7 +121,7 @@ function App(): JSX.Element {
             '/stocks/entrees/byCategorie',
             '/stocks/entrees/byList',
             //other
-            '/policies',
+            '/parameters',
             '/about'
           ]}
         >
@@ -158,6 +159,7 @@ function App(): JSX.Element {
             <Route exact path="/stocks/entrees/byCategorie" component={CategoryStockEntries} />
             <Route exact path="/stocks/entrees/byList" component={StockMenu} />
             {/*other*/}
+            <Route exact path="/parameters" component={Parameters} />
             <Route exact path="/about" component={About} />
           </div>
           <Route 
@@ -195,7 +197,7 @@ function App(): JSX.Element {
               '/stocks/entrees/byCategorie',
               '/stocks/entrees/byList',
               //other
-              '/policies',
+              '/parameters',
               '/about'
             ]}
           >
