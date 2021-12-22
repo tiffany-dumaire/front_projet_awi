@@ -1,10 +1,10 @@
 //import jsPDF from "jspdf";
-import React from "react";
+import React, { useRef } from "react";
 import { Categorie_Interface } from "../../../interfaces/Categorie.interface";
 import { Categorie_Allergenes_Interface } from "../../../interfaces/Categorie_Allergenes.interface";
 import { Ingredient_Interface } from "../../../interfaces/Ingredient.interface";
-//import { RecapitulatifIngredient } from "../../pdf/ingredient/RecapitulatifIngredient";
 import styles from './IngredientDetail.module.css';
+import { useReactToPrint } from 'react-to-print';
 
 export type IngredientDetailProps = {
     ingredient: Ingredient_Interface;
@@ -14,21 +14,14 @@ export type IngredientDetailProps = {
 };
 
 export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = (props: IngredientDetailProps) => {
+    const componentRef = useRef(null);
 
-    function getPDF() {
-        /* var doc = new jsPDF('portrait','px',[490,560]);
-        var pdfjs = document.getElementById('divToPrint');
-        doc.html(pdfjs!, {
-            callback: function(doc) {
-                doc.save(`${props.ingredient.libelle}.pdf`)
-            },
-            x:1,
-            y:1
-        }); */
-    } 
+    const getPDF = useReactToPrint({
+        content: () => componentRef.current,
+    });
 
     return(
-        <div className={styles.detailContainer} id="divToPrint">
+        <div className={styles.detailContainer} ref={componentRef}>
             <h2>{props.ingredient.libelle}</h2>
             <div className={styles.gridContainer}>
                 <div>

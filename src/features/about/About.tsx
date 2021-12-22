@@ -22,10 +22,10 @@ export function About(): JSX.Element {
           <title>{'AWI | A Propos'}</title>
       </Helmet>
       <div id={'GFG'} className={styles.aboutContainer}>
-          <h1>A propos - Projet AWI 2021</h1>
-          <h2>Objectifs du projet</h2>
-          <h3>Les grandes fonctionnalités :</h3>
-          <ul>
+        <h1>A propos - Projet AWI 2021</h1>
+        <h2>Objectifs du projet</h2>
+        <h3>Les grandes fonctionnalités :</h3>
+        <ul>
           <li>
             Accéder au mercurial
             <ul>
@@ -33,6 +33,7 @@ export function About(): JSX.Element {
               <li><s>Rechercher un ingrédient</s></li>
               <li><s>Ajouter un ingrédient</s></li>
               <li><s>Modifier les ingrédients</s></li>
+              <li><s>Imprimer une fiche ingrédient</s></li>
             </ul>
           </li>
           <li>
@@ -73,7 +74,7 @@ export function About(): JSX.Element {
             Impression pdf d'une fiche technique
             <ul>
               <li>Avec coûts</li>
-              <li><i><s>Sans coûts</s>(manque juste la mise en pdf à faire en local à la fin)</i></li>
+              <li><s>Sans coûts</s></li>
             </ul>
           </li>
           <li>
