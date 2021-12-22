@@ -59,6 +59,10 @@ thead {
     text-align: left;
 }
 
+.duree {
+    text-align: center;
+}
+
 .duree::after {
     content: "'";
 }
@@ -175,9 +179,8 @@ td {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-left: 80px;
-    justify-content: left;
-    width: 80%;
+    margin:auto;
+    width: 90%;
     padding-top: 20px;
 }
 
@@ -216,6 +219,21 @@ td {
     color:aliceblue;
     background-color: rgba(73, 98, 211, 0.795);
 }
+
+.link2 {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px;
+    width: 250px;
+    margin-left: auto;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color:aliceblue;
+    background-color: rgba(94, 48, 30, 0.795);
+}
+
 @media print {
     .page-break {
       margin-top: 1rem;

@@ -46,7 +46,7 @@ export function FicheTechniqueDetail(): JSX.Element {
 
     const printDiv = useReactToPrint({
         content: () => componentRef.current,
-      });
+    });
 
     useEffect(() => {
         getFT();
@@ -82,7 +82,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                         <Link className={styles.link} to={`/fiches techniques`}>
                             Retour aux fiches techniques
                         </Link>
-                        <button className={styles.link} onClick={() => printDiv()}>
+                        <button className={styles.link2} onClick={() => printDiv()}>
                             Imprimer la fiche technique
                         </button>
                     </div>
@@ -134,8 +134,8 @@ export function FicheTechniqueDetail(): JSX.Element {
                                                             <td className={styles.techniques}>{denree.libelle}</td>
                                                         )}
                                                         
-                                                        <td>{denree.unite}</td>
-                                                        <td>{denree.quantite}</td>
+                                                        <td className={styles.techniques4}>{denree.unite}</td>
+                                                        <td className={styles.techniques4}>{denree.quantite}</td>
                                                     </tr>
                                                 ))}
                                             </>
@@ -154,7 +154,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                                 <tbody>
                                     {phases.map((phase) => (
                                         <tr key={'phase' + phase.ordre}>
-                                            <td>{phase.ordre}</td>
+                                            <td className={styles.techniques4}>{phase.ordre}</td>
                                             <td className={styles.techniques3}>
                                                 <h4>{phase.libelle_phase}</h4>
                                                 <p>{phase.description_phase}</p>
