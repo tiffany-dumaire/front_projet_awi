@@ -235,14 +235,18 @@ td {
 }
 
 @media print {
+    .detail {
+        width: 95%;
+    }
+
     .page-break {
       margin-top: 1rem;
       display: block;
       page-break-before: auto;
     }
-}
-  
-@page {
-    size: auto;
-    margin: auto;
+
+    @page {
+        size: auto;
+        margin: auto;
+    }
 }
