@@ -1,68 +1,52 @@
-.detailContainer {
+.container {
     position: relative;
-    display: flex;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 40px;
+    justify-content: center;
+    color: black;
+}
+
+.subcontainer {
+    position: relative;
+    display:flex;
     flex-direction: column;
-    border: solid 2px gray;
-    border-radius: 15px;
-    justify-content: left;
-    text-align: left;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin:auto;
+    text-align: justify;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
 
 .gridContainer {
+    margin-top: 20px;
     display: grid;
-    grid: repeat(7, 70px) / auto-flow 270px;
+    grid: repeat(3, 240px) / auto-flow auto;
 }
 
 .gridContainer > div {
-    width: 250px;
-    height: 50px;
+    width: auto;
+    height: 220px;
 }
 
-.label {
-    position: relative;
-    display: block;
-    font-weight: bold;
-    margin-top: 12px;
-    padding-left: 5px;
+.divTop {
+    margin-top: 20px;
 }
 
-.label::after {
-    content: ' :';
-}
-
-.input[type="text"] {
+.input2[type="number"] {
     position: relative;
     color: black;
     border-radius: 15px;
     text-align: center;
-    margin-top: 5px;
-    height: 40px;
+    height: 30px;
+    width: 185px;
     box-sizing: border-box;
-    width: 100%;
-}
-
-.buttonEdit, .buttonPrint {
-    position: relative;
-    color: aliceblue;
-    border-radius: 15px;
-    text-align: center;
-    margin-top: 5px;
-    height: 40px;
-    width: 200px;
-    box-sizing: border-box;
-}
-
-.buttonEdit {
-    background-color: rgb(110, 85, 85);
-    width: 100%;
-}
-
-.buttonPrint {
-    background-color: rgb(42, 99, 165);
-    width: 100%;
 }
 
 /* Toggle Switch Button */
@@ -70,7 +54,7 @@
 .switchContainer {
     position: relative;
     display: inline-block;
-    width: 200px;
+    width: 185px;
     text-align: center;
 }
 
@@ -82,6 +66,7 @@
 }
   
 .switch input { 
+    cursor: pointer;
     opacity: 0;
     width: 0;
     height: 0;
@@ -132,21 +117,4 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
-}
-
-@media print {
-    .detailContainer {
-        width: 95%;
-    }
-
-    .page-break {
-      margin-top: 1rem;
-      display: block;
-      page-break-before: auto;
-    }
-
-    @page {
-        size: landscape;
-        margin: auto;
-    }
 }
