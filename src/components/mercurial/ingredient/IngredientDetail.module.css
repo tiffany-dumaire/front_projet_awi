@@ -133,3 +133,20 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+@media print {
+    .detailContainer {
+        width: 95%;
+    }
+
+    .page-break {
+      margin-top: 1rem;
+      display: block;
+      page-break-before: auto;
+    }
+
+    @page {
+        size: A5 landscape;
+        margin: auto;
+    }
+}
