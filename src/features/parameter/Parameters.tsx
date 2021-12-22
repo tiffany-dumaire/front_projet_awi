@@ -101,13 +101,13 @@ export function Parameters(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{'AWI | A Propos'}</title>
+                <title>{'🛠️ Paramètres de l\'application 🛠️'}</title>
             </Helmet>
             <div className={styles.container}>
                 {
                     loading ? (
                         <div className={styles.subcontainer}>
-                            <h2>Paramètres de l'application</h2>
+                            <div className={styles.row}><span className={styles.icone}>🛠️ </span><h2>Paramètres de l'application</h2></div>
                             <h3>Modification des calculs de coûts</h3>
                             <div className={styles.gridContainer}>
                                 <div>
