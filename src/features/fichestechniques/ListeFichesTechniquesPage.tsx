@@ -64,15 +64,6 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                                     ))        
                                 }
                             </div>
-                            {/* Afficher les catégories de fiches techniques sous formes de cartes :
-                                    - Catégorie nom
-                                    - Couleur catégorie
-                                Ensuite dans les catégories, afficher les fiches techniques sous formes de cartes :
-                                    - Intitulé
-                                    - Nombre de couverts
-                                    - Responsable
-                                    - Catégorie                       
-                            */}
                         </div>
                     </div>
                 ) : (
