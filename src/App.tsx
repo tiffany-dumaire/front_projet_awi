@@ -26,6 +26,7 @@ import { AllStockEntries } from './features/stocks/entrees/all/AllStockEntries';
 import { CategoryStockEntries } from './features/stocks/entrees/category/CategoryStockEntries';
 import { Parameters } from './features/parameter/Parameters';
 import { NotFound } from './features/notfound/NotFound';
+import { ListePhasesPage } from './features/fichestechniques/phase/ListePhases';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -61,6 +62,7 @@ function App(): JSX.Element {
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/fiches techniques/details/:id_fiche_technique',
             //phases
+            '/phases',
             '/phases/create',
             '/phases/view/:id_phase',
             '/phases/modify/:id_phase',
@@ -102,6 +104,7 @@ function App(): JSX.Element {
               '/fiches techniques/byCategorie/:id_categorie_fiche',
               '/fiches techniques/details/:id_fiche_technique',
               //phases
+              '/phases',
               '/phases/create',
               '/phases/view/:id_phase',
               '/phases/modify/:id_phase',
@@ -140,6 +143,7 @@ function App(): JSX.Element {
                 <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
                 <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail} />
                 {/*phases*/}
+                <Route exact path="/phases" component={ListePhasesPage} />
                 <Route exact path="/phases/create" component={CreatePhase} />
                 <Route exact path="/phases/view/:id_phase" component={PhaseView} />
                 <Route exact path="/phases/modify/:id_phase" component={ModifyPhase} />
@@ -178,6 +182,7 @@ function App(): JSX.Element {
                 '/fiches techniques/byCategorie/:id_categorie_fiche',
                 '/fiches techniques/details/:id_fiche_technique',
                 //phases
+                '/phases',
                 '/phases/create',
                 '/phases/view/:id_phase',
                 '/phases/modify/:id_phase',
