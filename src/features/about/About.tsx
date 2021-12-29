@@ -27,7 +27,7 @@ export function About(): JSX.Element {
         <h3>Les grandes fonctionnalités :</h3>
         <ul>
           <li>
-            Accéder au mercurial
+            <s>Accéder au mercurial</s>
             <ul>
               <li><s>Voir le détail des ingrédients</s></li>
               <li><s>Rechercher un ingrédient</s></li>
@@ -52,12 +52,12 @@ export function About(): JSX.Element {
             </ul>
           </li>
           <li>
-            Calcul des coûts
+            <i>Calcul des coûts</i>
             <ul>
-              <li>Coût matière</li>
-              <li>Coût des charges (fluides + personnel)</li>
-              <li>Coût de production par portion</li>
-              <li>Prix de vente</li>
+              <li><s>Coût matière</s></li>
+              <li><i>Coût des charges (fluides + personnel)</i></li>
+              <li><i>Coût de production par portion</i></li>
+              <li><i>Prix de vente</i></li>
             </ul>
           </li>
           <li>

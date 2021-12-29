@@ -95,6 +95,7 @@ export function IngredientResearch(): JSX.Element {
                                             <th className={styles.th}>Prix unitaire</th>
                                             <th className={styles.th}>Quantité en stock</th>
                                             <th className={styles.th}>Valeur du stock</th>
+                                            <th className={styles.th}>Allergene</th>
                                             <th className={styles.th}>Voir la fiche produit</th>
                                         </tr>
                                     </thead>
@@ -108,6 +109,7 @@ export function IngredientResearch(): JSX.Element {
                                                     <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
                                                     <td className={styles.alignRight}>{ingredient.stock}</td>
                                                     <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
+                                                    <td className={styles.td}>{ingredient.allergene ? 'Oui' : 'Non'}</td>
                                                     <td className={styles.td}>
                                                         <Link className={styles.button} to={`/mercurial/ingredient/${ingredient.code}`}>
                                                             <FcSearch className={styles.iconeSearch}/>

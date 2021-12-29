@@ -6,6 +6,7 @@ export interface Fiche_Technique_Interface {
     libelle_fiche_technique: string;
     nombre_couverts: number;
     id_responsable: number;
+    intitule_responsable: string;
     id_categorie_fiche: number;
 }
 

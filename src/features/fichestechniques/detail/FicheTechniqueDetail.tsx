@@ -10,14 +10,24 @@ import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { DenreesEtape } from '../../../models/Denrees.model';
 import styles from './FicheTechniqueDetail.module.css';
 import { useReactToPrint } from 'react-to-print';
+import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
+import { getParameter } from '../../../api/parameter.api';
 
 export function FicheTechniqueDetail(): JSX.Element {
-    //const [date, setDate] = useState<string>('');
     const [ficheTechnique, setFicheTechnique] = useState<Fiche_Technique_Infos_Interface>();
     const [loading, setLoading] = useState<boolean>(false);
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     const [phases, setPhases] = useState<Phase_Interface[]>([]);
     const [denreesEtape, setDenreesEtape] = useState<DenreesEtape_Interface[]>([]);
+
+    //coût
+    const [coeff_vente, setCoeffVente] = useState<Parameter_Interface>();
+    const [cout_moyen, setCoutMoyen] = useState<Parameter_Interface>();
+    const [assaisonnement, setAssaisonnement] = useState<Parameter_Interface>();
+    const [showCout, setShowCout] = useState<boolean>(true);
+    const [coutMatierePhase, setCoutMatierePhase] = useState<number[]>([0]);
+    const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    const [dureeTotale, setDureeTotale] = useState<number>(0);
     const componentRef = useRef(null);
 
     async function getFT() {
@@ -28,19 +38,26 @@ export function FicheTechniqueDetail(): JSX.Element {
 
     async function getPhases() {
         await getPhasesByFT(Number(id_fiche_technique)).then((list) => {
+            let duree = 0;
             list.forEach((phase) => {
                 getDenreesByFTByPhase(Number(id_fiche_technique), phase.ordre).then((list2) => {
                     let dList: Denree_Interface[] = [];
+                    let cout = 0;
                     list2.forEach((denree) => {
+                        cout = cout + denree.quantite * denree.prix_unitaire;
                         dList.push(denree);
                     });
                     denreesEtape.push(new DenreesEtape(phase.ordre, phase.libelle_denrees, list2));
                     setDenreesEtape(denreesEtape.slice(0));
+                    coutMatierePhase.push(cout);
+                    setCoutMatierePhase(coutMatierePhase.slice(0));
                 });
+                duree = duree + phase.duree_phase;
                 phases.push(phase);
                 setPhases(phases.slice(0));
-                setLoading(true);
             });
+            setDureeTotale(duree);
+            setLoading(true);
         });
     }
 
@@ -51,6 +68,15 @@ export function FicheTechniqueDetail(): JSX.Element {
     useEffect(() => {
         getFT();
         getPhases();
+        getParameter('COUT_ASSAISONNEMENT').then((parameter) => {
+            setAssaisonnement(parameter);
+        });
+        getParameter('COUT_HORAIRE_MOYEN').then((parameter) => {
+            setCoutMoyen(parameter);
+        });
+        getParameter('COEFF_VENTE').then((parameter) => {
+            setCoeffVente(parameter);
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -85,6 +111,17 @@ export function FicheTechniqueDetail(): JSX.Element {
                         <button className={styles.link2} onClick={() => printDiv()}>
                             Imprimer la fiche technique
                         </button>
+                    </div>
+                    <div className={styles.linkTo}>
+                        <div className={styles.containerSwitch}>
+                            <div className={styles.switchContainer}>
+                                <label className={styles.switch}>
+                                    <input type="checkbox" checked={showCout} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setShowCout(Boolean(ev.target.checked))}/>
+                                    <span className={`${styles.slider} ${styles.round}`}></span>
+                                </label>
+                            </div>
+                            <label>Afficher/Masquer les coûts</label>
+                        </div>
                     </div>
                     <div className={styles.detail} ref={componentRef}>
                         <div className={styles.complete}>
@@ -164,7 +201,64 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     ))}
                                 </tbody>
                             </table>
-                        </div> 
+                        </div>
+                        {showCout && ficheTechnique && assaisonnement && coeff_vente && cout_moyen? (
+                            <>
+                                <div className={styles.gridCout}>
+                                    <div className={styles.title}>
+                                        <h4>Coûts de production {'&'} prix de vente</h4>
+                                    </div>
+                                    <div className={styles.title3}>
+                                        <h4>Bénéfices {'&'} seuil de rentabilité</h4>
+                                    </div>
+                                </div>
+                                <div className={styles.gridCout}>
+                                    <div className={styles.left}>
+                                        <h4>Durée de la progression : </h4>
+                                        <p>La durée totale de la progression est de {dureeTotale} minutes.</p>
+                                        {coeff_vente?.utile ? (
+                                            <>
+                                                <h4>Coût des charges : </h4>
+                                                <p>Charges de personnel : {(cout_moyen?.value * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Charges fluides :  {(cout_moyen?.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Le coût total des charges est de {(cout_moyen?.value * (dureeTotale/60) + cout_moyen?.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                            </>
+                                            ) : null
+                                        }
+                                        <h4>Coût des matières : </h4>
+                                        <p>Coût des matières : {(coutMatierePhase.reduce(reducer)).toFixed(2)}€.</p>
+                                        {assaisonnement.utile ? (
+                                            <p>Coût assaisonnement : {((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer)).toFixed(2)}€.</p>
+                                        ) : (
+                                            <p>Coût assaisonnement : {(assaisonnement?.value2)?.toFixed(2)}€.</p>
+                                        )}
+                                        <h4>Coût de production : </h4>
+                                        {coeff_vente.utile ? (
+                                            <p>Coût des matières + charges : {assaisonnement.utile ? ((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : (assaisonnement.value2 + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
+                                        ) : (
+                                            <p>Coût des matières (charges non calculées) : {assaisonnement.utile ? ((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer)).toFixed(2) : (assaisonnement.value2 + coutMatierePhase.reduce(reducer)).toFixed(2)}€</p>
+                                        )}
+                                        <h4>Prix de vente : </h4>
+                                        {coeff_vente.utile ? (
+                                            <>
+                                                <p>Prix de vente TTC: {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : ((assaisonnement.value2 + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
+                                                <p>Prix de vente par portion TTC: {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)) / ficheTechnique.nombre_couverts).toFixed(2) : (((assaisonnement.value2 + coutMatierePhase.reduce(reducer) + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)) / ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p>Prix de vente TTC : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer)) * (coeff_vente.value2/100)).toFixed(2) : ((assaisonnement.value2 + coutMatierePhase.reduce(reducer)) * (coeff_vente.value2/100)).toFixed(2)}€</p>
+                                                <p>Prix de vente par portion TTC : {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer) + coutMatierePhase.reduce(reducer)) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2) : (((assaisonnement.value2 + coutMatierePhase.reduce(reducer)) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                            </>
+                                        )}
+                                    </div>
+                                    <div className={styles.right}>
+                                        <p>{ficheTechnique?.libelle_fiche_technique}</p>
+                                    </div>
+                                </div>
+                            </>
+                        ):(
+                            null
+                        )}
                     </div>  
                 </div>
             ) : (
