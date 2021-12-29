@@ -90,7 +90,7 @@ export function FicheTechniqueCategory(): JSX.Element {
                                                     <td className={styles.td}>{ft.id_fiche_technique}</td>
                                                     <td className={styles.alignLeft}>{ft.libelle_fiche_technique}</td>
                                                     <td className={styles.td}>{ft.nombre_couverts}</td>
-                                                    <td className={styles.alignRight}>{ft.id_responsable}</td>
+                                                    <td className={styles.alignRight}>{ft.intitule_responsable}</td>
                                                     <td className={styles.td}>
                                                         <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`}>
                                                             <FcSearch className={styles.iconeSearch}/>
