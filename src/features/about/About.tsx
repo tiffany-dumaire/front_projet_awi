@@ -27,13 +27,14 @@ export function About(): JSX.Element {
         <h3>Les grandes fonctionnalités :</h3>
         <ul>
           <li>
-            <s>Accéder au mercurial</s>
+            Accéder au mercurial
             <ul>
               <li><s>Voir le détail des ingrédients</s></li>
               <li><s>Rechercher un ingrédient</s></li>
               <li><s>Ajouter un ingrédient</s></li>
               <li><s>Modifier les ingrédients</s></li>
               <li><s>Imprimer une fiche ingrédient</s></li>
+              <li><s>Supprimer un ingrédient</s></li>
             </ul>
           </li>
           <li>
@@ -49,15 +50,20 @@ export function About(): JSX.Element {
               <li><s>Rechercher une fiche technique</s></li>
               <li><i>Créer une fiche technique</i></li>
               <li><i>Modifier une fiche technique</i></li>
+              <li><i>Supprimer une fiche technique</i></li>
             </ul>
           </li>
           <li>
             <i>Calcul des coûts</i>
             <ul>
               <li><s>Coût matière</s></li>
-              <li><i>Coût des charges (fluides + personnel)</i></li>
+              <li><s>Coût des charges (fluides + personnel)</s></li>
               <li><i>Coût de production par portion</i></li>
-              <li><i>Prix de vente</i></li>
+              <li><s>Prix de vente</s></li>
+              <li><i>Prix de vente par portion</i></li>
+              <li><i>Bénéfices</i></li>
+              <li><i>Bénéfices par portion</i></li>
+              <li><i>Seuil de rentabilité</i></li>
             </ul>
           </li>
           <li>
@@ -73,15 +79,15 @@ export function About(): JSX.Element {
           <li>
             Impression pdf d'une fiche technique
             <ul>
-              <li>Avec coûts</li>
+              <li><s>Avec coûts</s></li>
               <li><s>Sans coûts</s></li>
             </ul>
           </li>
           <li>
             Créer des étiquettes
             <ul>
-              <li>Correspondant à une vente</li>
-              <li>Ne correspondant pas à une vente</li>
+              <li><i>Correspondant à une vente</i></li>
+              <li><i>Ne correspondant pas à une vente</i></li>
             </ul>
           </li>
           <li><s>Paramètres de l'application</s></li>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { getCategorieAllergeneById, getCategorieById, getCategoriesAllergenes } from '../../../api/categorie.api';
-import { getIngredientByCategorie } from '../../../api/ingredient.api';
+import { deleteIngredient, getIngredientByCategorie } from '../../../api/ingredient.api';
 import { Loading } from '../../../components/loading/Loading';
 import { EditIngredient } from '../../../components/mercurial/ingredient/edit/EditIngredient';
 import { IngredientDetail } from '../../../components/mercurial/ingredient/IngredientDetail';
@@ -20,6 +20,7 @@ export function DetailIngredient(): JSX.Element {
     const [categorie_allergene, setCategorieAllergene] = useState<Categorie_Allergenes_Interface>();
     const [onEdit, setOnEdit] = useState<boolean>(false);
     const { id_ingredient } = useParams<{ id_ingredient: string }>();
+    const history = useHistory();
 
     const getAllergeneCategorie = () => {
         getCategoriesAllergenes().then((list) => {
@@ -45,6 +46,18 @@ export function DetailIngredient(): JSX.Element {
             setLoader(true);
         });
     };
+
+    const deleteAnIngredient = () => {
+        var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
+        if (r) {
+            deleteIngredient(Number(id_ingredient)).then((result) => {
+                history.push('/mercurial');
+            });
+        } else {
+            return;
+        }
+        
+    }
 
     useEffect(() => {
         getIngredient();
@@ -79,7 +92,7 @@ export function DetailIngredient(): JSX.Element {
                                 onEdit ? (
                                     <EditIngredient ingredient={ingredient} setEdited={(edit: boolean) => setEdited(edit)} setOnEdit={(edit: boolean) => setOnEdit(edit)}/>
                                 ) : (
-                                    <IngredientDetail ingredient={ingredient} categorie={categorie} categorie_allergene={categorie_allergene} setOnEdit={(edit: boolean) => setOnEdit(edit)}/>
+                                    <IngredientDetail ingredient={ingredient} categorie={categorie} categorie_allergene={categorie_allergene} setOnEdit={(edit: boolean) => setOnEdit(edit)} deleteI={() => deleteAnIngredient()}/>
                                 )
                             }  
                         </div>  

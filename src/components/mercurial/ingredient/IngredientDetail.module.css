@@ -2,6 +2,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin:auto;
+}
+
+.subDetailContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     border: solid 2px gray;
     border-radius: 15px;
     justify-content: left;
@@ -13,7 +25,14 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(7, 70px) / auto-flow 270px;
+    grid: repeat(6, 70px) / auto-flow 270px;
+}
+
+.gridButtonContainer {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .gridContainer > div {
@@ -44,25 +63,28 @@
     width: 100%;
 }
 
-.buttonEdit, .buttonPrint {
+.buttonEdit, .buttonPrint, .buttonDelete {
     position: relative;
     color: aliceblue;
     border-radius: 15px;
     text-align: center;
     margin-top: 5px;
     height: 40px;
-    width: 200px;
+    width: 160px;
     box-sizing: border-box;
 }
 
 .buttonEdit {
     background-color: rgb(110, 85, 85);
-    width: 100%;
 }
 
 .buttonPrint {
     background-color: rgb(42, 99, 165);
-    width: 100%;
+    
+}
+
+.buttonDelete {
+    background-color: rgb(172, 63, 63);
 }
 
 /* Toggle Switch Button */
