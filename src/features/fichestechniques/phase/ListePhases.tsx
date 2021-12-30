@@ -68,7 +68,7 @@ export function ListePhasesPage(): JSX.Element {
                                                     <td className={styles.td}>{phase.id_phase}</td>
                                                     <td className={styles.alignLeft}>{phase.libelle_phase}</td>
                                                     <td className={styles.alignLeft}>{phase.description_phase}</td>
-                                                    <td className={styles.td}>{phase.duree_phase}</td>
+                                                    <td className={styles.td}>{phase.duree_phase}'</td>
                                                     <td className={styles.td}>
                                                         <Link className={styles.button} to={`/phases/view/${phase.id_phase}`}>
                                                             <FcSearch className={styles.iconeSearch}/>

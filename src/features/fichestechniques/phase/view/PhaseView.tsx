@@ -86,7 +86,7 @@ export function PhaseView(): JSX.Element {
                                     <h3>Description de la phase : {infos?.id_phase}</h3>
                                     <p><b>Intitulé : </b>{infos?.libelle_phase}</p>
                                     <p><b>Description : </b>{infos?.description_phase}</p>
-                                    <p><b>Durée : </b>{infos?.duree_phase}</p>
+                                    <p><b>Durée : </b>{infos?.duree_phase} minutes</p>
                                 </div>
                                 <div>
                                     <h3>Liste des denrées de la phase</h3>
