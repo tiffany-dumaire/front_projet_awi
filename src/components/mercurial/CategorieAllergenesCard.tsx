@@ -1,5 +1,5 @@
 import React from 'react';
-//import { GiArchiveResearch, GiGearHammer } from 'react-icons/gi';
+import { FcSettings, FcNook } from "react-icons/fc";
 import { useHistory } from 'react-router-dom';
 import styles from './CategorieCard.module.css';
 
@@ -22,8 +22,8 @@ export const CategorieAllergenesCard: React.FunctionComponent<CategorieAllergene
             <h3 className={styles.h3}>{props.categorie_allergene}</h3>
             {props.id_categorie_allergene !== 0 ? 
                 <div>
-                    <div className={styles.icone} onClick={() => history.push(`category/allergene/modify/${props.id_categorie_allergene}`)}>Modif</div>
-                    <div className={styles.icone} onClick={() => history.push(`/liste des allergenes/byCategorie/${props.id_categorie_allergene}`)}>Vue</div>
+                    <FcSettings className={styles.icone} onClick={() => history.push(`category/allergene/modify/${props.id_categorie_allergene}`)} />
+                    <FcNook className={styles.icone} onClick={() => history.push(`/liste des allergenes/byCategorie/${props.id_categorie_allergene}`)} />
                 </div>
             : 
                 null
