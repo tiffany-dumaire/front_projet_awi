@@ -93,9 +93,9 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                                                     <td className={styles.td}>{ingredient.code}</td>
                                                     <td className={styles.alignLeft}>{ingredient.libelle}</td>
                                                     <td className={styles.td}>{ingredient.unite}</td>
-                                                    <td className={styles.alignRight}>{ingredient.prix_unitaire} €</td>
+                                                    <td className={styles.alignRight}>{ingredient.prix_unitaire.toFixed(2)} €</td>
                                                     <td className={styles.alignRight}>{ingredient.stock}</td>
-                                                    <td className={styles.alignRight}>{ingredient.prix_unitaire * ingredient.stock} €</td>
+                                                    <td className={styles.alignRight}>{(ingredient.prix_unitaire * ingredient.stock).toFixed(2)} €</td>
                                                     <td className={styles.td}>{ingredient.allergene ? 'Oui' : 'Non'}</td>
                                                     <td className={styles.td}>
                                                         <Link className={styles.button} to={`/mercurial/ingredient/${ingredient.code}`}>
