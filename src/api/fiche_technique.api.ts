@@ -262,3 +262,23 @@ export async function createFicheTechnique(
         }
     });
 }
+
+/** DELETE **/
+
+export async function deleteFicheTechnique(
+    id_fiche_technique: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'delete',
+                url: `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/delete/${id_fiche_technique}`
+            };
+            axios(config).then((result) => {
+                resolve(result.data.affectedRows);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}

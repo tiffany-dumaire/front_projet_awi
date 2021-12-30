@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
-import { getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { deleteFicheTechnique, getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
 import { Loading } from '../../../components/loading/Loading';
 import { DenreesEtape_Interface, Denree_Interface } from '../../../interfaces/Denrees.interface';
 import { Fiche_Technique_Infos_Interface } from '../../../interfaces/Fiche_Technique.interface';
@@ -19,7 +19,7 @@ export function FicheTechniqueDetail(): JSX.Element {
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     const [phases, setPhases] = useState<Phase_Interface[]>([]);
     const [denreesEtape, setDenreesEtape] = useState<DenreesEtape_Interface[]>([]);
-
+    const history = useHistory();
     //coût
     const [coeff_vente, setCoeffVente] = useState<Parameter_Interface>();
     const [cout_moyen, setCoutMoyen] = useState<Parameter_Interface>();
@@ -61,6 +61,12 @@ export function FicheTechniqueDetail(): JSX.Element {
         });
     }
 
+    const deleteFT = () => {
+        deleteFicheTechnique(Number(id_fiche_technique)).then(() => {
+            history.push(`/fiches techniques/byCategorie/0`);
+        });
+    }
+    
     const printDiv = useReactToPrint({
         content: () => componentRef.current,
     });
@@ -122,6 +128,9 @@ export function FicheTechniqueDetail(): JSX.Element {
                             </div>
                             <label>Afficher/Masquer les coûts</label>
                         </div>
+                        <button className={styles.deleteButton} onClick={() => deleteFT()}>
+                            Supprimer la fiche technique
+                        </button>
                     </div>
                     <div className={styles.detail} ref={componentRef}>
                         <div className={styles.complete}>
