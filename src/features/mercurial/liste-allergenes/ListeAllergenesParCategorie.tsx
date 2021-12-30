@@ -94,9 +94,9 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                                                         <td className={styles.td}>{allergene.code}</td>
                                                         <td className={styles.alignLeft}>{allergene.libelle}</td>
                                                         <td className={styles.td}>{allergene.unite}</td>
-                                                        <td className={styles.alignRight}>{allergene.prix_unitaire} €</td>
+                                                        <td className={styles.alignRight}>{allergene.prix_unitaire.toFixed(2)} €</td>
                                                         <td className={styles.alignRight}>{allergene.stock}</td>
-                                                        <td className={styles.alignRight}>{allergene.prix_unitaire * allergene.stock} €</td>
+                                                        <td className={styles.alignRight}>{(allergene.prix_unitaire * allergene.stock).toFixed(2)} €</td>
                                                         <td className={styles.td}>
                                                             <Link className={styles.button} to={`/mercurial/ingredient/${allergene.code}`}>
                                                                 <FcSearch className={styles.iconeSearch}/>

@@ -56,8 +56,7 @@ export function DetailIngredient(): JSX.Element {
         } else {
             return;
         }
-        
-    }
+    };
 
     useEffect(() => {
         getIngredient();

@@ -8,7 +8,6 @@ import styles from './CreateIngredient.module.css';
 export function CreateIngredient(): JSX.Element {
     const [loader, setLoader] = useState<boolean>(false);
 
-
     useEffect(() => {
         setLoader(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
