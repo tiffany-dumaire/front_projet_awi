@@ -58,9 +58,17 @@ export function ListeAllergenesPage(): JSX.Element {
                         <div className={styles.mercurialContainer}>
                             {
                                 categories.map((categorie: Categorie_Allergenes_Interface) => (
-                                    <Link  key={categorie.id_categorie_allergene} className={styles.link} to={`/liste des allergenes/byCategorie/${categorie.id_categorie_allergene}`}>
-                                        <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
-                                    </Link>
+                                    <>
+                                        {categorie.id_categorie_allergene === 0 ? 
+                                            <Link  key={categorie.id_categorie_allergene} className={styles.link} to={`/liste des allergenes/byCategorie/${categorie.id_categorie_allergene}`}>
+                                                <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
+                                            </Link>
+                                        :
+                                            <div key={categorie.id_categorie_allergene} className={styles.link}>
+                                                <CategorieAllergenesCard id_categorie_allergene={categorie.id_categorie_allergene} categorie_allergene={categorie.categorie_allergene} color_allergene={categorie.color_allergene} />
+                                            </div>
+                                        }
+                                    </>
                                 ))        
                             }
                         </div>

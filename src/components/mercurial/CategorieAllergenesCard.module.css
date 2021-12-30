@@ -12,3 +12,23 @@
     border: 1px solid rgb(0, 0, 0);
     box-shadow: 10px 5px 5px rgb(160, 160, 160);
 }
+
+.gridContainer {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(40px, auto);
+}
+
+.h3 {
+    margin-top: 15px;
+}
+
+.icone {
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 40px;
+    height: 40px;
+    color: rgb(0, 0, 0);
+}
