@@ -9,6 +9,7 @@ import { Loading } from '../../../../components/loading/Loading';
 import { Categorie_Interface } from '../../../../interfaces/Categorie.interface';
 import { getCategories } from '../../../../api/categorie.api';
 import { CategorieChoice } from '../../../../components/stocks/modify/CategorieChoice';
+import { useHistory } from 'react-router-dom';
 
 
 export function CategoryStockEntries(): JSX.Element {
@@ -17,6 +18,7 @@ export function CategoryStockEntries(): JSX.Element {
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
     const [ingredients, setIngredients] = useState<Stock_Interface[]>([]);
     const [step, setStep] = useState<number>(1);
+    const history = useHistory();
 
     const getIngredientList = (id_categorie: number) => {
         getIngredientsByCategorie(id_categorie).then((list) => {
@@ -40,6 +42,13 @@ export function CategoryStockEntries(): JSX.Element {
     const changeStep = () => {
         if (step === 1) setStep(2);
         else setStep(1);
+    }
+
+    const goToMercurialCategory = () => {
+        setLoading(false);
+        setTimeout(
+            () => history.push(`/mercurial/byCategorie/${id_categorie}`)
+        , 7000);
     }
 
     useEffect(() => {
@@ -66,7 +75,7 @@ export function CategoryStockEntries(): JSX.Element {
                             step === 1 ? (
                                 <CategorieChoice id_categorie={id_categorie} categories={categories} setStep={() => changeStep()} setCategorie={(idC: number) => setIdCategorie(idC)} />
                             ) : (
-                                <ModifyStock ingredients={ingredients}/>
+                                <ModifyStock ingredients={ingredients} goTo={() => goToMercurialCategory()}/>
                             )
                         }
                     </div>

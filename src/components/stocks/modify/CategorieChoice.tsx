@@ -12,6 +12,7 @@ export type CategorieChoiceProps = {
 export const CategorieChoice: React.FunctionComponent<CategorieChoiceProps> = (props: CategorieChoiceProps) => {
     return (
         <div className={styles.stockContainer2}>
+            <h4 className={styles.titleCategoryChoice}>Gestion de stock par catégorie</h4>
             <div className={styles.choice}>
                 <label>Choisissez la catégorie pour laquelle vous souhaitez traiter les entrées de stock :</label>
                 <select

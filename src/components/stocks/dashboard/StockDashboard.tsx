@@ -26,6 +26,7 @@ export const StocksDashboard: React.FunctionComponent = () => {
 
     return (
         <div className={styles.container}>
+            <h1>Gérer les entrées de stock et les ventes</h1>
             <div className={styles.subContainer}>
                 {
                     functionnalities.map((functionnality) => (
