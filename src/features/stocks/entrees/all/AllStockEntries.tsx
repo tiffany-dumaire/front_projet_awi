@@ -6,12 +6,21 @@ import { getIngredients } from '../../../../api/ingredient.api';
 import { Stock } from '../../../../models/Ingredient.model';
 import { Loading } from '../../../../components/loading/Loading';
 import { ModifyStock } from '../../../../components/stocks/modify/ModifyStock';
+import { useHistory } from 'react-router-dom';
 
 
 export function AllStockEntries(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
     const [ingredients, setIngredients] = useState<Stock_Interface[]>([]);
+    const history = useHistory();
 
+    const goToMercurial = () => {
+        setLoading(false);
+        setTimeout(
+            () => history.push('/mercurial/byCategorie/0')
+        , 10000);
+    }
+    
     const getIngredientList = () => {
         getIngredients().then((list) => {
             list.forEach((ingredient) => {
@@ -35,7 +44,7 @@ export function AllStockEntries(): JSX.Element {
             {
                 loading ? (
                     <div className={styles.container}>
-                        <ModifyStock ingredients={ingredients}/>
+                        <ModifyStock ingredients={ingredients} goTo={() => goToMercurial()} />
                     </div>
                 ) : 
                 (

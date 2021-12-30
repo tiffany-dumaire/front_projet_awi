@@ -6,6 +6,7 @@ import styles from './ModifyStock.module.css';
 
 export type ModifyStockProps = {
     ingredients: Stock_Interface[];
+    goTo: () => void;
 };
 
 export const ModifyStock: React.FunctionComponent<ModifyStockProps> = (props: ModifyStockProps) => {
@@ -19,9 +20,10 @@ export const ModifyStock: React.FunctionComponent<ModifyStockProps> = (props: Mo
     }
 
     const modifyAll = () => {
-        ingredients.forEach((ingredient) => {
-            modifyStock(ingredient.code, ingredient.stock);
+        ingredients.forEach(async (ingredient) => {
+            await modifyStock(ingredient.code, ingredient.stock);
         });
+        props.goTo();
     }
 
     return (

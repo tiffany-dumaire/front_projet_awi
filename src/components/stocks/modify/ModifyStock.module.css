@@ -13,14 +13,19 @@
 .stockContainer2 {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    min-height: 380px;
     width: 90%;
     padding-top: 40px;
-    vertical-align: auto;
     margin: auto;
     margin-bottom: 40px;
+}
+
+.titleCategoryChoice {
+    font-size: 23px;
 }
 
 .choice {
