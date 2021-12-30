@@ -27,6 +27,8 @@ import { CategoryStockEntries } from './features/stocks/entrees/category/Categor
 import { Parameters } from './features/parameter/Parameters';
 import { NotFound } from './features/notfound/NotFound';
 import { ListePhasesPage } from './features/fichestechniques/phase/ListePhases';
+import { ModifyCategoryIngredient } from './features/mercurial/category/ModifyCategoryIngredient';
+import { ModifyCategoryAllergene } from './features/mercurial/category-allergene/ModifyCategoryAllergene';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -74,9 +76,13 @@ function App(): JSX.Element {
             '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
+            //categoryMercurial
+            '/category/ingredient/modify/:id_categorie',
             //liste des allergenes
             '/liste des allergenes',
             '/liste des allergenes/byCategorie/:id_categorie_allergene',
+            //categoryAllergene
+            '/category/allergene/modify/:id_categorie_allergene',
             //gestion des stocks
             '/stocks',
             '/stocks/entrees',
@@ -116,9 +122,13 @@ function App(): JSX.Element {
               '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
               '/mercurial/byCategorie/:id_categorie',
               '/mercurial/ingredient/:id_ingredient',
+              //categoryMercurial
+              '/category/ingredient/modify/:id_categorie',
               //liste des allergenes
               '/liste des allergenes',
               '/liste des allergenes/byCategorie/:id_categorie_allergene',
+              //categoryAllergene
+              '/category/allergene/modify/:id_categorie_allergene',
               //gestion des stocks
               '/stocks',
               '/stocks/entrees',
@@ -155,9 +165,13 @@ function App(): JSX.Element {
                 <Route exact path="/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene" component={IngredientResearch} />
                 <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
                 <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
+                {/*categoryMercurial*/}
+                <Route exact path='/category/ingredient/modify/:id_categorie' component={ModifyCategoryIngredient} />
                 {/*liste des allergenes*/}
                 <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
                 <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
+                {/*categoryAllergene*/}
+                <Route exact path='/category/allergene/modify/:id_categorie_allergene' component={ModifyCategoryAllergene} />
                 {/*gestion des stocks*/}
                 <Route exact path="/stocks" component={StockMenu} />
                 <Route exact path="/stocks/entrees" component={StockEntriesChoice} />
@@ -194,9 +208,13 @@ function App(): JSX.Element {
                 '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
                 '/mercurial/byCategorie/:id_categorie',
                 '/mercurial/ingredient/:id_ingredient',
+                //categoryMercurial
+                '/category/ingredient/modify/:id_categorie',
                 //liste des allergenes
                 '/liste des allergenes',
                 '/liste des allergenes/byCategorie/:id_categorie_allergene',
+                //categoryAllergene
+                '/category/allergene/modify/:id_categorie_allergene',
                 //gestion des stocks
                 '/stocks',
                 '/stocks/entrees',

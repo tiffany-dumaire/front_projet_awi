@@ -58,9 +58,17 @@ export function MercurialPage(): JSX.Element {
                         <div className={styles.mercurialContainer}>
                             {
                                 categories.map((categorie: Categorie_Interface) => (
-                                    <Link  key={categorie.id_categorie} className={styles.link} to={`/mercurial/byCategorie/${categorie.id_categorie}`}>
-                                        <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
-                                    </Link>
+                                    <>
+                                        {categorie.id_categorie === 0 ? 
+                                            <Link  key={categorie.id_categorie} className={styles.link} to={`/mercurial/byCategorie/${categorie.id_categorie}`}>
+                                                <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
+                                            </Link>
+                                        :
+                                            <div key={categorie.id_categorie} className={styles.link}>
+                                                <CategorieCard id_categorie={categorie.id_categorie} categorie={categorie.categorie} color={categorie.color} />
+                                            </div>
+                                        }
+                                    </>
                                 ))        
                             }
                         </div>

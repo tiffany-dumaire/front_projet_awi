@@ -125,3 +125,52 @@ export async function getCategoriesFiches(): Promise<Categorie_Fiches_Interface[
 
 
 /** PUT **/
+
+
+export async function modifyCategory(
+  id_categorie: number,
+  categorie: string,
+  color: string
+): Promise<Number> {
+  return new Promise((resolve, reject) => {
+      try {
+          const config: AxiosRequestConfig = {
+              method: 'put',
+              url: `${process.env.REACT_APP_SERV_HOST}/categories/modify/${id_categorie}`,
+              data: { 
+                  "categorie": categorie,
+                  "color": color,
+              },
+          };
+          axios(config).then((result) => {
+              resolve(result.data.changedRows);
+          });
+      } catch (err) {
+          reject(err);
+      }
+  });
+}
+
+export async function modifyCategoryAllergene(
+  id_categorie_allergene: number,
+  categorie_allergene: string,
+  color_allergene: string
+): Promise<Number> {
+  return new Promise((resolve, reject) => {
+      try {
+          const config: AxiosRequestConfig = {
+              method: 'put',
+              url: `${process.env.REACT_APP_SERV_HOST}/categories_allergenes/modify/${id_categorie_allergene}`,
+              data: { 
+                  "categorie_allergene": categorie_allergene,
+                  "color_allergene": color_allergene,
+              },
+          };
+          axios(config).then((result) => {
+              resolve(result.data.changedRows);
+          });
+      } catch (err) {
+          reject(err);
+      }
+  });
+}
