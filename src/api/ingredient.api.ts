@@ -298,6 +298,26 @@ export async function putIngredient(
     });
 }
 
+/** DELETE **/
+
+export async function deleteIngredient(
+    code: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'delete',
+                url: `${process.env.REACT_APP_SERV_HOST}/ingredients/delete/${code}`
+            };
+            axios(config).then((result) => {
+                resolve(result.data.affectedRows);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 /** STOCKS **/
 
 export async function getAllStocks(): Promise<Stock_Interface[]> {
