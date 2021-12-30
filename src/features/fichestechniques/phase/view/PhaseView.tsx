@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { getDenreesByPhase, getPhaseByID } from '../../../../api/phase.api';
+import { deletePhase, getDenreesByPhase, getPhaseByID } from '../../../../api/phase.api';
 import { Loading } from '../../../../components/loading/Loading';
 import { Phase_Ingredient_Interface, Phase_Simple_Interface } from '../../../../interfaces/Phase.interface';
 import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
@@ -18,6 +18,7 @@ export function PhaseView(): JSX.Element {
         const url = `/phases/modify/${id_phase}`;
         history.push(url);
     };
+
     const getInfosPhase = () => {
         getPhaseByID(Number(id_phase)).then((phase) => {
             setInfos(phase);
@@ -31,6 +32,17 @@ export function PhaseView(): JSX.Element {
                 setDenrees(denrees.slice(0));
             });
         });
+    };
+
+    const deleteThisPhase = () => {
+        var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
+        if (r) {
+            deletePhase(Number(id_phase)).then((result) => {
+                history.push(`/phases`);
+            });
+        } else {
+            return;
+        }
     };
 
     useEffect(() => {
@@ -84,12 +96,18 @@ export function PhaseView(): JSX.Element {
                                         ))}
                                     </div>
                                 </div>
-                                <div>
+                                <div className={styles.gridButton}>
                                     <button 
                                         className={styles.button}
                                         onClick={() => goTo()}
                                     >
                                         Modifier la phase
+                                    </button>
+                                    <button 
+                                        className={styles.buttonDelete}
+                                        onClick={() => deleteThisPhase()}
+                                    >
+                                        Supprimer la phase
                                     </button>
                                 </div>
                             </div>

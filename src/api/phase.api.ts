@@ -213,3 +213,21 @@ export async function pullIngredient(
         }
     });
 }
+
+export async function deletePhase(
+    id_phase: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'delete',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/delete/${id_phase}`
+            };
+            axios(config).then((result) => {
+                resolve(result.data.affectedRows);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
