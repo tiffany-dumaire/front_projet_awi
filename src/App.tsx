@@ -29,6 +29,7 @@ import { NotFound } from './features/notfound/NotFound';
 import { ListePhasesPage } from './features/fichestechniques/phase/ListePhases';
 import { ModifyCategoryIngredient } from './features/mercurial/category/ModifyCategoryIngredient';
 import { ModifyCategoryAllergene } from './features/mercurial/category-allergene/ModifyCategoryAllergene';
+import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modify/ModifyCategoryFiche';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -63,6 +64,8 @@ function App(): JSX.Element {
             '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
             '/fiches techniques/details/:id_fiche_technique',
+            //categoryFiche
+            '/category/fiche_technique/modify/:id_categorie_fiche',
             //phases
             '/phases',
             '/phases/create',
@@ -109,6 +112,8 @@ function App(): JSX.Element {
               '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
               '/fiches techniques/details/:id_fiche_technique',
+              //categoryFiche
+              '/category/fiche_technique/modify/:id_categorie_fiche',
               //phases
               '/phases',
               '/phases/create',
@@ -152,6 +157,8 @@ function App(): JSX.Element {
                 <Route exact path="/fiches techniques/search/:word/byCategorie/:id_categorie_fiche" component={FTResearch} />
                 <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
                 <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail} />
+                {/*categoryFiche*/}
+                <Route exact path="/category/fiche_technique/modify/:id_categorie_fiche" component={ModifyCategoryFiche} />
                 {/*phases*/}
                 <Route exact path="/phases" component={ListePhasesPage} />
                 <Route exact path="/phases/create" component={CreatePhase} />
@@ -164,14 +171,14 @@ function App(): JSX.Element {
                 <Route exact path="/mercurial/search/:word/byCategorie/:id_categorie" component={IngredientResearch} />
                 <Route exact path="/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene" component={IngredientResearch} />
                 <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
-                <Route exact path='/mercurial/ingredient/:id_ingredient' component={DetailIngredient} />
+                <Route exact path="/mercurial/ingredient/:id_ingredient" component={DetailIngredient} />
                 {/*categoryMercurial*/}
-                <Route exact path='/category/ingredient/modify/:id_categorie' component={ModifyCategoryIngredient} />
+                <Route exact path="/category/ingredient/modify/:id_categorie" component={ModifyCategoryIngredient} />
                 {/*liste des allergenes*/}
                 <Route exact path="/liste des allergenes" component={ListeAllergenesPage} />
                 <Route exact path="/liste des allergenes/byCategorie/:id_categorie_allergene" component={ListeAllergenesParCategorie} />
                 {/*categoryAllergene*/}
-                <Route exact path='/category/allergene/modify/:id_categorie_allergene' component={ModifyCategoryAllergene} />
+                <Route exact path="/category/allergene/modify/:id_categorie_allergene" component={ModifyCategoryAllergene} />
                 {/*gestion des stocks*/}
                 <Route exact path="/stocks" component={StockMenu} />
                 <Route exact path="/stocks/entrees" component={StockEntriesChoice} />
@@ -195,6 +202,8 @@ function App(): JSX.Element {
                 '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
                 '/fiches techniques/byCategorie/:id_categorie_fiche',
                 '/fiches techniques/details/:id_fiche_technique',
+                //categoryFiche
+                '/category/fiche_technique/modify/:id_categorie_fiche',
                 //phases
                 '/phases',
                 '/phases/create',

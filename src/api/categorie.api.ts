@@ -121,6 +121,29 @@ export async function getCategoriesFiches(): Promise<Categorie_Fiches_Interface[
   });
 }
 
+export async function getCategorieFicheById(id_categorie_fiche: number): Promise<Categorie_Fiches_Interface> {
+  return new Promise((resolve, reject) => {
+    try {
+      const url = `${process.env.REACT_APP_SERV_HOST}/categories_fiches/byID/${id_categorie_fiche}`;
+      const config: AxiosRequestConfig = {
+        method: 'get',
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+      };
+      axios.get(url, config).then((categories) => {
+        const categorieList: Categorie_Fiches_Interface[] = new Array<Categorie_Fiches_Interface>();
+        categories.data.forEach((categorie: Categorie_Fiches_Interface) => {
+            categorieList.push(categorie);
+        });
+        resolve(categorieList[0]);
+      });
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 /** POST **/
 
 
@@ -164,6 +187,30 @@ export async function modifyCategoryAllergene(
               data: { 
                   "categorie_allergene": categorie_allergene,
                   "color_allergene": color_allergene,
+              },
+          };
+          axios(config).then((result) => {
+              resolve(result.data.changedRows);
+          });
+      } catch (err) {
+          reject(err);
+      }
+  });
+}
+
+export async function modifyCategoryFiche(
+  id_categorie_fiche: number,
+  categorie_fiche: string,
+  color_fiche: string
+): Promise<Number> {
+  return new Promise((resolve, reject) => {
+      try {
+          const config: AxiosRequestConfig = {
+              method: 'put',
+              url: `${process.env.REACT_APP_SERV_HOST}/categories_fiches/modify/${id_categorie_fiche}`,
+              data: { 
+                  "categorie_fiche": categorie_fiche,
+                  "color_fiche": color_fiche,
               },
           };
           axios(config).then((result) => {

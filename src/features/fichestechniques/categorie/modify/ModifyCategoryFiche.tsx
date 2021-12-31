@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { getCategorieAllergeneById, modifyCategoryAllergene } from '../../../api/categorie.api';
-import { Loading } from '../../../components/loading/Loading';
-import styles from './ModifyCategoryAllergene.module.css';
+import { getCategorieFicheById, modifyCategoryFiche } from '../../../../api/categorie.api';
+import { Loading } from '../../../../components/loading/Loading';
+import styles from './ModifyCategoryFiche.module.css';
 
-export function ModifyCategoryAllergene(): JSX.Element {
+export function ModifyCategoryFiche(): JSX.Element {
     const [loader, setLoader] = useState<boolean>(false);
     const [libelle, setLibelle] = useState<string>('');
     const [color, setColor] = useState<string>('');
-    const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
+    const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
     const history = useHistory();
 
-    const goToMercurial = () => {
-        history.push(`/liste des allergenes`);
+    const goToFT = () => {
+        history.push(`/fiches techniques`);
     }
 
     const modifyThisCategory = () => {
         var r = window.confirm("Êtes-vous sûr de vouloir modifier cette catégorie ?");
         if (r) {
-            modifyCategoryAllergene(Number(id_categorie_allergene), libelle, color).then((result) => history.push(`/liste des allergenes`));
+            modifyCategoryFiche(Number(id_categorie_fiche), libelle, color).then((result) => history.push(`/fiches techniques`));
         } else {
             return;
         }
     }
 
     useEffect(() => {
-        getCategorieAllergeneById(Number(id_categorie_allergene)).then((result) => {
-            setLibelle(result.categorie_allergene);
-            setColor(result.color_allergene);
+        getCategorieFicheById(Number(id_categorie_fiche)).then((result) => {
+            setLibelle(result.categorie_fiche);
+            setColor(result.color_fiche);
         });
         setLoader(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,8 +42,8 @@ export function ModifyCategoryAllergene(): JSX.Element {
             {
                 loader ? (
                     <div className={styles.container}>
-                        <Link className={styles.link} to={`/liste des allergenes`}>
-                            Retour aux allergènes
+                        <Link className={styles.link} to={`/fiches techniques`}>
+                            Retour aux fiches techniques
                         </Link>
                         <div className={styles.container2}>
                             <div className={styles.categoryContainer}>
@@ -62,7 +62,7 @@ export function ModifyCategoryAllergene(): JSX.Element {
                                         <button className={styles.buttonSave} onClick={() => modifyThisCategory()}>Modifier la catégorie</button>
                                     </div>
                                     <div>
-                                        <input disabled className={styles.input} type="number" step="any" value={Number(id_categorie_allergene)}></input>
+                                        <input disabled className={styles.input} type="number" step="any" value={Number(id_categorie_fiche)}></input>
                                     </div>
                                     <div>
                                         <input placeholder={'Saisissez un libellé..'} className={styles.input} type="text" value={libelle} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setLibelle(ev.target.value)}></input>
@@ -71,7 +71,7 @@ export function ModifyCategoryAllergene(): JSX.Element {
                                         <input className={styles.input} type="color" value={color} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setColor(ev.target.value)}></input>
                                     </div>
                                     <div>
-                                        <button className={styles.buttonCancel} onClick={() => goToMercurial()}>Annuler la modification</button>
+                                        <button className={styles.buttonCancel} onClick={() => goToFT()}>Annuler la modification</button>
                                     </div>
                                 </div>
                             </div>

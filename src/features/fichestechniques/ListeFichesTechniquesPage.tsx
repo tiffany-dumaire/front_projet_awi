@@ -58,9 +58,18 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                             <div className={styles.categoryContainer}>
                                 {
                                     categories.map((categorie: Categorie_Fiches_Interface) => (
-                                        <Link key={categorie.id_categorie_fiche} className={styles.link} to={`/fiches techniques/byCategorie/${categorie.id_categorie_fiche}`}>
-                                            <CategorieFTCard id_categorie_fiche={categorie.id_categorie_fiche} categorie_fiche={categorie.categorie_fiche} color_fiche={categorie.color_fiche} />
-                                        </Link>
+                                        <>
+                                            {categorie.id_categorie_fiche === 0 ? 
+                                                <Link key={categorie.id_categorie_fiche} className={styles.link} to={`/fiches techniques/byCategorie/${categorie.id_categorie_fiche}`}>
+                                                    <CategorieFTCard id_categorie_fiche={categorie.id_categorie_fiche} categorie_fiche={categorie.categorie_fiche} color_fiche={categorie.color_fiche} />
+                                                </Link>
+                                            :
+                                                <div key={categorie.id_categorie_fiche} className={styles.link}>
+                                                    <CategorieFTCard id_categorie_fiche={categorie.id_categorie_fiche} categorie_fiche={categorie.categorie_fiche} color_fiche={categorie.color_fiche} />
+                                                </div>
+                                            }
+                                        </>
+                                        
                                     ))        
                                 }
                             </div>
