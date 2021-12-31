@@ -1,0 +1,100 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+
+.container2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+}
+
+.categoryContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin:auto;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(4, 70px) / auto-flow 270px;
+}
+
+.gridContainer > div {
+    width: 250px;
+    height: 50px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.input[type="text"], .input[type="number"], .input[type="color"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width:100%;
+    padding:10px;
+    box-sizing: border-box;
+}
+
+.buttonSave, .buttonCancel {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.buttonSave {
+    background-color: rgb(69, 129, 58);
+    width: 100%;
+}
+
+.buttonCancel {
+    background-color: rgb(172, 63, 63);
+    width: 100%;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px;
+    width: 230px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color:aliceblue;
+    background-color: rgba(73, 98, 211, 0.795);
+}
