@@ -211,7 +211,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                                 </tbody>
                             </table>
                         </div>
-                        {showCout && ficheTechnique && assaisonnement && coeff_vente && cout_moyen? (
+                        {/**showCout && ficheTechnique && assaisonnement && coeff_vente && cout_moyen? (
                             <>
                                 <div className={styles.gridCout}>
                                     <div className={styles.title}>
@@ -267,7 +267,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                             </>
                         ):(
                             null
-                        )}
+                        )**/}
                     </div>  
                 </div>
             ) : (
