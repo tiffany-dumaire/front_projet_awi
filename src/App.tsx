@@ -30,6 +30,7 @@ import { ListePhasesPage } from './features/fichestechniques/phase/ListePhases';
 import { ModifyCategoryIngredient } from './features/mercurial/category/ModifyCategoryIngredient';
 import { ModifyCategoryAllergene } from './features/mercurial/category-allergene/ModifyCategoryAllergene';
 import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modify/ModifyCategoryFiche';
+import { VenteTest } from './features/stocks/ventes/tests/VenteTest';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -92,6 +93,8 @@ function App(): JSX.Element {
             '/stocks/entrees/all',
             '/stocks/entrees/byCategorie',
             '/stocks/entrees/byList',
+            '/stocks/ventes/test',
+            '/stocks/ventes/sorties',
             //other
             '/parameters',
             '/about',
@@ -140,6 +143,8 @@ function App(): JSX.Element {
               '/stocks/entrees/all',
               '/stocks/entrees/byCategorie',
               '/stocks/entrees/byList',
+              '/stocks/ventes/test',
+              '/stocks/ventes/sorties',
               //other
               '/parameters',
               '/about'
@@ -185,6 +190,8 @@ function App(): JSX.Element {
                 <Route exact path="/stocks/entrees/all" component={AllStockEntries} />
                 <Route exact path="/stocks/entrees/byCategorie" component={CategoryStockEntries} />
                 <Route exact path="/stocks/entrees/byList" component={StockMenu} />
+                <Route exact path="/stocks/ventes/test" component={VenteTest} />
+                <Route exact path="/stocks/ventes/sorties" component={VenteTest} />
                 {/*other*/}
                 <Route exact path="/parameters" component={Parameters} />
                 <Route exact path="/about" component={About} />
@@ -230,6 +237,8 @@ function App(): JSX.Element {
                 '/stocks/entrees/all',
                 '/stocks/entrees/byCategorie',
                 '/stocks/entrees/byList',
+                '/stocks/ventes/test',
+                '/stocks/ventes/sorties',
                 //other
                 '/parameters',
                 '/about'
