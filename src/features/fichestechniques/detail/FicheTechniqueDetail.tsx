@@ -95,7 +95,7 @@ export function FicheTechniqueDetail(): JSX.Element {
             loading ? (
                 <div className={styles.container}>
                     <SidebarMenu 
-                        width={300} 
+                        width={320} 
                         height={'530px'} 
                         to={
                             [
