@@ -80,7 +80,7 @@ export function CreateFicheTechnique(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-    const nextStep = () => {
+    const nextStep = async () => {
         if (numStep === 1) {
             setNumStep(2);
         } else {
@@ -89,8 +89,11 @@ export function CreateFicheTechnique(): JSX.Element {
             } else {
                 setLoading(false);
                 if(newId) {
-                    getPhaseIngredients(newId).then((result) => {
-                        setPhasesI(result);
+                    await getPhaseIngredients(newId).then((result) => {
+                        result.forEach((phase) => {
+                            phasesI.push(phase);
+                            setPhasesI(phasesI.slice(0));
+                        });
                         setNumStep(4);
                         setLoading(true);
                     });
