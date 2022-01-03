@@ -13,13 +13,13 @@ export const StocksDashboard: React.FunctionComponent = () => {
         {   
             title: 'Editer une étiquette de vente',
             description: 'Editer les étiquettes de vente en choisissant soit des fiches techniques, soit les ingrédients. Les stocks seront modifiés.',
-            path: '',
+            path: '/stocks/ventes/sorties',
             color: '#cc99ff'
         },
         {   
             title: 'Editer une étiquette test',
             description: 'Editer des étiquettes de vente tests en choisissant soit des fiches techniques ou des ingrédients. Les stocks ne seront pas modifiés.',
-            path: '',
+            path: '/stocks/ventes/test',
             color: '#00cc99'
         }
     ];

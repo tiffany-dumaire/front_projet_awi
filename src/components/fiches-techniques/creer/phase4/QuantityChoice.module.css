@@ -10,11 +10,18 @@
     padding-right: 20px;
     margin:auto;
     margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.flexContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .gridContainer {
     display: grid;
-    grid: repeat(5, 70px) / auto-flow 320px;
+    grid: repeat(1, 70px) / auto-flow 320px;
 }
 
 .gridContainer > div {
@@ -25,23 +32,18 @@
 .label {
     position: relative;
     display: block;
-    font-weight: bold;
     margin-top: 12px;
     padding-left: 5px;
 }
 
-.label::after {
-    content: ' :';
-}
-
-.input[type="text"], .input[type="number"], .input {
+.input[type="number"] {
     position: relative;
     color: black;
     border-radius: 15px;
     text-align: center;
     margin-top: 5px;
     height: 40px;
-    width: 100%;
+    width: 80%;
     box-sizing: border-box;
 }
 
@@ -53,9 +55,10 @@
     margin-top: 5px;
     height: 40px;
     width: 100%;
+    background-color: rgb(110, 85, 85);
     box-sizing: border-box;
 }
 
-.buttonNext {
-    background-color: rgb(110, 85, 85);
+.buttonNext:hover {
+    background-color: rgb(78, 58, 58);
 }

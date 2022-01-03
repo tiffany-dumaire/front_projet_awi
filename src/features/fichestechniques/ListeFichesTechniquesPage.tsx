@@ -36,7 +36,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                 loading ? (
                     <div className={styles.listeFTContainer}>
                         <SidebarMenu 
-                            width={300} 
+                            width={320} 
                             height={'530px'} 
                             to={
                                 [

@@ -95,7 +95,7 @@ export function FicheTechniqueDetail(): JSX.Element {
             loading ? (
                 <div className={styles.container}>
                     <SidebarMenu 
-                        width={300} 
+                        width={320} 
                         height={'530px'} 
                         to={
                             [
@@ -225,12 +225,12 @@ export function FicheTechniqueDetail(): JSX.Element {
                                     <div className={styles.left}>
                                         <h4>Durée de la progression : </h4>
                                         <p>La durée totale de la progression est de {dureeTotale} minutes.</p>
-                                        {coeff_vente?.utile ? (
+                                        {coeff_vente.utile ? (
                                             <>
                                                 <h4>Coût des charges : </h4>
-                                                <p>Charges de personnel : {(cout_moyen?.value * (dureeTotale/60)).toFixed(2)}€.</p>
-                                                <p>Charges fluides :  {(cout_moyen?.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
-                                                <p>Le coût total des charges est de {(cout_moyen?.value * (dureeTotale/60) + cout_moyen?.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Charges de personnel : {(cout_moyen.value * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Charges fluides :  {(cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Le coût total des charges est de {(cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
                                             </>
                                             ) : null
                                         }
@@ -239,7 +239,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                                         {assaisonnement.utile ? (
                                             <p>Coût assaisonnement : {((assaisonnement.value / 100) * coutMatierePhase.reduce(reducer)).toFixed(2)}€.</p>
                                         ) : (
-                                            <p>Coût assaisonnement : {(assaisonnement?.value2)?.toFixed(2)}€.</p>
+                                            <p>Coût assaisonnement : {(assaisonnement.value2).toFixed(2)}€.</p>
                                         )}
                                         <h4>Coût de production : </h4>
                                         {coeff_vente.utile ? (

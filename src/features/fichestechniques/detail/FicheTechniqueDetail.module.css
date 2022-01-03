@@ -42,12 +42,14 @@
 .table1 {
     position: relative;
     width: calc(40% - 1px);
+    padding-bottom: 40px;
     border-right: 1px black solid;
 }
 
 .table2 {
     position: relative;
-    width: 60%;
+    width: calc(60% - 1px);
+    padding-bottom: 40px;
     border-left: 1px black solid;
 }
 
@@ -143,8 +145,8 @@ td {
 
 .intitule {
     position: relative;
-    width: calc(40% - 2px);
-    border-right: 2px black solid;
+    width: calc(40% - 1px);
+    border-right: 1px black solid;
 }
 
 .complete {
