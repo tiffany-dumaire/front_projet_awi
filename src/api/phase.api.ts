@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { Phase_Ingredient_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
+import { Phase_Ingredients_Interface, Phase_Ingredient_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
 
 /** GET **/
 
@@ -65,6 +65,29 @@ export async function getDenreesByPhase(id_phase: number): Promise<Phase_Ingredi
                     denreeList.push(denree);
                 });
                 resolve(denreeList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getPhaseIngredients(id_fiche_technique: number): Promise<Phase_Ingredients_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/phases/ingredients/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((phases) => {
+                const phasesList: Phase_Ingredients_Interface[] = new Array<Phase_Ingredients_Interface>();
+                phases.data.forEach((phase: Phase_Ingredients_Interface) => {
+                    phasesList.push(phase);
+                });
+                resolve(phasesList);
             });
         } catch (err) {
             reject(err);
@@ -147,6 +170,34 @@ export async function addIngredient(
                 data: {
                     "code": code,
                     "id_phase": id_phase
+                }
+            };
+            axios(config).then((result) => {
+                resolve(result.data.insertId);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function postQuantityIngredient(
+    id_fiche_technique: number,
+    id_phase_ingredient: number,
+    quantite: number
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'post',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/phase_ingredient_quantity`,
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                data: {
+                    "id_fiche_technique": id_fiche_technique,
+                    "id_phase_ingredient": id_phase_ingredient,
+                    "quantite": quantite
                 }
             };
             axios(config).then((result) => {

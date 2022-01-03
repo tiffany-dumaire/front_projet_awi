@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { getCategoriesFiches } from '../../../api/categorie.api';
 import { createFicheTechnique } from '../../../api/fiche_technique.api';
-import { getPhases } from '../../../api/phase.api';
+import { getPhaseIngredients, getPhases } from '../../../api/phase.api';
 import { getResponsables } from '../../../api/responsable.api';
 import { DebutFicheTechnique } from '../../../components/fiches-techniques/creer/phase1/DebutFicheTechnique';
 import { PhasesChoice } from '../../../components/fiches-techniques/creer/phase2/PhasesChoice';
 import { TaskScheduling } from '../../../components/fiches-techniques/creer/phase3/TaskScheduling';
+import { QuantityChoice } from '../../../components/fiches-techniques/creer/phase4/QuantityChoice';
 import { Loading } from '../../../components/loading/Loading';
 import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
-import { Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
+import { Phase_Ingredients_Interface, Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
 import { Responsable_Interface } from '../../../interfaces/Responsable.interface';
 import styles from './CreateFicheTechnique.module.css';
 
@@ -21,6 +22,7 @@ export function CreateFicheTechnique(): JSX.Element {
     const [addedPhases, setAddedPhases] = useState<Phase_Simple_Interface[]>([]);
     const [numStep, setNumStep] = useState<number>(1);
     const [newId, setNewId] = useState<number>();
+    const [phasesI, setPhasesI] = useState<Phase_Ingredients_Interface[]>([]);
 
     const getCategoriesList = () => {
         getCategoriesFiches().then((list) => {
@@ -85,7 +87,14 @@ export function CreateFicheTechnique(): JSX.Element {
             if (numStep === 2) {
                 setNumStep(3)
             } else {
-                setNumStep(4);
+                setLoading(false);
+                if(newId) {
+                    getPhaseIngredients(newId).then((result) => {
+                        setPhasesI(result);
+                        setNumStep(4);
+                        setLoading(true);
+                    });
+                }
             }
         }
     };
@@ -100,6 +109,7 @@ export function CreateFicheTechnique(): JSX.Element {
                     <div className={styles.container}>
                         {
                             numStep === 1 ? (
+                                //<QuantityChoice phases_quantity={phasesI} />
                                 <DebutFicheTechnique categories={categories} responsables={responsables} createFiche={(libelle: string, couverts: number, id_responsable: number, id_categorie: number) => createFiche(libelle, couverts, id_categorie, id_responsable)} />
                             ) : (
                                 numStep === 2 ? (
@@ -108,7 +118,7 @@ export function CreateFicheTechnique(): JSX.Element {
                                     numStep === 3 ? (
                                         <TaskScheduling idFT={newId ? newId : 0} addedPhases={addedPhases} scheduling={() => nextStep()} />
                                     ) : (
-                                        null
+                                        <QuantityChoice phases_quantity={phasesI} setLoading={(loading: boolean) => setLoading(loading)} id_fiche_technique={newId!} />
                                     )
                                 )
                                 

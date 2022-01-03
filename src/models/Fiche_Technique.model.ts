@@ -1,4 +1,5 @@
-import { Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
+import { Denrees_Etiquette_Interface } from '../interfaces/Denrees.interface';
+import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
 
 export class Fiche_Technique implements Fiche_Technique_Interface {
     id_fiche_technique: number;
@@ -47,4 +48,23 @@ export class Fiche_Technique_Infos implements Fiche_Technique_Infos_Interface {
         this.categorie_fiche = categorie_fiche;
     }
      
+}
+
+export class Etiquette_Fiche_Technique implements Etiquette_Fiche_Technique_Interface {
+    id_fiche_technique: number;
+    libelle_fiche_technique: string;
+    nombre_couverts: number;
+    ingredients: Denrees_Etiquette_Interface[];
+
+    constructor(
+        id_fiche_technique: number,
+        libelle_fiche_technique: string,
+        nombre_couverts: number,
+        ingredients: Denrees_Etiquette_Interface[]
+    ) {
+        this.id_fiche_technique = id_fiche_technique;
+        this.libelle_fiche_technique = libelle_fiche_technique;
+        this.nombre_couverts = nombre_couverts;
+        this.ingredients = ingredients;
+    }
 }

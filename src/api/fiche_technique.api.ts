@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { Denree_Interface } from '../interfaces/Denrees.interface';
-import { Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
+import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
 import { Phase_Interface } from '../interfaces/Phase.interface';
 
 /**
@@ -227,6 +227,25 @@ export async function searchFTbyLibelleAndCategorie(search: string, id_categorie
                     FTList.push(fiche_technique);
                 });
                 resolve(FTList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function etiquetteFiche(id_fiche_technique: number): Promise<Etiquette_Fiche_Technique_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/etiquette/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((fiches_techniques) => {
+                resolve(fiches_techniques.data);
             });
         } catch (err) {
             reject(err);
