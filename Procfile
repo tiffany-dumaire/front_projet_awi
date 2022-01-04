@@ -1,1 +1,1 @@
-web: npm --max_execution_time=60 start
+web: npm --max_execution_time=60000 start
