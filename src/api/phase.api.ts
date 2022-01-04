@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { Phase_Ingredients_Interface, Phase_Ingredient_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
+import { Phase_Detail_Interface, Phase_Ingredients_Interface, Phase_Ingredient_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
 
 /** GET **/
 
@@ -88,6 +88,25 @@ export async function getPhaseIngredients(id_fiche_technique: number): Promise<P
                     phasesList.push(phase);
                 });
                 resolve(phasesList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getPhaseDetail(id_phase: number): Promise<Phase_Detail_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/phases/detail/${id_phase}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((phase) => {
+                resolve(phase.data);
             });
         } catch (err) {
             reject(err);

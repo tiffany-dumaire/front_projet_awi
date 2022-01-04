@@ -47,7 +47,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
             });
             setCoutMatiere(coutM);
             setDureeTotale(duree);
-            
+
         });
         getParameter('COUT_ASSAISONNEMENT').then((parameter) => {
             setAssaisonnement(parameter);
@@ -67,11 +67,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
 
     return (
         <>
-        <Helmet>
-            <title>{'📋 ' + ficheTechnique?.libelle_fiche_technique}</title>
-        </Helmet>
-        {
-            loading ? (
+            <Helmet>
+                <title>{'📋 ' + ficheTechnique?.libelle_fiche_technique}</title>
+            </Helmet>
+            {loading ? (
                 <div className={styles.container}>
                     <SidebarMenu 
                         width={320} 
@@ -255,9 +254,8 @@ export function FicheTechniqueDetail2(): JSX.Element {
                 <div className={styles.container}>
                     <Loading />
                 </div>
-            )
-        }
+            )}
                  
-    </>
+        </>
     );
 }

@@ -19,3 +19,8 @@ export interface Stock_Interface {
     unite: string;
     stock: number;
 }
+
+export interface Ingredient_Phase_Interface {
+    code: number;
+    libelle: string;
+}
