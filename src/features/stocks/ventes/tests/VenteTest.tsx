@@ -3,8 +3,8 @@ import styles from './VenteTest.module.css';
 import { Helmet } from 'react-helmet';
 import { Loading } from '../../../../components/loading/Loading';
 import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
-import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
-import { etiquetteFiche, getFichesTechniques } from '../../../../api/fiche_technique.api';
+import { Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
+import { getFichesTechniques } from '../../../../api/fiche_technique.api';
 import { FicheTechniqueChoice } from '../../../../components/stocks/etiquette/FicheTechniqueChoice';
 
 export function VenteTest(): JSX.Element {
@@ -12,14 +12,14 @@ export function VenteTest(): JSX.Element {
     const [addedFiches, setAddedFiches] = useState<Fiche_Technique_Interface[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [step, setStep] = useState<number>(1);
-    const [etiquette, setEtiquette] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
+    //const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
 
-    const addEtiquette = (id_fiche_technique: number) => {
+    /* const addEtiquette = (id_fiche_technique: number) => {
         etiquetteFiche(id_fiche_technique).then((result) => {
-            etiquette.push(result);
-            setEtiquette(etiquette.slice(0));
+            etiquettes.push(result);
+            setEtiquettes(etiquettes.slice(0));
         });
-    };
+    }; */
 
     const addFiche = (fiche: Fiche_Technique_Interface) => {
         const index = addedFiches.indexOf(fiche);
