@@ -15,7 +15,7 @@ import { FicheTechniqueCategory } from './features/fichestechniques/categorie/Fi
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
 import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
-import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
+//import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
 import { StockMenu } from './features/stocks/StockMenu';
 import { IngredientResearch } from './features/mercurial/search/IngredientResearch';
 import { FTResearch } from './features/fichestechniques/search/FTResearch';
@@ -31,6 +31,7 @@ import { ModifyCategoryIngredient } from './features/mercurial/category/ModifyCa
 import { ModifyCategoryAllergene } from './features/mercurial/category-allergene/ModifyCategoryAllergene';
 import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modify/ModifyCategoryFiche';
 import { VenteTest } from './features/stocks/ventes/tests/VenteTest';
+import { FicheTechniqueDetail2 } from './features/fichestechniques/view/FicheTechniqueDetail2';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -161,7 +162,7 @@ function App(): JSX.Element {
                 <Route exact path="/fiches techniques/search/:word" component={FTResearch} />
                 <Route exact path="/fiches techniques/search/:word/byCategorie/:id_categorie_fiche" component={FTResearch} />
                 <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
-                <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail} />
+                <Route exact path="/fiches techniques/details/:id_fiche_technique" component={FicheTechniqueDetail2} />
                 {/*categoryFiche*/}
                 <Route exact path="/category/fiche_technique/modify/:id_categorie_fiche" component={ModifyCategoryFiche} />
                 {/*phases*/}

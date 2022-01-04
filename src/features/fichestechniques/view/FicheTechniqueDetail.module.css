@@ -1,0 +1,372 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+}
+
+.detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
+    border: 1px black solid;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    border-bottom: 1px black solid;
+}
+
+.row2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: calc(60% - 1px);
+}
+
+.table1 {
+    position: relative;
+    width: calc(40% - 1px);
+    padding-bottom: 40px;
+    border-right: 1px black solid;
+}
+
+.table2 {
+    position: relative;
+    width: calc(60% - 1px);
+    padding-bottom: 40px;
+    border-left: 1px black solid;
+}
+
+thead {
+    background-color: rgba(190, 190, 190, 0.781);
+}
+
+.colSpan3 {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.duree {
+    text-align: center;
+}
+
+.duree::after {
+    content: "'";
+}
+
+.ordre {
+    min-width: 80px;
+}
+
+.techniques, .techniques3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.techniques2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+    color: rgb(0, 67, 211);
+}
+
+.techniques3 {
+    text-align: justify;
+}
+
+
+.left, .right {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: justify;
+}
+
+.left {
+    width: calc(100% - 20px);
+    border-right: 1px solid black;
+}
+
+.right {
+    width: calc(100% - 20px);
+    border-left: 1px solid black;
+}
+
+.techniques4 {
+    text-align: center;
+}
+
+.techniques, .techniques2 {
+    text-align: left;
+}
+
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.row3 {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.row4 {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    width: 60%;
+}
+
+.intitule {
+    position: relative;
+    width: calc(40% - 1px);
+    border-right: 1px black solid;
+}
+
+.complete {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(190, 190, 190, 0.781);
+    border-bottom: 1px black solid;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(190, 190, 190, 0.781);
+    border-bottom: 1px black solid;
+}
+
+.complete2 {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.moitie {
+    position: relative;
+    width: 50%;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+}
+
+.moitie1 {
+    position: relative;
+    width: calc(50% - 1px);
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 5px;
+    border-right: 1px black solid;
+}
+
+.cote {
+    border-right: 1px black solid;
+}
+
+.gridCout {
+    position: relative;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.linkTo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:auto;
+    margin-bottom: 20px;
+    width: 90%;
+    padding-top: 20px;
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 98%;
+    margin-bottom: 40px;
+}
+
+.th {
+    padding: 5px;
+    background-color: rgb(0, 96, 121);
+    color: aliceblue;
+    border-radius: 2px; 
+}
+
+.alignLeft, .alignRight, .td {
+    background-color: aliceblue;
+    border: 1px solid rgba(0, 0, 0, 0.39);  
+    padding: 5px;
+}
+
+.title3 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(190, 190, 190, 0.781);
+    border-bottom: 1px black solid;
+    border-left: 1px black solid;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px;
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color:aliceblue;
+    background-color: rgba(73, 98, 211, 0.795);
+}
+
+/* Toggle Switch Button */
+.containerSwitch {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switchContainer {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    cursor: pointer;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.link2, .deleteButton {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px;
+    width: 250px;
+    margin-left: auto;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color:aliceblue;
+}
+
+.link2 {
+    background-color: rgba(94, 48, 30, 0.795);
+}
+
+.deleteButton {
+    background-color: rgb(172, 63, 63);
+}
+
+@media print {
+    .detail {
+        width: 95%;
+    }
+
+    .grid-cout {
+      margin-top: 1rem;
+      display: block;
+      page-break-before: always;
+    }
+
+    @page {
+        size: auto;
+        margin: auto;
+    }
+}

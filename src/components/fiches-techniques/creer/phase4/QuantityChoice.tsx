@@ -36,8 +36,6 @@ export const QuantityChoice: React.FunctionComponent<QuantityChoiceProps> = (pro
         , 7000);
     }
 
-    console.log(phases);
-
     return (
         <div className={styles.debutContainer}>
             <h3>Ajouter les quantités pour chaque ingrédients par phase</h3>
