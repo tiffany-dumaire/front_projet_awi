@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { Denree_Interface } from '../interfaces/Denrees.interface';
-import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
+import { Etiquette_Fiche_Technique_Interface, Fiche_Complete_Interface, Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
 import { Phase_Interface } from '../interfaces/Phase.interface';
 
 /**
@@ -234,6 +234,25 @@ export async function searchFTbyLibelleAndCategorie(search: string, id_categorie
     });
 }
 
+export async function getFicheTechniqueComplete(id_fiche_technique: number): Promise<Fiche_Complete_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/detail/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((fiche_technique) => {
+                resolve(fiche_technique.data);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 export async function etiquetteFiche(id_fiche_technique: number): Promise<Etiquette_Fiche_Technique_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -244,8 +263,8 @@ export async function etiquetteFiche(id_fiche_technique: number): Promise<Etique
                     'Content-Type': 'application/json' 
                 },
             };
-            axios.get(url, config).then((fiches_techniques) => {
-                resolve(fiches_techniques.data);
+            axios.get(url, config).then((etiquette) => {
+                resolve(etiquette.data);
             });
         } catch (err) {
             reject(err);

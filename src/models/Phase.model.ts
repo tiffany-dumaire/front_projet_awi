@@ -1,5 +1,5 @@
-import { Denrees_Phase_Interface } from '../interfaces/Denrees.interface';
-import { Phase_Ingredients_Interface, Phase_Ingredient_Interface, Phase_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
+import { Denrees_Phase_Interface, Denree_Interface } from '../interfaces/Denrees.interface';
+import { Phase_Complete_Interface, Phase_Ingredients_Interface, Phase_Ingredient_Interface, Phase_Interface, Phase_Simple_Interface } from '../interfaces/Phase.interface';
 
 export class Phase implements Phase_Interface {
     id_phase: number;
@@ -80,6 +80,35 @@ export class Phase_Ingredients implements Phase_Ingredients_Interface {
   ) {
     this.id_phase = id_phase;
     this.libelle_phase = libelle_phase;
+    this.ingredients = ingredients;
+  }
+  
+}
+
+export class Phase_Complete implements Phase_Complete_Interface {
+  id_phase: number;
+  libelle_phase: string;
+  libelle_denrees: string;
+  description_phase: string;
+  duree_phase: number;
+  ordre: number;
+  ingredients: Denree_Interface[];
+  
+  constructor(
+    id_phase: number,
+    libelle_phase: string,
+    libelle_denrees: string,
+    description_phase: string,
+    duree_phase: number,
+    ordre: number,
+    ingredients: Denree_Interface[]
+  ) {
+    this.id_phase = id_phase;
+    this.libelle_phase = libelle_phase;
+    this.libelle_denrees = libelle_denrees;
+    this.description_phase = description_phase;
+    this.duree_phase = duree_phase;
+    this.ordre = ordre;
     this.ingredients = ingredients;
   }
   
