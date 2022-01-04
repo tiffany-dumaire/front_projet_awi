@@ -1,4 +1,4 @@
-import { Code_Interface, Ingredient_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
+import { Code_Interface, Ingredient_Interface, Ingredient_Phase_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
 
 export class Ingredient implements Ingredient_Interface {
     code: number;
@@ -50,5 +50,15 @@ export class Stock implements Stock_Interface {
         this.libelle = libelle;
         this.stock = stock;
         this.unite = unite;
+    }
+}
+
+export class Ingredient_Phase implements Ingredient_Phase_Interface {
+    code: number;
+    libelle: string;
+    
+    constructor(code: number, libelle: string) {
+        this.code = code;
+        this.libelle = libelle;
     }
 }
