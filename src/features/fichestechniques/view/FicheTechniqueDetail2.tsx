@@ -11,25 +11,36 @@ import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
 
 export function FicheTechniqueDetail2(): JSX.Element {
-    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Complete_Interface>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //fiche technique
+    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Complete_Interface>();
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
+    //changement de vue
     const history = useHistory();
-    //coût
+    //parametre de l'application
     const [coeff_vente, setCoeffVente] = useState<Parameter_Interface>();
     const [cout_moyen, setCoutMoyen] = useState<Parameter_Interface>();
     const [assaisonnement, setAssaisonnement] = useState<Parameter_Interface>();
+    //cout
     const [showCout, setShowCout] = useState<boolean>(true);
     const [coutMatiere, setCoutMatiere] = useState<number>(0);
     const [dureeTotale, setDureeTotale] = useState<number>(0);
+    //pdf
     const componentRef = useRef(null);
 
+    /**
+     * Supprimer la fiche technique
+     */
     const deleteFT = () => {
         deleteFicheTechnique(Number(id_fiche_technique)).then(() => {
             history.push(`/fiches techniques/byCategorie/0`);
         });
     }
     
+    /**
+     * Imprimer la fiche technique en pdf
+     */
     const printDiv = useReactToPrint({
         content: () => componentRef.current,
     });
@@ -60,7 +71,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
         });
         setTimeout(
             () => setLoading(true),
-            5000
+            3000
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
