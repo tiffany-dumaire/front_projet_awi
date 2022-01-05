@@ -49,6 +49,29 @@ export async function getPhases(): Promise<Phase_Simple_Interface[]> {
     });
 }
 
+export async function getPhasesByFT(id_fiche_technique): Promise<Phase_Simple_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/phases/byFT/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((phases) => {
+                const phaseList: Phase_Simple_Interface[] = new Array<Phase_Simple_Interface>();
+                phases.data.forEach((phase: Phase_Simple_Interface) => {
+                    phaseList.push(phase);
+                });
+                resolve(phaseList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 export async function getDenreesByPhase(id_phase: number): Promise<Phase_Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -253,7 +276,7 @@ export async function putPhase(
                 }
             };
             axios(config).then((result) => {
-                resolve(result.data);
+                resolve(result.data.changedRows);
             });
         } catch (err) {
             reject(err);

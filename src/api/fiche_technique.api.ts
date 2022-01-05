@@ -30,6 +30,25 @@ export async function getFichesTechniques(): Promise<Fiche_Technique_Interface[]
     });
 }
 
+export async function getFicheByID(id_fiche_technique: number): Promise<Fiche_Technique_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/byId/${id_fiche_technique}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((fiches_techniques) => {
+                resolve(fiches_techniques.data[0]);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 /**
  * Récupère les informations liées à la fiche technique dont l'id est donné en paramètre : 
  * - id_fiche_technique
@@ -294,6 +313,36 @@ export async function createFicheTechnique(
             };
             axios(config).then((result) => {
                 resolve(result.data.insertId);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/** PUT **/
+
+export async function modifyFicheTechnique(
+    id_fiche_technique: number,
+    libelle_fiche_technique: string,
+    nombre_couverts: number,
+    id_responsable: number,
+    id_categorie_fiche: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'put',
+                url: `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/modify/${id_fiche_technique}`,
+                data: { 
+                    "libelle_fiche_technique": libelle_fiche_technique,
+                    "nombre_couverts": nombre_couverts,
+                    "id_responsable": id_responsable,
+                    "id_categorie_fiche": id_categorie_fiche,
+                },
+            };
+            axios(config).then((result) => {
+                resolve(result.data.changedRows);
             });
         } catch (err) {
             reject(err);

@@ -32,6 +32,7 @@ import { ModifyCategoryAllergene } from './features/mercurial/category-allergene
 import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modify/ModifyCategoryFiche';
 import { VenteTest } from './features/stocks/ventes/tests/VenteTest';
 import { FicheTechniqueDetail2 } from './features/fichestechniques/view/FicheTechniqueDetail2';
+import { ModifyFicheTechnique } from './features/fichestechniques/modify/ModifyFicheTechnique';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -62,6 +63,7 @@ function App(): JSX.Element {
             //fiches techniques
             '/fiches techniques',
             '/fiches techniques/create',
+            '/fiches techniques/modify/:id_fiche_technique',
             '/fiches techniques/search/:word',
             '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
             '/fiches techniques/byCategorie/:id_categorie_fiche',
@@ -112,6 +114,7 @@ function App(): JSX.Element {
               //fiches techniques
               '/fiches techniques',
               '/fiches techniques/create',
+              '/fiches techniques/modify/:id_fiche_technique',
               '/fiches techniques/search/:word',
               '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
               '/fiches techniques/byCategorie/:id_categorie_fiche',
@@ -159,6 +162,7 @@ function App(): JSX.Element {
                 {/*fiches techniques*/}
                 <Route exact path="/fiches techniques" component={ListeFichesTechniquesPage} />
                 <Route exact path="/fiches techniques/create" component={CreateFicheTechnique} />
+                <Route exact path="/fiches techniques/modify/:id_fiche_technique" component={ModifyFicheTechnique} />
                 <Route exact path="/fiches techniques/search/:word" component={FTResearch} />
                 <Route exact path="/fiches techniques/search/:word/byCategorie/:id_categorie_fiche" component={FTResearch} />
                 <Route exact path="/fiches techniques/byCategorie/:id_categorie_fiche" component={FicheTechniqueCategory} />
@@ -206,6 +210,7 @@ function App(): JSX.Element {
                 //fiches techniques
                 '/fiches techniques',
                 '/fiches techniques/create',
+                '/fiches techniques/modify/:id_fiche_technique',
                 '/fiches techniques/search/:word',
                 '/fiches techniques/search/:word/byCategorie/:id_categorie_fiche',
                 '/fiches techniques/byCategorie/:id_categorie_fiche',

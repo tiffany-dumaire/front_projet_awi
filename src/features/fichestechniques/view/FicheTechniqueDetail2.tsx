@@ -108,6 +108,14 @@ export function FicheTechniqueDetail2(): JSX.Element {
                         </button>
                     </div>
                     <div className={styles.linkTo}>
+                        <Link className={styles.modifyButton} to={`/fiches techniques/modify/${id_fiche_technique}`}>
+                            Modifier la fiche technique
+                        </Link>
+                        <button className={styles.deleteButton} onClick={() => deleteFT()}>
+                            Supprimer la fiche technique
+                        </button>
+                    </div>
+                    <div className={styles.linkTo}>
                         <div className={styles.containerSwitch}>
                             <div className={styles.switchContainer}>
                                 <label className={styles.switch}>
@@ -117,9 +125,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
                             </div>
                             <label>Afficher/Masquer les coûts</label>
                         </div>
-                        <button className={styles.deleteButton} onClick={() => deleteFT()}>
-                            Supprimer la fiche technique
-                        </button>
+                        <div></div>
                     </div>
                     <div className={styles.detail} ref={componentRef}>
                         <div className={styles.complete}>

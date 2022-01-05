@@ -3,8 +3,8 @@ import styles from './VenteTest.module.css';
 import { Helmet } from 'react-helmet';
 import { Loading } from '../../../../components/loading/Loading';
 import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
-import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
-import { etiquetteFiche, getFichesTechniques } from '../../../../api/fiche_technique.api';
+import { Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
+import { getFichesTechniques } from '../../../../api/fiche_technique.api';
 import { FicheTechniqueChoice } from '../../../../components/stocks/etiquette/FicheTechniqueChoice';
 
 export function VenteTest(): JSX.Element {
@@ -17,18 +17,18 @@ export function VenteTest(): JSX.Element {
     //etape de la vente
     const [step, setStep] = useState<number>(1);
     //configuration des étiquettes de fiche
-    const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
+    //const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
 
     /**
      * Ajout d'une étiquette correspondant à une fiche dans la liste
      * @param id_fiche_technique 
      */
-    const addEtiquette = (id_fiche_technique: number) => {
-        etiquetteFiche(id_fiche_technique).then((result) => {
-            etiquettes.push(result);
-            setEtiquettes(etiquettes.slice(0));
-        });
-    };
+    // const addEtiquette = (id_fiche_technique: number) => {
+    //     etiquetteFiche(id_fiche_technique).then((result) => {
+    //         etiquettes.push(result);
+    //         setEtiquettes(etiquettes.slice(0));
+    //     });
+    // };
 
     /**
      * Ajout d'une fiche dans la liste des fiches vendues

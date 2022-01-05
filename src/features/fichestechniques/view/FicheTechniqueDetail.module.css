@@ -244,7 +244,7 @@ td {
     border-left: 1px black solid;
 }
 
-.link {
+.link, .modifyButton, .link2, .deleteButton {
     position: relative;
     text-decoration: none;
     border: 1px solid rgb(37, 37, 37);
@@ -254,7 +254,26 @@ td {
     margin-bottom: 5px;
     font-weight: 600;
     color:aliceblue;
+}
+
+.link {
     background-color: rgba(73, 98, 211, 0.795);
+    padding-bottom: 12px;
+}
+
+.link2 {
+    background-color: rgb(42, 99, 165);
+    margin-left: auto;
+}
+
+.deleteButton {
+    background-color: rgb(172, 63, 63);
+    margin-left: auto;
+}
+
+.modifyButton {
+    background-color: rgb(110, 85, 85);
+    padding-bottom: 12px;
 }
 
 /* Toggle Switch Button */
@@ -331,27 +350,6 @@ input:checked + .slider:before {
   
 .slider.round:before {
     border-radius: 50%;
-}
-
-.link2, .deleteButton {
-    position: relative;
-    text-decoration: none;
-    border: 1px solid rgb(37, 37, 37);
-    padding: 10px;
-    width: 250px;
-    margin-left: auto;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color:aliceblue;
-}
-
-.link2 {
-    background-color: rgba(94, 48, 30, 0.795);
-}
-
-.deleteButton {
-    background-color: rgb(172, 63, 63);
 }
 
 @media print {

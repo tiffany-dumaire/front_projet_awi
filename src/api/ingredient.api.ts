@@ -290,7 +290,7 @@ export async function putIngredient(
                 },
             };
             axios(config).then((result) => {
-                //resolve(ingredient);
+                resolve(result.data.changedRows);
             });
         } catch (err) {
             reject(err);
