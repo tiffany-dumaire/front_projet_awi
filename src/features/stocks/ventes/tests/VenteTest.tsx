@@ -8,19 +8,32 @@ import { getFichesTechniques } from '../../../../api/fiche_technique.api';
 import { FicheTechniqueChoice } from '../../../../components/stocks/etiquette/FicheTechniqueChoice';
 
 export function VenteTest(): JSX.Element {
+    //liste des fiches existantes
     const [fiches, setFiches] = useState<Fiche_Technique_Interface[]>([]);
+    //liste des fiches vendues
     const [addedFiches, setAddedFiches] = useState<Fiche_Technique_Interface[]>([]);
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //etape de la vente
     const [step, setStep] = useState<number>(1);
+    //configuration des étiquettes de fiche
     //const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
 
-    /* const addEtiquette = (id_fiche_technique: number) => {
-        etiquetteFiche(id_fiche_technique).then((result) => {
-            etiquettes.push(result);
-            setEtiquettes(etiquettes.slice(0));
-        });
-    }; */
+    /**
+     * Ajout d'une étiquette correspondant à une fiche dans la liste
+     * @param id_fiche_technique 
+     */
+    // const addEtiquette = (id_fiche_technique: number) => {
+    //     etiquetteFiche(id_fiche_technique).then((result) => {
+    //         etiquettes.push(result);
+    //         setEtiquettes(etiquettes.slice(0));
+    //     });
+    // };
 
+    /**
+     * Ajout d'une fiche dans la liste des fiches vendues
+     * @param fiche 
+     */
     const addFiche = (fiche: Fiche_Technique_Interface) => {
         const index = addedFiches.indexOf(fiche);
         if (index === -1) {
@@ -29,12 +42,19 @@ export function VenteTest(): JSX.Element {
         }
     };
 
+    /**
+     * Suppression d'une fiche dans la liste des fiches vendues
+     * @param fiche 
+     */
     const removeFiche = (fiche: Fiche_Technique_Interface) => {
         const index = addedFiches.indexOf(fiche);
         addedFiches.splice(index, 1);
         setAddedFiches(addedFiches.slice(0));
     };
 
+    /**
+     * Passer à l'étape suivante
+     */
     const nextStep = () => {
         if (step === 1) {
             setStep(2);

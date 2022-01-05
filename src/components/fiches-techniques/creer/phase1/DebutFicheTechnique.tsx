@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { Categorie_Fiches_Interface } from '../../../../interfaces/Categorie_Fiches.interface';
+import { Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
 import { Responsable_Interface } from '../../../../interfaces/Responsable.interface';
 import styles from './DebutFicheTechnique.module.css';
 
 export type DebutFicheTechniqueProps = {
     id_fiche_technique?: number;
+    fiche?: Fiche_Technique_Interface;
     categories: Categorie_Fiches_Interface[];
     responsables: Responsable_Interface[];
     createFiche: (intitule: string, couverts: number, id_responsable: number, id_categorie: number) => void;
 };
 
 export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniqueProps> = (props: DebutFicheTechniqueProps) => {
-    const [intitule, setIntitule] = useState<string>('');
-    const [couverts, setCouverts] = useState<number>(0);
-    const [id_responsable, setIdResponsable] = useState<number>(0);
-    const [id_categorie, setIdCategorie] = useState<number>(0);
+    const [intitule, setIntitule] = useState<string>(props.fiche ? props.fiche.libelle_fiche_technique : '');
+    const [couverts, setCouverts] = useState<number>(props.fiche ? props.fiche.nombre_couverts : 0);
+    const [id_responsable, setIdResponsable] = useState<number>(props.fiche ? props.fiche.id_responsable : 0);
+    const [id_categorie, setIdCategorie] = useState<number>(props.fiche ? props.fiche.id_categorie_fiche : 0);
 
     const tronquer = (x: number) => {
         return x.toFixed(0);
@@ -39,14 +41,15 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
                 </div>
                 <div></div>
                 <div>
-                    <input className={styles.input} type="text" placeholder={'Saisir l\'intitulé de la nouvelle fiche technique...'} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setIntitule(ev.target.value)}></input>
+                    <input className={styles.input} type="text" value={intitule} placeholder={'Saisir l\'intitulé de la nouvelle fiche technique...'} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setIntitule(ev.target.value)}></input>
                 </div>
                 <div>
-                    <input className={styles.input} type="number" step={1} placeholder={'Saisir le nombre de couverts..'} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setCouverts(Number(ev.target.value))}></input>
+                    <input className={styles.input} type="number" step={1} value={couverts} placeholder={'Saisir le nombre de couverts..'} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setCouverts(Number(ev.target.value))}></input>
                 </div>
                 <div>
                     <select
                         className={styles.input}
+                        value={id_responsable}
                         onChange={(ev: React.ChangeEvent<HTMLSelectElement>) =>
                             setIdResponsable(Number(ev.target.value))
                         }
@@ -69,6 +72,7 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
                 <div>
                     <select
                         className={styles.input}
+                        value={id_categorie}
                         onChange={(ev: React.ChangeEvent<HTMLSelectElement>) =>
                             setIdCategorie(Number(ev.target.value))
                         }

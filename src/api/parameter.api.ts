@@ -44,7 +44,7 @@ export async function putParameter(
                 },
             };
             axios(config).then((result) => {
-                resolve(result.data.insertId);
+                resolve(result.data.changedRows);
             });
         } catch (err) {
             reject(err);

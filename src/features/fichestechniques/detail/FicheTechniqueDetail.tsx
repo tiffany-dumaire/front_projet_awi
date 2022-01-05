@@ -14,28 +14,39 @@ import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
 
 export function FicheTechniqueDetail(): JSX.Element {
-    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Technique_Infos_Interface>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //fiche technique
+    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Technique_Infos_Interface>();
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     const [phases, setPhases] = useState<Phase_Interface[]>([]);
     const [denreesEtape, setDenreesEtape] = useState<DenreesEtape_Interface[]>([]);
+    //changement de vue
     const history = useHistory();
-    //coût
+    //paramètre de l'application
     const [coeff_vente, setCoeffVente] = useState<Parameter_Interface>();
     const [cout_moyen, setCoutMoyen] = useState<Parameter_Interface>();
     const [assaisonnement, setAssaisonnement] = useState<Parameter_Interface>();
+    //cout
     const [showCout, setShowCout] = useState<boolean>(true);
     const [coutMatierePhase, setCoutMatierePhase] = useState<number[]>([0]);
     const reducer = (previousValue, currentValue) => previousValue + currentValue;
     const [dureeTotale, setDureeTotale] = useState<number>(0);
+    //pdf
     const componentRef = useRef(null);
 
+    /**
+     * Récupération des informations de la fiche technique
+     */
     async function getFT() {
         await getFicheTechniqueByID(Number(id_fiche_technique)).then((ft) => {
             setFicheTechnique(ft);
         });
     }
 
+    /**
+     * Récupération des phases de la fiche technique, des denrées et initialisation des constantes permettant de calculer les couts
+     */
     async function getPhases() {
         await getPhasesByFT(Number(id_fiche_technique)).then((list) => {
             let duree = 0;
@@ -61,12 +72,18 @@ export function FicheTechniqueDetail(): JSX.Element {
         });
     }
 
+    /**
+     * Supprimer la fiche technique
+     */
     const deleteFT = () => {
         deleteFicheTechnique(Number(id_fiche_technique)).then(() => {
             history.push(`/fiches techniques/byCategorie/0`);
         });
     }
     
+    /**
+     * Imprimer la fiche technique en pdf
+     */
     const printDiv = useReactToPrint({
         content: () => componentRef.current,
     });
@@ -88,11 +105,10 @@ export function FicheTechniqueDetail(): JSX.Element {
 
     return (
         <>
-        <Helmet>
-            <title>{'📋 ' + ficheTechnique?.libelle_fiche_technique}</title>
-        </Helmet>
-        {
-            loading ? (
+            <Helmet>
+                <title>{'📋 ' + ficheTechnique?.libelle_fiche_technique}</title>
+            </Helmet>
+            {loading ? (
                 <div className={styles.container}>
                     <SidebarMenu 
                         width={320} 
@@ -274,9 +290,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                 <div className={styles.container}>
                     <Loading />
                 </div>
-            )
-        }
-                 
-    </>
+            )}
+        </>
     );
 }

@@ -11,7 +11,9 @@ import { Categorie_Fiches } from '../../models/Categorie_Fiches.model';
 import styles from './ListeFichesTechniquesPage.module.css';
 
 export function ListeFichesTechniquesPage(): JSX.Element {
+    //catégories de fiches techniques
     const [categories, setCategories] = useState<Categorie_Fiches_Interface[]>([]);
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
