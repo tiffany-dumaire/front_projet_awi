@@ -37,7 +37,7 @@ export function ModifyCategoryAllergene(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{'➕ Ajouter un ingrédient au mercurial'}</title>
+                <title>{`⚙️ Modifier la catégorie d'allergènes`}</title>
             </Helmet>
             {
                 loader ? (

@@ -8,7 +8,7 @@ export function StockEntriesChoice(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Gestion des entrées de stocks'}</title>
+                <title>{'📦 Gestion des entrées de stocks 📦'}</title>
             </Helmet>
             <StockEntriesDashboard />
         </>

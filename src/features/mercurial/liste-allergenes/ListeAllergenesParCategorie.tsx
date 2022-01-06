@@ -8,10 +8,13 @@ import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from 'react-icons/fc';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
+import { Categorie_Allergenes_Interface } from '../../../interfaces/Categorie_Allergenes.interface';
+import { getCategorieAllergeneById } from '../../../api/categorie.api';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
     const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
+    const [categorie, setCategorie] = useState<Categorie_Allergenes_Interface>();
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -36,6 +39,7 @@ export function ListeAllergenesParCategorie(): JSX.Element {
     };
 
     useEffect(() => {
+        getCategorieAllergeneById(Number(id_categorie_allergene)).then((result) => setCategorie(result));
         getAllergenesList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
@@ -43,7 +47,7 @@ export function ListeAllergenesParCategorie(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'☠️ <nom catégorie> | Allergènes ☠️'}</title>
+                <title>{`☠️ ${Number(id_categorie_allergene) === 0 ? 'Tous' : categorie?.categorie_allergene} | Allergènes ☠️`}</title>
             </Helmet>
             {
                 loading ? (

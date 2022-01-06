@@ -37,7 +37,7 @@ export function ModifyCategoryFiche(): JSX.Element {
     return (
         <>
             <Helmet>
-                <title>{'➕ Ajouter un ingrédient au mercurial'}</title>
+                <title>{`⚙️ Modifier la catégorie de fiches techniques`}</title>
             </Helmet>
             {
                 loader ? (

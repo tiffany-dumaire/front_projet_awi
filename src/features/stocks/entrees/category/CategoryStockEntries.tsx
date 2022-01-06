@@ -66,7 +66,7 @@ export function CategoryStockEntries(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Entrées de stock | Par catégorie'}</title>
+                <title>{'🛒 Entrées de stock | Par catégorie 🛒'}</title>
             </Helmet>
             {
                 loading ? (

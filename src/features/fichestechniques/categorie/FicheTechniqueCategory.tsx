@@ -7,15 +7,18 @@ import { SearchFiche } from '../../../components/search-bar/fiches-techniques/Se
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { deleteFicheTechnique, getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
+import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
+import { getCategorieFicheById } from '../../../api/categorie.api';
 
 export function FicheTechniqueCategory(): JSX.Element {
     const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
+    const [categorie,  setCategorie] = useState<Categorie_Fiches_Interface>();
     const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
     const [loading, setLoading] = useState<boolean>(false);
     //changement de vue
     const history = useHistory();
 
-    async function getFichesTechniquesList() {
+    const getFichesTechniquesList = async () => {
         if (Number(id_categorie_fiche) === 0) {
             await getFichesTechniques().then((list) => {
                 list.forEach((ft) => {
@@ -45,6 +48,7 @@ export function FicheTechniqueCategory(): JSX.Element {
     }
 
     useEffect(() => {
+        getCategorieFicheById(Number(id_categorie_fiche)).then((result) => setCategorie(result));
         getFichesTechniquesList();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
@@ -52,7 +56,7 @@ export function FicheTechniqueCategory(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'📋 <nom catégorie> | Fiches Techniques 📋'}</title>
+                <title>{`📋 ${Number(id_categorie_fiche) === 0 ? 'Toutes' : categorie?.categorie_fiche} | Fiches Techniques 📋`}</title>
             </Helmet>
             {
                 loading ? (
@@ -103,7 +107,7 @@ export function FicheTechniqueCategory(): JSX.Element {
                                                     <td className={styles.alignRight}>{ft.intitule_responsable}</td>
                                                     <td className={styles.td2}>
                                                         <Link className={styles.button} to={`/fiches techniques/modify/${ft.id_fiche_technique}`} title={'Modifier la fiche'}>
-                                                            <span className={styles.iconeSearch}>🛠️</span>
+                                                            <span className={styles.iconeSearch}>⚙️</span>
                                                         </Link>
                                                         <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`} title={'Afficher la fiche'}>
                                                             <span className={styles.iconeSearch}>🔍</span>
