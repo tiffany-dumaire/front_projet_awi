@@ -5,11 +5,11 @@ import { ModifyStock } from '../../../../components/stocks/modify/ModifyStock';
 import { Stock_Interface } from '../../../../interfaces/Ingredient.interface';
 import { getIngredientsByCategorie } from '../../../../api/ingredient.api';
 import { Stock } from '../../../../models/Ingredient.model';
-import { Loading } from '../../../../components/loading/Loading';
 import { Categorie_Interface } from '../../../../interfaces/Categorie.interface';
 import { getCategories } from '../../../../api/categorie.api';
 import { CategorieChoice } from '../../../../components/stocks/modify/CategorieChoice';
 import { useHistory } from 'react-router-dom';
+import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 
 
 export function CategoryStockEntries(): JSX.Element {
@@ -82,7 +82,7 @@ export function CategoryStockEntries(): JSX.Element {
                 ) : 
                 (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingStock />
                     </div>
                 )
             }

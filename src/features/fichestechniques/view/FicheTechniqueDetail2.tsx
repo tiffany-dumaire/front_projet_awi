@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { deleteFicheTechnique, getFicheTechniqueComplete } from '../../../api/fiche_technique.api';
-import { Loading } from '../../../components/loading/Loading';
 import { Fiche_Complete_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import styles from './FicheTechniqueDetail.module.css';
 import { useReactToPrint } from 'react-to-print';
 import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FicheTechniqueDetail2(): JSX.Element {
     //loading
@@ -269,7 +269,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
                 </div>
             ) : (
                 <div className={styles.container}>
-                    <Loading />
+                    <LoadingFiche />
                 </div>
             )}
                  

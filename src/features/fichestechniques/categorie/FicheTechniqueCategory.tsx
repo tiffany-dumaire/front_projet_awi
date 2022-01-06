@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import styles from './FicheTechniqueCategory.module.css';
-import { Loading } from '../../../components/loading/Loading';
 import { SearchFiche } from '../../../components/search-bar/fiches-techniques/SearchFiche';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { deleteFicheTechnique, getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
 import { getCategorieFicheById } from '../../../api/categorie.api';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FicheTechniqueCategory(): JSX.Element {
     const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
@@ -25,7 +25,6 @@ export function FicheTechniqueCategory(): JSX.Element {
                     fichesTechniques.push(ft);
                     setFichesTechniques(fichesTechniques.slice(0));
                 });
-                setLoading(true);
             });
         } else {
             await getFTByCategorie(Number(id_categorie_fiche)).then((list) => {
@@ -33,7 +32,6 @@ export function FicheTechniqueCategory(): JSX.Element {
                     fichesTechniques.push(ft);
                     setFichesTechniques(fichesTechniques.slice(0));
                 }); 
-                setLoading(true);
             }); 
         }
     };
@@ -50,6 +48,10 @@ export function FicheTechniqueCategory(): JSX.Element {
     useEffect(() => {
         getCategorieFicheById(Number(id_categorie_fiche)).then((result) => setCategorie(result));
         getFichesTechniquesList();
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -126,7 +128,7 @@ export function FicheTechniqueCategory(): JSX.Element {
                     </div>
                 ) : (
                     <div className={styles.mercurialContainer}>
-                        <Loading />
+                        <LoadingFiche />
                     </div>
                 )
             }

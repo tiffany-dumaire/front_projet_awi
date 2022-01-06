@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Toast } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { getParameter, putParameter } from '../../api/parameter.api';
-import { Loading } from '../../components/loading/Loading';
+import { LoadingParametre } from '../../components/loading/loading-parameter/LoadingParametre';
 import { Parameter_Interface } from '../../interfaces/Parameter.interface';
 import { Parameter } from '../../models/Parameter.model';
 import styles from './Parameters.module.css';
@@ -95,7 +95,10 @@ export function Parameters(): JSX.Element {
         getParameter('COEFF_VENTE').then((parameter) => {
             setCoeffVente(parameter);
         });
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
     }, []);
 
     return (
@@ -165,7 +168,7 @@ export function Parameters(): JSX.Element {
                         </div>
                     ) : (
                         <div className={styles.subcontainer}>
-                            <Loading />
+                            <LoadingParametre />
                         </div>
                     )
                 }

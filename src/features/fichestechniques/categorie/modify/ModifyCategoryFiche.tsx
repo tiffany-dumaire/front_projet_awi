@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getCategorieFicheById, modifyCategoryFiche } from '../../../../api/categorie.api';
-import { Loading } from '../../../../components/loading/Loading';
+import { LoadingParametre } from '../../../../components/loading/loading-parameter/LoadingParametre';
 import styles from './ModifyCategoryFiche.module.css';
 
 export function ModifyCategoryFiche(): JSX.Element {
@@ -30,7 +30,10 @@ export function ModifyCategoryFiche(): JSX.Element {
             setLibelle(result.categorie_fiche);
             setColor(result.color_fiche);
         });
-        setLoader(true);
+        setTimeout(
+            () => setLoader(true),
+            1000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     
@@ -79,7 +82,7 @@ export function ModifyCategoryFiche(): JSX.Element {
                     </div>
                 ) : (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingParametre />
                     </div>
                 )
             }
