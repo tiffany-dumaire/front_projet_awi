@@ -13,13 +13,23 @@ import { LoadingStock } from '../../../../components/loading/loading-stock/Loadi
 
 
 export function CategoryStockEntries(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //catégorie choisie pour y modifier les stocks
     const [id_categorie, setIdCategorie] = useState<number>(0);
+    //ensemble des catégories existantes
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
+    //tous les ingrédients de la catégorie choisies avec leur stock respectif
     const [ingredients, setIngredients] = useState<Stock_Interface[]>([]);
+    //etape
     const [step, setStep] = useState<number>(1);
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Récupération de la liste des ingrédients pour une catégorie donnée
+     * @param id_categorie 
+     */
     const getIngredientList = (id_categorie: number) => {
         getIngredientsByCategorie(id_categorie).then((list) => {
             list.forEach((ingredient) => {
@@ -29,21 +39,29 @@ export function CategoryStockEntries(): JSX.Element {
         });
     };
 
+    /**
+     * Récupération de l'ensemble des catégories existantes
+     */
     const getAllCategories = () => {
         getCategories().then((list) => {
             list.forEach((categorie) => {
                 categories.push(categorie);
                 setCategories(categories.slice(0));
-                setLoading(true);
             });
         });
     }
 
+    /**
+     * Aller à l'étape suivante
+     */
     const changeStep = () => {
         if (step === 1) setStep(2);
         else setStep(1);
     }
 
+    /**
+     * Redicection vers la catégorie du mercurial pour laquelle on modifie les stocks
+     */
     const goToMercurialCategory = () => {
         setLoading(false);
         setTimeout(
@@ -53,6 +71,9 @@ export function CategoryStockEntries(): JSX.Element {
 
     useEffect(() => {
         getAllCategories();
+        setTimeout(
+            () => setLoading(true)
+        , 2000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

@@ -66,7 +66,10 @@ export function ModifyPhase(): JSX.Element {
         getPhase();
         getAddedIngredient();
         getIngredientList();        
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

@@ -6,16 +6,27 @@ import { LoadingParametre } from '../../../components/loading/loading-parameter/
 import styles from './ModifyCategoryAllergene.module.css';
 
 export function ModifyCategoryAllergene(): JSX.Element {
+    //loading
     const [loader, setLoader] = useState<boolean>(false);
+    //paramètre de la categorie récupérée
     const [libelle, setLibelle] = useState<string>('');
     const [color, setColor] = useState<string>('');
+    //Paramètre de l'url
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
+    //changement de vue
     const history = useHistory();
 
-    const goToMercurial = () => {
+    /**
+     * Redirection vers la liste des allergènes
+     */
+    const goToAllergenes = () => {
         history.push(`/liste des allergenes`);
     }
 
+    /**
+     * Modification de la catégorie d'allergène
+     * @returns 
+     */
     const modifyThisCategory = () => {
         var r = window.confirm("Êtes-vous sûr de vouloir modifier cette catégorie ?");
         if (r) {
@@ -74,7 +85,7 @@ export function ModifyCategoryAllergene(): JSX.Element {
                                         <input className={styles.input} type="color" value={color} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setColor(ev.target.value)}></input>
                                     </div>
                                     <div>
-                                        <button className={styles.buttonCancel} onClick={() => goToMercurial()}>Annuler la modification</button>
+                                        <button className={styles.buttonCancel} onClick={() => goToAllergenes()}>Annuler la modification</button>
                                     </div>
                                 </div>
                             </div>

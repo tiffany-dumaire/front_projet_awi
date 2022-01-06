@@ -9,7 +9,9 @@ import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import styles from './ListePhases.module.css';
 
 export function ListePhasesPage(): JSX.Element {
+    //liste des phases
     const [phases, setPhases] = useState<Phase_Simple_Interface[]>([]);
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
@@ -19,7 +21,10 @@ export function ListePhasesPage(): JSX.Element {
                 setPhases(phases.slice(0));
             });
         });
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

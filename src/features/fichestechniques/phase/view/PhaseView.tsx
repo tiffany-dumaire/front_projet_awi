@@ -33,7 +33,10 @@ export function PhaseView(): JSX.Element {
         getPhaseDetail(Number(id_phase)).then((result) => {
             setPhase(result);
         })
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

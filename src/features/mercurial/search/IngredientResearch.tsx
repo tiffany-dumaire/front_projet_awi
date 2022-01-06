@@ -9,12 +9,18 @@ import { FcSearch } from "react-icons/fc";
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 
 export function IngredientResearch(): JSX.Element {
+    //liste des ingrédients qui résultent de la recherche
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
+    //Paramètre de l'url
     const { word } = useParams<{ word: string }>();
     const { id_categorie } = useParams<{ id_categorie: string }>();
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
+    /**
+     * Récupération du résultat de la recherche
+     */
     async function getIngredientList() {
         if (id_categorie !== undefined) {
             await searchIngredientsByCategorie(word, Number(id_categorie)).then((list) => {
@@ -22,7 +28,6 @@ export function IngredientResearch(): JSX.Element {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
                 });
-                setLoading(true);
             });
         } else {
             if (id_categorie_allergene !== undefined) {
@@ -31,7 +36,6 @@ export function IngredientResearch(): JSX.Element {
                         ingredients.push(ingredient);
                         setIngredients(ingredients.slice(0));
                     });
-                    setLoading(true);
                 });
             } else {
                 await searchIngredients(word).then((list) => {
@@ -39,14 +43,17 @@ export function IngredientResearch(): JSX.Element {
                         ingredients.push(ingredient);
                         setIngredients(ingredients.slice(0));
                     });
-                    setLoading(true);
                 });
             }
         }
     };
 
     useEffect(() => {
-        getIngredientList();        
+        getIngredientList();  
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );      
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

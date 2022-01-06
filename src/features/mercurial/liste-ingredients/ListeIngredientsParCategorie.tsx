@@ -12,11 +12,18 @@ import { Categorie_Interface } from '../../../interfaces/Categorie.interface';
 import { getCategorieById } from '../../../api/categorie.api';
 
 export function ListeIngredientsParCategorie(): JSX.Element {
+    //ingrédient de la catégorie donnée en paramètre
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
+    //catégorie donnée en paramètre
     const [categorie,  setCategorie] = useState<Categorie_Interface>();
+    //Paramètre de l'url
     const { id_categorie } = useParams<{ id_categorie: string }>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
+    /**
+     * Récupération de la liste des ingrédients pour une catégorie donnée en url
+     */
     async function getIngredientList() {
         if (Number(id_categorie) === 0) {
             await getIngredients().then((list) => {
@@ -24,7 +31,6 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
                 });
-                setLoading(true);
             });
         }else {
             await getIngredientsByCategorie(Number(id_categorie)).then((list) => {
@@ -32,14 +38,17 @@ export function ListeIngredientsParCategorie(): JSX.Element {
                     ingredients.push(ingredient);
                     setIngredients(ingredients.slice(0));
                 }); 
-                setLoading(true);
             });
         }  
     };
 
     useEffect(() => {
         getCategorieById(Number(id_categorie)).then((result) => setCategorie(result));
-        getIngredientList();        
+        getIngredientList();
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

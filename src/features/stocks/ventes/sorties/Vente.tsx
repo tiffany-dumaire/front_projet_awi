@@ -17,7 +17,7 @@ export function Vente(): JSX.Element {
     //loading
     const [loading, setLoading] = useState<boolean>(false);
     //configuration des étiquettes de fiche
-    const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
+    const [etiquettes, setEtiquettes] = useState<Etiquette[]>([]);
 
     /**
      * Ajout d'une étiquette correspondant à une fiche dans la liste
@@ -25,10 +25,20 @@ export function Vente(): JSX.Element {
      */
     const addEtiquette = (id_fiche_technique: number) => {
         etiquetteFiche(id_fiche_technique).then((result) => {
-            etiquettes.push(result);
+            etiquettes.push({"quantity": 1, "etiquette": result});
             setEtiquettes(etiquettes.slice(0));
         });
     };
+
+    /**
+     * Retirer une étiquette de la liste
+     * @param etiquette 
+     */
+    const removeEtiquette = (etiquette: Etiquette) => {
+        const index = etiquettes.indexOf(etiquette);
+        etiquettes.splice(index, 1);
+        setEtiquettes(etiquettes.slice(0));
+    }
 
     useEffect(() => {
         getFichesTechniques().then((result) => {

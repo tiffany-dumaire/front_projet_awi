@@ -11,20 +11,26 @@ import { Categorie } from '../../models/Categorie.model';
 import styles from './MercurialPage.module.css';
 
 export function MercurialPage(): JSX.Element {
+    //liste des catégories d'ingrédients
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        categories.push(new Categorie(0, 'TOUS','#660066'));
+        setCategories(categories.slice(0));
+
         getCategories().then((list) => {
             list.forEach((categorie) => {
                 categories.push(categorie);
                 setCategories(categories.slice(0));
-                setLoading(true);
             });
         });
 
-        categories.push(new Categorie(0, 'TOUS','#660066'));
-        setCategories(categories.slice(0));
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

@@ -13,15 +13,26 @@ import { Ingredient } from '../../../models/Ingredient.model';
 import styles from './DetailIngredient.module.css';
 
 export function DetailIngredient(): JSX.Element {
+    //loading
     const [loader, setLoader] = useState<boolean>(true);
+    //modifié lorsqu'un ingrédient est modifié
     const [edited, setEdited] = useState<boolean>(false);
+    //récupération des informations de l'ingrédient
     const [ingredient, setIngredient] = useState<Ingredient_Interface>(new Ingredient(0,'','',0,0,false,0,0));
+    //catégorie de l'ingrédient
     const [categorie, setCategorie] = useState<Categorie_Interface>();
+    //catégorie allergene de l'ingrédient
     const [categorie_allergene, setCategorieAllergene] = useState<Categorie_Allergenes_Interface>();
+    //en cours d'édition ou non
     const [onEdit, setOnEdit] = useState<boolean>(false);
+    //paramètre de l'url
     const { id_ingredient } = useParams<{ id_ingredient: string }>();
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * 
+     */
     const getAllergeneCategorie = () => {
         getCategoriesAllergenes().then((list) => {
             list.forEach((categorie) => {
@@ -43,7 +54,6 @@ export function DetailIngredient(): JSX.Element {
                     setCategorieAllergene(c2);
                 });
             }
-            setLoader(true);
         });
     };
 
@@ -61,6 +71,10 @@ export function DetailIngredient(): JSX.Element {
     useEffect(() => {
         getIngredient();
         getAllergeneCategorie();
+        setTimeout(
+            () => setLoader(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

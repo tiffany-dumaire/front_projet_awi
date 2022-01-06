@@ -11,20 +11,26 @@ import { Categorie_Allergenes } from '../../models/Categorie_Allergernes.model';
 import styles from './ListeAllergenesPage.module.css';
 
 export function ListeAllergenesPage(): JSX.Element {
+    //catégories d'allergenes 
     const [categories, setCategories] = useState<Categorie_Allergenes_Interface[]>([]);
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        categories.push(new Categorie_Allergenes(0, 'TOUS','#660066'));
+        setCategories(categories.slice(0));
+
         getCategoriesAllergenes().then((list) => {
             list.forEach((categorie) => {
                 categories.push(categorie);
                 setCategories(categories.slice(0));
-                setLoading(true);
             });
         });
 
-        categories.push(new Categorie_Allergenes(0, 'TOUS','#660066'));
-        setCategories(categories.slice(0));
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

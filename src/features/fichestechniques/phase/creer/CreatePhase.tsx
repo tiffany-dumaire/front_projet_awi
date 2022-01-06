@@ -47,7 +47,10 @@ export function CreatePhase(): JSX.Element {
 
     useEffect(() => {
         getIngredientList();        
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

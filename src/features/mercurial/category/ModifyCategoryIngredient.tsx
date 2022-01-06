@@ -6,16 +6,27 @@ import { LoadingParametre } from '../../../components/loading/loading-parameter/
 import styles from './ModifyCategoryIngredient.module.css';
 
 export function ModifyCategoryIngredient(): JSX.Element {
+    //loading
     const [loader, setLoader] = useState<boolean>(false);
+    //attribut de la catégorie modifiée
     const [libelle, setLibelle] = useState<string>('');
     const [color, setColor] = useState<string>('');
+    //paramètre de l'url
     const { id_categorie } = useParams<{ id_categorie: string }>();
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection vers le mercurial
+     */
     const goToMercurial = () => {
         history.push(`/mercurial`);
     }
 
+    /**
+     * Modification de la catégorie
+     * @returns 
+     */
     const modifyThisCategory = () => {
         var r = window.confirm("Êtes-vous sûr de vouloir modifier cette catégorie ?");
         if (r) {
