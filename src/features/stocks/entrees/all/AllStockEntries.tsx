@@ -10,10 +10,16 @@ import { LoadingStock } from '../../../../components/loading/loading-stock/Loadi
 
 
 export function AllStockEntries(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //liste des stocks par ingrédient
     const [ingredients, setIngredients] = useState<Stock_Interface[]>([]);
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection sur la catégorie du mercurial rassemblant tous les ingrédients existants
+     */
     const goToMercurial = () => {
         setLoading(false);
         setTimeout(
@@ -21,6 +27,9 @@ export function AllStockEntries(): JSX.Element {
         , 10000);
     }
     
+    /**
+     * Récupération de la liste de tous les ingrédients
+     */
     const getIngredientList = () => {
         getIngredients().then((list) => {
             list.forEach((ingredient) => {

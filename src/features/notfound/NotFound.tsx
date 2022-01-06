@@ -4,8 +4,12 @@ import { useHistory } from 'react-router-dom';
 import styles from './NotFound.module.css';
 
 export function NotFound(): JSX.Element {
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection vers l'accueil du site
+     */
     const goTo = () => {
         const url = `/`;
         history.push(url);

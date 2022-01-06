@@ -6,10 +6,14 @@ import { InitNewIngredient } from '../../../components/mercurial/ingredient/crea
 import styles from './CreateIngredient.module.css';
 
 export function CreateIngredient(): JSX.Element {
+    //loading
     const [loader, setLoader] = useState<boolean>(false);
 
     useEffect(() => {
-        setLoader(true);
+        setTimeout(
+            () => setLoader(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     

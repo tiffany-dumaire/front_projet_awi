@@ -13,11 +13,18 @@ import { getCategorieAllergeneById } from '../../../api/categorie.api';
 
 
 export function ListeAllergenesParCategorie(): JSX.Element {
+    //liste des allergenes de la catégorie donnée en url
     const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
+    //catégorie donnée dans l'url
     const [categorie, setCategorie] = useState<Categorie_Allergenes_Interface>();
+    //Paramètre de l'url
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
+    /**
+     * Récupération de la liste des allergènes pour la catégorie donnée dans l'url
+     */
     async function getAllergenesList() {
         if (Number(id_categorie_allergene) === 0) {
             await getAllergenes().then((list) => {
@@ -25,7 +32,6 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                     allergenes.push(ingredient);
                     setAllergenes(allergenes.slice(0));
                 }); 
-                setLoading(true);
             });
         }else {
             await getAllergenesByCategorie(Number(id_categorie_allergene)).then((list) => {
@@ -33,7 +39,6 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                     allergenes.push(ingredient);
                     setAllergenes(allergenes.slice(0));                    
                 }); 
-                setLoading(true);
             });
         }  
     };
@@ -41,6 +46,10 @@ export function ListeAllergenesParCategorie(): JSX.Element {
     useEffect(() => {
         getCategorieAllergeneById(Number(id_categorie_allergene)).then((result) => setCategorie(result));
         getAllergenesList();
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 

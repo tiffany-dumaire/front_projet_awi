@@ -8,14 +8,26 @@ import { Parameter } from '../../models/Parameter.model';
 import styles from './Parameters.module.css';
 
 export function Parameters(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //paramètres de l'application
     const [coeff_vente, setCoeffVente] = useState<Parameter_Interface>();
     const [cout_moyen, setCoutMoyen] = useState<Parameter_Interface>();
     const [assaisonnement, setAssaisonnement] = useState<Parameter_Interface>();
+    //affichage du toast
     const [showA, setShowA] = useState(false);
 
+    /**
+     * Afficher ou non le toast
+     * @returns 
+     */
     const toggleShowA = () => setShowA(true);
 
+    /**
+     * Modification de la value du paramètre localement
+     * @param value 
+     * @param parameter 
+     */
     const modifyValue = (value: number, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, value, assaisonnement!.value2, assaisonnement!.utile));
@@ -31,6 +43,11 @@ export function Parameters(): JSX.Element {
         }
     };
 
+    /**
+     * Modification de la seconde valeur du paramètre localement
+     * @param value 
+     * @param parameter 
+     */
     const modifyValue2 = (value: number, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, assaisonnement!.value, value, assaisonnement!.utile));
@@ -46,6 +63,11 @@ export function Parameters(): JSX.Element {
         }
     };
 
+    /**
+     * Modifier le paramètre localement (utilisation de la valeur 1 ou de la valeur 2 || utilisation ou non du paramètre)
+     * @param utile 
+     * @param parameter 
+     */
     const modifyUtile = (utile: boolean, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, assaisonnement!.value, assaisonnement!.value2, utile));
@@ -61,6 +83,13 @@ export function Parameters(): JSX.Element {
         }
     };
 
+    /**
+     * Modification des attributs d'un paramètre de l'application
+     * @param value 
+     * @param value2 
+     * @param utile 
+     * @param parameter 
+     */
     const modifyParameter = (value: number, value2: number, utile: boolean, parameter: string) => {
         putParameter(parameter, value, value2, utile).then((result) => {
             toggleShowA();
@@ -71,6 +100,10 @@ export function Parameters(): JSX.Element {
         });
     }
 
+    /**
+     * Annuler la modification d'un paramètre et de ses valeurs
+     * @param parameterName 
+     */
     const cancelParameter = (parameterName: string) => {
         getParameter(parameterName).then((parameter) => {
             if (parameterName === 'COUT_ASSAISONNEMENT') {
