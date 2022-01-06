@@ -5,7 +5,7 @@ export function Footer(): JSX.Element {
   return (
     <div className={styles.footer}>
       <div className={styles.informations}>
-        <p>© {new Date().getUTCFullYear()}, AWI Project - Tiffany DUMAIRE - IG4.</p>
+        <p>© 2022, AWI Project - Tiffany DUMAIRE - IG4.</p>
       </div>
       <div className={styles.links}>
         <a className={styles.link} href="/parameters">
