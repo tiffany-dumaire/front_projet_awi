@@ -39,7 +39,7 @@ export function AllStockEntries(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'Entrées de stock | Tous'}</title>
+                <title>{'🛒 Entrées de stock | Tous 🛒'}</title>
             </Helmet>
             {
                 loading ? (

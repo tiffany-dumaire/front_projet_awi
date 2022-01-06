@@ -138,7 +138,7 @@ export function ModifyFicheTechnique(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'➕ Créer une fiche technique'}</title>
+                <title>{'⚙️ Modifier une fiche technique'}</title>
             </Helmet>
             {
                 loading ? (

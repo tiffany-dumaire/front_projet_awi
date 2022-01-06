@@ -53,7 +53,7 @@ export function IngredientResearch(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'🍳 "' + word + '"| Recherche 🍳'}</title>
+                <title>{`🍳 "${word}" | Recherche 🍳`}</title>
             </Helmet>
             {
                 loading ? (

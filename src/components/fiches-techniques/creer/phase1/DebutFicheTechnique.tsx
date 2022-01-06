@@ -24,7 +24,6 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
 
     return (
         <div className={styles.debutContainer}>
-            {/* Faire un affichage grid puis flex column pour mobile*/}
             <h3>Créer une nouvelle fiche technique</h3>
             <div className={styles.gridContainer}>
                 <div>

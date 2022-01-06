@@ -8,9 +8,12 @@ import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from "react-icons/fc";
 import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
+import { Categorie_Interface } from '../../../interfaces/Categorie.interface';
+import { getCategorieById } from '../../../api/categorie.api';
 
 export function ListeIngredientsParCategorie(): JSX.Element {
     const [ingredients, setIngredients] = useState<Ingredient_Interface[]>([]);
+    const [categorie,  setCategorie] = useState<Categorie_Interface>();
     const { id_categorie } = useParams<{ id_categorie: string }>();
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -35,6 +38,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
     };
 
     useEffect(() => {
+        getCategorieById(Number(id_categorie)).then((result) => setCategorie(result));
         getIngredientList();        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
@@ -42,7 +46,7 @@ export function ListeIngredientsParCategorie(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'🍳 <nom catégorie> | Ingrédients 🍳'}</title>
+                <title>{`🍳 ${Number(id_categorie) === 0 ? 'Tous' : categorie?.categorie} | Ingrédients 🍳`}</title>
             </Helmet>
             {
                 loading ? (
