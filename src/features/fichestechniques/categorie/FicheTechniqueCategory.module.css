@@ -82,3 +82,16 @@
     color:aliceblue;
     background-color: rgba(73, 98, 211, 0.795);
 }
+
+.iconeDelete {
+    margin-top: 2px;
+    width: 25px;
+    height: 25px;
+    color: red;
+}
+
+.iconeSearch {
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+}
