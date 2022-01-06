@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoMdAddCircle } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import styles from './FicheTechniqueChoice.module.css';
@@ -38,7 +37,7 @@ export const FicheTechniqueChoice: React.FunctionComponent<FicheTechniqueChoiceP
                                 <div onClick={() => {
                                     props.addFiche(fiche);
                                 }}>
-                                    <IoMdAddCircle className={styles.add} /> {fiche.libelle_fiche_technique}
+                                    <span className={styles.add}>+</span> {fiche.libelle_fiche_technique}
                                 </div>
                             </div>
                         ))
