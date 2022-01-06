@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import styles from './VenteTest.module.css';
+import styles from './Vente.module.css';
 import { Helmet } from 'react-helmet';
 import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
 import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
 import { etiquetteFiche, getFichesTechniques } from '../../../../api/fiche_technique.api';
-import { FicheTechniqueChoice } from '../../../../components/stocks/etiquette/FicheTechniqueChoice';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 
-export function VenteTest(): JSX.Element {
+export type Etiquette = {
+    quantity: number;
+    etiquette: Etiquette_Fiche_Technique_Interface;
+};
+
+export function Vente(): JSX.Element {
     //liste des fiches existantes
     const [fiches, setFiches] = useState<Fiche_Technique_Interface[]>([]);
-    //liste des fiches vendues
-    const [addedFiches, setAddedFiches] = useState<Fiche_Technique_Interface[]>([]);
     //loading
     const [loading, setLoading] = useState<boolean>(false);
-    //etape de la vente
-    const [step, setStep] = useState<number>(1);
     //configuration des étiquettes de fiche
     const [etiquettes, setEtiquettes] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
 
@@ -30,41 +30,6 @@ export function VenteTest(): JSX.Element {
         });
     };
 
-    /**
-     * Ajout d'une fiche dans la liste des fiches vendues
-     * @param fiche 
-     */
-    const addFiche = (fiche: Fiche_Technique_Interface) => {
-        const index = addedFiches.indexOf(fiche);
-        if (index === -1) {
-            addedFiches.push(fiche);
-            setAddedFiches(addedFiches.slice(0));
-        }
-    };
-
-    /**
-     * Suppression d'une fiche dans la liste des fiches vendues
-     * @param fiche 
-     */
-    const removeFiche = (fiche: Fiche_Technique_Interface) => {
-        const index = addedFiches.indexOf(fiche);
-        addedFiches.splice(index, 1);
-        setAddedFiches(addedFiches.slice(0));
-    };
-
-    /**
-     * Passer à l'étape suivante
-     */
-    const nextStep = () => {
-        if (step === 1) {
-            setStep(2);
-        } else {
-            if (step === 2) {
-                setStep(3)
-            }
-        }
-    };
-
     useEffect(() => {
         getFichesTechniques().then((result) => {
             result.forEach((fiche_technique) => {
@@ -72,7 +37,6 @@ export function VenteTest(): JSX.Element {
                 setFiches(fiches.slice(0));
             });
         });
-        setStep(1);
         setTimeout(
             () => setLoading(true),
             2000
@@ -104,12 +68,7 @@ export function VenteTest(): JSX.Element {
                         }
                     />
                     <div className={styles.container}>
-                        {step === 1 ? (
-                            <FicheTechniqueChoice fiches={fiches} addedFiches={addedFiches} addFiche={(fiche: Fiche_Technique_Interface) => addFiche(fiche)} removeFiche={(fiche: Fiche_Technique_Interface) => removeFiche(fiche)} next={() => nextStep()}  />
-                        ) : (
-                            null
-                            //<ModifyStock ingredients={ingredients} goTo={() => goToMercurialCategory()}/>
-                        )}
+                        
                     </div>
                 </div>
             ) : (

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { getCategoriesFiches } from '../../api/categorie.api';
 import { CategorieFTCard } from '../../components/fiches-techniques/categorie-card/CategorieFTCard';
-import { Loading } from '../../components/loading/Loading';
+import { LoadingFiche } from '../../components/loading/loading-fiche/LoadingFiche';
 import { SearchFiche } from '../../components/search-bar/fiches-techniques/SearchFiche';
 import { Categorie_Fiches_Interface } from '../../interfaces/Categorie_Fiches.interface';
 import { SidebarMenu } from '../../layout/sidebar-menu/SidebarMenu';
@@ -23,9 +23,12 @@ export function ListeFichesTechniquesPage(): JSX.Element {
             list.forEach((categorie) => {
                 categories.push(categorie);
                 setCategories(categories.slice(0));
-                setLoading(true);
             });
         });
+        setTimeout(
+            () => setLoading(true),
+            2000
+        ); 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -79,7 +82,7 @@ export function ListeFichesTechniquesPage(): JSX.Element {
                     </div>
                 ) : (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingFiche />
                     </div>
                 )
             }

@@ -9,7 +9,7 @@ import { DebutFicheTechnique } from '../../../components/fiches-techniques/creer
 import { PhasesChoice } from '../../../components/fiches-techniques/creer/phase2/PhasesChoice';
 import { TaskScheduling } from '../../../components/fiches-techniques/creer/phase3/TaskScheduling';
 import { QuantityChoice } from '../../../components/fiches-techniques/creer/phase4/QuantityChoice';
-import { Loading } from '../../../components/loading/Loading';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import { Phase_Ingredients_Interface, Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
@@ -164,7 +164,7 @@ export function ModifyFicheTechnique(): JSX.Element {
                 ) : 
                 (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingFiche />
                     </div>
                 )
             }

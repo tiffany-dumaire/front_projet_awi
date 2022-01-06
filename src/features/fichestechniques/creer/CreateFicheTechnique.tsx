@@ -8,7 +8,7 @@ import { DebutFicheTechnique } from '../../../components/fiches-techniques/creer
 import { PhasesChoice } from '../../../components/fiches-techniques/creer/phase2/PhasesChoice';
 import { TaskScheduling } from '../../../components/fiches-techniques/creer/phase3/TaskScheduling';
 import { QuantityChoice } from '../../../components/fiches-techniques/creer/phase4/QuantityChoice';
-import { Loading } from '../../../components/loading/Loading';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
 import { Phase_Ingredients_Interface, Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
 import { Responsable_Interface } from '../../../interfaces/Responsable.interface';
@@ -76,7 +76,10 @@ export function CreateFicheTechnique(): JSX.Element {
         getCategoriesList();
         getResponsablesList();
         getPhasesList();
-        setLoading(true);
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -133,7 +136,7 @@ export function CreateFicheTechnique(): JSX.Element {
                 ) : 
                 (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingFiche />
                     </div>
                 )
             }

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { deleteFicheTechnique, getDenreesByFTByPhase, getFicheTechniqueByID, getPhasesByFT } from '../../../api/fiche_technique.api';
-import { Loading } from '../../../components/loading/Loading';
 import { DenreesEtape_Interface, Denree_Interface } from '../../../interfaces/Denrees.interface';
 import { Fiche_Technique_Infos_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import { Phase_Interface } from '../../../interfaces/Phase.interface';
@@ -12,6 +11,7 @@ import styles from './FicheTechniqueDetail.module.css';
 import { useReactToPrint } from 'react-to-print';
 import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FicheTechniqueDetail(): JSX.Element {
     //loading
@@ -68,7 +68,6 @@ export function FicheTechniqueDetail(): JSX.Element {
                 setPhases(phases.slice(0));
             });
             setDureeTotale(duree);
-            setLoading(true);
         });
     }
 
@@ -100,6 +99,10 @@ export function FicheTechniqueDetail(): JSX.Element {
         getParameter('COEFF_VENTE').then((parameter) => {
             setCoeffVente(parameter);
         });
+        setTimeout(
+            () => setLoading(true),
+            3000
+        );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -288,7 +291,7 @@ export function FicheTechniqueDetail(): JSX.Element {
                 </div>
             ) : (
                 <div className={styles.container}>
-                    <Loading />
+                    <LoadingFiche />
                 </div>
             )}
         </>

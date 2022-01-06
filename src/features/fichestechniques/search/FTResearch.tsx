@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
 import styles from './FTResearch.module.css';
-import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from "react-icons/fc";
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { searchFTbyIngredient, searchFTbyIngredientAndCategorie, searchFTbyLibelle, searchFTbyLibelleAndCategorie } from '../../../api/fiche_technique.api';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
+import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FTResearch(): JSX.Element {
     const [fichesTechniquesLibelle, setFichesTechniquesLibelle] = useState<Fiche_Technique_Interface[]>([]);
@@ -54,7 +54,10 @@ export function FTResearch(): JSX.Element {
     useEffect(() => {
         getFTListByIngredient();
         getFTListByLibelle();
-        setLoading(true);        
+        setTimeout(
+            () => setLoading(true),
+            2000
+        );       
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
@@ -159,7 +162,7 @@ export function FTResearch(): JSX.Element {
                 ) : 
                 (
                     <div className={styles.mercurialContainer}>
-                        <Loading />
+                        <LoadingFiche />
                     </div>
                 )
             }

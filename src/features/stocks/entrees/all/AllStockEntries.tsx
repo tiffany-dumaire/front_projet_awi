@@ -4,9 +4,9 @@ import { Helmet } from 'react-helmet';
 import { Stock_Interface } from '../../../../interfaces/Ingredient.interface';
 import { getIngredients } from '../../../../api/ingredient.api';
 import { Stock } from '../../../../models/Ingredient.model';
-import { Loading } from '../../../../components/loading/Loading';
 import { ModifyStock } from '../../../../components/stocks/modify/ModifyStock';
 import { useHistory } from 'react-router-dom';
+import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 
 
 export function AllStockEntries(): JSX.Element {
@@ -49,7 +49,7 @@ export function AllStockEntries(): JSX.Element {
                 ) : 
                 (
                     <div className={styles.container}>
-                        <Loading />
+                        <LoadingStock />
                     </div>
                 )
             }
