@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import styles from './FicheTechniqueCategory.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { SearchFiche } from '../../../components/search-bar/fiches-techniques/SearchFiche';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
-import { getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
+import { deleteFicheTechnique, getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
-import { FcSearch } from 'react-icons/fc';
+import { FcSearch, FcSettings } from 'react-icons/fc';
+import { MdDeleteForever } from 'react-icons/md';
 
 export function FicheTechniqueCategory(): JSX.Element {
     const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
     const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
     const [loading, setLoading] = useState<boolean>(false);
+    //changement de vue
+    const history = useHistory();
 
     async function getFichesTechniquesList() {
         if (Number(id_categorie_fiche) === 0) {
@@ -33,6 +36,15 @@ export function FicheTechniqueCategory(): JSX.Element {
             }); 
         }
     };
+
+    /**
+     * Supprimer la fiche technique
+     */
+     const deleteFT = (id_fiche_technique: number) => {
+        deleteFicheTechnique(id_fiche_technique).then(() => {
+            history.push(`/fiches techniques`);
+        });
+    }
 
     useEffect(() => {
         getFichesTechniquesList();
@@ -92,14 +104,14 @@ export function FicheTechniqueCategory(): JSX.Element {
                                                     <td className={styles.td}>{ft.nombre_couverts}</td>
                                                     <td className={styles.alignRight}>{ft.intitule_responsable}</td>
                                                     <td className={styles.td2}>
-                                                        <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`}>
-                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        <Link className={styles.button} to={`/fiches techniques/modify/${ft.id_fiche_technique}`}>
+                                                            <FcSettings className={styles.iconeSearch}/>
                                                         </Link>
                                                         <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`}>
                                                             <FcSearch className={styles.iconeSearch}/>
                                                         </Link>
-                                                        <div className={styles.button} onClick={() => ''}>
-                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        <div className={styles.button} onClick={() => deleteFT(ft.id_fiche_technique)}>
+                                                            <MdDeleteForever className={styles.iconeDelete}/>
                                                         </div>
                                                     </td>
                                                 </tr>
