@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Ingredient_Interface } from '../../../../interfaces/Ingredient.interface';
 import { Phase_Ingredient_Interface } from '../../../../interfaces/Phase.interface';
-import { IoMdAddCircle } from "react-icons/io";
 import styles from './IngredientChoice.module.css';
 import { useHistory } from 'react-router-dom';
 
@@ -55,7 +54,7 @@ export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = 
                                     props.addAnIngredient(ingredient.code, ingredient.libelle);
                                 }
                             }}>
-                                <IoMdAddCircle className={styles.add} /> {ingredient.libelle}
+                                <span className={styles.add}>+</span> {ingredient.libelle}
                             </div>
                         ))
                     }

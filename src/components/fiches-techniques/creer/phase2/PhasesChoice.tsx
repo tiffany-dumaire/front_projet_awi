@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoMdAddCircle } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { Phase_Simple_Interface } from '../../../../interfaces/Phase.interface';
 import styles from './PhasesChoice.module.css';
@@ -38,7 +37,7 @@ export const PhasesChoice: React.FunctionComponent<PhasesChoiceProps> = (props: 
                                 <div onClick={() => {
                                     props.addPhase(phase);
                                 }}>
-                                    <IoMdAddCircle className={styles.add} /> {phase.libelle_phase}
+                                    <span className={styles.add}>+</span> {phase.libelle_phase}
                                 </div>
                             </div>
                         ))

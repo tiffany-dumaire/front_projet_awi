@@ -88,8 +88,12 @@
     width: 25px;
     height: 25px;
     color: red;
+    cursor: pointer;
 }
 
+.button {
+    text-decoration: none;
+}
 .iconeSearch {
     margin-top: 2px;
     width: 20px;

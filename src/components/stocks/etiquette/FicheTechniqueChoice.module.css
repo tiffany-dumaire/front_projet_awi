@@ -67,8 +67,13 @@
 }
 
 .add {
-    font-size: 15px;
-    color: green;
+    font-size: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: green;
+    vertical-align:text-top;
+    border-radius: 10px;
+    color: aliceblue;
 }
 
 .click {

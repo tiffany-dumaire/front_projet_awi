@@ -7,8 +7,6 @@ import { SearchFiche } from '../../../components/search-bar/fiches-techniques/Se
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
 import { deleteFicheTechnique, getFichesTechniques, getFTByCategorie } from '../../../api/fiche_technique.api';
 import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
-import { FcSearch, FcSettings } from 'react-icons/fc';
-import { MdDeleteForever } from 'react-icons/md';
 
 export function FicheTechniqueCategory(): JSX.Element {
     const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
@@ -104,14 +102,14 @@ export function FicheTechniqueCategory(): JSX.Element {
                                                     <td className={styles.td}>{ft.nombre_couverts}</td>
                                                     <td className={styles.alignRight}>{ft.intitule_responsable}</td>
                                                     <td className={styles.td2}>
-                                                        <Link className={styles.button} to={`/fiches techniques/modify/${ft.id_fiche_technique}`}>
-                                                            <FcSettings className={styles.iconeSearch}/>
+                                                        <Link className={styles.button} to={`/fiches techniques/modify/${ft.id_fiche_technique}`} title={'Modifier la fiche'}>
+                                                            <span className={styles.iconeSearch}>🛠️</span>
                                                         </Link>
-                                                        <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`}>
-                                                            <FcSearch className={styles.iconeSearch}/>
+                                                        <Link className={styles.button} to={`/fiches techniques/details/${ft.id_fiche_technique}`} title={'Afficher la fiche'}>
+                                                            <span className={styles.iconeSearch}>🔍</span>
                                                         </Link>
-                                                        <div className={styles.button} onClick={() => deleteFT(ft.id_fiche_technique)}>
-                                                            <MdDeleteForever className={styles.iconeDelete}/>
+                                                        <div className={styles.button} onClick={() => deleteFT(ft.id_fiche_technique)} title={'Supprimer la fiche'}>
+                                                            <span className={styles.iconeDelete}>🗑️</span>
                                                         </div>
                                                     </td>
                                                 </tr>
