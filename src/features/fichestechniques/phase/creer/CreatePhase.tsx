@@ -11,20 +11,30 @@ import { Phase_Ingredient } from '../../../../models/Phase.model';
 import styles from './CreatePhase.module.css';
 
 export function CreatePhase(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //id de la phase nouvellement créée
     const [newId, setNewId] = useState<number>();
+    //liste d'ingrédients existants
     const [ingredients, setIngredients] = useState<Array<Ingredient_Interface>>([]);
+    //liste d'ingrédient de la nouvelle phase
     const [addedIngredients, setAddedIngredients] = useState<Array<Phase_Ingredient_Interface>>([]);
     
+    /**
+     * Récupération de tous les ingrédients existants
+     */
     const getIngredientList = () => {
         getIngredients().then((list) => {
-            list.forEach((ingredient) => {
-                ingredients.push(ingredient);
-                setIngredients(ingredients.slice(0));
-            });
+            setIngredients(list);
         });
     };
 
+    /**
+     * Ajout d'un ingrédient à la phase
+     * @param code 
+     * @param id_phase 
+     * @param libelle 
+     */
     const addAnIngredient = (code: number, id_phase: number, libelle: string) => {
         const codeToSearch = (element) => element.code === code;
         const index = addedIngredients.findIndex(codeToSearch);
@@ -36,6 +46,10 @@ export function CreatePhase(): JSX.Element {
         }
     };
 
+    /**
+     * Retirer un ingrédient de la phase
+     * @param phase_ingredient 
+     */
     const pullAnIngredient = (phase_ingredient: Phase_Ingredient_Interface) => {
         pullIngredient(phase_ingredient.id_phase_ingredient).then((result) => {
             let index = addedIngredients.indexOf(phase_ingredient);

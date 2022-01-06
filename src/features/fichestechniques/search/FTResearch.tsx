@@ -9,44 +9,42 @@ import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.i
 import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FTResearch(): JSX.Element {
+    //résultat de la recherche par libelle
     const [fichesTechniquesLibelle, setFichesTechniquesLibelle] = useState<Fiche_Technique_Interface[]>([]);
+    //résultat de la recherche par ingrédient
     const [fichesTechniquesIngredient, setFichesTechniquesIngredient] = useState<Fiche_Technique_Interface[]>([]);
+    //paramètre de l'url
     const { word } = useParams<{ word: string }>();
     const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
 
+    /**
+     * Recherche des fiches techniques par ingrédient en fonction de "word"
+     */
     async function getFTListByIngredient() {
         if (id_categorie_fiche !== undefined) {
             await searchFTbyIngredientAndCategorie(word, Number(id_categorie_fiche)).then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniquesIngredient.push(ft);
-                    setFichesTechniquesIngredient(fichesTechniquesIngredient.slice(0));
-                });
+                setFichesTechniquesIngredient(list);
             });
         } else {
             await searchFTbyIngredient(word).then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniquesIngredient.push(ft);
-                    setFichesTechniquesIngredient(fichesTechniquesIngredient.slice(0));
-                });
+                setFichesTechniquesIngredient(list);
             });
         }  
     };
 
+    /**
+     * Recherche des fiches techniques par libellé en fonction de "word"
+     */
     async function getFTListByLibelle() {
         if (id_categorie_fiche !== undefined) {
             await searchFTbyLibelleAndCategorie(word, Number(id_categorie_fiche)).then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniquesLibelle.push(ft);
-                    setFichesTechniquesLibelle(fichesTechniquesLibelle.slice(0));
-                });
+                setFichesTechniquesLibelle(list);
             });
         } else {
             await searchFTbyLibelle(word).then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniquesLibelle.push(ft);
-                    setFichesTechniquesLibelle(fichesTechniquesLibelle.slice(0));
-                });
+                setFichesTechniquesLibelle(list);
             });
         }  
     };

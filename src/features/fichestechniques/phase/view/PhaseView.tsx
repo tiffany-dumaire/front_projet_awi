@@ -8,16 +8,27 @@ import { Phase_Detail } from '../../../../models/Phase.model';
 import styles from './PhaseView.module.css';
 
 export function PhaseView(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //récupère toutes la phase dans son intégralité
     const [phase, setPhase] = useState<Phase_Detail>();
+    //paramètre de l'url
     const { id_phase } = useParams<{ id_phase: string }>();
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection vers la page de modification de la phase
+     */
     const goTo = () => {
         const url = `/phases/modify/${id_phase}`;
         history.push(url);
     };
 
+    /**
+     * Suppression de la phase
+     * @returns 
+     */
     const deleteThisPhase = () => {
         var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
         if (r) {
