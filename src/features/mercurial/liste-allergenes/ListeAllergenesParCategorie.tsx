@@ -7,7 +7,6 @@ import styles from './ListeAllergenesParCategorie.module.css';
 import { Loading } from '../../../components/loading/Loading';
 import { FcSearch } from 'react-icons/fc';
 import { SidebarMenu } from '../../../layout/sidebar-menu/SidebarMenu';
-import { SearchIngredient } from '../../../components/search-bar/ingredients/SearchIngredient';
 import { Categorie_Allergenes_Interface } from '../../../interfaces/Categorie_Allergenes.interface';
 import { getCategorieAllergeneById } from '../../../api/categorie.api';
 
@@ -15,12 +14,25 @@ import { getCategorieAllergeneById } from '../../../api/categorie.api';
 export function ListeAllergenesParCategorie(): JSX.Element {
     //liste des allergenes de la catégorie donnée en url
     const [allergenes, setAllergenes] = useState<Ingredient_Interface[]>([]);
+    //research
+    const [research, setResearch] = useState<Ingredient_Interface[]>([]);
     //catégorie donnée dans l'url
     const [categorie, setCategorie] = useState<Categorie_Allergenes_Interface>();
     //Paramètre de l'url
     const { id_categorie_allergene } = useParams<{ id_categorie_allergene: string }>();
     //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //mot de recherche
+    const [word, setWord] = useState<string>('');
+
+    /**
+     * Recherche les allergènes en fonction de "word"
+     */
+    const searchAllergenes = () => {
+        const regex = new RegExp(word.toLowerCase());
+        const searchResult = allergenes.filter(allergene => allergene.libelle.toLowerCase().match(regex));
+        setResearch(searchResult);
+    }
 
     /**
      * Récupération de la liste des allergènes pour la catégorie donnée dans l'url
@@ -28,17 +40,13 @@ export function ListeAllergenesParCategorie(): JSX.Element {
     async function getAllergenesList() {
         if (Number(id_categorie_allergene) === 0) {
             await getAllergenes().then((list) => {
-                list.forEach((ingredient) => {
-                    allergenes.push(ingredient);
-                    setAllergenes(allergenes.slice(0));
-                }); 
+                setAllergenes(list);
+                setResearch(list);
             });
         }else {
             await getAllergenesByCategorie(Number(id_categorie_allergene)).then((list) => {
-                list.forEach((ingredient) => {
-                    allergenes.push(ingredient);
-                    setAllergenes(allergenes.slice(0));                    
-                }); 
+                setAllergenes(list);
+                setResearch(list);
             });
         }  
     };
@@ -83,10 +91,28 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                             </Link>
                         </div>
                         <div className={styles.searchContainer}>
-                            <SearchIngredient />
+                            <div className={styles.searchBar}>
+                                <input
+                                    placeholder="Rechercher un allergène par son libellé..."
+                                    className={styles.search}
+                                    type='text'
+                                    onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setWord(ev.target.value)}
+                                    value={word}
+                                ></input>
+                                <button 
+                                    className={styles.button2}
+                                    onClick={
+                                        () => {
+                                            searchAllergenes();
+                                        }
+                                    }
+                                >
+                                    <FcSearch className={styles.buttonSearch} /> Rechercher un allergène
+                                </button>
+                            </div>
                         </div>
                         <div className={styles.ingredientContainer}>
-                            {allergenes.length > 0 ? 
+                            {research.length > 0 ? 
                                 (
                                     <table className={styles.mercurial}>
                                         <thead>
@@ -102,7 +128,7 @@ export function ListeAllergenesParCategorie(): JSX.Element {
                                         </thead>
                                         <tbody>
                                             { 
-                                                allergenes.map((allergene: Ingredient_Interface) => (
+                                                research.map((allergene: Ingredient_Interface) => (
                                                     <tr key={allergene.code}>
                                                         <td className={styles.td}>{allergene.code}</td>
                                                         <td className={styles.alignLeft}>{allergene.libelle}</td>

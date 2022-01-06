@@ -11,27 +11,28 @@ import { getCategorieFicheById } from '../../../api/categorie.api';
 import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 
 export function FicheTechniqueCategory(): JSX.Element {
+    //liste des fiches technique de la catégorie donnée en url
     const [fichesTechniques, setFichesTechniques] = useState<Fiche_Technique_Interface[]>([]);
+    //catégorie de fiche technique donnée en url
     const [categorie,  setCategorie] = useState<Categorie_Fiches_Interface>();
+    //paramètre de l'url
     const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
     //changement de vue
     const history = useHistory();
 
+    /**
+     * Récupération des fiches techniques de la catégorie
+     */
     const getFichesTechniquesList = async () => {
         if (Number(id_categorie_fiche) === 0) {
             await getFichesTechniques().then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniques.push(ft);
-                    setFichesTechniques(fichesTechniques.slice(0));
-                });
+                setFichesTechniques(list);
             });
         } else {
             await getFTByCategorie(Number(id_categorie_fiche)).then((list) => {
-                list.forEach((ft) => {
-                    fichesTechniques.push(ft);
-                    setFichesTechniques(fichesTechniques.slice(0));
-                }); 
+                setFichesTechniques(list);
             }); 
         }
     };

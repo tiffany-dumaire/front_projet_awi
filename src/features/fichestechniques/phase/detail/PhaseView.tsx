@@ -8,23 +8,37 @@ import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
 import styles from './PhaseView.module.css';
 
 export function PhaseView(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //infos de la phase
     const [infos, setInfos] = useState<Phase_Simple_Interface>();
+    //liste des denrées de la phase
     const [denrees, setDenrees] = useState<Array<Phase_Ingredient_Interface>>([]);
+    //paramètre de l'url
     const { id_phase } = useParams<{ id_phase: string }>();
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection vers la modification de la phase
+     */
     const goTo = () => {
         const url = `/phases/modify/${id_phase}`;
         history.push(url);
     };
 
+    /**
+     * Récupération des informations de base de la phase
+     */
     const getInfosPhase = () => {
         getPhaseByID(Number(id_phase)).then((phase) => {
             setInfos(phase);
         });
     }
 
+    /**
+     * Récupération de la liste des denrées de la phase
+     */
     const getDenreesList = () => {
         getDenreesByPhase(Number(id_phase)).then((list) => {
             list.forEach((denree) => {
@@ -34,6 +48,10 @@ export function PhaseView(): JSX.Element {
         });
     };
 
+    /**
+     * Suppression de la phase
+     * @returns 
+     */
     const deleteThisPhase = () => {
         var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
         if (r) {

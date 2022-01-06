@@ -15,15 +15,26 @@ import { Responsable_Interface } from '../../../interfaces/Responsable.interface
 import styles from './CreateFicheTechnique.module.css';
 
 export function CreateFicheTechnique(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //catégories de fiches techniques existantes
     const [categories, setCategories] = useState<Categorie_Fiches_Interface[]>([]);
+    //responsables existants
     const [responsables, setResponsables] = useState<Responsable_Interface[]>([]);
+    //phases existantes
     const [phases, setPhases] = useState<Phase_Simple_Interface[]>([]);
+    //phases ajoutées à la fiche technique
     const [addedPhases, setAddedPhases] = useState<Phase_Simple_Interface[]>([]);
+    //étape de la création de la fiche
     const [numStep, setNumStep] = useState<number>(1);
+    //id de la fiche nouvellement créée
     const [newId, setNewId] = useState<number>();
+    //ingrédient des phases de la fiche technique
     const [phasesI, setPhasesI] = useState<Phase_Ingredients_Interface[]>([]);
 
+    /**
+     * Récupération des catégories de fiches techniques existantes
+     */
     const getCategoriesList = () => {
         getCategoriesFiches().then((list) => {
             list.forEach((categorie) => {
@@ -33,6 +44,9 @@ export function CreateFicheTechnique(): JSX.Element {
         });
     };
 
+    /**
+     * Récupération des responsables existants
+     */
     const getResponsablesList = () => {
         getResponsables().then((list) => {
             list.forEach((responsable) => {
@@ -42,6 +56,9 @@ export function CreateFicheTechnique(): JSX.Element {
         });
     };
 
+    /**
+     * Récupération des phases existantes
+     */
     const getPhasesList = () => {
         getPhases().then((list) => {
             list.forEach((phase) => {
@@ -51,6 +68,13 @@ export function CreateFicheTechnique(): JSX.Element {
         });
     };
 
+    /**
+     * Ajout des informations d'une nouvelle fiche technique à la bdd
+     * @param libelle 
+     * @param couverts 
+     * @param id_categorie 
+     * @param id_responsable 
+     */
     const createFiche = (libelle: string, couverts: number, id_categorie: number, id_responsable: number) => {
         createFicheTechnique(libelle, couverts, id_responsable, id_categorie).then((id_fiche_technique) => {
             setNewId(id_fiche_technique);
@@ -58,6 +82,10 @@ export function CreateFicheTechnique(): JSX.Element {
         nextStep();
     };
 
+    /**
+     * Ajout d'une phase à la fiche technique localement
+     * @param phase 
+     */
     const addAPhase = (phase: Phase_Simple_Interface) => {
         const index = addedPhases.indexOf(phase);
         if (index === -1) {
@@ -66,6 +94,10 @@ export function CreateFicheTechnique(): JSX.Element {
         }
     };
 
+    /**
+     * Retirer localement une phase à la fiche technique
+     * @param phase 
+     */
     const removeAPhase = (phase: Phase_Simple_Interface) => {
         const index = addedPhases.indexOf(phase);
         addedPhases.splice(index, 1);
@@ -83,6 +115,9 @@ export function CreateFicheTechnique(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    /**
+     * Changement d'étape dans la création de la fiche technique
+     */
     const nextStep = () => {
         if (numStep === 1) {
             setNumStep(2);

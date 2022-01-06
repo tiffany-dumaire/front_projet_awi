@@ -6,16 +6,27 @@ import { LoadingParametre } from '../../../../components/loading/loading-paramet
 import styles from './ModifyCategoryFiche.module.css';
 
 export function ModifyCategoryFiche(): JSX.Element {
+    //loading
     const [loader, setLoader] = useState<boolean>(false);
+    //attribut de la catégorie de fiche technique à modifier
     const [libelle, setLibelle] = useState<string>('');
     const [color, setColor] = useState<string>('');
+    //paramètre de l'url
     const { id_categorie_fiche } = useParams<{ id_categorie_fiche: string }>();
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Redirection vers la liste des fiches techniques
+     */
     const goToFT = () => {
         history.push(`/fiches techniques`);
     }
 
+    /**
+     * Modification de la catégorie de fiche technique
+     * @returns 
+     */
     const modifyThisCategory = () => {
         var r = window.confirm("Êtes-vous sûr de vouloir modifier cette catégorie ?");
         if (r) {

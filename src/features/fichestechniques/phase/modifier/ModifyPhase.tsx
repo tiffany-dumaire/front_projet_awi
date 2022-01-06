@@ -12,36 +12,50 @@ import { Phase_Ingredient } from '../../../../models/Phase.model';
 import styles from './ModifyPhase.module.css';
 
 export function ModifyPhase(): JSX.Element {
+    //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //ingrédient existants
     const [ingredients, setIngredients] = useState<Array<Ingredient_Interface>>([]);
+    //ingrédient ajoutés à la phase
     const [addedIngredients, setAddedIngredients] = useState<Array<Phase_Ingredient_Interface>>([]);
+    //paramètre de l'url
     const { id_phase } = useParams<{ id_phase: string }>();
+    //information de la phase
     const [phase, setPhase] = useState<Phase_Simple_Interface>();
     
+    /**
+     * Récupération des infos de base de la phase
+     */
     const getPhase = () => {
         getPhaseByID(Number(id_phase)).then((phase) => {
             setPhase(phase);
         });
     }
 
+    /**
+     * Récupération des denrées déjà dans la phase
+     */
     const getAddedIngredient = () => {
         getDenreesByPhase(Number(id_phase)).then((list) => {
-            list.forEach((denree) => {
-                addedIngredients.push(denree);
-                setAddedIngredients(addedIngredients.slice(0));
-            });
+            setAddedIngredients(list);
         });
     }
 
+    /**
+     * Récupération de tous les ingrédients existants en bdd
+     */
     const getIngredientList = () => {
         getIngredients().then((list) => {
-            list.forEach((ingredient) => {
-                ingredients.push(ingredient);
-                setIngredients(ingredients.slice(0));
-            });
+            setIngredients(list);
         });
     };
 
+    /**
+     * Ajouter un ingrédient à la phase
+     * @param code 
+     * @param id_phase 
+     * @param libelle 
+     */
     const addAnIngredient = (code: number, id_phase: number, libelle: string) => {
         const codeToSearch = (element) => element.code === code;
         const index = addedIngredients.findIndex(codeToSearch);
@@ -53,6 +67,10 @@ export function ModifyPhase(): JSX.Element {
         }
     };
 
+    /**
+     * Retirer un ingrédient de la phase
+     * @param phase_ingredient 
+     */
     const pullAnIngredient = (phase_ingredient: Phase_Ingredient_Interface) => {
         pullIngredient(phase_ingredient.id_phase_ingredient).then((result) => {
             let index = addedIngredients.indexOf(phase_ingredient);

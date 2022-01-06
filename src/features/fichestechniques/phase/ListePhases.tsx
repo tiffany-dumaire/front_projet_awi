@@ -11,15 +11,26 @@ import styles from './ListePhases.module.css';
 export function ListePhasesPage(): JSX.Element {
     //liste des phases
     const [phases, setPhases] = useState<Phase_Simple_Interface[]>([]);
+    //research
+    const [research, setResearch] = useState<Phase_Simple_Interface[]>([]);
     //loading
     const [loading, setLoading] = useState<boolean>(false);
+    //mot de recherche
+    const [word, setWord] = useState<string>('');
+
+    /**
+     * Rechercher des phases en fonction de "word"
+     */
+    const searchPhases = () => {
+        const regex = new RegExp(word.toLowerCase());
+        const searchResult = phases.filter(phase => phase.libelle_phase.toLowerCase().match(regex));
+        setResearch(searchResult);
+    }
 
     useEffect(() => {
         getPhases().then((list) => {
-            list.forEach((phase) => {
-                phases.push(phase);
-                setPhases(phases.slice(0));
-            });
+            setPhases(list);
+            setResearch(list);
         });
         setTimeout(
             () => setLoading(true),
@@ -52,10 +63,28 @@ export function ListePhasesPage(): JSX.Element {
                             }
                         />
                         <div className={styles.searchContainer}>
-                            {/* <SearchFiche /> */}
+                            <div className={styles.searchBar}>
+                                <input
+                                    placeholder="Rechercher une phase par son libellé..."
+                                    className={styles.search}
+                                    type='text'
+                                    onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setWord(ev.target.value)}
+                                    value={word}
+                                ></input>
+                                <button 
+                                    className={styles.button2}
+                                    onClick={
+                                        () => {
+                                            searchPhases();
+                                        }
+                                    }
+                                >
+                                    <FcSearch className={styles.buttonSearch} /> Rechercher une phase
+                                </button>
+                            </div>
                         </div>
                         <div className={styles.phaseContainer}>
-                            {phases.length > 0 ? 
+                            {research.length > 0 ? 
                                 (<table className={styles.fichePresentation}>
                                     <thead>
                                         <tr>
@@ -68,7 +97,7 @@ export function ListePhasesPage(): JSX.Element {
                                     </thead>
                                     <tbody>
                                         { 
-                                            phases.map((phase: Phase_Simple_Interface) => (
+                                            research.map((phase: Phase_Simple_Interface) => (
                                                 <tr key={phase.id_phase}>
                                                     <td className={styles.td}>{phase.id_phase}</td>
                                                     <td className={styles.alignLeft}>{phase.libelle_phase}</td>

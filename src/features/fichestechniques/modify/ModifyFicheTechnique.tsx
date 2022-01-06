@@ -35,30 +35,30 @@ export function ModifyFicheTechnique(): JSX.Element {
     //ingrédient des phases
     const [phasesI, setPhasesI] = useState<Phase_Ingredients_Interface[]>([]);
 
+    /**
+     * Récupération de la liste des catégories de fiches techniques existantes
+     */
     const getCategoriesList = () => {
         getCategoriesFiches().then((list) => {
-            list.forEach((categorie) => {
-                categories.push(categorie);
-                setCategories(categories.slice(0));
-            });
+            setCategories(list);
         });
     };
 
+    /**
+     * Récupération de la liste des responsables existants
+     */
     const getResponsablesList = () => {
         getResponsables().then((list) => {
-            list.forEach((responsable) => {
-                responsables.push(responsable);
-                setResponsables(responsables.slice(0));
-            });
+            setResponsables(list);
         });
     };
 
+    /**
+     * Récupération de la liste des phases existantes
+     */
     const getPhasesList = () => {
         getPhases().then((list) => {
-            list.forEach((phase) => {
-                phases.push(phase);
-                setPhases(phases.slice(0));
-            });
+            setPhases(list);
         });
     };
 
@@ -75,6 +75,10 @@ export function ModifyFicheTechnique(): JSX.Element {
         });
     };
 
+    /**
+     * Ajouter localement une phase à la fiche technique
+     * @param phase 
+     */
     const addAPhase = (phase: Phase_Simple_Interface) => {
         const index = addedPhases.indexOf(phase);
         if (index === -1) {
@@ -83,6 +87,10 @@ export function ModifyFicheTechnique(): JSX.Element {
         }
     };
 
+    /**
+     * Retirer localement une phase à la fiche technique
+     * @param phase 
+     */
     const removeAPhase = (phase: Phase_Simple_Interface) => {
         const index = addedPhases.indexOf(phase);
         addedPhases.splice(index, 1);
@@ -111,6 +119,9 @@ export function ModifyFicheTechnique(): JSX.Element {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    /**
+     * Changer d'étape dans la modification de la fiche technique
+     */
     const nextStep = () => {
         if (numStep === 1) {
             setNumStep(2);
