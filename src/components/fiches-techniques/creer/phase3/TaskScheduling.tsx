@@ -25,7 +25,10 @@ export const TaskScheduling: React.FunctionComponent<TaskSchedulingProps> = (pro
         props.addedPhases.forEach((phase) => {
             addPhaseFT(phase.id_phase, props.idFT, ordre[props.addedPhases.indexOf(phase)]);
         });
-        props.scheduling();
+        setTimeout(
+            () => props.scheduling(),
+            2000
+        )
     };
 
     return (
