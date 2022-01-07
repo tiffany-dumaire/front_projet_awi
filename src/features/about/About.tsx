@@ -88,7 +88,7 @@ export function About(): JSX.Element {
             Créer des étiquettes
             <ul>
               <li><i>Correspondant à une vente</i></li>
-              <li><i>Ne correspondant pas à une vente</i></li>
+              <li><s>Ne correspondant pas à une vente</s></li>
             </ul>
           </li>
           <li><s>Paramètres de l'application</s></li>
