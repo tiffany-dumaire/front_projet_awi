@@ -66,11 +66,12 @@
     position: relative;
     color: black;
     border-radius: 15px;
-    text-align: center;
-    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
     margin-top: 5px;
     height: 40px;
-    width: 100%;
+    width: 230px;
     box-sizing: border-box;
 }
 
@@ -89,6 +90,18 @@
 
 .click {
     cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.add {
+    font-size: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 3px;
+    background-color: green;
+    vertical-align:top;
+    border-radius: 10px;
+    color: aliceblue;
 }
 
 .buttonNext {
