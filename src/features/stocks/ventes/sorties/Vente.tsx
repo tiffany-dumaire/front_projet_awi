@@ -22,7 +22,7 @@ export function Vente(): JSX.Element {
 
     /**
      * Ajout d'une étiquette correspondant à une fiche dans la liste
-     * @param id_fiche_technique 
+     * @param etiquette 
      */
     const addEtiquette = (etiquette: Etiquette_Fiche_Technique_Interface) => {
         const etiquetteToSearch = (element) => element.etiquette === etiquette;
@@ -38,6 +38,7 @@ export function Vente(): JSX.Element {
 
     /**
      * Retirer une étiquette de la liste
+     * @param all
      * @param etiquette 
      */
     const removeEtiquette = (all: boolean, etiquette: Etiquette_Fiche_Technique_Interface) => {

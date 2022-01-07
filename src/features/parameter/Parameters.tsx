@@ -31,15 +31,12 @@ export function Parameters(): JSX.Element {
     const modifyValue = (value: number, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, value, assaisonnement!.value2, assaisonnement!.utile));
-            console.log(assaisonnement);
         }
         if (parameter === 'COUT_HORAIRE_MOYEN') {
             setCoutMoyen(new Parameter(cout_moyen!.id_parameters, cout_moyen!.libelle_parameters, value, cout_moyen!.value2, cout_moyen!.utile));
-            console.log(cout_moyen);
         }
         if (parameter === 'COEFF_VENTE') {
             setCoeffVente(new Parameter(coeff_vente!.id_parameters, coeff_vente!.libelle_parameters, value, coeff_vente!.value2, coeff_vente!.utile));
-            console.log(coeff_vente);
         }
     };
 
@@ -51,15 +48,12 @@ export function Parameters(): JSX.Element {
     const modifyValue2 = (value: number, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, assaisonnement!.value, value, assaisonnement!.utile));
-            console.log(assaisonnement);
         }
         if (parameter === 'COUT_HORAIRE_MOYEN') {
             setCoutMoyen(new Parameter(cout_moyen!.id_parameters, cout_moyen!.libelle_parameters, cout_moyen!.value, value, cout_moyen!.utile));
-            console.log(cout_moyen);
         }
         if (parameter === 'COEFF_VENTE') {
             setCoeffVente(new Parameter(coeff_vente!.id_parameters, coeff_vente!.libelle_parameters, coeff_vente!.value, value, coeff_vente!.utile));
-            console.log(coeff_vente);
         }
     };
 
@@ -71,15 +65,12 @@ export function Parameters(): JSX.Element {
     const modifyUtile = (utile: boolean, parameter: string) => {
         if (parameter === 'COUT_ASSAISONNEMENT') {
             setAssaisonnement(new Parameter(assaisonnement!.id_parameters, assaisonnement!.libelle_parameters, assaisonnement!.value, assaisonnement!.value2, utile));
-            console.log(assaisonnement);
         }
         if (parameter === 'COUT_HORAIRE_MOYEN') {
             setCoutMoyen(new Parameter(cout_moyen!.id_parameters, cout_moyen!.libelle_parameters, cout_moyen!.value, cout_moyen!.value2, utile));
-            console.log(cout_moyen);
         }
         if (parameter === 'COEFF_VENTE') {
             setCoeffVente(new Parameter(coeff_vente!.id_parameters, coeff_vente!.libelle_parameters, coeff_vente!.value, coeff_vente!.value2, utile));
-            console.log(coeff_vente);
         }
     };
 

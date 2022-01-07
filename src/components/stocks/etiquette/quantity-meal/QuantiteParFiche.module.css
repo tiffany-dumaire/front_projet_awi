@@ -24,7 +24,7 @@
 
 .gridContainer2 {
     display: grid;
-    grid: repeat(1, 320px) / auto-flow 290px;
+    grid: repeat(1, 320px) / auto-flow 310px;
 }
 
 .gridContainer3 {
@@ -33,7 +33,7 @@
 }
 
 .gridContainer2 > div {
-    width: 270px;
+    width: 290px;
     height: 300px;
     border: 1px solid black;
     border-radius: 5px;
@@ -85,6 +85,10 @@
     font-weight: 600;
     background-color: rgba(70, 73, 255, 0.87);
     border-radius: 30px;
+}
+
+.click {
+    cursor: pointer;
 }
 
 .buttonNext {

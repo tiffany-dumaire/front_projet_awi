@@ -107,7 +107,6 @@ export function ModifyFicheTechnique(): JSX.Element {
                 oldOrder.push(phase.id_phase);
                 setOldOrder(oldOrder.slice(0));
             });
-            console.log(oldOrder);
         });
         getCategoriesList();
         getResponsablesList();
