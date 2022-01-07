@@ -127,17 +127,14 @@ export function CreateFicheTechnique(): JSX.Element {
             } else {
                 setLoading(false);
                 getPhaseIngredients(newId!).then((result) => {
-                    result.forEach((phase) => {
-                        phasesI.push(phase);
-                        setPhasesI(phasesI.slice(0));
-                    });
+                    setPhasesI(result);
                 });
                 setTimeout(
                     () => {
                         setNumStep(4);
                         setLoading(true);
                     }
-                , 5000);
+                , 3000);
             }
         }
     };
