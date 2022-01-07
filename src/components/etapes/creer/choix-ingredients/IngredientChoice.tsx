@@ -18,6 +18,16 @@ export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = 
     const [addedIngredients, setAddedIngredients] = useState<Array<Phase_Ingredient_Interface>>(props.phaseIngredients);
     const history = useHistory();
 
+    const [word, setWord] = useState<string>('');
+    /**
+     * Rechercher des phases en fonction de "word"
+     */
+     const searchPhases = () => {
+        const regex = new RegExp(word.toLowerCase());
+        const searchResult = props.ingredients.filter(ingredient => ingredient.libelle.toLowerCase().match(regex));
+        setIngredients(searchResult);
+    }
+
     const goTo = (id: number) => {
         const url = `/phases/view/${id}`;
         history.push(url);
@@ -44,6 +54,21 @@ export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = 
                     <label className={styles.label}>Ingrédients sélectionnés</label>
                 </div>
             </div>
+            <div className={styles.gridContainer}>
+                <div className={styles.gridContainer3}>
+                    <input
+                        placeholder="Rechercher un ingrédient..."
+                        className={styles.input2}
+                        type='text'
+                        onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setWord(ev.target.value)}
+                        value={word}
+                    ></input>
+                    <button className={styles.button} onClick={() => searchPhases()}>
+                        🔎
+                    </button>
+                </div>
+                <div></div>
+            </div>
             <div className={styles.gridContainer2}>
                 <div className={styles.list}>
                     {props.ingredients.length === 0 ? 
@@ -52,6 +77,7 @@ export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = 
                             <div className={styles.click} key={'i' + ingredient.code} onClick={() => {
                                 if(props.addAnIngredient) {
                                     props.addAnIngredient(ingredient.code, ingredient.libelle);
+                                    setWord('');
                                 }
                             }}>
                                 <span className={styles.add}>+</span> {ingredient.libelle}

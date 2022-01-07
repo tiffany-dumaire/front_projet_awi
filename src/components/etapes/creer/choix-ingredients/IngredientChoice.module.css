@@ -40,14 +40,19 @@
 
 .gridContainer2 {
     display: grid;
-    grid: repeat(1, 320px) / auto-flow 290px;
+    grid: repeat(1, 320px) / auto-flow 310px;
 }
 
 .gridContainer2 > div {
-    width: 270px;
+    width: 290px;
     height: 300px;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+.gridContainer3 {
+    display: grid;
+    grid: repeat(1, auto) / auto-flow auto;
 }
 
 .label {
@@ -60,6 +65,32 @@
 
 .label::after {
     content: ' :';
+}
+
+.input2[type="text"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    margin-top: 5px;
+    height: 40px;
+    width: 230px;
+    box-sizing: border-box;
+}
+
+.button {
+    position: relative;
+    margin-left: 20px;
+    color: aliceblue;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    font-weight: 600;
+    background-color: rgba(70, 73, 255, 0.87);
+    border-radius: 30px;
 }
 
 .input[type="text"], .input[type="number"] {
@@ -83,18 +114,20 @@
     outline-offset: 15px;
 }
 
-.add {
-    font-size: 12px;
-    padding-left: 3px;
-    padding-right: 3px;
-    background-color: green;
-    vertical-align:text-top;
-    border-radius: 10px;
-    color: aliceblue;
-}
-
 .click {
     cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.add {
+    font-size: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 3px;
+    background-color: green;
+    vertical-align:top;
+    border-radius: 10px;
+    color: aliceblue;
 }
 
 .buttonNext {

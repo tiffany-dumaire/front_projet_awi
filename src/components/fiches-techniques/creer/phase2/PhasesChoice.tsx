@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phase_Simple_Interface } from '../../../../interfaces/Phase.interface';
 import styles from './PhasesChoice.module.css';
@@ -12,6 +12,17 @@ export type PhasesChoiceProps = {
 };
 
 export const PhasesChoice: React.FunctionComponent<PhasesChoiceProps> = (props: PhasesChoiceProps) => {
+    const [phases, setPhases] = useState<Phase_Simple_Interface[]>(props.phases);
+
+    const [word, setWord] = useState<string>('');
+    /**
+     * Rechercher des phases en fonction de "word"
+     */
+     const searchPhases = () => {
+        const regex = new RegExp(word.toLowerCase());
+        const searchResult = props.phases.filter(phase => phase.libelle_phase.toLowerCase().match(regex));
+        setPhases(searchResult);
+    }
 
     return (
         <div className={styles.debutContainer}>
@@ -25,11 +36,26 @@ export const PhasesChoice: React.FunctionComponent<PhasesChoiceProps> = (props: 
                     <label className={styles.label}>Phases sélectionnés</label>
                 </div>
             </div>
+            <div className={styles.gridContainer}>
+                <div className={styles.gridContainer3}>
+                    <input
+                        placeholder="Rechercher une fiche..."
+                        className={styles.input}
+                        type='text'
+                        onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setWord(ev.target.value)}
+                        value={word}
+                    ></input>
+                    <button className={styles.button} onClick={() => searchPhases()}>
+                        🔎
+                    </button>
+                </div>
+                <div></div>
+            </div>
             <div className={styles.gridContainer2}>
                 <div className={styles.list}>
-                    {props.phases.length === 0 ? 
+                    {phases.length === 0 ? 
                         'Vous ne pouvez pas ajouter d\'autres phases' : 
-                        props.phases.map((phase) => (
+                        phases.map((phase) => (
                             <div className={styles.click} key={'i' + phase.id_phase}>
                                 <div>
                                     <Link className={styles.link} to={`/phases/view/${phase.id_phase}`} target={'_blank'}>🔎</Link>
