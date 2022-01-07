@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './Vente.module.css';
 import { Helmet } from 'react-helmet';
 import { SidebarMenu } from '../../../../layout/sidebar-menu/SidebarMenu';
-import { Etiquette_Fiche_Technique_Interface, Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
-import { etiquetteFiche, getFichesTechniques } from '../../../../api/fiche_technique.api';
+import { Etiquette_Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
+import { etiquettesFiches } from '../../../../api/fiche_technique.api';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
+import { QuantiteParFiche } from '../../../../components/stocks/etiquette/quantity-meal/QuantiteParFiche';
 
 export type Etiquette = {
     quantity: number;
@@ -13,7 +14,7 @@ export type Etiquette = {
 
 export function Vente(): JSX.Element {
     //liste des fiches existantes
-    const [fiches, setFiches] = useState<Fiche_Technique_Interface[]>([]);
+    const [fiches, setFiches] = useState<Etiquette_Fiche_Technique_Interface[]>([]);
     //loading
     const [loading, setLoading] = useState<boolean>(false);
     //configuration des étiquettes de fiche
@@ -23,29 +24,37 @@ export function Vente(): JSX.Element {
      * Ajout d'une étiquette correspondant à une fiche dans la liste
      * @param id_fiche_technique 
      */
-    const addEtiquette = (id_fiche_technique: number) => {
-        etiquetteFiche(id_fiche_technique).then((result) => {
-            etiquettes.push({"quantity": 1, "etiquette": result});
+    const addEtiquette = (etiquette: Etiquette_Fiche_Technique_Interface) => {
+        const etiquetteToSearch = (element) => element.etiquette === etiquette;
+        const index = etiquettes.findIndex(etiquetteToSearch);
+        if (index === -1) {
+            etiquettes.push({"quantity": 1, "etiquette": etiquette});
             setEtiquettes(etiquettes.slice(0));
-        });
+        } else {
+            etiquettes[index].quantity = etiquettes[index].quantity + 1;
+            setEtiquettes(etiquettes.slice(0));
+        }
     };
 
     /**
      * Retirer une étiquette de la liste
      * @param etiquette 
      */
-    const removeEtiquette = (etiquette: Etiquette) => {
-        const index = etiquettes.indexOf(etiquette);
-        etiquettes.splice(index, 1);
-        setEtiquettes(etiquettes.slice(0));
+    const removeEtiquette = (all: boolean, etiquette: Etiquette_Fiche_Technique_Interface) => {
+        const etiquetteToSearch = (element) => element.etiquette === etiquette;
+        const index = etiquettes.findIndex(etiquetteToSearch);
+        if (etiquettes[index].quantity === 1 || all) {
+            etiquettes.splice(index, 1);
+            setEtiquettes(etiquettes.slice(0));
+        } else {
+            etiquettes[index].quantity = etiquettes[index].quantity - 1;
+            setEtiquettes(etiquettes.slice(0));
+        }
     }
 
     useEffect(() => {
-        getFichesTechniques().then((result) => {
-            result.forEach((fiche_technique) => {
-                fiches.push(fiche_technique);
-                setFiches(fiches.slice(0));
-            });
+        etiquettesFiches().then((result) => {
+            setFiches(result);
         });
         setTimeout(
             () => setLoading(true),
@@ -78,7 +87,13 @@ export function Vente(): JSX.Element {
                         }
                     />
                     <div className={styles.container}>
-                        
+                        <QuantiteParFiche 
+                            fiches={fiches} 
+                            etiquettes={etiquettes} 
+                            add={(etiquette: Etiquette_Fiche_Technique_Interface) => addEtiquette(etiquette)} 
+                            remove={(all: boolean, etiquette: Etiquette_Fiche_Technique_Interface) => removeEtiquette(all, etiquette)} 
+                            next={() => ''} 
+                        />
                     </div>
                 </div>
             ) : (

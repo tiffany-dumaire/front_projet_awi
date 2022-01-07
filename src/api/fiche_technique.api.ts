@@ -291,6 +291,29 @@ export async function etiquetteFiche(id_fiche_technique: number): Promise<Etique
     });
 }
 
+export async function etiquettesFiches(): Promise<Etiquette_Fiche_Technique_Interface[]> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/fiches_techniques/etiquettes`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((etiquettes) => {
+                const EtiquettesList: Etiquette_Fiche_Technique_Interface[] = new Array<Etiquette_Fiche_Technique_Interface>();
+                etiquettes.data.forEach((etiquette: Etiquette_Fiche_Technique_Interface) => {
+                    EtiquettesList.push(etiquette);
+                });
+                resolve(EtiquettesList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 /** POST **/
 
 export async function createFicheTechnique(

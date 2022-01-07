@@ -1,0 +1,100 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: center;
+    text-align: left;
+    padding: 20px 20px 20px 40px;
+    width: 650px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(1, 70px) / auto-flow 290px;
+}
+
+.gridContainer > div {
+    width: 270px;
+    height: 50px;
+}
+
+.gridContainer2 {
+    display: grid;
+    grid: repeat(1, 320px) / auto-flow 290px;
+}
+
+.gridContainer3 {
+    display: grid;
+    grid: repeat(1, auto) / auto-flow auto;
+}
+
+.gridContainer2 > div {
+    width: 270px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.list {
+    position: relative;
+    padding: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: none;
+    outline-offset: 15px;
+}
+
+.input[type="text"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button {
+    position: relative;
+    margin-left: 20px;
+    color: aliceblue;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    font-weight: 600;
+    background-color: rgba(70, 73, 255, 0.87);
+    border-radius: 30px;
+}
+
+.buttonNext {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(110, 85, 85);
+}

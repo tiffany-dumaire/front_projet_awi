@@ -21,7 +21,7 @@ export const SearchFiche: React.FunctionComponent = () => {
     return (
         <div className={styles.searchContainer}>
             <div className={styles.searchBar}>
-            <input
+                <input
                     placeholder="Rechercher un ingrédient..."
                     className={styles.search}
                     type='text'
