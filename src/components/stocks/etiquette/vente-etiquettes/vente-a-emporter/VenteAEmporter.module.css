@@ -20,5 +20,6 @@
 }
 
 li {
+    list-style-position: inside;
     font-size: 13px;
 }

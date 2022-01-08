@@ -41,7 +41,7 @@ export function About(): JSX.Element {
             Gérer la liste des allergènes
             <ul>
               <li><s>Voir les allergènes</s></li>
-              <li>Rechercher un allergène</li>
+              <li><s>Rechercher un allergène</s></li>
             </ul>
           </li>
           <li>
@@ -75,7 +75,7 @@ export function About(): JSX.Element {
               <li><s>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</s></li>
               <li><s>Réaliser une entrée de stock complète</s></li>
               <li><s>Réaliser une entrée de stock par catégorie</s></li>
-              <li><i>Réaliser une entrée de stock par choix d'ingrédient</i></li>
+              <li><s>Réaliser une entrée de stock par choix d'ingrédient</s></li>
             </ul>
           </li>
           <li>

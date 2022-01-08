@@ -9,23 +9,6 @@
     padding: 0px 20px 20px 20px;
     width: 600px;
     margin:auto;
-    margin-top: 40px;
-}
-
-.debutContainer2 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border: solid 2px gray;
-    border-radius: 15px;
-    justify-content: left;
-    text-align: left;
-    padding: 0px 20px 20px 20px;
-    width: 600px;
-    margin:auto;
-    margin-top: 40px;
-    pointer-events: none;
-    opacity: 0.4;
 }
 
 .gridContainer {
