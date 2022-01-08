@@ -11,10 +11,15 @@
 }
 
 .label2 {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .label {
     font-weight: bold;
+}
+
+li {
+    list-style-position: inside;
+    font-size: 13px;
 }

@@ -33,6 +33,7 @@ import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modif
 import { FicheTechniqueDetail2 } from './features/fichestechniques/view/FicheTechniqueDetail2';
 import { ModifyFicheTechnique } from './features/fichestechniques/modify/ModifyFicheTechnique';
 import { Vente } from './features/stocks/ventes/sorties/Vente';
+import { SelectedIngredientsStock } from './features/stocks/entrees/choice/SelectedIngredientsStock';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -192,7 +193,7 @@ function App(): JSX.Element {
                 <Route exact path="/stocks/entrees" component={StockEntriesChoice} />
                 <Route exact path="/stocks/entrees/all" component={AllStockEntries} />
                 <Route exact path="/stocks/entrees/byCategorie" component={CategoryStockEntries} />
-                <Route exact path="/stocks/entrees/byList" component={StockMenu} />
+                <Route exact path="/stocks/entrees/byList" component={SelectedIngredientsStock} />
                 <Route exact path="/stocks/ventes" component={Vente} />
                 {/*other*/}
                 <Route exact path="/parameters" component={Parameters} />
