@@ -27,11 +27,7 @@ export function SelectedIngredientsStock(): JSX.Element {
      */
      const getIngredientList = () => {
         getIngredients().then((list) => {
-            list.forEach((ingredient) => {
-                ingredients.push(new Stock(ingredient.code,ingredient.libelle,ingredient.unite,ingredient.stock));
-                setIngredients(ingredients.slice(0));
-            });
-            setLoading(true);
+            setIngredients(list);
         });
     };
 
