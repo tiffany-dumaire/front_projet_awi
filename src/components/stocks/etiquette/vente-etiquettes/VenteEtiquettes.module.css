@@ -85,6 +85,10 @@
     background-color: rgb(42, 99, 165);
 }
 
+.buttonPrint:disabled {
+    background-color: rgba(108, 104, 126, 0.644);  
+}
+
 /* Toggle Switch Button */
 
 .switchContainer {

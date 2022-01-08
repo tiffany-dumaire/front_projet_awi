@@ -62,7 +62,7 @@ export function FTResearch(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'🍳 "' + word + '"| Recherche 🍳'}</title>
+                <title>{`🍳 "${word}" | Recherche 🍳`}</title>
             </Helmet>
             {
                 loading ? (

@@ -58,14 +58,14 @@ export function About(): JSX.Element {
             <i>Calcul des coûts</i>
             <ul>
               <li><s>Coût matière</s></li>
-              <li><s>Coût des charges (fluides + personnel)</s></li>
-              <li><s>Coût de production par portion</s></li>
+              <li><s>Coût des charges fixes (fluides + personnel)</s></li>
+              <li><i>Coût de production par portion</i></li>
               <li><s>Prix de vente</s></li>
               <li><s>Prix de vente par portion</s></li>
               <li><s>Bénéfices</s></li>
               <li><s>Bénéfices par portion</s></li>
-              <li><i>Taux de marge sur coûts variables</i></li>
-              <li><i>Seuil de rentabilité</i></li>
+              <li><s>Taux de marge sur coûts variables</s></li>
+              <li><s>Seuil de rentabilité</s></li>
             </ul>
           </li>
           <li>

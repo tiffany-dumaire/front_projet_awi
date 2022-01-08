@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { ModifyStock } from '../../../../components/stocks/modify/ModifyStock';
 import { Stock_Interface } from '../../../../interfaces/Ingredient.interface';
 import { getIngredients } from '../../../../api/ingredient.api';
-import { Stock } from '../../../../models/Ingredient.model';
 import { useHistory } from 'react-router-dom';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 import { IngredientChoice } from '../../../../components/stocks/modify/IngredientChoice';

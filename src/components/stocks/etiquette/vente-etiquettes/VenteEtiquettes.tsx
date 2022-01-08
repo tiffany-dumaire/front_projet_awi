@@ -18,6 +18,7 @@ export type VenteEtiquettesProps = {
 export const VenteEtiquettes: React.FunctionComponent<VenteEtiquettesProps> = (props: VenteEtiquettesProps) => {
     const [normalOuEmporter, setNormalOuEmporter] = useState<boolean>(false);
     const [vente, setVente] = useState<boolean>(false);
+    const [print, setPrint] = useState<boolean>(false);
     const componentRef = useRef(null);
 
     const getPDF = useReactToPrint({
@@ -50,9 +51,9 @@ export const VenteEtiquettes: React.FunctionComponent<VenteEtiquettesProps> = (p
             <h3 className={styles.title}>Aperçu des étiquettes en fonction des paramètres donnés</h3> 
             <div ref={componentRef} className={styles.etiquetteContainer}>
                 {normalOuEmporter ? 
-                    <VenteAEmporter etiquettes={props.etiquettes} vente={vente} />
+                    <VenteAEmporter etiquettes={props.etiquettes} vente={vente} etiquette={(stockOk: boolean) => setPrint(stockOk)} />
                 :
-                    <VenteNormale etiquettes={props.etiquettes} vente={vente} />
+                    <VenteNormale etiquettes={props.etiquettes} vente={vente} etiquette={(stockOk: boolean) => setPrint(stockOk)} />
                 }
             </div>
             <div className={styles.gridContainer}>
@@ -75,6 +76,7 @@ export const VenteEtiquettes: React.FunctionComponent<VenteEtiquettesProps> = (p
                 </div>
                 <div>
                     <button 
+                        disabled={print}
                         className={styles.buttonPrint} 
                         onClick={
                             () => {

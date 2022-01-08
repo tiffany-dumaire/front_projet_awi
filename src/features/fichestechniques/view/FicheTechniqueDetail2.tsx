@@ -45,6 +45,62 @@ export function FicheTechniqueDetail2(): JSX.Element {
         content: () => componentRef.current,
     });
 
+    const assaisonnementCout = () : string => {
+        if (assaisonnement) {
+            if (assaisonnement.utile) {
+                return ((assaisonnement.value / 100) * coutMatiere).toFixed(2);
+            } else {
+                return (assaisonnement.value2).toFixed(2);
+            }
+        }
+        return 'Une erreur est survenue lors du calcul de l\'assaisonnement.';
+    };
+
+    const coutProduction = () : string => {
+        if (coeff_vente) {
+            if (coeff_vente.utile) {
+                return (coutMatiere + Number(assaisonnementCout()) + Number(coutTotalChargesFixes())).toFixed(2);
+            } 
+            return (coutMatiere + Number(assaisonnementCout())).toFixed(2)
+        }
+        return 'Une erreur est survenue lors du calcul du coût de production.';
+    };
+
+    const prixDeVente = () : string => {
+        if (coeff_vente) {
+            if (coeff_vente.utile) {
+                return (Number(coutProduction()) * ((100 + coeff_vente.value)/100)).toFixed(2);
+            }
+            return (Number(coutProduction()) * ((100 + coeff_vente.value2)/100)).toFixed(2);
+        }
+        return 'Une erreur est survenue lors du calcul du prix de vente';
+    };
+
+    const benefice = () : string => {
+        return ((Number(prixDeVente())/1.1) - Number(coutProduction())).toFixed(2); 
+    };
+
+    const coutTotalChargesFixes = () : string => {
+        if (cout_moyen) {
+            return (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2);
+        }
+        return 'Une erreur est survenue lors du calcul des charges fixes.';
+    }
+
+    const tauxMargeCoutV = () : string => {
+        if (ficheTechnique) {
+            return (((Number(prixDeVente())/1.1)/ficheTechnique?.nombre_couverts - ((coutMatiere + Number(assaisonnementCout())))/ficheTechnique.nombre_couverts)/((Number(prixDeVente())/1.1)/ficheTechnique?.nombre_couverts)).toFixed(2);
+        }
+        return 'Pb';
+    };
+
+    const seulDeRentabilite = () : string => {
+        if (ficheTechnique) {
+            return Math.ceil(Number(coutTotalChargesFixes())/Number(tauxMargeCoutV())).toString();
+        }    
+        return 'Une erreur est survenue lors du calcul du seuil de rentabilité.'
+    }; 
+
     useEffect(() => {
         getFicheTechniqueComplete(Number(id_fiche_technique)).then((ft) => {
             setFicheTechnique(ft);
@@ -231,57 +287,22 @@ export function FicheTechniqueDetail2(): JSX.Element {
                                         }
                                         <h4>Coût des matières : </h4>
                                         <p>Coût des matières : {coutMatiere.toFixed(2)}€.</p>
-                                        {assaisonnement.utile ? (
-                                            <p>Coût assaisonnement : {((assaisonnement.value / 100) * coutMatiere).toFixed(2)}€.</p>
-                                        ) : (
-                                            <p>Coût assaisonnement : {(assaisonnement.value2).toFixed(2)}€.</p>
-                                        )}
+                                        <p>Coût assaisonnement : {assaisonnementCout()}€.</p>
                                         <h4>Coût de production : </h4>
-                                        {coeff_vente.utile ? (
-                                            <>
-                                                <p>Coût de production par portion : {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
-                                                <p>Coût de production total : {assaisonnement.utile ? (((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : (assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>Coût de production par portion : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                                <p>Coût de production total : {assaisonnement.utile ? ((assaisonnement.value / 100) * coutMatiere + coutMatiere).toFixed(2) : (assaisonnement.value2 + coutMatiere).toFixed(2)}€</p>
-                                            </>
-                                        )}
+                                        <p>Coût de production total {coeff_vente.utile ? '(charges fixes incluses)' : '(charges fixes exclues)'}: {coutProduction()}€</p>
                                         <h4>Prix de vente : </h4>
-                                        {coeff_vente.utile ? (
-                                            <>
-                                                <p>Prix de vente par portion TTC: {assaisonnement.utile ? (((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : (((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
-                                                <p>Prix de vente TTC: {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : ((assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>Prix de vente par portion TTC : {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2) : (((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                                <p>Prix de vente TTC : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100)).toFixed(2) : ((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100)).toFixed(2)}€</p>
-                                            </>
-                                        )}
+                                        <p>Prix de vente par portion TTC : {(Number(prixDeVente())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                        <p>Prix de vente TTC : {prixDeVente()}€</p>
                                     </div>
                                     <div className={styles.right}>
                                         <h4>Durée de la progression : </h4>
                                         <p>La durée totale de la progression est de {dureeTotale} minutes.</p>
                                         <h4>Bénéfice : </h4>
-                                        {coeff_vente.utile ? (
-                                            <>
-                                                <p>Bénéfice brut par portion TTC: {assaisonnement.utile ? ((((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)) - ((((100 + assaisonnement.value) / 100) * coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60))).toFixed(2) : (((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100) - ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60))).toFixed(2)}€</p>
-                                                <p>Bénéfice brut TTC: {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100) - (((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60))).toFixed(2) : ((assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100) - (assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60))).toFixed(2)}€</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>Bénéfice brut par portion TTC : {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts - (((assaisonnement.value / 100) * coutMatiere + coutMatiere)/ficheTechnique.nombre_couverts)).toFixed(2) : (((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts - ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts)).toFixed(2)}€</p>
-                                                <p>Bénéfice brut TTC : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100) - ((assaisonnement.value / 100) * coutMatiere + coutMatiere)).toFixed(2) : ((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100) - (assaisonnement.value2 + coutMatiere)).toFixed(2)}€</p>
-                                            </>
-                                        )}
+                                        <p>Bénéfice net par portion : {(Number(benefice())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                        <p>Bénéfice net : {benefice()}€</p>
                                         <h4>Seuil de rentabilité :</h4>
-                                        {coeff_vente.utile ?
-                                            <p>Seuil de rentabilité : {assaisonnement.utile ? (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)) / ((((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)) - ((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts)) : (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)) / ( (((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)) - ((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts))}</p>
-                                        :
-                                            <p>Seuil de rentabilité : {assaisonnement.utile ? (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)) / (((((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts) - ((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts)) : (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)) / ((((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts) - ((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts))}</p>
-                                        }
+                                        <p>Taux de marge sur coûts variables : {tauxMargeCoutV()}</p>
+                                        <p>Seuil de rentabilité : {seulDeRentabilite()} portions</p>
                                     </div>
                                 </div>
                             </>
