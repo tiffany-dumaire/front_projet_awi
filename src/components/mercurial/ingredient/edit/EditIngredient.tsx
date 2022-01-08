@@ -12,7 +12,7 @@ export type EditIngredientProps = {
     setOnEdit: (value: boolean) => void;
 };
 
-export const EditIngredient: React.FunctionComponent<EditIngredientProps> = function (props: EditIngredientProps) {
+export const EditIngredient: React.FunctionComponent<EditIngredientProps> = (props: EditIngredientProps) => {
     const [libelle, setLibelle] = useState<string>(props.ingredient.libelle);
     const [unite, setUnite] = useState<string>(props.ingredient.unite);
     const [price, setPrice] = useState<number>(props.ingredient.prix_unitaire);
