@@ -30,7 +30,6 @@ import { ListePhasesPage } from './features/fichestechniques/phase/ListePhases';
 import { ModifyCategoryIngredient } from './features/mercurial/category/ModifyCategoryIngredient';
 import { ModifyCategoryAllergene } from './features/mercurial/category-allergene/ModifyCategoryAllergene';
 import { ModifyCategoryFiche } from './features/fichestechniques/categorie/modify/ModifyCategoryFiche';
-import { VenteTest } from './features/stocks/ventes/tests/VenteTest';
 import { FicheTechniqueDetail2 } from './features/fichestechniques/view/FicheTechniqueDetail2';
 import { ModifyFicheTechnique } from './features/fichestechniques/modify/ModifyFicheTechnique';
 import { Vente } from './features/stocks/ventes/sorties/Vente';
@@ -97,8 +96,7 @@ function App(): JSX.Element {
             '/stocks/entrees/all',
             '/stocks/entrees/byCategorie',
             '/stocks/entrees/byList',
-            '/stocks/ventes/test',
-            '/stocks/ventes/sorties',
+            '/stocks/ventes',
             //other
             '/parameters',
             '/about',
@@ -148,8 +146,7 @@ function App(): JSX.Element {
               '/stocks/entrees/all',
               '/stocks/entrees/byCategorie',
               '/stocks/entrees/byList',
-              '/stocks/ventes/test',
-              '/stocks/ventes/sorties',
+              '/stocks/ventes',
               //other
               '/parameters',
               '/about'
@@ -196,8 +193,7 @@ function App(): JSX.Element {
                 <Route exact path="/stocks/entrees/all" component={AllStockEntries} />
                 <Route exact path="/stocks/entrees/byCategorie" component={CategoryStockEntries} />
                 <Route exact path="/stocks/entrees/byList" component={StockMenu} />
-                <Route exact path="/stocks/ventes/test" component={VenteTest} />
-                <Route exact path="/stocks/ventes/sorties" component={Vente} />
+                <Route exact path="/stocks/ventes" component={Vente} />
                 {/*other*/}
                 <Route exact path="/parameters" component={Parameters} />
                 <Route exact path="/about" component={About} />
@@ -244,8 +240,7 @@ function App(): JSX.Element {
                 '/stocks/entrees/all',
                 '/stocks/entrees/byCategorie',
                 '/stocks/entrees/byList',
-                '/stocks/ventes/test',
-                '/stocks/ventes/sorties',
+                '/stocks/ventes',
                 //other
                 '/parameters',
                 '/about'

@@ -6,6 +6,7 @@ import { Etiquette_Fiche_Technique_Interface } from '../../../../interfaces/Fich
 import { etiquettesFiches } from '../../../../api/fiche_technique.api';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 import { QuantiteParFiche } from '../../../../components/stocks/etiquette/quantity-meal/QuantiteParFiche';
+import { VenteEtiquettes } from '../../../../components/stocks/etiquette/vente-etiquettes/VenteEtiquettes';
 
 export type Etiquette = {
     quantity: number;
@@ -19,6 +20,8 @@ export function Vente(): JSX.Element {
     const [loading, setLoading] = useState<boolean>(false);
     //configuration des étiquettes de fiche
     const [etiquettes, setEtiquettes] = useState<Etiquette[]>([]);
+    //étape de la création des étiquettes
+    const [step, setStep] = useState<number>(1);
 
     /**
      * Ajout d'une étiquette correspondant à une fiche dans la liste
@@ -53,6 +56,14 @@ export function Vente(): JSX.Element {
         }
     }
 
+    /**
+     * Aller à l'étape suivante
+     */
+     const changeStep = () => {
+        if (step === 1) setStep(2);
+        else setStep(1);
+    }
+
     useEffect(() => {
         etiquettesFiches().then((result) => {
             setFiches(result);
@@ -67,7 +78,7 @@ export function Vente(): JSX.Element {
     return(
         <>
             <Helmet>
-                <title>{'🍱 Réaliser une vente test 🍱'}</title>
+                <title>{'🍱 Editer une étiquette 🍱'}</title>
             </Helmet>
             {loading ? (
                 <div className={styles.venteTestContainer}>
@@ -88,13 +99,17 @@ export function Vente(): JSX.Element {
                         }
                     />
                     <div className={styles.container}>
-                        <QuantiteParFiche 
-                            fiches={fiches} 
-                            etiquettes={etiquettes} 
-                            add={(etiquette: Etiquette_Fiche_Technique_Interface) => addEtiquette(etiquette)} 
-                            remove={(all: boolean, etiquette: Etiquette_Fiche_Technique_Interface) => removeEtiquette(all, etiquette)} 
-                            next={() => ''} 
-                        />
+                        {step === 1 ? 
+                            <QuantiteParFiche 
+                                fiches={fiches} 
+                                etiquettes={etiquettes} 
+                                add={(etiquette: Etiquette_Fiche_Technique_Interface) => addEtiquette(etiquette)} 
+                                remove={(all: boolean, etiquette: Etiquette_Fiche_Technique_Interface) => removeEtiquette(all, etiquette)} 
+                                next={() => changeStep()} 
+                            /> 
+                        :
+                            <VenteEtiquettes etiquettes={etiquettes} previous={() => changeStep()} />
+                        }
                     </div>
                 </div>
             ) : (

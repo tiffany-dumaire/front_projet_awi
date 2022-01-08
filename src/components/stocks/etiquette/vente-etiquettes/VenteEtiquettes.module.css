@@ -1,0 +1,157 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: center;
+    text-align: left;
+    padding: 20px 20px 20px 40px;
+    width: 650px;
+    margin:auto;
+    margin-top: 40px;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(1, 70px) / auto-flow 310px;
+}
+
+.gridContainer > div {
+    width: 290px;
+    height: 50px;
+}
+
+.gridContainer2 {
+    display: grid;
+    grid: repeat(2, 70px) / auto-flow 310px;
+}
+
+.gridContainer2 > div {
+    width: 290px;
+    height: 50px;
+}
+
+.etiquetteContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: center;
+    text-align: left;
+    padding: 20px;
+    width: 550px;
+    margin-bottom: 20px;
+}
+
+.title {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.buttonPrevious, .buttonPrint {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buttonPrevious {
+    background-color: rgb(110, 85, 85);
+}
+
+.buttonPrint {
+    background-color: rgb(42, 99, 165);
+}
+
+/* Toggle Switch Button */
+
+.switchContainer {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    cursor: pointer;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}

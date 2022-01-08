@@ -45,17 +45,20 @@ export class DenreesEtape implements DenreesEtape_Interface {
 export class Denrees_Etiquette implements Denrees_Etiquette_Interface {
     code: number;
     libelle: string;
+    allergene: boolean;
     stock: number;
     quantite_ingredient: number;
 
     constructor(
         code: number,
         libelle: string,
+        allergene: boolean,
         stock: number,
         quantite_ingredient: number
     ) {
         this.code = code;
         this.libelle = libelle;
+        this.allergene = allergene;
         this.stock = stock;
         this.quantite_ingredient = quantite_ingredient;
     }

@@ -59,19 +59,20 @@ export function About(): JSX.Element {
             <ul>
               <li><s>Coût matière</s></li>
               <li><s>Coût des charges (fluides + personnel)</s></li>
-              <li><i>Coût de production par portion</i></li>
+              <li><s>Coût de production par portion</s></li>
               <li><s>Prix de vente</s></li>
-              <li><i>Prix de vente par portion</i></li>
-              <li><i>Bénéfices</i></li>
-              <li><i>Bénéfices par portion</i></li>
+              <li><s>Prix de vente par portion</s></li>
+              <li><s>Bénéfices</s></li>
+              <li><s>Bénéfices par portion</s></li>
+              <li><i>Taux de marge sur coûts variables</i></li>
               <li><i>Seuil de rentabilité</i></li>
             </ul>
           </li>
           <li>
             <i>Gestion des stocks</i>
             <ul>
-              <li>Réalisation ventes (plats vendus ou à emporter)</li>
-              <li><i>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</i></li>
+              <li><i>Réalisation ventes (plats vendus ou à emporter)</i></li>
+              <li><s>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</s></li>
               <li><s>Réaliser une entrée de stock complète</s></li>
               <li><s>Réaliser une entrée de stock par catégorie</s></li>
               <li><i>Réaliser une entrée de stock par choix d'ingrédient</i></li>
@@ -88,7 +89,7 @@ export function About(): JSX.Element {
             Créer des étiquettes
             <ul>
               <li><i>Correspondant à une vente</i></li>
-              <li><i>Ne correspondant pas à une vente</i></li>
+              <li><s>Ne correspondant pas à une vente</s></li>
             </ul>
           </li>
           <li><s>Paramètres de l'application</s></li>

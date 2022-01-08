@@ -16,6 +16,7 @@ export interface DenreesEtape_Interface {
 export interface Denrees_Etiquette_Interface {
     code: number;
     libelle: string;
+    allergene: boolean;
     stock: number;
     quantite_ingredient: number;
 }

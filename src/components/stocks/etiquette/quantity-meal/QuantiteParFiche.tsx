@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Etiquette_Fiche_Technique_Interface } from '../../../../interfaces/Fiche_Technique.interface';
 import styles from './QuantiteParFiche.module.css';
 
@@ -57,10 +58,15 @@ export const QuantiteParFiche: React.FunctionComponent<QuantiteParFicheProps> = 
                     {fiches.length === 0 ? 
                         `Il n'existe pas de fiche correspondant à la recherche.` : 
                         fiches.map((fiche) => (
-                            <div className={styles.click} key={'f' + fiche.id_fiche_technique} onClick={() => {
-                                props.add(fiche);
-                            }}>
-                                <span className={styles.add}>+</span> {fiche.libelle_fiche_technique}
+                            <div className={styles.click} key={'f' + fiche.id_fiche_technique}>
+                                <div>
+                                    <Link className={styles.link} to={`/fiches techniques/details/${fiche.id_fiche_technique}`} target={'_blank'}>🔎</Link>
+                                </div>
+                                <div onClick={() => {
+                                    props.add(fiche);
+                                }}>
+                                    <span className={styles.add}>+</span> {fiche.libelle_fiche_technique}
+                                </div>
                             </div>
                         ))
                     }
