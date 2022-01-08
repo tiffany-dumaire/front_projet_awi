@@ -45,6 +45,59 @@ export function FicheTechniqueDetail2(): JSX.Element {
         content: () => componentRef.current,
     });
 
+    const assaisonnementCout = () : string => {
+        if (assaisonnement) {
+            if (assaisonnement.utile) {
+                return ((assaisonnement.value / 100) * coutMatiere).toFixed(2);
+            } else {
+                return (assaisonnement.value2).toFixed(2);
+            }
+        }
+        return '-1';
+    };
+
+    const coutProduction = () : string => {
+        if (coeff_vente && assaisonnement && cout_moyen) {
+            if (coeff_vente.utile) {
+                if (assaisonnement.utile) {
+                    return (((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2);
+                } else {
+                    return (assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2);
+                }
+                //<p>Coût de production par portion : {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
+            } else {
+                if (assaisonnement.utile) {
+                    return ((assaisonnement.value / 100) * coutMatiere + coutMatiere).toFixed(2);
+                } else {
+                    return (assaisonnement.value2 + coutMatiere).toFixed(2);
+                }
+                //<p>Coût de production par portion : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+            }
+        }
+        return '-1';
+    };
+
+    const prixDeVente = () : string => {
+        if (coeff_vente && assaisonnement && cout_moyen) {
+            if (coeff_vente.utile) {
+                if (assaisonnement.utile) {
+                    return ((((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2);
+                } else {
+                    return ((assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2);
+                }
+                //<p>Prix de vente par portion TTC: {assaisonnement.utile ? (((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : (((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
+            } else {
+                if (assaisonnement.utile) {
+                    return (((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100)).toFixed(2);
+                } else {
+                    return ((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100)).toFixed(2);
+                }
+                //<p>Prix de vente par portion TTC : {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2) : (((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+            }
+        }
+        return '-1';
+    };
+
     useEffect(() => {
         getFicheTechniqueComplete(Number(id_fiche_technique)).then((ft) => {
             setFicheTechnique(ft);
@@ -231,35 +284,12 @@ export function FicheTechniqueDetail2(): JSX.Element {
                                         }
                                         <h4>Coût des matières : </h4>
                                         <p>Coût des matières : {coutMatiere.toFixed(2)}€.</p>
-                                        {assaisonnement.utile ? (
-                                            <p>Coût assaisonnement : {((assaisonnement.value / 100) * coutMatiere).toFixed(2)}€.</p>
-                                        ) : (
-                                            <p>Coût assaisonnement : {(assaisonnement.value2).toFixed(2)}€.</p>
-                                        )}
+                                        <p>Coût assaisonnement : {assaisonnementCout()}€.</p>
                                         <h4>Coût de production : </h4>
-                                        {coeff_vente.utile ? (
-                                            <>
-                                                <p>Coût de production par portion : {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
-                                                <p>Coût de production total : {assaisonnement.utile ? (((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2) : (assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>Coût de production par portion : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2) : ((assaisonnement.value2 + coutMatiere)/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                                <p>Coût de production total : {assaisonnement.utile ? ((assaisonnement.value / 100) * coutMatiere + coutMatiere).toFixed(2) : (assaisonnement.value2 + coutMatiere).toFixed(2)}€</p>
-                                            </>
-                                        )}
+                                        <p>Coût de production total : {coutProduction()}€</p>
                                         <h4>Prix de vente : </h4>
-                                        {coeff_vente.utile ? (
-                                            <>
-                                                <p>Prix de vente par portion TTC: {assaisonnement.utile ? (((((100 + assaisonnement.value) / 100) * coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : (((assaisonnement.value2 + coutMatiere) / ficheTechnique.nombre_couverts + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
-                                                <p>Prix de vente TTC: {assaisonnement.utile ? ((((100 + assaisonnement.value) / 100) * coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2) : ((assaisonnement.value2 + coutMatiere + cout_moyen.value * (dureeTotale / 60) + cout_moyen.value2 * (dureeTotale / 60)) * (coeff_vente.value / 100)).toFixed(2)}€</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p>Prix de vente par portion TTC : {assaisonnement.utile ? ((((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2) : (((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100))/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                                <p>Prix de vente TTC : {assaisonnement.utile ? (((assaisonnement.value / 100) * coutMatiere + coutMatiere) * (coeff_vente.value2/100)).toFixed(2) : ((assaisonnement.value2 + coutMatiere) * (coeff_vente.value2/100)).toFixed(2)}€</p>
-                                            </>
-                                        )}
+                                        <p>Prix de vente par portion TTC : {(Number(prixDeVente())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                        <p>Prix de vente TTC : {prixDeVente()}€</p>
                                     </div>
                                     <div className={styles.right}>
                                         <h4>Durée de la progression : </h4>

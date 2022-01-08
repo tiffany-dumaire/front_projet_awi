@@ -15,8 +15,17 @@
     font-weight: bold;
 }
 
+.label3 {
+    font-weight: bold;
+    color: red;
+}
+
 .label {
     font-weight: bold;
+}
+
+.label4 {
+    color: red;
 }
 
 li {

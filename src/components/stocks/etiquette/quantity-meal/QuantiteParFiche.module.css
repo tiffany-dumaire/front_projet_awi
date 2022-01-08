@@ -14,11 +14,11 @@
 
 .gridContainer {
     display: grid;
-    grid: repeat(1, 70px) / auto-flow 290px;
+    grid: repeat(1, 70px) / auto-flow 310px;
 }
 
 .gridContainer > div {
-    width: 270px;
+    width: 290px;
     height: 50px;
 }
 
