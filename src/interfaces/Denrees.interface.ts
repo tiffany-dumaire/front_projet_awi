@@ -17,6 +17,7 @@ export interface Denrees_Etiquette_Interface {
     code: number;
     libelle: string;
     allergene: boolean;
+    unite: string;
     stock: number;
     quantite_ingredient: number;
 }

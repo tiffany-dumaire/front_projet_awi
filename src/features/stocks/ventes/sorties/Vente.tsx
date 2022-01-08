@@ -8,6 +8,14 @@ import { LoadingStock } from '../../../../components/loading/loading-stock/Loadi
 import { QuantiteParFiche } from '../../../../components/stocks/etiquette/quantity-meal/QuantiteParFiche';
 import { VenteEtiquettes } from '../../../../components/stocks/etiquette/vente-etiquettes/VenteEtiquettes';
 
+export type QuantiteStock = {
+    code: number;
+    libelle: string;
+    unite: string;
+    quantity: number;
+    stock: number;
+}
+
 export type Etiquette = {
     quantity: number;
     etiquette: Etiquette_Fiche_Technique_Interface;
@@ -22,6 +30,8 @@ export function Vente(): JSX.Element {
     const [etiquettes, setEtiquettes] = useState<Etiquette[]>([]);
     //étape de la création des étiquettes
     const [step, setStep] = useState<number>(1);
+    //quantité en stock pour chaque ingrédient
+    const [quantityStock, setQuantityStock] = useState<QuantiteStock[]>([]);
 
     /**
      * Ajout d'une étiquette correspondant à une fiche dans la liste
@@ -60,8 +70,27 @@ export function Vente(): JSX.Element {
      * Aller à l'étape suivante
      */
      const changeStep = () => {
-        if (step === 1) setStep(2);
-        else setStep(1);
+        if (step === 1) {
+            etiquettes.forEach((etiquette) => {
+                const quantite = etiquette.quantity;
+                etiquette.etiquette.ingredients.forEach((ingredient) => {
+                    const searchI = (element) => element.code === ingredient.code
+                    const index = quantityStock.findIndex(searchI);
+                    if (index === -1) {
+                        quantityStock.push({"code": ingredient.code, "libelle": ingredient.libelle, "unite": ingredient.unite,"quantity": quantite * ingredient.quantite_ingredient, "stock": ingredient.stock});
+                        setQuantityStock(quantityStock.slice(0));
+                    } else {
+                        quantityStock[index].quantity = quantityStock[index].quantity + quantite * ingredient.quantite_ingredient;
+                        setQuantityStock(quantityStock.slice(0));
+                    }
+                }); 
+            });
+            setStep(2);
+        }
+        else {
+            setQuantityStock([]);
+            setStep(1);
+        }
     }
 
     useEffect(() => {
@@ -108,7 +137,7 @@ export function Vente(): JSX.Element {
                                 next={() => changeStep()} 
                             /> 
                         :
-                            <VenteEtiquettes etiquettes={etiquettes} previous={() => changeStep()} />
+                            <VenteEtiquettes quantityStock={quantityStock} etiquettes={etiquettes} previous={() => changeStep()} />
                         }
                     </div>
                 </div>

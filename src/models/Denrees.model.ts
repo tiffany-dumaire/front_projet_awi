@@ -46,6 +46,7 @@ export class Denrees_Etiquette implements Denrees_Etiquette_Interface {
     code: number;
     libelle: string;
     allergene: boolean;
+    unite: string;
     stock: number;
     quantite_ingredient: number;
 
@@ -53,12 +54,14 @@ export class Denrees_Etiquette implements Denrees_Etiquette_Interface {
         code: number,
         libelle: string,
         allergene: boolean,
+        unite: string,
         stock: number,
         quantite_ingredient: number
     ) {
         this.code = code;
         this.libelle = libelle;
         this.allergene = allergene;
+        this.unite = unite;
         this.stock = stock;
         this.quantite_ingredient = quantite_ingredient;
     }
