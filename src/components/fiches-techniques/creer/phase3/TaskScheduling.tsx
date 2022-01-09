@@ -10,6 +10,7 @@ export type TaskSchedulingProps = {
 };
 
 export const TaskScheduling: React.FunctionComponent<TaskSchedulingProps> = (props: TaskSchedulingProps) => {
+    //ordre
     const [ordre, setOrdre] = useState<number[]>([]);
 
     useEffect(() => {
@@ -21,6 +22,9 @@ export const TaskScheduling: React.FunctionComponent<TaskSchedulingProps> = (pro
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    /**
+     * Ajout des phases dans l'ordre
+     */
     const scheduling = () => {
         props.addedPhases.forEach((phase) => {
             addPhaseFT(phase.id_phase, props.idFT, ordre[props.addedPhases.indexOf(phase)]);

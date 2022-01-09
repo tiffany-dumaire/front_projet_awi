@@ -13,6 +13,7 @@ export type EditIngredientProps = {
 };
 
 export const EditIngredient: React.FunctionComponent<EditIngredientProps> = (props: EditIngredientProps) => {
+    //paramètre du produit
     const [libelle, setLibelle] = useState<string>(props.ingredient.libelle);
     const [unite, setUnite] = useState<string>(props.ingredient.unite);
     const [price, setPrice] = useState<number>(props.ingredient.prix_unitaire);
@@ -20,6 +21,7 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = (pro
     const [allergene, setAllergene] = useState<boolean>(props.ingredient.allergene);
     const [categorie, setCategorie] = useState<number | null>(props.ingredient.id_categorie);
     const [categorie_allergene, setCategorieAllergene] = useState<number | null>(props.ingredient.id_categorie_allergene);
+    //récupération des données de catégories
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
     const [categoriesAllergene, setCategoriesAllergene] = useState<Categorie_Allergenes_Interface[]>([]);
 
@@ -39,6 +41,17 @@ export const EditIngredient: React.FunctionComponent<EditIngredientProps> = (pro
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+    /**
+     * Modification de l'ingrédient
+     * @param id_ingredient 
+     * @param libelle 
+     * @param unite 
+     * @param prix_unitaire 
+     * @param stock 
+     * @param allergene 
+     * @param id_categorie 
+     * @param id_categorie_allergene 
+     */
     const modifyIngredient = (
         id_ingredient: number,
         libelle: string,

@@ -17,8 +17,10 @@ export type QuantiteParFicheProps = {
 };
 
 export const QuantiteParFiche: React.FunctionComponent<QuantiteParFicheProps> = (props: QuantiteParFicheProps) => {
+    //recherche
     const [fiches, setFiches] = useState<Etiquette_Fiche_Technique_Interface[]>(props.fiches);
     const [word, setWord] = useState<string>('');
+    
     /**
      * Rechercher des phases en fonction de "word"
      */

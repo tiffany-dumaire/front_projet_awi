@@ -1,5 +1,8 @@
 import { Parameter_Interface } from "../interfaces/Parameter.interface";
 
+/**
+ * 
+ */
 export class Parameter implements Parameter_Interface {
     id_parameters: number;
     libelle_parameters: string;
@@ -7,6 +10,14 @@ export class Parameter implements Parameter_Interface {
     value2: number;
     utile: boolean;
   
+    /**
+     * Constructeur de Parameter
+     * @param id_parameters 
+     * @param libelle_parameters 
+     * @param value 
+     * @param value2 
+     * @param utile 
+     */
     constructor(
         id_parameters: number,
         libelle_parameters: string,

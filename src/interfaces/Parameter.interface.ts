@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 export interface Parameter_Interface {
     id_parameters: number;
     libelle_parameters: string;

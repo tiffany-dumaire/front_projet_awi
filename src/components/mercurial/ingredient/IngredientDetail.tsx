@@ -17,6 +17,9 @@ export type IngredientDetailProps = {
 export const IngredientDetail: React.FunctionComponent<IngredientDetailProps> = (props: IngredientDetailProps) => {
     const componentRef = useRef(null);
 
+    /**
+     * Impression du pdf du détail ingrédient
+     */
     const getPDF = useReactToPrint({
         content: () => componentRef.current,
     });

@@ -9,6 +9,7 @@ import { Categorie_Allergenes_Interface } from '../../../interfaces/Categorie_Al
 import styles from './ModifyIngredient.module.css';
 
 export function ModifyIngredient(): JSX.Element {
+    //attribut du produit
     const [libelle, setLibelle] = useState<string>('');
     const [unite, setUnite] = useState<string>('');
     const [price, setPrice] = useState<number>(0);
@@ -22,9 +23,22 @@ export function ModifyIngredient(): JSX.Element {
     const { id_ingredient } = useParams<{ id_ingredient: string }>();
     //changement de vue
     const history = useHistory();
+    //récupération de la liste des catégories
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
+    //récupération de la liste des catégories d'allergènes
     const [categoriesAllergene, setCategoriesAllergene] = useState<Categorie_Allergenes_Interface[]>([]);
 
+    /**
+     * Modification d'une fiche produit
+     * @param id_ingredient 
+     * @param libelle 
+     * @param unite 
+     * @param prix_unitaire 
+     * @param stock 
+     * @param allergene 
+     * @param id_categorie 
+     * @param id_categorie_allergene 
+     */
     const modifyIngredient = (
         id_ingredient: number,
         libelle: string,

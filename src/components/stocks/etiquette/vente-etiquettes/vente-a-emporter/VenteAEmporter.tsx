@@ -22,6 +22,11 @@ export type VenteAEmporterProps = {
 
 export const VenteAEmporter: React.FunctionComponent<VenteAEmporterProps> = (props: VenteAEmporterProps) => {    
 
+    /**
+     * Vérification si les ingrédients ont tous suffisamment de stock ou non
+     * @param code 
+     * @returns 
+     */
     const stockVenteOk = (code: number): boolean=> {
         const searchIndex = (element) => element.code === code;
         const index = props.quantityStock.findIndex(searchIndex);

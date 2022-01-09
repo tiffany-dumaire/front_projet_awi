@@ -12,9 +12,18 @@ export type QuantityChoiceProps = {
 };
 
 export const QuantityChoice: React.FunctionComponent<QuantityChoiceProps> = (props: QuantityChoiceProps) => {
+    //liste des ingrédients par phase ajoutés
     const [phases, setPhases] = useState<Phase_Ingredients_Interface[]>(props.phases_quantity);
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * 
+     * @param id_phase 
+     * @param id_phase_ingredient 
+     * @param libelle 
+     * @param quantite 
+     */
     const modifyQuantity = (id_phase: number, id_phase_ingredient: number, libelle: string, quantite: number) => {
         const phase = (element) => element.id_phase === id_phase;
         const index = phases.findIndex(phase);
@@ -24,6 +33,9 @@ export const QuantityChoice: React.FunctionComponent<QuantityChoiceProps> = (pro
         setPhases(phases.slice(0));
     };
 
+    /**
+     * Ajout des quantités d'ingrédient par phase
+     */
     const addQuantities = () => {
         props.setLoading(false);
         phases.forEach((phase) => {

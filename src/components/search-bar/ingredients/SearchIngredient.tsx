@@ -4,21 +4,38 @@ import { FcSearch } from "react-icons/fc";
 import { useParams, useHistory } from "react-router";
 
 export const SearchIngredient: React.FunctionComponent = () => {
+    //recherche
     const [search, setSearch] = useState<string>('');
+    //paramètre de l'url
     const { id_categorie } = useParams<{ id_categorie: string }>();
     const { id_categorie_allergene } = useParams<{id_categorie_allergene: string }>();
+    //changement de vue
     const history = useHistory();
     
+    /**
+     * Redirection vers la recherche d'ingrédient
+     * @param search 
+     */
     const goToSearchIngredients = (search: string) => {
         const url = `/mercurial/search/${search}`;
         history.push(url);
     }
 
+    /**
+     * Redirection vers la recherche d'ingrédient par catégorie
+     * @param search 
+     * @param id_categorie 
+     */
     const goToSearchIngredientsByCategorie = (search: string, id_categorie: number) => {
         const url = `/mercurial/search/${search}/byCategorie/${id_categorie}`;
         history.push(url);
     }
 
+    /**
+     * Redirection vers la recherche d'ingrédient par catégorie d'allergene
+     * @param search 
+     * @param id_categorie_allergene 
+     */
     const goToSearchIngredientsByCategorieAllergene = (search: string, id_categorie_allergene: number) => {
         const url = `/mercurial/search/${search}/byCategorieAllergene/${id_categorie_allergene}`;
         history.push(url);

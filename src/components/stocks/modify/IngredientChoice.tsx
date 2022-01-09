@@ -11,9 +11,11 @@ export type IngredientChoiceProps = {
 };
 
 export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = (props: IngredientChoiceProps) => {
+    //liste des ingrédients résultat de la recherche
     const [ingredients, setIngredients] = useState<Array<Stock_Interface>>(props.ingredients);
-
+    //mot de la recherche
     const [word, setWord] = useState<string>('');
+
     /**
      * Rechercher des phases en fonction de "word"
      */

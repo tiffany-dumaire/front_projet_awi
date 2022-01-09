@@ -11,9 +11,14 @@ export type ClonerFicheTechniqueProps = {
 }
 
 export const ClonerFicheTechnique: React.FunctionComponent<ClonerFicheTechniqueProps> = (props: ClonerFicheTechniqueProps) => {
+    //nombre de couverts pour la nouvelle fiche clonée
     const [newNBCouverts, setNewNBCouverts] = useState<number>(props.ficheTechnique.nombre_couverts);
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Cloner la fiche en ajouter les éléments de base
+     */
     const clonerFiche = () => {
         props.setLoading(false);
         createFicheTechnique(props.ficheTechnique.libelle_fiche_technique, newNBCouverts, props.ficheTechnique.id_responsable, props.ficheTechnique.id_categorie_fiche).then((result) => { 
@@ -24,6 +29,10 @@ export const ClonerFicheTechnique: React.FunctionComponent<ClonerFicheTechniqueP
         
     }
 
+    /**
+     * Ajouter les phases dans le même ordre que la fiche actuelle en la clonant
+     * @param id_fiche_technique 
+     */
     const addPhasesScheduled = (id_fiche_technique: number) => {
         props.ficheTechnique.phases.forEach((phase) => {
             addPhaseFT(phase.id_phase, id_fiche_technique, phase.ordre);
@@ -34,6 +43,10 @@ export const ClonerFicheTechnique: React.FunctionComponent<ClonerFicheTechniqueP
         )
     }
 
+    /**
+     * Ajout des quantités d'ingrédients sur la nouvelle fiche en recalculant les quantités
+     * @param id_fiche_technique 
+     */
     const addAllIngredient = (id_fiche_technique: number) => {
         props.ficheTechnique.phases.forEach((phase) => {
             phase.ingredients.forEach((ingredient) => {

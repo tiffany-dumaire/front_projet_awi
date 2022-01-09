@@ -2,6 +2,9 @@ import { Denrees_Etiquette_Interface } from '../interfaces/Denrees.interface';
 import { Etiquette_Fiche_Technique_Interface, Fiche_Complete_Interface, Fiche_Technique_Infos_Interface, Fiche_Technique_Interface } from '../interfaces/Fiche_Technique.interface';
 import { Phase_Complete_Interface } from '../interfaces/Phase.interface';
 
+/**
+ * 
+ */
 export class Fiche_Technique implements Fiche_Technique_Interface {
     id_fiche_technique: number;
     libelle_fiche_technique: string;
@@ -10,6 +13,15 @@ export class Fiche_Technique implements Fiche_Technique_Interface {
     intitule_responsable: string;
     id_categorie_fiche: number;
 
+    /**
+     * Constructeur de Fiche_Technique
+     * @param id_fiche_technique 
+     * @param libelle_fiche_technique 
+     * @param nombre_couverts 
+     * @param id_responsable 
+     * @param intitule_responsable 
+     * @param id_categorie_fiche 
+     */
     constructor(
         id_fiche_technique: number,
         libelle_fiche_technique: string,
@@ -28,6 +40,9 @@ export class Fiche_Technique implements Fiche_Technique_Interface {
      
 }
 
+/**
+ * 
+ */
 export class Fiche_Technique_Infos implements Fiche_Technique_Infos_Interface {
     id_fiche_technique: number;
     libelle_fiche_technique: string;
@@ -35,6 +50,14 @@ export class Fiche_Technique_Infos implements Fiche_Technique_Infos_Interface {
     intitule_responsable: string;
     categorie_fiche: string;
 
+    /**
+     * Constructeur de Fiche_Technique_Infos
+     * @param id_fiche_technique 
+     * @param libelle_fiche_technique 
+     * @param nombre_couverts 
+     * @param intitule_responsable 
+     * @param categorie_fiche 
+     */
     constructor(
         id_fiche_technique: number,
         libelle_fiche_technique: string,
@@ -51,12 +74,22 @@ export class Fiche_Technique_Infos implements Fiche_Technique_Infos_Interface {
      
 }
 
+/**
+ * 
+ */
 export class Etiquette_Fiche_Technique implements Etiquette_Fiche_Technique_Interface {
     id_fiche_technique: number;
     libelle_fiche_technique: string;
     nombre_couverts: number;
     ingredients: Denrees_Etiquette_Interface[];
 
+    /**
+     * Constructeur de Etiquette_Fiche_Technique
+     * @param id_fiche_technique 
+     * @param libelle_fiche_technique 
+     * @param nombre_couverts 
+     * @param ingredients 
+     */
     constructor(
         id_fiche_technique: number,
         libelle_fiche_technique: string,
@@ -70,6 +103,9 @@ export class Etiquette_Fiche_Technique implements Etiquette_Fiche_Technique_Inte
     }
 }
 
+/**
+ * 
+ */
 export class Fiche_Complete implements Fiche_Complete_Interface {
     id_fiche_technique: number;
     libelle_fiche_technique: string;
@@ -79,6 +115,16 @@ export class Fiche_Complete implements Fiche_Complete_Interface {
     id_categorie_fiche: number;
     phases: Phase_Complete_Interface[];
 
+    /**
+     * Constructeur de Fiche_Complete
+     * @param id_fiche_technique 
+     * @param libelle_fiche_technique 
+     * @param nombre_couverts 
+     * @param intitule_responsable 
+     * @param id_responsable 
+     * @param id_categorie_fiche 
+     * @param phases 
+     */
     constructor(
         id_fiche_technique: number,
         libelle_fiche_technique: string,

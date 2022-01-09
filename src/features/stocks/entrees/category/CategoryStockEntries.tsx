@@ -11,7 +11,6 @@ import { CategorieChoice } from '../../../../components/stocks/modify/CategorieC
 import { useHistory } from 'react-router-dom';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 
-
 export function CategoryStockEntries(): JSX.Element {
     //loading
     const [loading, setLoading] = useState<boolean>(false);

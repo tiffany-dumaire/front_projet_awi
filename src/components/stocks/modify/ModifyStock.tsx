@@ -10,8 +10,16 @@ export type ModifyStockProps = {
 };
 
 export const ModifyStock: React.FunctionComponent<ModifyStockProps> = (props: ModifyStockProps) => {
+    //liste des ingrédients résultat de la recherche
     const [ingredients, setIngredients] = useState<Stock_Interface[]>(props.ingredients);
 
+    /**
+     * Recherche des ingrédient pour lesquels on souhaite modifier les stocks
+     * @param code 
+     * @param libelle 
+     * @param unite 
+     * @param stock 
+     */
     const modifyStockIngredient = (code: number, libelle: string, unite: string, stock: number) => {
         const codeToSearch = (element) => element.code === code;
         const index = ingredients.findIndex(codeToSearch);
@@ -19,6 +27,9 @@ export const ModifyStock: React.FunctionComponent<ModifyStockProps> = (props: Mo
         setIngredients(ingredients.slice(0));
     }
 
+    /**
+     * Modifier tous les stocks
+     */
     const modifyAll = () => {
         ingredients.forEach(async (ingredient) => {
             await modifyStock(ingredient.code, ingredient.stock);

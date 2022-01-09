@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 export interface Ingredient_Interface {
     code: number;
     libelle: string;
@@ -9,6 +12,9 @@ export interface Ingredient_Interface {
     id_categorie_allergene: number;
 }
 
+/**
+ * 
+ */
 export interface Ingredient_Detail_Interface {
     code: number;
     libelle: string;
@@ -22,10 +28,16 @@ export interface Ingredient_Detail_Interface {
     categorie_allergene: string;
 }
 
+/**
+ * 
+ */
 export interface Code_Interface {
     code: number;
 }
 
+/**
+ * 
+ */
 export interface Stock_Interface {
     code: number;
     libelle: string;
@@ -33,6 +45,9 @@ export interface Stock_Interface {
     stock: number;
 }
 
+/**
+ * 
+ */
 export interface Ingredient_Phase_Interface {
     code: number;
     libelle: string;

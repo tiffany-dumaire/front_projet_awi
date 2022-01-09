@@ -31,7 +31,7 @@ export function DetailIngredient(): JSX.Element {
     const history = useHistory();
 
     /**
-     * 
+     * Récupération de la liste des catégories d'allergènes
      */
     const getAllergeneCategorie = () => {
         getCategoriesAllergenes().then((list) => {
@@ -43,6 +43,9 @@ export function DetailIngredient(): JSX.Element {
         });
     };
 
+    /**
+     * Récupération de l'ingrédient et des catégories correspondantes
+     */
     async function getIngredient() {
         await getIngredientByCategorie(Number(id_ingredient)).then((i) => {
             setIngredient(i);
@@ -57,6 +60,10 @@ export function DetailIngredient(): JSX.Element {
         });
     };
 
+    /**
+     * Suppression de la fiche produit
+     * @returns 
+     */
     const deleteAnIngredient = () => {
         var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
         if (r) {

@@ -7,6 +7,7 @@ import { Categorie_Allergenes_Interface } from '../../../../interfaces/Categorie
 import styles from './InitNewIngredient.module.css';
 
 export const InitNewIngredient: React.FunctionComponent = function () {
+    //attribut du produit
     const [code, setCode] = useState<number>(0);
     const [libelle, setLibelle] = useState<string>('');
     const [unite, setUnite] = useState<string>('');
@@ -15,11 +16,17 @@ export const InitNewIngredient: React.FunctionComponent = function () {
     const [allergene, setAllergene] = useState<boolean>(false);
     const [categorie, setCategorie] = useState<number | null>(null);
     const [categorie_allergene, setCategorieAllergene] = useState<number | null>(null);
+    //récupération des données de catégories
     const [categories, setCategories] = useState<Categorie_Interface[]>([]);
     const [categoriesAllergene, setCategoriesAllergene] = useState<Categorie_Allergenes_Interface[]>([]);
+    //récupération des codes pour ne pas ajouter un code existant
     const [codes, setCodes] = useState<number[]>([]);
+    //changement de vue
     const history = useHistory();
     
+    /**
+     * Récupération des codes existants
+     */
     const codesExistant = ()  => {
         getAllIds().then((codeList) => {
             codeList.forEach((c) => {
@@ -29,6 +36,18 @@ export const InitNewIngredient: React.FunctionComponent = function () {
         });
     }
 
+    /**
+     * Création d'un nouveau produit
+     * @param code 
+     * @param libelle 
+     * @param unite 
+     * @param prix_unitaire 
+     * @param stock 
+     * @param allergene 
+     * @param id_categorie 
+     * @param id_categorie_allergene 
+     * @returns 
+     */
     const newIngredient = (
         code: number,
         libelle: string,
@@ -49,6 +68,11 @@ export const InitNewIngredient: React.FunctionComponent = function () {
         }
     }
 
+    /**
+     * Tronquer x (entier)
+     * @param x 
+     * @returns 
+     */
     const tronquer = (x: number) => {
         return x.toFixed(0);
     }
