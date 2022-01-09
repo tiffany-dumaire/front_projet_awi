@@ -27,22 +27,34 @@ export type VenteEtiquettesProps = {
 };
 
 export const VenteEtiquettes: React.FunctionComponent<VenteEtiquettesProps> = (props: VenteEtiquettesProps) => {
+    //paramètres de l'étiquette 
     const [normalOuEmporter, setNormalOuEmporter] = useState<boolean>(false);
     const [vente, setVente] = useState<boolean>(false);
+    //reference pour les pdf
     const componentRef = useRef(null);
     const componentIManquantRef = useRef(null);
     //stock pas ok
     const [stockPasOk, setStockPasOk] = useState<QuantiteStock[]>([]);
+    //changement de vue
     const history = useHistory();
 
+    /**
+     * Récupération du pdf de l'étiquette
+     */
     const getPDF = useReactToPrint({
         content: () => componentRef.current,
     });
 
+    /**
+     * Récupération du pdf de la liste des ingrédients manquants
+     */
     const printStocksManquants = useReactToPrint({
         content: () => componentIManquantRef.current,
     });
 
+    /**
+     * Modifier tous les stocks pour réaliser les sorties
+     */
     const modifyAll = () => {
         props.quantityStock.forEach(async (ingredient) => {
             await modifyStock(ingredient.code, (ingredient.stock - ingredient.quantity));

@@ -9,11 +9,20 @@ export type InitialiserEtapeProps = {
 };
 
 export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = (props: InitialiserEtapeProps) => {
+    //attribut de la phase
     const [libelle_phase, setLibellePhase] = useState<string>(props.phase.libelle_phase);
     const [libelle_denrees, setLibelleDenrees] = useState<string>(props.phase.libelle_denrees);
     const [description, setDescription] = useState<string>(props.phase.description_phase);
     const [duree, setDuree] = useState<number>(props.phase.duree_phase);
 
+    /**
+     * Modifier la phase
+     * @param id_phase 
+     * @param libelle_phase 
+     * @param libelle_denrees 
+     * @param description 
+     * @param duree 
+     */
     const modifyPhase = (
         id_phase: number,
         libelle_phase: string,

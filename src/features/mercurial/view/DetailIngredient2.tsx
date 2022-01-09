@@ -14,14 +14,22 @@ export function DetailIngredient2(): JSX.Element {
     const [ingredient, setIngredient] = useState<Ingredient_Detail_Interface>();
     //paramètre de l'url
     const { id_ingredient } = useParams<{ id_ingredient: string }>();
+    //pdf
     const componentRef = useRef(null);
     //changement de vue
     const history = useHistory();
 
+    /**
+     * Imprimer la fiche produit en pdf
+     */
     const getPDF = useReactToPrint({
         content: () => componentRef.current,
     });
 
+    /**
+     * Suppression de la fiche produit
+     * @returns 
+     */
     const deleteAnIngredient = () => {
         var r = window.confirm("La suppression de cette fiche produit affectera toutes les étapes et fiches techniques dans lesquelles vous avez utilisé cet ingrédient. Êtes-vous sûr de vouloir malgré tout supprimer cet ingrédient définitivement du mercurial ?");
         if (r) {
@@ -102,7 +110,6 @@ export function DetailIngredient2(): JSX.Element {
                                             <input className={styles.input} type="text" disabled value={ingredient.categorie_allergene === null ? 'Aucune' : ingredient.categorie_allergene}></input>
                                         </div>
                                     </div>
-                                    {/* <RecapitulatifIngredient ingredient={props.ingredient} /> */}
                                 </div>
                                 <div className={styles.gridButtonContainer}>
                                     <div>

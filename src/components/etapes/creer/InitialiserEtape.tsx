@@ -8,11 +8,19 @@ export type InitialiserEtapeProps = {
 };
 
 export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = (props: InitialiserEtapeProps) => {
+    //attribut de l'étape
     const [libelle_phase, setLibellePhase] = useState<string>('');
     const [libelle_denrees, setLibelleDenrees] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [duree, setDuree] = useState<number>(0);
 
+    /**
+     * Création de la phase
+     * @param libelle_phase 
+     * @param libelle_denrees 
+     * @param description 
+     * @param duree 
+     */
     const createPhase = (
         libelle_phase: string,
         libelle_denrees: string,
@@ -24,6 +32,14 @@ export const InitialiserEtape: React.FunctionComponent<InitialiserEtapeProps> = 
         });
     }
 
+    /**
+     * Modification de la phase
+     * @param id_phase 
+     * @param libelle_phase 
+     * @param libelle_denrees 
+     * @param description 
+     * @param duree 
+     */
     const modifyPhase = (
         id_phase: number,
         libelle_phase: string,

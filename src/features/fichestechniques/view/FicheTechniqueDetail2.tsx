@@ -9,12 +9,14 @@ import { useReactToPrint } from 'react-to-print';
 import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
 import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
+import { ClonerFicheTechnique } from '../../../components/fiches-techniques/cloner/ClonerFicheTechnique';
 
 export function FicheTechniqueDetail2(): JSX.Element {
     //loading
     const [loading, setLoading] = useState<boolean>(false);
     //fiche technique
     const [ficheTechnique, setFicheTechnique] = useState<Fiche_Complete_Interface>();
+    //paramètre de l'url
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     //changement de vue
     const history = useHistory();
@@ -45,6 +47,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
         content: () => componentRef.current,
     });
 
+    /**
+     * Calcul du cout de l'assaisonnement
+     * @returns 
+     */
     const assaisonnementCout = () : string => {
         if (assaisonnement) {
             if (assaisonnement.utile) {
@@ -56,6 +62,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
         return 'Une erreur est survenue lors du calcul de l\'assaisonnement.';
     };
 
+    /**
+     * Calcul du cout de production de la fiche
+     * @returns 
+     */
     const coutProduction = () : string => {
         if (coeff_vente) {
             if (coeff_vente.utile) {
@@ -66,6 +76,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
         return 'Une erreur est survenue lors du calcul du coût de production.';
     };
 
+    /**
+     * Calcul du prix de vente de la fiche
+     * @returns 
+     */
     const prixDeVente = () : string => {
         if (coeff_vente) {
             if (coeff_vente.utile) {
@@ -76,10 +90,18 @@ export function FicheTechniqueDetail2(): JSX.Element {
         return 'Une erreur est survenue lors du calcul du prix de vente';
     };
 
+    /**
+     * Calcul du bénéfice
+     * @returns 
+     */
     const benefice = () : string => {
         return ((Number(prixDeVente())/1.1) - Number(coutProduction())).toFixed(2); 
     };
 
+    /**
+     * Calcul du cout total des charges fixes
+     * @returns 
+     */
     const coutTotalChargesFixes = () : string => {
         if (cout_moyen) {
             return (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2);
@@ -87,6 +109,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
         return 'Une erreur est survenue lors du calcul des charges fixes.';
     }
 
+    /**
+     * Calcul du taux de marge sur coûts variables
+     * @returns 
+     */
     const tauxMargeCoutV = () : string => {
         if (ficheTechnique) {
             return (((Number(prixDeVente())/1.1)/ficheTechnique?.nombre_couverts - ((coutMatiere + Number(assaisonnementCout())))/ficheTechnique.nombre_couverts)/((Number(prixDeVente())/1.1)/ficheTechnique?.nombre_couverts)).toFixed(2);
@@ -94,6 +120,10 @@ export function FicheTechniqueDetail2(): JSX.Element {
         return 'Pb';
     };
 
+    /**
+     * Calcul du seuil de rentabilité
+     * @returns 
+     */
     const seulDeRentabilite = () : string => {
         if (ficheTechnique) {
             return Math.ceil(Number(coutTotalChargesFixes())/Number(tauxMargeCoutV())).toString();
@@ -309,7 +339,12 @@ export function FicheTechniqueDetail2(): JSX.Element {
                         ):(
                             null
                         )}
-                    </div>  
+                    </div>
+                    {ficheTechnique ?
+                        <ClonerFicheTechnique ficheTechnique={ficheTechnique} setLoading={(loading: boolean) => setLoading(loading)} />
+                    :
+                        null
+                    }
                 </div>
             ) : (
                 <div className={styles.container}>

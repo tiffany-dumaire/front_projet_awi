@@ -8,7 +8,6 @@ import { ModifyStock } from '../../../../components/stocks/modify/ModifyStock';
 import { useHistory } from 'react-router-dom';
 import { LoadingStock } from '../../../../components/loading/loading-stock/LoadingStock';
 
-
 export function AllStockEntries(): JSX.Element {
     //loading
     const [loading, setLoading] = useState<boolean>(false);

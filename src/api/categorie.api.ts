@@ -6,6 +6,10 @@ import { Categorie_Fiches_Interface } from '../interfaces/Categorie_Fiches.inter
 
 /** GET **/
 
+/**
+ * Récupération des catégories d'ingrédients
+ * @returns 
+ */
 export async function getCategories(): Promise<Categorie_Interface[]> {
   return new Promise((resolve, reject) => {
     try {
@@ -29,6 +33,11 @@ export async function getCategories(): Promise<Categorie_Interface[]> {
   });
 }
 
+/**
+ * Récupération d'une catégorie d'ingrédient par id
+ * @param id_categorie 
+ * @returns 
+ */
 export async function getCategorieById(id_categorie: number): Promise<Categorie_Interface> {
   return new Promise((resolve, reject) => {
     try {
@@ -52,6 +61,10 @@ export async function getCategorieById(id_categorie: number): Promise<Categorie_
   });
 }
 
+/**
+ * Récupération de la liste des catégories d'allergènes
+ * @returns 
+ */
 export async function getCategoriesAllergenes(): Promise<Categorie_Allergenes_Interface[]> {
   return new Promise((resolve, reject) => {
     try {
@@ -75,6 +88,11 @@ export async function getCategoriesAllergenes(): Promise<Categorie_Allergenes_In
   });
 }
 
+/**
+ * Récupération d'une catégorie d'allergènes par id
+ * @param id_categorie_allergene 
+ * @returns 
+ */
 export async function getCategorieAllergeneById(id_categorie_allergene: number): Promise<Categorie_Allergenes_Interface> {
   return new Promise((resolve, reject) => {
     try {
@@ -98,6 +116,10 @@ export async function getCategorieAllergeneById(id_categorie_allergene: number):
   });
 }
 
+/**
+ * Récupération des catégories de fiches techniques
+ * @returns 
+ */
 export async function getCategoriesFiches(): Promise<Categorie_Fiches_Interface[]> {
   return new Promise((resolve, reject) => {
     try {
@@ -121,6 +143,11 @@ export async function getCategoriesFiches(): Promise<Categorie_Fiches_Interface[
   });
 }
 
+/**
+ * Récupération d'une catégorie de fiche technique par id
+ * @param id_categorie_fiche 
+ * @returns 
+ */
 export async function getCategorieFicheById(id_categorie_fiche: number): Promise<Categorie_Fiches_Interface> {
   return new Promise((resolve, reject) => {
     try {
@@ -144,12 +171,15 @@ export async function getCategorieFicheById(id_categorie_fiche: number): Promise
   });
 }
 
-/** POST **/
-
-
 /** PUT **/
 
-
+/**
+ * Modification de la catégorie d'ingrédient
+ * @param id_categorie 
+ * @param categorie 
+ * @param color 
+ * @returns 
+ */
 export async function modifyCategory(
   id_categorie: number,
   categorie: string,
@@ -174,6 +204,13 @@ export async function modifyCategory(
   });
 }
 
+/**
+ * Modification de la catégorie d'allergènes
+ * @param id_categorie_allergene 
+ * @param categorie_allergene 
+ * @param color_allergene 
+ * @returns 
+ */
 export async function modifyCategoryAllergene(
   id_categorie_allergene: number,
   categorie_allergene: string,
@@ -198,6 +235,13 @@ export async function modifyCategoryAllergene(
   });
 }
 
+/**
+ * Modification de la catégorie de fiches techniques
+ * @param id_categorie_fiche 
+ * @param categorie_fiche 
+ * @param color_fiche 
+ * @returns 
+ */
 export async function modifyCategoryFiche(
   id_categorie_fiche: number,
   categorie_fiche: string,

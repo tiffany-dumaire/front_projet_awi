@@ -14,11 +14,15 @@ export type IngredientChoiceProps = {
 };
 
 export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = (props: IngredientChoiceProps) => {
+    //recherche
     const [ingredients, setIngredients] = useState<Array<Ingredient_Interface>>(props.ingredients);
+    //ingrédient ajouté
     const [addedIngredients, setAddedIngredients] = useState<Array<Phase_Ingredient_Interface>>(props.phaseIngredients);
+    //changement de vue
     const history = useHistory();
-
+    //recherche
     const [word, setWord] = useState<string>('');
+
     /**
      * Rechercher des phases en fonction de "word"
      */
@@ -28,6 +32,10 @@ export const IngredientChoice: React.FunctionComponent<IngredientChoiceProps> = 
         setIngredients(searchResult);
     }
 
+    /**
+     * Redirection vers le détail de la phase
+     * @param id 
+     */
     const goTo = (id: number) => {
         const url = `/phases/view/${id}`;
         history.push(url);

@@ -10,9 +10,14 @@ export type DashboardCardProps = {
 }
 
 export const DashboardCard: React.FunctionComponent<DashboardCardProps> = (props: DashboardCardProps) => {
+    //changement de vue
     const history = useHistory();
+    //fiche de style supplémentaire
     const linkStyle = {backgroundColor: props.color}
 
+    /**
+     * Redirection
+     */
     const goTo = () => {
         const url = props.path;
         history.push(url);

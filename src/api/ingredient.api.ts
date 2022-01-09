@@ -1,6 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { Code_Interface, Ingredient_Detail_Interface, Ingredient_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
 
+/**
+ * Récupération de l'ensemble des ingrédients
+ * @returns 
+ */
 export async function getIngredients(): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -24,6 +28,11 @@ export async function getIngredients(): Promise<Ingredient_Interface[]> {
     });
 }
 
+/**
+ * Récupération du détail d'un ingrédient complet
+ * @param code 
+ * @returns 
+ */
 export async function getIngredientDetail(
     code: number
 ): Promise<Ingredient_Detail_Interface> {
@@ -45,6 +54,10 @@ export async function getIngredientDetail(
     });
 }
 
+/**
+ * Récupération de la liste des codes existants
+ * @returns 
+ */
 export async function getAllIds(): Promise<Code_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -68,6 +81,10 @@ export async function getAllIds(): Promise<Code_Interface[]> {
     });
 }
 
+/**
+ * Récupération de la liste des allergènes
+ * @returns 
+ */
 export async function getAllergenes(): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -91,6 +108,11 @@ export async function getAllergenes(): Promise<Ingredient_Interface[]> {
     });
 }
 
+/**
+ * Récupération de la liste des ingrédients par catégorie
+ * @param id_categorie 
+ * @returns 
+ */
 export async function getIngredientsByCategorie(id_categorie: number): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -114,6 +136,11 @@ export async function getIngredientsByCategorie(id_categorie: number): Promise<I
     });
 }
 
+/**
+ * Récupération d'un ingrédient par id d'ingrédient
+ * @param id_ingredient 
+ * @returns 
+ */
 export async function getIngredientByCategorie(id_ingredient: number): Promise<Ingredient_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -137,6 +164,11 @@ export async function getIngredientByCategorie(id_ingredient: number): Promise<I
     });
 }
 
+/**
+ * Récupération des allergènes par catégorie d'allergène
+ * @param id_categorie_allergene 
+ * @returns 
+ */
 export async function getAllergenesByCategorie(id_categorie_allergene: number): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -248,6 +280,18 @@ export async function searchIngredientsByCategorieAllergene(search: string, id_c
 
 /** POST **/
 
+/**
+ * Création d'un ingrédient
+ * @param code 
+ * @param libelle 
+ * @param unite 
+ * @param prix_unitaire 
+ * @param stock 
+ * @param allergene 
+ * @param id_categorie 
+ * @param id_categorie_allergene 
+ * @returns 
+ */
 export async function createIngredient(
     code: number,
     libelle: string,
@@ -285,6 +329,18 @@ export async function createIngredient(
 
 /** PUT **/
 
+/**
+ * Modification d'un ingrédient
+ * @param code 
+ * @param libelle 
+ * @param unite 
+ * @param prix_unitaire 
+ * @param stock 
+ * @param allergene 
+ * @param id_categorie 
+ * @param id_categorie_allergene 
+ * @returns 
+ */
 export async function putIngredient(
     code: number,
     libelle: string,
@@ -321,6 +377,11 @@ export async function putIngredient(
 
 /** DELETE **/
 
+/**
+ * Suppression d'un ingrédient
+ * @param code 
+ * @returns 
+ */
 export async function deleteIngredient(
     code: number,
 ): Promise<number> {
@@ -341,6 +402,10 @@ export async function deleteIngredient(
 
 /** STOCKS **/
 
+/**
+ * Récupération des stocks pour tous les ingrédients
+ * @returns 
+ */
 export async function getAllStocks(): Promise<Stock_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -364,6 +429,11 @@ export async function getAllStocks(): Promise<Stock_Interface[]> {
     });
 }
 
+/**
+ * Récupération des stocks par catégorie
+ * @param id_categorie 
+ * @returns 
+ */
 export async function getStockByCategorie(id_categorie: number): Promise<Stock_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -387,10 +457,16 @@ export async function getStockByCategorie(id_categorie: number): Promise<Stock_I
     });
 }
 
+/**
+ * Modification du stock d'un ingrédient
+ * @param code 
+ * @param stock 
+ * @returns 
+ */
 export async function modifyStock(
     code: number,
     stock: number,
-): Promise<Stock_Interface> {
+): Promise<number> {
     return new Promise((resolve, reject) => {
         try {
             const config: AxiosRequestConfig = {
@@ -401,7 +477,7 @@ export async function modifyStock(
                 },
             };
             axios(config).then((result) => {
-                //resolve(ingredient);
+                resolve(result.data.changedRows);
             });
         } catch (err) {
             reject(err);

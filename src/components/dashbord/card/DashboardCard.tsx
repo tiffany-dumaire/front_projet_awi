@@ -13,6 +13,9 @@ export const DashboardCard: React.FunctionComponent<DashboardCardProps> = (props
     const history = useHistory();
     const linkStyle = {backgroundColor: props.color}
 
+    /**
+     * Redirection
+     */
     const goTo = () => {
         const url = props.path;
         history.push(url);

@@ -4,6 +4,10 @@ import { Responsable_Interface } from '../interfaces/Responsable.interface';
 
 /** GET **/
 
+/**
+ * Récupération de tous les responsables
+ * @returns 
+ */
 export async function getResponsables(): Promise<Responsable_Interface[]> {
   return new Promise((resolve, reject) => {
     try {

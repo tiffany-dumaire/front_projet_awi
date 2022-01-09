@@ -12,9 +12,10 @@ export type PhasesChoiceProps = {
 };
 
 export const PhasesChoice: React.FunctionComponent<PhasesChoiceProps> = (props: PhasesChoiceProps) => {
+    //recherche
     const [phases, setPhases] = useState<Phase_Simple_Interface[]>(props.phases);
-
     const [word, setWord] = useState<string>('');
+
     /**
      * Rechercher des phases en fonction de "word"
      */

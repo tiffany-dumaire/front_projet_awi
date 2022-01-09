@@ -13,11 +13,17 @@ export type DebutFicheTechniqueProps = {
 };
 
 export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniqueProps> = (props: DebutFicheTechniqueProps) => {
+    //attribut de la fiche technique
     const [intitule, setIntitule] = useState<string>(props.fiche ? props.fiche.libelle_fiche_technique : '');
     const [couverts, setCouverts] = useState<number>(props.fiche ? props.fiche.nombre_couverts : 0);
     const [id_responsable, setIdResponsable] = useState<number>(props.fiche ? props.fiche.id_responsable : 0);
     const [id_categorie, setIdCategorie] = useState<number>(props.fiche ? props.fiche.id_categorie_fiche : 0);
 
+    /**
+     * Tronquer x (entier)
+     * @param x 
+     * @returns 
+     */
     const tronquer = (x: number) => {
         return x.toFixed(0);
     }
