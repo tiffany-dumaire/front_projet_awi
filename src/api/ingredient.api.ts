@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { Code_Interface, Ingredient_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
+import { Code_Interface, Ingredient_Detail_Interface, Ingredient_Interface, Stock_Interface } from '../interfaces/Ingredient.interface';
 
 export async function getIngredients(): Promise<Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
@@ -17,6 +17,27 @@ export async function getIngredients(): Promise<Ingredient_Interface[]> {
                     ingredientList.push(ingredient);
                 });
                 resolve(ingredientList);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+export async function getIngredientDetail(
+    code: number
+): Promise<Ingredient_Detail_Interface> {
+    return new Promise((resolve, reject) => {
+        try {
+            const url = `${process.env.REACT_APP_SERV_HOST}/ingredients/byId/${code}`;
+            const config: AxiosRequestConfig = {
+                method: 'get',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+            };
+            axios.get(url, config).then((ingredients) => {
+                resolve(ingredients.data[0]);
             });
         } catch (err) {
             reject(err);

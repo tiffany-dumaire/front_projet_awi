@@ -71,7 +71,7 @@ export function About(): JSX.Element {
           <li>
             <i>Gestion des stocks</i>
             <ul>
-              <li><i>Réalisation ventes (plats vendus ou à emporter)</i></li>
+              <li><s>Réalisation ventes (plats vendus ou à emporter)</s></li>
               <li><s>Vente test (le stock ne bouge pas -- voir partie création des étiquettes)</s></li>
               <li><s>Réaliser une entrée de stock complète</s></li>
               <li><s>Réaliser une entrée de stock par catégorie</s></li>
@@ -88,7 +88,7 @@ export function About(): JSX.Element {
           <li>
             Créer des étiquettes
             <ul>
-              <li><i>Correspondant à une vente</i></li>
+              <li><s>Correspondant à une vente</s></li>
               <li><s>Ne correspondant pas à une vente</s></li>
             </ul>
           </li>
