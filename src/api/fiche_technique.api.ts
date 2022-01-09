@@ -30,6 +30,11 @@ export async function getFichesTechniques(): Promise<Fiche_Technique_Interface[]
     });
 }
 
+/**
+ * Récupération d'une fiche technique par id
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function getFicheByID(id_fiche_technique: number): Promise<Fiche_Technique_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -138,6 +143,12 @@ export async function getPhasesByFT(id_fiche_technique: number): Promise<Phase_I
     });
 }
 
+/**
+ * Récupération des denrées par fiche technique et ordre
+ * @param id_fiche_technique 
+ * @param ordre 
+ * @returns 
+ */
 export async function getDenreesByFTByPhase(id_fiche_technique: number, ordre: number): Promise<Denree_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -161,6 +172,11 @@ export async function getDenreesByFTByPhase(id_fiche_technique: number, ordre: n
     });
 }
 
+/**
+ * Recherche une fiche technique par nom d'ingrédient
+ * @param search 
+ * @returns 
+ */
 export async function searchFTbyIngredient(search: string): Promise<Fiche_Technique_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -184,6 +200,12 @@ export async function searchFTbyIngredient(search: string): Promise<Fiche_Techni
     });
 }
 
+/**
+ * Récupération des fiches techniques par nom d'ingrédient et catégorie de fiche 
+ * @param search 
+ * @param id_categorie_fiche 
+ * @returns 
+ */
 export async function searchFTbyIngredientAndCategorie(search: string, id_categorie_fiche: number): Promise<Fiche_Technique_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -207,6 +229,11 @@ export async function searchFTbyIngredientAndCategorie(search: string, id_catego
     });
 }
 
+/**
+ * Récupération des fiches techniques par libellé de fiche
+ * @param search 
+ * @returns 
+ */
 export async function searchFTbyLibelle(search: string): Promise<Fiche_Technique_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -230,6 +257,12 @@ export async function searchFTbyLibelle(search: string): Promise<Fiche_Technique
     });
 }
 
+/**
+ * Récupération des fiches techniques par libellé de fiche et catégorie de fiche technique
+ * @param search 
+ * @param id_categorie_fiche 
+ * @returns 
+ */
 export async function searchFTbyLibelleAndCategorie(search: string, id_categorie_fiche: number): Promise<Fiche_Technique_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -253,6 +286,11 @@ export async function searchFTbyLibelleAndCategorie(search: string, id_categorie
     });
 }
 
+/**
+ * Récupération d'une fiche complète par id
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function getFicheTechniqueComplete(id_fiche_technique: number): Promise<Fiche_Complete_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -272,6 +310,11 @@ export async function getFicheTechniqueComplete(id_fiche_technique: number): Pro
     });
 }
 
+/**
+ * Récupération d'une étiquette de fiche par id
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function etiquetteFiche(id_fiche_technique: number): Promise<Etiquette_Fiche_Technique_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -291,6 +334,10 @@ export async function etiquetteFiche(id_fiche_technique: number): Promise<Etique
     });
 }
 
+/**
+ * Récupération de toutes les étiquettes de fiches
+ * @returns 
+ */
 export async function etiquettesFiches(): Promise<Etiquette_Fiche_Technique_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -316,6 +363,14 @@ export async function etiquettesFiches(): Promise<Etiquette_Fiche_Technique_Inte
 
 /** POST **/
 
+/**
+ * Création d'une fiche technique
+ * @param libelle_fiche_technique 
+ * @param nombre_couverts 
+ * @param id_responsable 
+ * @param id_categorie_fiche 
+ * @returns 
+ */
 export async function createFicheTechnique(
     libelle_fiche_technique: string,
     nombre_couverts: number,
@@ -345,6 +400,15 @@ export async function createFicheTechnique(
 
 /** PUT **/
 
+/**
+ * Modification de la base d'une fiche technique
+ * @param id_fiche_technique 
+ * @param libelle_fiche_technique 
+ * @param nombre_couverts 
+ * @param id_responsable 
+ * @param id_categorie_fiche 
+ * @returns 
+ */
 export async function modifyFicheTechnique(
     id_fiche_technique: number,
     libelle_fiche_technique: string,
@@ -375,6 +439,11 @@ export async function modifyFicheTechnique(
 
 /** DELETE **/
 
+/**
+ * Suppression d'une fiche technique
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function deleteFicheTechnique(
     id_fiche_technique: number,
 ): Promise<number> {

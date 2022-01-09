@@ -3,6 +3,11 @@ import { Phase_Detail_Interface, Phase_Ingredients_Interface, Phase_Ingredient_I
 
 /** GET **/
 
+/**
+ * Récupération d'une phase par id
+ * @param id_phase 
+ * @returns 
+ */
 export async function getPhaseByID(id_phase: number): Promise<Phase_Simple_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -26,6 +31,10 @@ export async function getPhaseByID(id_phase: number): Promise<Phase_Simple_Inter
     });
 }
 
+/**
+ * Récupération de toutes les phases
+ * @returns 
+ */
 export async function getPhases(): Promise<Phase_Simple_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -49,6 +58,11 @@ export async function getPhases(): Promise<Phase_Simple_Interface[]> {
     });
 }
 
+/**
+ * Récupération de toutes les phases pour une fiche technique
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function getPhasesByFT(id_fiche_technique): Promise<Phase_Simple_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -72,6 +86,11 @@ export async function getPhasesByFT(id_fiche_technique): Promise<Phase_Simple_In
     });
 }
 
+/**
+ * Récupération de la liste des denrées pour une phase donnée
+ * @param id_phase 
+ * @returns 
+ */
 export async function getDenreesByPhase(id_phase: number): Promise<Phase_Ingredient_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -95,6 +114,11 @@ export async function getDenreesByPhase(id_phase: number): Promise<Phase_Ingredi
     });
 }
 
+/**
+ * Récupération des ingrédients des phases pour une fiche technique donnée
+ * @param id_fiche_technique 
+ * @returns 
+ */
 export async function getPhaseIngredients(id_fiche_technique: number): Promise<Phase_Ingredients_Interface[]> {
     return new Promise((resolve, reject) => {
         try {
@@ -118,6 +142,11 @@ export async function getPhaseIngredients(id_fiche_technique: number): Promise<P
     });
 }
 
+/**
+ * Récupération des détails d'une phase 
+ * @param id_phase 
+ * @returns 
+ */
 export async function getPhaseDetail(id_phase: number): Promise<Phase_Detail_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -139,6 +168,14 @@ export async function getPhaseDetail(id_phase: number): Promise<Phase_Detail_Int
 
 /** POST **/
 
+/**
+ * Création d'une phase
+ * @param libelle_phase 
+ * @param libelle_denrees 
+ * @param description_phase 
+ * @param duree_phase 
+ * @returns 
+ */
 export async function postPhase(
     libelle_phase: string,
     libelle_denrees: string,
@@ -169,6 +206,13 @@ export async function postPhase(
     });
 }
 
+/**
+ * Ajouter une phase et l'ordre dans une fiche technique
+ * @param id_phase 
+ * @param id_fiche_technique 
+ * @param ordre 
+ * @returns 
+ */
 export async function addPhaseFT(
     id_phase: number,
     id_fiche_technique: number,
@@ -197,6 +241,12 @@ export async function addPhaseFT(
     });
 }
 
+/**
+ * Ajouter un ingrédient à une phase
+ * @param code 
+ * @param id_phase 
+ * @returns 
+ */
 export async function addIngredient(
     code: number,
     id_phase: number
@@ -223,6 +273,13 @@ export async function addIngredient(
     });
 }
 
+/**
+ * Ajouter la quantité d'ingrédient pour une phase et une fiche technique données
+ * @param id_fiche_technique 
+ * @param id_phase_ingredient 
+ * @param quantite 
+ * @returns 
+ */
 export async function postQuantityIngredient(
     id_fiche_technique: number,
     id_phase_ingredient: number,
@@ -253,6 +310,15 @@ export async function postQuantityIngredient(
 
 /** PUT **/
 
+/**
+ * Modification d'une phase
+ * @param id_phase 
+ * @param libelle_phase 
+ * @param libelle_denrees 
+ * @param description_phase 
+ * @param duree_phase 
+ * @returns 
+ */
 export async function putPhase(
     id_phase: number,
     libelle_phase: string,
@@ -286,6 +352,11 @@ export async function putPhase(
 
 /** DELETE **/
 
+/**
+ * Suppression d'un ingrédient dans une phase
+ * @param id_phase_ingredient 
+ * @returns 
+ */
 export async function pullIngredient(
     id_phase_ingredient: number
 ): Promise<number> {
@@ -307,6 +378,11 @@ export async function pullIngredient(
     });
 }
 
+/**
+ * Suppression d'une phase
+ * @param id_phase 
+ * @returns 
+ */
 export async function deletePhase(
     id_phase: number,
 ): Promise<number> {

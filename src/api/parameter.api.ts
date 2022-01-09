@@ -1,6 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { Parameter_Interface } from '../interfaces/Parameter.interface';
 
+/**
+ * Récupération d'un paramètre par libellé
+ * @param libelle_parameters 
+ * @returns 
+ */
 export async function getParameter(libelle_parameters: string): Promise<Parameter_Interface> {
     return new Promise((resolve, reject) => {
         try {
@@ -26,6 +31,14 @@ export async function getParameter(libelle_parameters: string): Promise<Paramete
 
 /** PUT **/
 
+/**
+ * Récupération d'un paramètre par libellé
+ * @param libelle_parameters 
+ * @param value 
+ * @param value2 
+ * @param utile 
+ * @returns 
+ */
 export async function putParameter(
     libelle_parameters: string,
     value: number,
