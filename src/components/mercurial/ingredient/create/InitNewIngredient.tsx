@@ -43,9 +43,9 @@ export const InitNewIngredient: React.FunctionComponent = function () {
             alert('Le code ingrédient tapé est déjà utilisé.');
             return;
         } else {
-            createIngredient(code, libelle, unite, prix_unitaire, stock, allergene, id_categorie, id_categorie_allergene);
-            const url = `/mercurial`;
-            history.push(url);
+            createIngredient(code, libelle, unite, prix_unitaire, stock, allergene, id_categorie, id_categorie_allergene).then((result) => {
+                history.push(`/mercurial/ingredient/${code}`);
+            });
         }
     }
 
@@ -109,11 +109,11 @@ export const InitNewIngredient: React.FunctionComponent = function () {
                                 alert('Vous n\'avez pas défini de libellé pour cet ingrédient.');
                                 return;
                             }
-                            if (price === 0) {
+                            if (price < 0.01) {
                                 alert('Vous n\'avez pas défini de prix pour cet ingrédient.');
                                 return;
                             } 
-                            if (stock === 0) {
+                            if (stock < 0) {
                                 alert('Vous n\'avez pas défini le stock initial pour cet ingrédient.');
                                 return;
                             }

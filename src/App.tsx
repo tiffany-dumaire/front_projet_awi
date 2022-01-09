@@ -10,12 +10,10 @@ import { ListeAllergenesPage } from './features/mercurial/ListeAllergenesPage';
 import { ListeIngredientsParCategorie } from './features/mercurial/liste-ingredients/ListeIngredientsParCategorie';
 import { ListeAllergenesParCategorie } from './features/mercurial/liste-allergenes/ListeAllergenesParCategorie';
 import { Dashbord } from './components/dashbord/Dashbord';
-import { DetailIngredient } from './features/mercurial/detail/DetailIngredient';
 import { FicheTechniqueCategory } from './features/fichestechniques/categorie/FicheTechniqueCategory';
 import { CreateFicheTechnique } from './features/fichestechniques/creer/CreateFicheTechnique';
 import { CreatePhase } from './features/fichestechniques/phase/creer/CreatePhase';
 import { CreateIngredient } from './features/mercurial/create/CreateIngredient';
-//import { FicheTechniqueDetail } from './features/fichestechniques/detail/FicheTechniqueDetail';
 import { StockMenu } from './features/stocks/StockMenu';
 import { IngredientResearch } from './features/mercurial/search/IngredientResearch';
 import { FTResearch } from './features/fichestechniques/search/FTResearch';
@@ -34,6 +32,8 @@ import { FicheTechniqueDetail2 } from './features/fichestechniques/view/FicheTec
 import { ModifyFicheTechnique } from './features/fichestechniques/modify/ModifyFicheTechnique';
 import { Vente } from './features/stocks/ventes/sorties/Vente';
 import { SelectedIngredientsStock } from './features/stocks/entrees/choice/SelectedIngredientsStock';
+import { DetailIngredient2 } from './features/mercurial/view/DetailIngredient2';
+import { ModifyIngredient } from './features/mercurial/modify/ModifyIngredient';
 
 function App(): JSX.Element {
   const [style, setStyle] = useState({});
@@ -84,6 +84,7 @@ function App(): JSX.Element {
             '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
             '/mercurial/byCategorie/:id_categorie',
             '/mercurial/ingredient/:id_ingredient',
+            '/mercurial/modify/:id_ingredient',
             //categoryMercurial
             '/category/ingredient/modify/:id_categorie',
             //liste des allergenes
@@ -134,6 +135,7 @@ function App(): JSX.Element {
               '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
               '/mercurial/byCategorie/:id_categorie',
               '/mercurial/ingredient/:id_ingredient',
+              '/mercurial/modify/:id_ingredient',
               //categoryMercurial
               '/category/ingredient/modify/:id_categorie',
               //liste des allergenes
@@ -180,7 +182,8 @@ function App(): JSX.Element {
                 <Route exact path="/mercurial/search/:word/byCategorie/:id_categorie" component={IngredientResearch} />
                 <Route exact path="/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene" component={IngredientResearch} />
                 <Route exact path="/mercurial/byCategorie/:id_categorie" component={ListeIngredientsParCategorie} />
-                <Route exact path="/mercurial/ingredient/:id_ingredient" component={DetailIngredient} />
+                <Route exact path="/mercurial/ingredient/:id_ingredient" component={DetailIngredient2} />
+                <Route exact path="/mercurial/modify/:id_ingredient" component={ModifyIngredient} />
                 {/*categoryMercurial*/}
                 <Route exact path="/category/ingredient/modify/:id_categorie" component={ModifyCategoryIngredient} />
                 {/*liste des allergenes*/}
@@ -228,6 +231,7 @@ function App(): JSX.Element {
                 '/mercurial/search/:word/byCategorieAllergene/:id_categorie_allergene',
                 '/mercurial/byCategorie/:id_categorie',
                 '/mercurial/ingredient/:id_ingredient',
+                '/mercurial/modify/:id_ingredient',
                 //categoryMercurial
                 '/category/ingredient/modify/:id_categorie',
                 //liste des allergenes

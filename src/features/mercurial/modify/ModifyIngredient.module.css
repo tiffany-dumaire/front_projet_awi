@@ -1,0 +1,182 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.container2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.linkTo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 80px;
+    justify-content: left;
+    width: 80%;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.link {
+    position: relative;
+    text-decoration: none;
+    border: 1px solid rgb(37, 37, 37);
+    padding: 10px;
+    width: 180px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color:aliceblue;
+    background-color: rgba(73, 98, 211, 0.795);
+}
+
+.detailContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin:auto;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(9, 70px) / auto-flow 270px;
+}
+
+.gridContainer > div {
+    width: 250px;
+    height: 50px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.label::after {
+    content: ' :';
+}
+
+.input[type="text"], .input2[type="number"], .input {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.buttonSave, .buttonCancel {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.buttonSave {
+    background-color: rgb(69, 129, 58);
+    width: 100%;
+}
+
+.buttonCancel {
+    background-color: rgb(172, 63, 63);
+    width: 100%;
+}
+
+/* Toggle Switch Button */
+
+.switchContainer {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    cursor: pointer;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
