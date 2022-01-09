@@ -1,6 +1,7 @@
 import { Denree_Interface, DenreesEtape_Interface, Denrees_Etiquette_Interface, Denrees_Phase_Interface } from '../interfaces/Denrees.interface';
 
 export class Denree implements Denree_Interface {
+    id_phase_ingredient: number;
     code: number;
     libelle: string;
     quantite: number;
@@ -9,6 +10,7 @@ export class Denree implements Denree_Interface {
     allergene: boolean;
 
     constructor(
+        id_phase_ingredient: number,
         code: number,
         libelle: string,
         quantite: number,
@@ -16,6 +18,7 @@ export class Denree implements Denree_Interface {
         prix_unitaire: number,
         allergene: boolean
     ) {
+        this.id_phase_ingredient = id_phase_ingredient;
         this.code = code;
         this.libelle = libelle;
         this.quantite = quantite;

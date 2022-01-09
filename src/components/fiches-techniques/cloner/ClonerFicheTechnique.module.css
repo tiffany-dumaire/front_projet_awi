@@ -1,0 +1,38 @@
+.detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+.input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 150px;
+    box-sizing: border-box;
+}
+
+.clonerFiche {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    height: 40px;
+    margin-left: 20px;
+    width: 150px;
+    background-color: rgb(126, 62, 25);
+    box-sizing: border-box;
+}

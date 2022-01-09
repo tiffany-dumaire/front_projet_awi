@@ -75,6 +75,8 @@ export class Fiche_Complete implements Fiche_Complete_Interface {
     libelle_fiche_technique: string;
     nombre_couverts: number;
     intitule_responsable: string;
+    id_responsable: number;
+    id_categorie_fiche: number;
     phases: Phase_Complete_Interface[];
 
     constructor(
@@ -82,13 +84,16 @@ export class Fiche_Complete implements Fiche_Complete_Interface {
         libelle_fiche_technique: string,
         nombre_couverts: number,
         intitule_responsable: string,
+        id_responsable: number,
+        id_categorie_fiche: number,
         phases: Phase_Complete_Interface[]
     ) {
         this.id_fiche_technique = id_fiche_technique;
         this.libelle_fiche_technique = libelle_fiche_technique;
         this.nombre_couverts = nombre_couverts;
         this.intitule_responsable = intitule_responsable;
+        this.id_responsable = id_responsable;
+        this.id_categorie_fiche = id_categorie_fiche;
         this.phases = phases;
     }
-
 }

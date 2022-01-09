@@ -1,4 +1,5 @@
 export interface Denree_Interface {
+    id_phase_ingredient: number;
     code: number;
     libelle: string;
     quantite: number;

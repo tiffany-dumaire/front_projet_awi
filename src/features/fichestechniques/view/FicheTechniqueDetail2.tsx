@@ -9,6 +9,7 @@ import { useReactToPrint } from 'react-to-print';
 import { Parameter_Interface } from '../../../interfaces/Parameter.interface';
 import { getParameter } from '../../../api/parameter.api';
 import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
+import { ClonerFicheTechnique } from '../../../components/fiches-techniques/cloner/ClonerFicheTechnique';
 
 export function FicheTechniqueDetail2(): JSX.Element {
     //loading
@@ -309,7 +310,12 @@ export function FicheTechniqueDetail2(): JSX.Element {
                         ):(
                             null
                         )}
-                    </div>  
+                    </div>
+                    {ficheTechnique ?
+                        <ClonerFicheTechnique ficheTechnique={ficheTechnique} setLoading={(loading: boolean) => setLoading(loading)} />
+                    :
+                        null
+                    }
                 </div>
             ) : (
                 <div className={styles.container}>
