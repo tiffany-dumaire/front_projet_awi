@@ -440,6 +440,24 @@ export async function pullIngredient(
     });
 }
 
+export async function deletePhaseFT(
+    id_phase_ft: number,
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'delete',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/phase_FT/delete/${id_phase_ft}`
+            };
+            axios(config).then((result) => {
+                resolve(result.data);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 /**
  * Suppression d'une phase
  * @param id_phase 
