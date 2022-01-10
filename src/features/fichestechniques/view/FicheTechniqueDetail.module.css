@@ -212,6 +212,18 @@ td {
     padding-top: 20px;
 }
 
+.input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    padding-left: 10px;
+    margin-top: 5px;
+    height: 40px;
+    width: 150px;
+    box-sizing: border-box;
+}
+
 .searchContainer {
     position: relative;
     display: flex;
@@ -264,6 +276,25 @@ td {
 .link2 {
     background-color: rgb(42, 99, 165);
     margin-left: auto;
+}
+
+.link3 {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    margin-left: auto;
+}
+
+.link3 > div {
+    width: 200px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    padding-left: 5px;
 }
 
 .deleteButton {

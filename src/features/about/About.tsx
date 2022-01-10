@@ -44,7 +44,7 @@ export function About(): JSX.Element {
             </ul>
           </li>
           <li>
-            <i>Calcul des coûts (ils seront tous affichés dans le détail d'une fiche technique)</i>
+            Calcul des coûts (ils seront tous affichés dans le détail d'une fiche technique)
             <ul>
               <li>Coût matière</li>
               <li>Coût des charges fixes (fluides + personnel)</li>
@@ -57,7 +57,7 @@ export function About(): JSX.Element {
             </ul>
           </li>
           <li>
-            <i>Gestion des stocks</i>
+            Gestion des stocks
             <ul>
               <li>Réalisation ventes (plats vendus ou à emporter) : dans le menu du haut de votre site, cliquer sur "Stocks" puis cliquer ensuite sur la carte "Editer une étiquette" lorsque vous serez dans les paramètres de l'étiquette pensez bien à checker la variable "vente"=true</li>
               <li>Vente test (le stock ne bouge pas -- voir partie création des étiquettes) : dans le menu du haut de votre site, cliquer sur "Stocks" puis cliquer ensuite sur la carte "Editer une étiquette" lorsque vous serez dans les paramètres de l'étiquette pensez bien à checker la variable "vente"=false</li>
