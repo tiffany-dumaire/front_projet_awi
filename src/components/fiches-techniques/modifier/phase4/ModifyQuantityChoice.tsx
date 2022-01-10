@@ -36,7 +36,7 @@ export const ModifyQuantityChoice: React.FunctionComponent<ModifyQuantityChoiceP
     };
 
     /**
-     * Ajout des quantités d'ingrédient par phase
+     * Ajout et modification des quantités d'ingrédient par phase
      */
     const addQuantities = () => {
         props.setLoading(false);

@@ -25,7 +25,7 @@ export const ModifyTaskScheduling: React.FunctionComponent<ModifyTaskSchedulingP
     }, []);
 
     /**
-     * Ajout des phases dans l'ordre
+     * Ajout et modification des phases dans l'ordre
      */
     const scheduling = () => {
         props.addedPhases.forEach((phase) => {
