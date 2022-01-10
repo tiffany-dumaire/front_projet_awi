@@ -1,46 +1,80 @@
-# Getting Started with Create React App
+-----------------------
+Application Name : "✨ Gestionnaire de fiches techniques de cuisine ✨"
+Version : "1.0.0" 
+-----------------------
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ✨ Gestionnaire de fiches techniques de cuisine ✨
 
-## Available Scripts
+## Description et origine
 
-In the project directory, you can run:
+### Description et objectif
 
-### `npm start`
+Ceci est le frontend d'une application web permettant de gérer des fiches techniques de cuisine. Vous retrouverez le backend de l'application en vous rendant sur le dépôt git suivant : [https://github.com/tiffany-dumaire/back-project-awi-2021](https://github.com/tiffany-dumaire/back-project-awi-2021). 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Auteur
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Ce projet a été réalisée par Tiffany DUMAIRE (IG4 - 2021/2022) dans le cadre du projet AWI du semestre 7.
 
-### `npm test`
+### Demandeur
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Professeur d'un lycée hôtelier de Montpellier (Georges Frêche)
 
-### `npm run build`
+### Liste des fonctionnalités
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Accéder au mercurial
+`* Voir le détail des ingrédients`
+`* Rechercher un ingrédient`
+`* Ajouter un ingrédient`
+`* Modifier les ingrédients`
+`* Imprimer une fiche ingrédient`
+`* Supprimer un ingrédient`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Gérer la liste des allergènes
+`* Voir les allergènes`
+`* Rechercher un allergène`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Accéder à la liste des fiches techniques
+`* Voir les fiches techniques`
+`* Rechercher une fiche technique`
+`* Créer une fiche technique`
+`* Cloner une fiche technique`
+`* Modifier une fiche technique`
+`* Supprimer une fiche technique`
 
-### `npm run eject`
+* Calcul des coûts pour une fiche technique
+`* Affichage coût matière`
+`* Affichage coût des charges fixes (fluides + personnel)`
+`* Affichage prix de vente`
+`* Affichage prix de vente par portion`
+`* Affichage bénéfices`
+`* Affichage bénéfices par portion`
+`* Affichage taux de marge sur coûts variables`
+`* Affichage seuil de rentabilité`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Gestion des stocks
+`* Réalisation ventes (plats vendus ou à emporter)`
+`* Vente test (le stock ne bouge pas -- voir partie création des étiquettes)`
+`* Réaliser une entrée de stock complète`
+`* Réaliser une entrée de stock par catégorie`
+`* Réaliser une entrée de stock par choix d'ingrédient`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Impression pdf d'une fiche technique
+`* Avec coûts`
+`* Sans coûts`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Créer des étiquettes
+`* Correspondant à une vente`
+`* Ne correspondant pas à une vente`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Paramètres de l'application
 
-## Learn More
+## Lancer l'application 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### En local
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Après avoir clôné les fichiers, pensez à taper la commande `npm i` dans le répertoire racine du projet afin d'installer l'ensemble des modules et dépendances associés au projet.
+- Par la suite, il vous faudra exécuter la commande `npm run start`.
+
+### Version hébergée
+
+Rendez-vous à l'url suivante : [https://front-awi-projet-2022.herokuapp.com/](https://front-awi-projet-2022.herokuapp.com/)
