@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addPhaseFT, modifyPhaseFT } from '../../../../api/phase.api';
+import { addPhaseFT, deletePhaseFT, modifyPhaseFT } from '../../../../api/phase.api';
 import { Fiche_Complete_Interface } from '../../../../interfaces/Fiche_Technique.interface';
 import { Phase_Simple_Interface } from '../../../../interfaces/Phase.interface';
 import styles from './ModifyTaskScheduling.module.css';
@@ -43,6 +43,23 @@ export const ModifyTaskScheduling: React.FunctionComponent<ModifyTaskSchedulingP
         )
     };
 
+    /**
+     * Retirer les phases qui ne sont plus dans la fiche avant de lancer le nouvel ordre
+     */
+    const modifyScheduling = () => {
+        props.fiche.phases.forEach((p) => {
+            const phaseOld = (element) => p.id_phase === element.id_phase;
+            const index = props.addedPhases.findIndex(phaseOld);
+            if (index === -1) {
+                deletePhaseFT(p.id_phase_ft);
+            }
+        });
+        setTimeout(
+            () => scheduling(),
+            2000
+        )
+    }
+
     return (
         <div className={styles.debutContainer}>
             <h3>Ordonner les phases</h3>
@@ -84,7 +101,7 @@ export const ModifyTaskScheduling: React.FunctionComponent<ModifyTaskSchedulingP
                                 }
                                 var r = window.confirm("Si vous continuez les phases ordonnées seront enregistrées dans l'ordre actuel donné. \nSouhaitez-vous tout de même continuer ?");
                                 if (r) {
-                                    scheduling();
+                                    modifyScheduling();
                                 } else {
                                     return;
                                 }
