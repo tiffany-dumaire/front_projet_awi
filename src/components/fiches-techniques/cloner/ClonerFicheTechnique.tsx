@@ -50,7 +50,7 @@ export const ClonerFicheTechnique: React.FunctionComponent<ClonerFicheTechniqueP
     const addAllIngredient = (id_fiche_technique: number) => {
         props.ficheTechnique.phases.forEach((phase) => {
             phase.ingredients.forEach((ingredient) => {
-                postQuantityIngredient(id_fiche_technique, ingredient.id_phase_ingredient, newNBCouverts * (ingredient.quantite/ props.ficheTechnique.nombre_couverts));
+                postQuantityIngredient(id_fiche_technique, ingredient.id_phase_ingredient, ingredient.unite === 'Piece' || ingredient.unite === 'Unite' ? Math.ceil(newNBCouverts * (ingredient.quantite/ props.ficheTechnique.nombre_couverts)) : Number((newNBCouverts * (ingredient.quantite/ props.ficheTechnique.nombre_couverts)).toFixed(3)));
             });
         });
         setTimeout(

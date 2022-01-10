@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { Categorie_Fiches_Interface } from '../../../../interfaces/Categorie_Fiches.interface';
+import { Fiche_Complete_Interface } from '../../../../interfaces/Fiche_Technique.interface';
 import { Responsable_Interface } from '../../../../interfaces/Responsable.interface';
-import styles from './DebutFicheTechnique.module.css';
+import styles from './ModifierDebutFicheTechnique.module.css';
 
-export type DebutFicheTechniqueProps = {
-    id_fiche_technique?: number;
+export type ModifierDebutFicheTechniqueProps = {
+    fiche: Fiche_Complete_Interface;
     categories: Categorie_Fiches_Interface[];
     responsables: Responsable_Interface[];
-    createFiche: (intitule: string, couverts: number, id_responsable: number, id_categorie: number) => void;
+    modifyFiche: (intitule: string, couverts: number, id_responsable: number, id_categorie: number) => void;
 };
 
-export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniqueProps> = (props: DebutFicheTechniqueProps) => {
+export const ModifierDebutFicheTechnique: React.FunctionComponent<ModifierDebutFicheTechniqueProps> = (props: ModifierDebutFicheTechniqueProps) => {
     //attribut de la fiche technique
-    const [intitule, setIntitule] = useState<string>('');
-    const [couverts, setCouverts] = useState<number>(0);
-    const [id_responsable, setIdResponsable] = useState<number>(0);
-    const [id_categorie, setIdCategorie] = useState<number>(0);
+    const [intitule, setIntitule] = useState<string>(props.fiche.libelle_fiche_technique);
+    const [couverts, setCouverts] = useState<number>(props.fiche.nombre_couverts);
+    const [id_responsable, setIdResponsable] = useState<number>(props.fiche.id_responsable);
+    const [id_categorie, setIdCategorie] = useState<number>(props.fiche.id_categorie_fiche);
 
     /**
      * Tronquer x (entier)
@@ -29,6 +30,7 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
     return (
         <div className={styles.debutContainer}>
             <h3>Créer une nouvelle fiche technique</h3>
+            <legend className={styles.legend}>Si vous modifiez le nombre de couverts, les quantités pour chaque ingrédients seront automatiquement modifiées.</legend>
             <div className={styles.gridContainer}>
                 <div>
                     <label className={styles.label}>Intitulé de la fiche technique</label>
@@ -116,7 +118,7 @@ export const DebutFicheTechnique: React.FunctionComponent<DebutFicheTechniquePro
                                     alert('Vous n\'avez pas défini de responsable pour cette fiche.');
                                     return;
                                 }
-                                props.createFiche(intitule, couverts, id_responsable, id_categorie);
+                                props.modifyFiche(intitule, couverts, id_responsable, id_categorie);
                             }
                         }
                     >   

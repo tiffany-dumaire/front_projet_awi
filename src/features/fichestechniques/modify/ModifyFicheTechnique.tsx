@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { getCategoriesFiches } from '../../../api/categorie.api';
-import { getFicheByID, modifyFicheTechnique } from '../../../api/fiche_technique.api';
-import { getPhaseIngredients, getPhases, getPhasesByFT } from '../../../api/phase.api';
+import { getFicheTechniqueComplete, modifyFicheTechnique } from '../../../api/fiche_technique.api';
+import { getPhaseIngredients, getPhases, getPhasesByFT, putQuantityIngredient } from '../../../api/phase.api';
 import { getResponsables } from '../../../api/responsable.api';
-import { DebutFicheTechnique } from '../../../components/fiches-techniques/creer/phase1/DebutFicheTechnique';
-import { PhasesChoice } from '../../../components/fiches-techniques/creer/phase2/PhasesChoice';
-import { TaskScheduling } from '../../../components/fiches-techniques/creer/phase3/TaskScheduling';
-import { QuantityChoice } from '../../../components/fiches-techniques/creer/phase4/QuantityChoice';
+import { ModifierDebutFicheTechnique } from '../../../components/fiches-techniques/modifier/phase1/ModifierDebutFicheTechnique';
+import { ModifierPhasesChoice } from '../../../components/fiches-techniques/modifier/phase2/ModifierPhasesChoice';
+import { ModifyTaskScheduling } from '../../../components/fiches-techniques/modifier/phase3/ModifyTaskScheduling';
+import { ModifyQuantityChoice } from '../../../components/fiches-techniques/modifier/phase4/ModifyQuantityChoice';
 import { LoadingFiche } from '../../../components/loading/loading-fiche/LoadingFiche';
 import { Categorie_Fiches_Interface } from '../../../interfaces/Categorie_Fiches.interface';
-import { Fiche_Technique_Interface } from '../../../interfaces/Fiche_Technique.interface';
+import { Fiche_Complete_Interface } from '../../../interfaces/Fiche_Technique.interface';
 import { Phase_Ingredients_Interface, Phase_Simple_Interface } from '../../../interfaces/Phase.interface';
 import { Responsable_Interface } from '../../../interfaces/Responsable.interface';
 import styles from './ModifyFicheTechnique.module.css';
@@ -20,7 +20,7 @@ export function ModifyFicheTechnique(): JSX.Element {
     //loading
     const [loading, setLoading] = useState<boolean>(false);
     //fiche technique
-    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Technique_Interface>();
+    const [ficheTechnique, setFicheTechnique] = useState<Fiche_Complete_Interface>();
     const { id_fiche_technique } = useParams<{ id_fiche_technique: string }>();
     //éléments importés de la bdd (catégorie de fiche technique, responsables, phases)
     const [categories, setCategories] = useState<Categorie_Fiches_Interface[]>([]);
@@ -28,8 +28,6 @@ export function ModifyFicheTechnique(): JSX.Element {
     const [phases, setPhases] = useState<Phase_Simple_Interface[]>([]);
     //liste des phases
     const [addedPhases, setAddedPhases] = useState<Phase_Simple_Interface[]>([]);
-    //ancien ordre
-    const [oldOrder, setOldOrder] = useState<number[]>([]);
     //numéro d'étape
     const [numStep, setNumStep] = useState<number>(1);
     //ingrédient des phases
@@ -70,9 +68,27 @@ export function ModifyFicheTechnique(): JSX.Element {
      * @param id_responsable 
      */
     const modifierFiche = (libelle: string, couverts: number, id_categorie: number, id_responsable: number) => {
-        modifyFicheTechnique(ficheTechnique!.id_fiche_technique, libelle, couverts, id_responsable, id_categorie).then((result) => {
-            nextStep();
-        });
+        if (ficheTechnique) {
+            setLoading(false);
+            if (couverts !== ficheTechnique.nombre_couverts){
+                ficheTechnique.phases.forEach((phase) => {
+                    phase.ingredients.forEach((ingredient) => {
+                        putQuantityIngredient(ingredient.id_phase_ingredient, ingredient.unite === 'Piece' || ingredient.unite === 'Unite' ? Math.ceil(couverts * (ingredient.quantite / ficheTechnique.nombre_couverts)) : Number((couverts * (ingredient.quantite / ficheTechnique.nombre_couverts)).toFixed(3)));
+                    });
+                });
+                setTimeout(
+                    () => {
+                        modifyFicheTechnique(ficheTechnique.id_fiche_technique, libelle, couverts, id_responsable, id_categorie).then((result) => {
+                            nextStep();
+                        });
+                    }
+                , 4000);
+            } else {
+                modifyFicheTechnique(ficheTechnique.id_fiche_technique, libelle, couverts, id_responsable, id_categorie).then((result) => {
+                    nextStep();
+                });
+            }
+        }
     };
 
     /**
@@ -98,15 +114,11 @@ export function ModifyFicheTechnique(): JSX.Element {
     };
 
     useEffect(() => {
-        getFicheByID(Number(id_fiche_technique)).then((ft) => {
+        getFicheTechniqueComplete(Number(id_fiche_technique)).then((ft) => {
             setFicheTechnique(ft);
         });
         getPhasesByFT(Number(id_fiche_technique)).then((phases) => {
             setAddedPhases(phases);
-            phases.forEach((phase) => {
-                oldOrder.push(phase.id_phase);
-                setOldOrder(oldOrder.slice(0));
-            });
         });
         getCategoriesList();
         getResponsablesList();
@@ -123,6 +135,7 @@ export function ModifyFicheTechnique(): JSX.Element {
      */
     const nextStep = () => {
         if (numStep === 1) {
+            setLoading(true);
             setNumStep(2);
         } else {
             if (numStep === 2) {
@@ -151,20 +164,19 @@ export function ModifyFicheTechnique(): JSX.Element {
                 <title>{'⚙️ Modifier une fiche technique'}</title>
             </Helmet>
             {
-                loading ? (
+                loading && ficheTechnique ? (
                     <div className={styles.container}>
                         {
                             numStep === 1 ? (
-                                //<QuantityChoice phases_quantity={phasesI} />
-                                <DebutFicheTechnique fiche={ficheTechnique} categories={categories} responsables={responsables} createFiche={(libelle: string, couverts: number, id_responsable: number, id_categorie: number) => modifierFiche(libelle, couverts, id_categorie, id_responsable)} />
+                                <ModifierDebutFicheTechnique fiche={ficheTechnique} categories={categories} responsables={responsables} modifyFiche={(libelle: string, couverts: number, id_responsable: number, id_categorie: number) => modifierFiche(libelle, couverts, id_categorie, id_responsable)} />
                             ) : (
                                 numStep === 2 ? (
-                                    <PhasesChoice phases={phases} addedPhases={addedPhases} addPhase={(phase: Phase_Simple_Interface) => addAPhase(phase)} removePhase={(phase: Phase_Simple_Interface) => removeAPhase(phase)} next={() => nextStep()} />
+                                    <ModifierPhasesChoice phases={phases} addedPhases={addedPhases} addPhase={(phase: Phase_Simple_Interface) => addAPhase(phase)} removePhase={(phase: Phase_Simple_Interface) => removeAPhase(phase)} next={() => nextStep()} />
                                 ) : ( 
                                     numStep === 3 ? (
-                                        <TaskScheduling idFT={ficheTechnique?.id_fiche_technique ? ficheTechnique?.id_fiche_technique : 0} addedPhases={addedPhases} scheduling={() => nextStep()} />
+                                        <ModifyTaskScheduling idFT={ficheTechnique?.id_fiche_technique ? ficheTechnique?.id_fiche_technique : 0} addedPhases={addedPhases} scheduling={() => nextStep()} fiche={ficheTechnique} />
                                     ) : (
-                                        <QuantityChoice phases_quantity={phasesI} setLoading={(loading: boolean) => setLoading(loading)} id_fiche_technique={ficheTechnique?.id_fiche_technique!} />
+                                        <ModifyQuantityChoice phases_quantity={phasesI} setLoading={(loading: boolean) => setLoading(loading)} id_fiche_technique={ficheTechnique?.id_fiche_technique!} fiche={ficheTechnique} />
                                     )
                                 )
                                 

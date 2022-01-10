@@ -28,6 +28,9 @@ export function FicheTechniqueDetail2(): JSX.Element {
     const [showCout, setShowCout] = useState<boolean>(true);
     const [coutMatiere, setCoutMatiere] = useState<number>(0);
     const [dureeTotale, setDureeTotale] = useState<number>(0);
+    const [chargeFixes, setChargeFixes] = useState<boolean>(true);
+    const [fluides, setFluides] = useState<number>(0);
+    const [personnel, setPersonnel] = useState<number>(0);
     //pdf
     const componentRef = useRef(null);
 
@@ -68,7 +71,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
      */
     const coutProduction = () : string => {
         if (coeff_vente) {
-            if (coeff_vente.utile) {
+            if (chargeFixes) {
                 return (coutMatiere + Number(assaisonnementCout()) + Number(coutTotalChargesFixes())).toFixed(2);
             } 
             return (coutMatiere + Number(assaisonnementCout())).toFixed(2)
@@ -82,7 +85,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
      */
     const prixDeVente = () : string => {
         if (coeff_vente) {
-            if (coeff_vente.utile) {
+            if (chargeFixes) {
                 return (Number(coutProduction()) * ((100 + coeff_vente.value)/100)).toFixed(2);
             }
             return (Number(coutProduction()) * ((100 + coeff_vente.value2)/100)).toFixed(2);
@@ -104,7 +107,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
      */
     const coutTotalChargesFixes = () : string => {
         if (cout_moyen) {
-            return (cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2);
+            return (personnel * (dureeTotale/60) + fluides * (dureeTotale/60)).toFixed(2);
         }
         return 'Une erreur est survenue lors du calcul des charges fixes.';
     }
@@ -151,9 +154,12 @@ export function FicheTechniqueDetail2(): JSX.Element {
         });
         getParameter('COUT_HORAIRE_MOYEN').then((parameter) => {
             setCoutMoyen(parameter);
+            setPersonnel(parameter.value);
+            setFluides(parameter.value2);
         });
         getParameter('COEFF_VENTE').then((parameter) => {
             setCoeffVente(parameter);
+            setChargeFixes(parameter.utile);
         });
         setTimeout(
             () => setLoading(true),
@@ -211,7 +217,33 @@ export function FicheTechniqueDetail2(): JSX.Element {
                             </div>
                             <label>Afficher/Masquer les coûts</label>
                         </div>
-                        <div></div>
+                        {chargeFixes ? 
+                            <div className={styles.link3}>
+                                <div><label className={styles.label}>Coût horaire personnel</label></div>
+                                <div><input className={styles.input} value={personnel} type="number" placeholder={'coût personnel..'} step={1} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setPersonnel(Number(ev.target.value))}></input></div>
+                            </div>
+                        :
+                            <div></div>
+                        }
+                    </div>
+                    <div className={styles.linkTo}>
+                        <div className={styles.containerSwitch}>
+                            <div className={styles.switchContainer}>
+                                <label className={styles.switch}>
+                                    <input type="checkbox" checked={chargeFixes} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setChargeFixes(Boolean(ev.target.checked))}/>
+                                    <span className={`${styles.slider} ${styles.round}`}></span>
+                                </label>
+                            </div>
+                            <label>Prendre en compte les charges fixes</label>
+                        </div>
+                        {chargeFixes ? 
+                            <div className={styles.link3}>
+                                <div><label className={styles.label}>Coût horaire fluides</label></div>
+                                <div><input className={styles.input} value={fluides} type="number" placeholder={'coût fluides..'} step={1} onChange={(ev: React.ChangeEvent<HTMLInputElement>) => setFluides(Number(ev.target.value))}></input></div>
+                            </div>
+                        :
+                            <div></div>
+                        }
                     </div>
                     <div className={styles.detail} ref={componentRef}>
                         <div className={styles.complete}>
@@ -306,11 +338,11 @@ export function FicheTechniqueDetail2(): JSX.Element {
                                 </div>
                                 <div className={styles.gridCout}>
                                     <div className={styles.left}>
-                                        {coeff_vente.utile ? (
+                                        {chargeFixes ? (
                                             <>
                                                 <h4>Coût des charges : </h4>
-                                                <p>Charges de personnel : {(cout_moyen.value * (dureeTotale/60)).toFixed(2)}€.</p>
-                                                <p>Charges fluides :  {(cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Charges de personnel : {(personnel * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                <p>Charges fluides :  {(fluides * (dureeTotale/60)).toFixed(2)}€.</p>
                                                 <p>Le coût total des charges est de {(cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
                                             </>
                                             ) : null
@@ -319,7 +351,7 @@ export function FicheTechniqueDetail2(): JSX.Element {
                                         <p>Coût des matières : {coutMatiere.toFixed(2)}€.</p>
                                         <p>Coût assaisonnement : {assaisonnementCout()}€.</p>
                                         <h4>Coût de production : </h4>
-                                        <p>Coût de production total {coeff_vente.utile ? '(charges fixes incluses)' : '(charges fixes exclues)'}: {coutProduction()}€</p>
+                                        <p>Coût de production total {chargeFixes ? '(charges fixes incluses)' : '(charges fixes exclues)'}: {coutProduction()}€</p>
                                         <h4>Prix de vente : </h4>
                                         <p>Prix de vente par portion TTC : {(Number(prixDeVente())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
                                         <p>Prix de vente TTC : {prixDeVente()}€</p>

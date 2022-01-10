@@ -133,6 +133,7 @@ export class Phase_Ingredients implements Phase_Ingredients_Interface {
  */
 export class Phase_Complete implements Phase_Complete_Interface {
   id_phase: number;
+  id_phase_ft: number;
   libelle_phase: string;
   libelle_denrees: string;
   description_phase: string;
@@ -143,6 +144,7 @@ export class Phase_Complete implements Phase_Complete_Interface {
   /**
    * Constructeur de Phase_Complete
    * @param id_phase 
+   * @param id_phase_ft
    * @param libelle_phase 
    * @param libelle_denrees 
    * @param description_phase 
@@ -152,6 +154,7 @@ export class Phase_Complete implements Phase_Complete_Interface {
    */
   constructor(
     id_phase: number,
+    id_phase_ft: number,
     libelle_phase: string,
     libelle_denrees: string,
     description_phase: string,
@@ -160,6 +163,7 @@ export class Phase_Complete implements Phase_Complete_Interface {
     ingredients: Denree_Interface[]
   ) {
     this.id_phase = id_phase;
+    this.id_phase_ft = id_phase_ft;
     this.libelle_phase = libelle_phase;
     this.libelle_denrees = libelle_denrees;
     this.description_phase = description_phase;

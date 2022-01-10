@@ -350,6 +350,68 @@ export async function putPhase(
     });
 }
 
+/**
+ * Modifier une phase et l'ordre dans une fiche technique
+ * @param id_phase_ft 
+ * @param ordre 
+ * @returns 
+ */
+export async function modifyPhaseFT(
+    id_phase_ft: number,
+    ordre: number
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'put',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/phase_FT/modify/${id_phase_ft}`,
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                data: {
+                    "ordre": ordre
+                }
+            };
+            axios(config).then((result) => {
+                resolve(result.data.changedRows);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
+/**
+ * Modifier la quantité d'ingrédient pour une phase et une fiche technique données 
+ * @param id_phase_ingredient 
+ * @param quantite 
+ * @returns 
+ */
+ export async function putQuantityIngredient(
+    id_phase_ingredient: number,
+    quantite: number
+): Promise<number> {
+    return new Promise((resolve, reject) => {
+        try {
+            const config: AxiosRequestConfig = {
+                method: 'put',
+                url: `${process.env.REACT_APP_SERV_HOST}/phases/phase_ingredient_quantity/modify/${id_phase_ingredient}`,
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                data: {
+                    "quantite": quantite
+                }
+            };
+            axios(config).then((result) => {
+                resolve(result.data.changedRows);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 /** DELETE **/
 
 /**

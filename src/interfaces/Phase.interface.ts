@@ -48,6 +48,7 @@ export interface Phase_Ingredients_Interface {
  */
 export interface Phase_Complete_Interface {
     id_phase: number;
+    id_phase_ft: number;
     libelle_phase: string;
     libelle_denrees: string;
     description_phase: string;
