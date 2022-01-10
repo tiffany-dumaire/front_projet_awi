@@ -39,7 +39,7 @@ export function About(): JSX.Element {
               <li>Rechercher une fiche technique : dans la liste des fiches techniques, lancer la recherche et vous aurez un résultat par nom de fiche / nom d'ingrédient</li>
               <li>Créer une fiche technique : dans la liste des fiches techniques ouvrez le menu de gauche et cliquer sur "Créer une fiche technique"</li>
               <li>Cloner une fiche technique : dans le détail d'une fiche technique, descendez sous les coûts et indiquer un nouveau nombre de couverts avant de cliquer sur cloner</li>
-              <li><i>Modifier une fiche technique</i> : dans le détail d'une fiche technique, cliquer sur "Modifier la fiche technique"</li>
+              <li>Modifier une fiche technique : dans le détail d'une fiche technique, cliquer sur "Modifier la fiche technique"</li>
               <li>Supprimer une fiche technique : dans le détail d'une fiche technique, cliquer sur "Supprimer la fiche technique"</li>
             </ul>
           </li>

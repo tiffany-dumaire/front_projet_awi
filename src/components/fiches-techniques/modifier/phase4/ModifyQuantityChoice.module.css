@@ -1,0 +1,64 @@
+.debutContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin:auto;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.flexContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.gridContainer {
+    display: grid;
+    grid: repeat(1, 70px) / auto-flow 320px;
+}
+
+.gridContainer > div {
+    width: 300px;
+    height: 50px;
+}
+
+.label {
+    position: relative;
+    display: block;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.input[type="number"] {
+    position: relative;
+    color: black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.buttonNext {
+    position: relative;
+    color: aliceblue;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    background-color: rgb(110, 85, 85);
+    box-sizing: border-box;
+}
+
+.buttonNext:hover {
+    background-color: rgb(78, 58, 58);
+}
