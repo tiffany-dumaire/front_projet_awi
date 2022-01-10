@@ -22,7 +22,7 @@ Professeur d'un lycée hôtelier de Montpellier (Georges Frêche)
 ### Liste des fonctionnalités
 
 * Accéder au mercurial
-`* Voir le détail des ingrédients`
+*` Voir le détail des ingrédients`
 `* Rechercher un ingrédient`
 `* Ajouter un ingrédient`
 `* Modifier les ingrédients`
