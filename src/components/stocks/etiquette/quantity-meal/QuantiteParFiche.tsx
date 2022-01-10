@@ -67,7 +67,7 @@ export const QuantiteParFiche: React.FunctionComponent<QuantiteParFicheProps> = 
                                 <div onClick={() => {
                                     props.add(fiche);
                                 }}>
-                                    <span className={styles.add}>+</span> {fiche.libelle_fiche_technique}
+                                    <span className={styles.add}>+</span> {fiche.libelle_fiche_technique} ({fiche.nombre_couverts})
                                 </div>
                             </div>
                         ))

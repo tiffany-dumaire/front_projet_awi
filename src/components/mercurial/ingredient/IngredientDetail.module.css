@@ -156,7 +156,7 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-@media print {
+/* @media print {
     .detailContainer {
         width: 95%;
     }
@@ -171,4 +171,4 @@ input:checked + .slider:before {
         size: landscape;
         margin: auto;
     }
-}
+} */
