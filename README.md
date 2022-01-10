@@ -25,49 +25,46 @@ Professeur d'un lycée hôtelier de Montpellier (Georges Frêche)
   * Voir le détail des ingrédients
   * Rechercher un ingrédient
   * Ajouter un ingrédient
-
-`* Modifier les ingrédients`
-
-`* Imprimer une fiche ingrédient`
-
-`* Supprimer un ingrédient`
+  * Modifier les ingrédients
+  * Imprimer une fiche ingrédient
+  * Supprimer un ingrédient
 
 * Gérer la liste des allergènes
-`* Voir les allergènes`
-`* Rechercher un allergène`
+  * Voir les allergènes
+  * Rechercher un allergène
 
 * Accéder à la liste des fiches techniques
-`* Voir les fiches techniques`
-`* Rechercher une fiche technique`
-`* Créer une fiche technique`
-`* Cloner une fiche technique`
-`* Modifier une fiche technique`
-`* Supprimer une fiche technique`
+  * Voir les fiches techniques
+  * Rechercher une fiche technique
+  * Créer une fiche technique
+  * Cloner une fiche technique
+  * Modifier une fiche technique
+  * Supprimer une fiche technique
 
 * Calcul des coûts pour une fiche technique
-`* Affichage coût matière`
-`* Affichage coût des charges fixes (fluides + personnel)`
-`* Affichage prix de vente`
-`* Affichage prix de vente par portion`
-`* Affichage bénéfices`
-`* Affichage bénéfices par portion`
-`* Affichage taux de marge sur coûts variables`
-`* Affichage seuil de rentabilité`
+  * Affichage coût matière
+  * Affichage coût des charges fixes (fluides + personnel)
+  * Affichage prix de vente
+  * Affichage prix de vente par portion
+  * Affichage bénéfices
+  * Affichage bénéfices par portion
+  * Affichage taux de marge sur coûts variables
+  * Affichage seuil de rentabilité
 
 * Gestion des stocks
-`* Réalisation ventes (plats vendus ou à emporter)`
-`* Vente test (le stock ne bouge pas -- voir partie création des étiquettes)`
-`* Réaliser une entrée de stock complète`
-`* Réaliser une entrée de stock par catégorie`
-`* Réaliser une entrée de stock par choix d'ingrédient`
+  * Réalisation ventes (plats vendus ou à emporter)
+  * Vente test (le stock ne bouge pas -- voir partie création des étiquettes)
+  * Réaliser une entrée de stock complète
+  * Réaliser une entrée de stock par catégorie
+  * Réaliser une entrée de stock par choix d'ingrédient
 
 * Impression pdf d'une fiche technique
-`* Avec coûts`
-`* Sans coûts`
+  * Avec coûts
+  * Sans coûts
 
 * Créer des étiquettes
-`* Correspondant à une vente`
-`* Ne correspondant pas à une vente`
+  * Correspondant à une vente
+  * Ne correspondant pas à une vente
 
 * Paramètres de l'application
 
