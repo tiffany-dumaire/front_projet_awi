@@ -53,7 +53,7 @@
     border-left: 1px black solid;
 }
 
-thead {
+.thead {
     background-color: rgba(190, 190, 190, 0.781);
 }
 
@@ -388,14 +388,8 @@ input:checked + .slider:before {
         width: 95%;
     }
 
-    .grid-cout {
-      margin-top: 1rem;
-      display: block;
-      page-break-before: always;
-    }
-
     @page {
-        size: auto;
+        size: portrait !important;
         margin: auto;
     }
 }

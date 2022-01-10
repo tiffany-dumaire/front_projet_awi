@@ -245,132 +245,130 @@ export function FicheTechniqueDetail2(): JSX.Element {
                             <div></div>
                         }
                     </div>
-                    <div className={styles.detail} ref={componentRef}>
-                        <div className={styles.complete}>
-                            <h3>Fiche Technique</h3>
-                        </div>
-                        <div className={styles.row}>
-                            <div className={styles.intitule}>
-                                <div className={styles.complete2}>
-                                    <div className={styles.title}><h4>Intitulé</h4></div>
-                                    <div><p className={styles.techniques4}>{ficheTechnique?.libelle_fiche_technique}</p></div>
+                    <div className={styles.content} ref={componentRef}>
+                        <div className={styles.detail}>
+                            <div className={styles.complete}>
+                                <h3>Fiche Technique</h3>
+                            </div>
+                            <div className={styles.row}>
+                                <div className={styles.intitule}>
+                                    <div className={styles.complete2}>
+                                        <div className={styles.title}><h4>Intitulé</h4></div>
+                                        <div><p className={styles.techniques4}>{ficheTechnique?.libelle_fiche_technique}</p></div>
+                                    </div>
+                                </div>
+                                <div className={styles.row2}>
+                                    <div className={styles.moitie1}>
+                                        <div className={styles.title}><h4>Responsable</h4></div>
+                                        <div><p className={styles.techniques4}>{ficheTechnique?.intitule_responsable}</p></div>
+                                    </div>
+                                    <div className={styles.moitie}>
+                                        <div className={styles.title}><h4>Nombre de couverts</h4></div>
+                                        <div><p className={styles.techniques4}>{ficheTechnique?.nombre_couverts}</p></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.row2}>
-                                <div className={styles.moitie1}>
-                                    <div className={styles.title}><h4>Responsable</h4></div>
-                                    <div><p className={styles.techniques4}>{ficheTechnique?.intitule_responsable}</p></div>
-                                </div>
-                                <div className={styles.moitie}>
-                                    <div className={styles.title}><h4>Nombre de couverts</h4></div>
-                                    <div><p className={styles.techniques4}>{ficheTechnique?.nombre_couverts}</p></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.row}>
-                            <table className={styles.table1}>
-                                <thead>
-                                    <tr>
-                                        <th>Denrées</th>
-                                        <th>Unités</th>
-                                        <th>Quantités</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {   
-                                        ficheTechnique?.phases.map((etape) => (
-                                            <>
-                                                <tr key={'step' + etape.ordre}>
-                                                    <td className={styles.colSpan3} colSpan={3}>
-                                                        <h4>{etape.libelle_denrees}</h4>
-                                                    </td>
-                                                </tr>
-                                                {etape.ingredients.map((denree) => (
-                                                    <tr key={'denree' + denree.code + 'step' + etape.ordre}>
-                                                        {denree.allergene ? (
-                                                            <td className={styles.techniques2}>{denree.libelle}</td>
-                                                        ) : (
-                                                            <td className={styles.techniques}>{denree.libelle}</td>
-                                                        )}
-                                                        
-                                                        <td className={styles.techniques4}>{denree.unite}</td>
-                                                        <td className={styles.techniques4}>{denree.quantite}</td>
-                                                    </tr>
-                                                ))}
-                                            </>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
-                            <table className={styles.table2}>
-                                <thead>
-                                    <tr>
-                                        <th className={styles.ordre}>N° phase</th>
-                                        <th>Techniques de réalisation</th>
-                                        <th>Durée</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {ficheTechnique?.phases.map((phase) => (
-                                        <tr key={'phase' + phase.ordre}>
-                                            <td className={styles.techniques4}>{phase.ordre}</td>
-                                            <td className={styles.techniques3}>
-                                                <h4>{phase.libelle_phase}</h4>
-                                                {phase.description_phase.split('\n').map((t) => (
-                                                    <p>{t}</p>
-                                                ))}
-                                            </td>
-                                            <td className={styles.duree}>{phase.duree_phase}</td>
+                            <div className={styles.row}>
+                                <table className={styles.table1}>
+                                    <tbody>
+                                        <tr className={styles.thead}>
+                                            <th>Denrées</th>
+                                            <th>Unités</th>
+                                            <th>Quantités</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                        {showCout && ficheTechnique && assaisonnement && coeff_vente && cout_moyen? (
-                            <>
-                                <div className={styles.gridCout}>
-                                    <div className={styles.title}>
-                                        <h4>Coûts de production {'&'} prix de vente</h4>
-                                    </div>
-                                    <div className={styles.title3}>
-                                        <h4>Bénéfices {'&'} seuil de rentabilité</h4>
-                                    </div>
-                                </div>
-                                <div className={styles.gridCout}>
-                                    <div className={styles.left}>
-                                        {chargeFixes ? (
-                                            <>
-                                                <h4>Coût des charges : </h4>
-                                                <p>Charges de personnel : {(personnel * (dureeTotale/60)).toFixed(2)}€.</p>
-                                                <p>Charges fluides :  {(fluides * (dureeTotale/60)).toFixed(2)}€.</p>
-                                                <p>Le coût total des charges est de {(cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
-                                            </>
-                                            ) : null
+                                        {   
+                                            ficheTechnique?.phases.map((etape) => (
+                                                <>
+                                                    <tr key={'step' + etape.ordre}>
+                                                        <td className={styles.colSpan3} colSpan={3}>
+                                                            <h4>{etape.libelle_denrees}</h4>
+                                                        </td>
+                                                    </tr>
+                                                    {etape.ingredients.map((denree) => (
+                                                        <tr key={'denree' + denree.code + 'step' + etape.ordre}>
+                                                            {denree.allergene ? (
+                                                                <td className={styles.techniques2}>{denree.libelle}</td>
+                                                            ) : (
+                                                                <td className={styles.techniques}>{denree.libelle}</td>
+                                                            )}
+                                                            
+                                                            <td className={styles.techniques4}>{denree.unite}</td>
+                                                            <td className={styles.techniques4}>{denree.quantite}</td>
+                                                        </tr>
+                                                    ))}
+                                                </>
+                                            ))
                                         }
-                                        <h4>Coût des matières : </h4>
-                                        <p>Coût des matières : {coutMatiere.toFixed(2)}€.</p>
-                                        <p>Coût assaisonnement : {assaisonnementCout()}€.</p>
-                                        <h4>Coût de production : </h4>
-                                        <p>Coût de production total {chargeFixes ? '(charges fixes incluses)' : '(charges fixes exclues)'}: {coutProduction()}€</p>
-                                        <h4>Prix de vente : </h4>
-                                        <p>Prix de vente par portion TTC : {(Number(prixDeVente())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                        <p>Prix de vente TTC : {prixDeVente()}€</p>
+                                    </tbody>
+                                </table>
+                                <table className={styles.table2}>
+                                    <tbody>
+                                        <tr className={styles.thead}>
+                                            <th className={styles.ordre}>N° phase</th>
+                                            <th>Techniques de réalisation</th>
+                                            <th>Durée</th>
+                                        </tr>
+                                        {ficheTechnique?.phases.map((phase) => (
+                                            <tr key={'phase' + phase.ordre}>
+                                                <td className={styles.techniques4}>{phase.ordre}</td>
+                                                <td className={styles.techniques3}>
+                                                    <h4>{phase.libelle_phase}</h4>
+                                                    {phase.description_phase.split('\n').map((t) => (
+                                                        <p>{t}</p>
+                                                    ))}
+                                                </td>
+                                                <td className={styles.duree}>{phase.duree_phase}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            {showCout && ficheTechnique && assaisonnement && coeff_vente && cout_moyen? (
+                                <>
+                                    <div className={styles.gridCout}>
+                                        <div className={styles.title}>
+                                            <h4>Coûts de production {'&'} prix de vente</h4>
+                                        </div>
+                                        <div className={styles.title3}>
+                                            <h4>Bénéfices {'&'} seuil de rentabilité</h4>
+                                        </div>
                                     </div>
-                                    <div className={styles.right}>
-                                        <h4>Durée de la progression : </h4>
-                                        <p>La durée totale de la progression est de {dureeTotale} minutes.</p>
-                                        <h4>Bénéfice : </h4>
-                                        <p>Bénéfice net par portion : {(Number(benefice())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
-                                        <p>Bénéfice net : {benefice()}€</p>
-                                        <h4>Seuil de rentabilité :</h4>
-                                        <p>Taux de marge sur coûts variables : {tauxMargeCoutV()}</p>
-                                        <p>Seuil de rentabilité : {seulDeRentabilite()} portions</p>
+                                    <div className={styles.gridCout}>
+                                        <div className={styles.left}>
+                                            {chargeFixes ? (
+                                                <>
+                                                    <h4>Coût des charges : </h4>
+                                                    <p>Charges de personnel : {(personnel * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                    <p>Charges fluides :  {(fluides * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                    <p>Le coût total des charges est de {(cout_moyen.value * (dureeTotale/60) + cout_moyen.value2 * (dureeTotale/60)).toFixed(2)}€.</p>
+                                                </>
+                                                ) : null
+                                            }
+                                            <h4>Coût des matières : </h4>
+                                            <p>Coût des matières : {coutMatiere.toFixed(2)}€.</p>
+                                            <p>Coût assaisonnement : {assaisonnementCout()}€.</p>
+                                            <h4>Coût de production : </h4>
+                                            <p>Coût de production total {chargeFixes ? '(charges fixes incluses)' : '(charges fixes exclues)'}: {coutProduction()}€</p>
+                                            <h4>Prix de vente : </h4>
+                                            <p>Prix de vente par portion TTC : {(Number(prixDeVente())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                            <p>Prix de vente TTC : {prixDeVente()}€</p>
+                                        </div>
+                                        <div className={styles.right}>
+                                            <h4>Durée de la progression : </h4>
+                                            <p>La durée totale de la progression est de {dureeTotale} minutes.</p>
+                                            <h4>Bénéfice : </h4>
+                                            <p>Bénéfice net par portion : {(Number(benefice())/ficheTechnique.nombre_couverts).toFixed(2)}€</p>
+                                            <p>Bénéfice net : {benefice()}€</p>
+                                            <h4>Seuil de rentabilité :</h4>
+                                            <p>Taux de marge sur coûts variables : {tauxMargeCoutV()}</p>
+                                            <p>Seuil de rentabilité : {seulDeRentabilite()} portions</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        ):(
-                            null
-                        )}
+                                </>
+                            ):(
+                                null
+                            )}
+                        </div>
                     </div>
                     {ficheTechnique ?
                         <ClonerFicheTechnique ficheTechnique={ficheTechnique} setLoading={(loading: boolean) => setLoading(loading)} />
