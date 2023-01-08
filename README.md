@@ -77,4 +77,4 @@ Professeur d'un lycée hôtelier de Montpellier (Georges Frêche)
 
 ### Version hébergée
 
-Rendez-vous à l'url suivante : [https://front-awi-projet-2022.herokuapp.com/](https://front-awi-projet-2022.herokuapp.com/)
+Rendez-vous à l'url suivante : [https://front-awi-projet-2022.netlify.app/](https://front-awi-projet-2022.netlify.app/)
